@@ -1,0 +1,583 @@
+---
+title: "Gráficos"
+execute: 
+  echo: false
+  panel: sidebar
+---
+
+```{ojs}
+// Importar D3.js
+d3 = require("d3@7")
+// Carregando os dados
+stateData1 = await FileAttachment("expec.csv").csv()
+stateData = tabelaFiltrada2.map(d => ({
+  estado: d.estado,
+  valor: +d.valor // Converte para número
+}))
+tabelaFiltrada2 = stateData1
+    .filter(d => +d.Ano === ano5)
+    .map(d => ({
+        estado: d.Local,
+        valor: d.ex
+    }));
+
+
+dados = FileAttachment("comp_pop.csv").csv()
+tabelaFiltrada = dados.filter(d => d.new_local === estados &&
+                                   +d.Ano === ano6)
+
+```
+
+## Mapa da expectativa de vida ao nascer por Unidade Federativa
+O mapa representa a expectativa de vida ao nascer distribuido entre estados e Distrito Federal ao longo dos anos de 2000 a 2023.
+
+::: {.panel-tabset}
+
+## PLot
+```{ojs}
+viewof ano5 = Inputs.range([2000, 2023],
+       {
+        value: [2000],
+        step: 1,
+        label: "Ano: "
+    }
+)
+
+// Carregar o GeoJSON dos estados brasileiros
+geoData = await fetch("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson")
+  .then(response => response.json())
+
+// Criar o mapa
+width = 800;
+height = 600;
+
+chart3 = {
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .style("width", "100%")
+    .style("height", "auto");
+
+  // Configurar a projeção
+  const projection = d3.geoMercator()
+    .center([-52, -15]) // Centralizar no Brasil
+    .scale(700)
+    .translate([width / 2, height / 2]);
+
+  const path = d3.geoPath().projection(projection);
+
+  // Criar escala de cores
+  const valores = stateData.map(d => d.valor);
+  const colorScale = d3.scaleSequential()
+    .domain([d3.min(valores), d3.max(valores)])
+    .interpolator(d3.interpolateBlues);
+
+  // Função para normalizar nomes (remover acentos)
+  const normalizeName = name => name
+    ? name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+    : "";
+
+  // Criar mapa
+  svg.selectAll("path")
+    .data(geoData.features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", d => {
+      const state = stateData.find(s =>
+        normalizeName(s.estado) === normalizeName(d.properties.name)
+      );
+      return state ? colorScale(state.valor) : "#ccc";
+    })
+    .attr("stroke", "white")
+    .attr("stroke-width", 0.5);
+
+  // Adicionar tooltip
+  const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "5px");
+
+  svg.selectAll("path")
+    .on("mouseover", (event, d) => {
+      const state = stateData.find(s =>
+        normalizeName(s.estado) === normalizeName(d.properties.name)
+      );
+
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", .9);
+
+      tooltip.html(`
+        Estado: ${d.properties.name}<br/>
+        Valor: ${state ? state.valor : 'Sem dados'}
+      `)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", () => {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
+
+  // Adicionar barra de cores (legenda)
+  const legendWidth = 400;
+  const legendHeight = 20;
+
+  const legend = svg.append("g")
+    .attr("transform", `translate(${(width - legendWidth) / 2}, ${height - 25})`);
+
+  const gradient = legend.append("defs")
+    .append("linearGradient")
+    .attr("id", "legend-gradient")
+    .attr("x1", "0%")
+    .attr("x2", "100%")
+    .attr("y1", "0%")
+    .attr("y2", "0%");
+
+  gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", colorScale(d3.min(valores)));
+
+  gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", colorScale(d3.max(valores)));
+
+  legend.append("rect")
+    .attr("width", legendWidth)
+    .attr("height", legendHeight)
+    .style("fill", "url(#legend-gradient)");
+
+  // Adicionar rótulos na barra de cores
+  legend.append("text")
+    .attr("x", 0)
+    .attr("y", -5)
+    .attr("text-anchor", "start")
+    .style("font-size", "20px")
+    .text(Math.round(d3.min(valores)));
+
+  legend.append("text")
+    .attr("x", legendWidth)
+    .attr("y", -5)
+    .attr("text-anchor", "end")
+    .style("font-size", "20px")
+    .text(Math.round(d3.max(valores)));
+
+  return svg.node();
+}
+
+// Mostrar valores mínimos e máximos
+    minMaxValues = {
+    const valores = stateData.map(d => d.valor);
+    return {
+        min: d3.min(valores),
+        max: d3.max(valores)
+    };
+}
+```
+
+## Data
+
+```{ojs}
+Inputs.table(tabelaFiltrada2)
+html`
+<body>
+    <a href="expec.csv" download>
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV completo
+        </button>
+    </a>
+    <a download="tabelaFiltrada2.csv" href="${"data:text/csv;charset=utf-8," + encodeURIComponent(csv)}">
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV filtrado
+        </button>
+</a>
+</body>
+`
+```
+
+:::
+
+## Evolução da População por faixa-etária
+O gráfico representa uma comparação entre dados interpolados pelo IBGE e por nós (SIGERIP), que nos demonstra a população por faixa-etária sellecionado por nação, regiões, estados e distrito federal.
+
+::: {.panel-tabset}
+
+## PLot
+```{ojs}
+viewof ano6 = Inputs.range([2000, 2023],
+       {
+        value: [2000],
+        step: 1,
+        label: "Ano: "
+    }
+)
+
+viewof estados = Inputs.select(['Brasil', 'Norte', 'Nordeste', 'Sudeste', 'Sul', 'Centro-Oeste',
+       'Rondônia', 'Acre', 'Amazonas', 'Roraima', 'Pará', 'Amapá',
+       'Tocantins', 'Maranhão', 'Piauí', 'Ceará', 'Rio Grande do Norte',
+       'Paraíba', 'Pernambuco', 'Alagoas', 'Sergipe', 'Bahia',
+       'Minas Gerais', 'Espírito Santo', 'Rio de Janeiro', 'São Paulo',
+       'Paraná', 'Santa Catarina', 'Rio Grande do Sul',
+       'Mato Grosso do Sul', 'Mato Grosso', 'Goiás', 'Distrito Federal'],
+       {
+        value: 'Brasil',
+        label: "Local: "
+        }
+       )
+
+// Gráfico
+chart = {{
+  // Definição das dimensões do gráfico
+  const width = 828;  // Largura do gráfico
+  const height = 600; // Altura do gráfico
+  const marginTop = 20;    // Margem superior
+  const marginRight = 20;  // Margem direita
+  const marginBottom = 30; // Margem inferior
+  const marginLeft = 50;   // Margem esquerda
+
+  // Escala para o eixo X (Ano)
+  const x = d3.scaleLinear()
+    .domain(d3.extent(tabelaFiltrada, d => +d.new_faixa))  // Determina o intervalo de valores para o eixo X com base no ano
+    .range([marginLeft, width - marginRight]);  // Define o intervalo de pixels no eixo X
+
+  // Escala para o eixo Y (Total)
+  const y = d3.scaleLinear()
+    .domain([d3.min(tabelaFiltrada, d => +d.Total), d3.max(tabelaFiltrada, d => +d.Total)]).nice()  // Define o intervalo de valores para o eixo Y com base no total
+    .range([height - marginBottom, marginTop]);  // Define o intervalo de pixels no eixo Y
+
+  // Definição de cores para as linhas
+  const color = d3.scaleOrdinal(d3.schemeCategory10);  // Usa uma paleta de cores pré-definida do D3
+
+  // Criação do elemento SVG para o gráfico
+  const svg = d3.create("svg")
+    .attr("width", width)  // Define a largura do SVG
+    .attr("height", height)  // Define a altura do SVG
+    .attr("viewBox", [0, 0, width, height])  // Define a visualização do SVG com base nas dimensões
+    .style("max-width", "100%")  // Estilo para garantir que o gráfico seja responsivo
+    .style("height", "auto")  // Estilo para ajustar a altura automaticamente
+    .style("overflow", "visible")  // Permite que os elementos do gráfico saiam do limite do SVG
+    .style("font", "10px sans-serif");  // Define o estilo da fonte no gráfico
+
+  // Adiciona o eixo X (ano)
+  svg.append("g")
+    .attr("transform", `translate(0,${height - marginBottom})`)  // Posiciona o eixo X na parte inferior
+    .call(d3.axisBottom(x).tickFormat(d3.format("d")));  // Aplica a escala X e formata os ticks como números inteiros
+
+  // Adiciona o eixo Y (total)
+  svg.append("g")
+    .attr("transform", `translate(${marginLeft},0)`)  // Posiciona o eixo Y à esquerda
+    .call(d3.axisLeft(y))  // Aplica a escala Y
+    .call(g => g.select(".domain").remove())  // Remove a linha do eixo Y
+    .call(g => g.append("text")  // Adiciona texto ao lado do eixo Y
+      .attr("x", -marginLeft)  // Posiciona o texto à esquerda do gráfico
+      .attr("y", 10)  // Posiciona o texto no eixo Y
+      .attr("fill", "currentColor")  // Define a cor do texto
+      .attr("text-anchor", "start")  // Define o alinhamento do texto
+      .text("↑ Total (%)"));  // Texto do eixo Y
+
+  // Agrupa os dados pela coluna UF (Unidade Federativa)
+  const groupedData = d3.group(tabelaFiltrada, d => d.Fonte);
+
+  // Define a função para desenhar as linhas no gráfico
+  const line = d3.line()
+    .x(d => x(+d.new_faixa))  // Define a posição X da linha com base no ano
+    .y(d => y(+d.Total));  // Define a posição Y da linha com base no total
+
+  // Adiciona as linhas para cada grupo de dados
+  const paths = svg.append("g")
+    .selectAll("path")  // Seleciona todos os elementos "path" (caminhos das linhas)
+    .data(groupedData)  // Vincula os dados agrupados (por UF)
+    .join("path")  // Cria um novo "path" para cada grupo de dados
+    .attr("fill", "none")  // Define que as linhas não terão preenchimento
+    .attr("stroke", ([key]) => color(key))  // Define a cor da linha de acordo com a UF
+    .attr("stroke-width", 1.5)  // Define a espessura da linha
+    .attr("d", ([, values]) => line(values));  // Desenha a linha para cada conjunto de dados
+
+  // Adiciona o texto com o nome da UF na extremidade de cada linha
+  svg.append("g")
+    .selectAll("text")
+    .data(groupedData)
+    .join("text")
+    .attr("font-size", 20)  // Define o tamanho da fonte do texto
+    .attr("x", width - marginRight)  // Posiciona o texto à direita
+    .attr("y", ([, values]) => y(+values[values.length - 1].Total))  // Posiciona o texto na última coordenada da linha
+    .attr("dy", "0.35em")  // Ajusta a posição vertical do texto
+    .attr("text-anchor", "start")  // Alinha o texto à esquerda
+    .attr("fill", ([key]) => color(key))  // Define a cor do texto de acordo com a UF
+    .text(([key]) => key);  // Define o texto como o nome da UF
+  
+  // Adiciona os pontos no gráfico
+  svg.append("g")
+    .selectAll("circle")
+    .data(tabelaFiltrada)
+    .join("circle")
+    .attr("cx", d => x(+d.new_faixa))  // Posição horizontal baseada no ano
+    .attr("cy", d => y(+d.Total))  // Posição vertical baseada no total
+    .attr("r", 4)  // Define o raio do círculo
+    .attr("fill", d => color(d.Fonte))  // Define a cor do ponto com base na UF
+    .attr("stroke", "white")  // Adiciona uma borda branca ao ponto
+    .attr("stroke-width", 1.5)  // Define a espessura da borda
+    ;
+
+  // Criação do tooltip (caixa de informação ao passar o mouse)
+  const tooltip = d3.select("body").append("div")
+    .style("position", "absolute")  // Define a posição absoluta do tooltip
+    .style("background", "white")  // Define o fundo branco do tooltip
+    .style("border", "1px solid #ccc")  // Define a borda do tooltip
+    .style("padding", "5px")  // Adiciona o espaçamento interno
+    .style("border-radius", "5px")  // Define bordas arredondadas
+    .style("font-size", "12px")  // Define o tamanho da fonte
+    .style("pointer-events", "none")  // Impede a interação do tooltip com o gráfico
+    .style("opacity", 0);  // Inicialmente o tooltip é invisível
+
+  // Adiciona interação para mostrar o tooltip quando o mouse passa sobre a linha
+  paths.on("pointermove", (event, [uf, values]) => {
+    // Encontra o ponto mais próximo do mouse na linha
+    const [xm, ym] = d3.pointer(event);
+    const closest = d3.least(values, d => Math.hypot(x(+d.Ano) - xm, y(+d.Total) - ym));
+    
+    if (closest) {
+      const { Ano, Total } = closest;  // Obtém os dados do ponto mais próximo
+
+      // Destaque da linha: reduz opacidade das outras e aumenta a espessura da linha ativa
+      paths.attr("stroke-opacity", 0.2);  
+      d3.select(event.target).attr("stroke-opacity", 1).attr("stroke-width", 2.5);
+
+      // Atualiza o tooltip com os dados do ponto mais próximo
+      tooltip.style("opacity", 1)
+        .html(`Fonte: ${uf}<br>Ano: ${Ano}<br>Total: ${Total}`)
+        .style("left", `${event.pageX + 10}px`)  // Posiciona o tooltip ao lado do mouse
+        .style("top", `${event.pageY + 10}px`);  // Posiciona o tooltip acima do mouse
+    }
+  });
+
+  // Esconde o tooltip e restaura a opacidade das linhas quando o mouse sai
+  paths.on("pointerleave", () => {
+    paths.attr("stroke-opacity", 1).attr("stroke-width", 1.5);  // Restaura a opacidade e espessura das linhas
+    tooltip.style("opacity", 0);  // Oculta o tooltip
+  });
+
+  return svg.node();  // Retorna o elemento SVG para ser exibido
+}};
+```
+## Data
+
+```{ojs}
+Inputs.table(tabelaFiltrada)
+html`
+<body>
+    <a href="comp_pop.csv" download>
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV completo
+        </button>
+    </a>
+    <a download="tabelaFiltrada.csv" href="${"data:text/csv;charset=utf-8," + encodeURIComponent(csv)}">
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV filtrado
+        </button>
+</a>
+</body>
+`
+```
+
+:::
+## Mortalidade por faixa-etária
+O gráfico representa a mortalidade ao longo do tempo por nação, regiões, estado e distrito federal, podendo selecionar faixa etária no qual deseja ver a sua evolução ao longo do tempo (2000 - 2023).
+
+::: {.panel-tabset}
+
+## PLot
+```{ojs}
+mortalidade = FileAttachment("mortalidade1.csv").csv()
+mortalidade_filtrada = mortalidade
+    .filter(d => d.idade === faixa_etaria_mortalidade &&
+                 (estados_mortalidade.includes("Todos estados") || estados_mortalidade.includes(d.UF))
+    )
+    .map(d => ({
+        Ano: d.Ano,
+        UF: d.UF,
+        Total: d.Total
+    }));
+
+viewof faixa_etaria_mortalidade = Inputs.select(
+    ['Menos de 1 ano', '1 a 4 anos', '5 a 9 anos', '10 a 14 anos', '15 a 19 anos', '20 a 24 anos', '25 a 29 anos', '30 a 34 anos', '35 a 39 anos', '40 a 44 anos', '45 a 49 anos', '50 a 54 anos', '55 a 59 anos', '60 a 64 anos', '65 a 69 anos', '70 a 74 anos', '75 a 79 anos', '80 anos ou mais'],
+    {
+        value: ['Menos de 1 ano'],
+        label: "Faixa etária: "
+    }
+)
+viewof estados_mortalidade = Inputs.checkbox(
+  [
+    "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", 
+    "MT", "MS", "MG", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", 
+    "RO", "RR", "RS", "SC", "SE", "SP", "TO", "Todos estados"
+  ],
+  {
+    value: ["Todos estados"], // Define "Todos estados" como valor inicial selecionado
+    label: "Local: ",
+    sort: true, // Ordena alfabeticamente
+    unique: true // Evita duplicatas
+  }
+)
+
+
+// Gráfico
+chart1 = {{
+  // Definição das dimensões do gráfico
+  const width = 928;  // Largura do gráfico
+  const height = 600; // Altura do gráfico
+  const marginTop = 20;    // Margem superior
+  const marginRight = 20;  // Margem direita
+  const marginBottom = 30; // Margem inferior
+  const marginLeft = 50;   // Margem esquerda
+
+  // Escala para o eixo X (Ano)
+  const x = d3.scaleLinear()
+    .domain(d3.extent(mortalidade_filtrada, d => +d.Ano))  // Determina o intervalo de valores para o eixo X com base no ano
+    .range([marginLeft, width - marginRight]);  // Define o intervalo de pixels no eixo X
+
+  // Escala para o eixo Y (Total)
+  const y = d3.scaleLinear()
+    .domain([d3.min(mortalidade_filtrada, d => +d.Total), d3.max(mortalidade_filtrada, d => +d.Total)]).nice()  // Define o intervalo de valores para o eixo Y com base no total
+    .range([height - marginBottom, marginTop]);  // Define o intervalo de pixels no eixo Y
+
+  // Definição de cores para as linhas
+  const color = d3.scaleOrdinal(d3.schemeCategory10);  // Usa uma paleta de cores pré-definida do D3
+
+  // Criação do elemento SVG para o gráfico
+  const svg = d3.create("svg")
+    .attr("width", width)  // Define a largura do SVG
+    .attr("height", height)  // Define a altura do SVG
+    .attr("viewBox", [0, 0, width, height])  // Define a visualização do SVG com base nas dimensões
+    .style("max-width", "100%")  // Estilo para garantir que o gráfico seja responsivo
+    .style("height", "auto")  // Estilo para ajustar a altura automaticamente
+    .style("overflow", "visible")  // Permite que os elementos do gráfico saiam do limite do SVG
+    .style("font", "10px sans-serif");  // Define o estilo da fonte no gráfico
+
+  // Adiciona o eixo X (ano)
+  svg.append("g")
+    .attr("transform", `translate(0,${height - marginBottom})`)  // Posiciona o eixo X na parte inferior
+    .call(d3.axisBottom(x).tickFormat(d3.format("d")));  // Aplica a escala X e formata os ticks como números inteiros
+
+  // Adiciona o eixo Y (total)
+  svg.append("g")
+    .attr("transform", `translate(${marginLeft},0)`)  // Posiciona o eixo Y à esquerda
+    .call(d3.axisLeft(y))  // Aplica a escala Y
+    .call(g => g.select(".domain").remove())  // Remove a linha do eixo Y
+    .call(g => g.append("text")  // Adiciona texto ao lado do eixo Y
+      .attr("x", -marginLeft)  // Posiciona o texto à esquerda do gráfico
+      .attr("y", 10)  // Posiciona o texto no eixo Y
+      .attr("fill", "currentColor")  // Define a cor do texto
+      .attr("text-anchor", "start")  // Define o alinhamento do texto
+      .text("↑ Total (%)"));  // Texto do eixo Y
+
+  // Agrupa os dados pela coluna UF (Unidade Federativa)
+  const groupedData = d3.group(mortalidade_filtrada, d => d.UF);
+
+  // Define a função para desenhar as linhas no gráfico
+  const line = d3.line()
+    .x(d => x(+d.Ano))  // Define a posição X da linha com base no ano
+    .y(d => y(+d.Total));  // Define a posição Y da linha com base no total
+
+  // Adiciona as linhas para cada grupo de dados
+  const paths = svg.append("g")
+    .selectAll("path")  // Seleciona todos os elementos "path" (caminhos das linhas)
+    .data(groupedData)  // Vincula os dados agrupados (por UF)
+    .join("path")  // Cria um novo "path" para cada grupo de dados
+    .attr("fill", "none")  // Define que as linhas não terão preenchimento
+    .attr("stroke", ([key]) => color(key))  // Define a cor da linha de acordo com a UF
+    .attr("stroke-width", 1.5)  // Define a espessura da linha
+    .attr("d", ([, values]) => line(values));  // Desenha a linha para cada conjunto de dados
+
+  // Adiciona o texto com o nome da UF na extremidade de cada linha
+  svg.append("g")
+    .selectAll("text")
+    .data(groupedData)
+    .join("text")
+    .attr("font-size", 10)  // Define o tamanho da fonte do texto
+    .attr("x", width - marginRight)  // Posiciona o texto à direita
+    .attr("y", ([, values]) => y(+values[values.length - 1].Total))  // Posiciona o texto na última coordenada da linha
+    .attr("dy", "0.35em")  // Ajusta a posição vertical do texto
+    .attr("text-anchor", "start")  // Alinha o texto à esquerda
+    .attr("fill", ([key]) => color(key))  // Define a cor do texto de acordo com a UF
+    .text(([key]) => key);  // Define o texto como o nome da UF
+
+
+
+  // Criação do tooltip (caixa de informação ao passar o mouse)
+  const tooltip = d3.select("body").append("div")
+    .style("position", "absolute")  // Define a posição absoluta do tooltip
+    .style("background", "white")  // Define o fundo branco do tooltip
+    .style("border", "1px solid #ccc")  // Define a borda do tooltip
+    .style("padding", "5px")  // Adiciona o espaçamento interno
+    .style("border-radius", "5px")  // Define bordas arredondadas
+    .style("font-size", "12px")  // Define o tamanho da fonte
+    .style("pointer-events", "none")  // Impede a interação do tooltip com o gráfico
+    .style("opacity", 0);  // Inicialmente o tooltip é invisível
+
+  // Adiciona interação para mostrar o tooltip quando o mouse passa sobre a linha
+  paths.on("pointermove", (event, [uf, values]) => {
+    // Encontra o ponto mais próximo do mouse na linha
+    const [xm, ym] = d3.pointer(event);
+    const closest = d3.least(values, d => Math.hypot(x(+d.Ano) - xm, y(+d.Total) - ym));
+    
+    if (closest) {
+      const { Ano, Total } = closest;  // Obtém os dados do ponto mais próximo
+
+      // Destaque da linha: reduz opacidade das outras e aumenta a espessura da linha ativa
+      paths.attr("stroke-opacity", 0.2);  
+      d3.select(event.target).attr("stroke-opacity", 1).attr("stroke-width", 2.5);
+
+      // Atualiza o tooltip com os dados do ponto mais próximo
+      tooltip.style("opacity", 1)
+        .html(`UF: ${uf}<br>Ano: ${Ano}<br>Total: ${Total}`)
+        .style("left", `${event.pageX + 10}px`)  // Posiciona o tooltip ao lado do mouse
+        .style("top", `${event.pageY + 10}px`);  // Posiciona o tooltip acima do mouse
+    }
+  });
+
+  // Esconde o tooltip e restaura a opacidade das linhas quando o mouse sai
+  paths.on("pointerleave", () => {
+    paths.attr("stroke-opacity", 1).attr("stroke-width", 1.5);  // Restaura a opacidade e espessura das linhas
+    tooltip.style("opacity", 0);  // Oculta o tooltip
+  });
+
+  return svg.node();  // Retorna o elemento SVG para ser exibido
+}};
+```
+## Data
+
+```{ojs}
+Inputs.table(tabelaFiltrada)
+function converterParaCSV(dados) {
+  const cabecalho = Object.keys(dados[0]).join(",")
+  const linhas = dados.map(obj => 
+    Object.values(obj).map(v => 
+      `"${String(v).replace(/"/g, '""')}"`
+    ).join(",")
+  )
+  return [cabecalho, ...linhas].join("\n")
+}
+csv = converterParaCSV(mortalidade_filtrada)
+html`
+<body>
+    <a href="mortalidade1.csv" download>
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV completo
+        </button>
+    </a>
+    <a download="mortalidade_filtrada.csv" href="${"data:text/csv;charset=utf-8," + encodeURIComponent(csv)}">
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV filtrado
+        </button>
+</a>
+</body>
+`
+```
+
+:::

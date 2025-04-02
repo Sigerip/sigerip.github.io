@@ -1,0 +1,558 @@
+---
+title: "Sistemas Inteligentes para Gestão de Riscos e Previsões - SIGERIP"
+execute: 
+  echo: false
+about:
+  template: jolla
+  image: img.jpg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+
+
+## Objetivo
+O projeto tem como objetivo principal impactar a comunidade interna e externa por meio do desenvolvimento de sistemas inteligentes de apoio à decisão com enfoque na gestão de riscos e previsão de dados demográficos e atuariais. Objetivos específicos: Dessa maneira, os objetivos específicos são: - Oportunizar à equipe do projeto uma formação cidadã e profissional ao resolver um problema real da sociedade, por meio de um sistema inteligente para web. - Promover a capacitação dos discentes da UFPB, integrando ensino, extensão e pesquisa a partir de uma aplicação de projeção de mortalidade humana. - Desenvolver uma aplicação web interativa a qual disponibilizará dados demográficos de expectativa de vida, quantitativo populacional, taxas de mortalidade, projeções dessas informações e de cálculos atuariais. - Disponibilizar o sistema desenvolvido na web de forma gratuita para toda a sociedade. - Realizar oficinas para capacitar a comunidade externa a tomar melhor decisões dos dados e projeções de taxa de mortalidade e expectativa de vida.
+
+
+```{ojs}
+viewof contatos = {
+  // Elementos do modal
+  const overlay = document.createElement('div');
+  const modal = document.createElement('div');
+  const closeBtn = document.createElement('span');
+  const content = document.createElement('div');
+
+  // Conteúdo do modal
+  content.innerHTML = `
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    
+    <h3 style="margin:0;color:#2c3e50;padding-bottom:15px;border-bottom:2px solid #3498db">Equipe SIGERIP</h3>
+    <div style="margin-top:20px;max-width: 450px;height: 450px;padding-right: 10px;overflow-y: scroll;overflow-x: hidden;line-height:1.6">
+      <ul class="lista-equipe">
+
+      <!-- Prof Filipe -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Prof. Dr. Filipe C. L. Duarte</h3>
+              <p style="margin: 5px 0; color: #666;">Coordenador - Tábuas de mortalidade</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/filipeclduarte/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> filipe_pb_duarte@hotmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Prof Gustavo -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Prof. Dr. Gustavo C. Xavier</h3>
+              <p style="margin: 5px 0; color: #666;">Coordenador Adjunto - Sistema web</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/gcxavier/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> gustavocorreiaxavier@gmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Prof Herick -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Prof. Dr. Herick C. G. Oliveira</h3>
+              <p style="margin: 5px 0; color: #666;">Colaborador - Mortalidade intantil</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/herickcidarta/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> hcidarta@hotmail.com
+                  
+              </p>
+          </div>
+      </li>
+      
+      <!-- TODO: FALTA EMAIL E LINKEDIN Tassia -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Tassia T. S. Oliveira</h3>
+              <p style="margin: 5px 0; color: #666;">Colaboradora</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> email.aqui
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- TODO: falta linkedin Beatriz-->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Beatriz G. Olinpio</h3>
+              <p style="margin: 5px 0; color: #666;">Aluna Voluntária - Mortalidade infantil</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> bgo@academico.ufpb.br
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Cleo -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Cleo D. Anacleto</h3>
+              <p style="margin: 5px 0; color: #666;">Aluno Bolsista - Tábuas de mortalidade</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/cleo-decker-anacleto-66a69b133/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> cleodecker@hotmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Cristiane -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Cristiane S. Silva</h3>
+              <p style="margin: 5px 0; color: #666;">Aluna Voluntária - Tábuas de mortalidade</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> css3@academico.ufpb.br
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- TODO: FALTA LINKEDIN Gabrielle -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Gabrielle S. M. Vieira</h3>
+              <p style="margin: 5px 0; color: #666;">Aluna Voluntária - Mortalidade infantil</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> gabrielle.samara230@gmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Igor -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Igor B. Kutelak</h3>
+              <p style="margin: 5px 0; color: #666;">Aluno Voluntário - Mortalidade infantil</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/igor-kutelak-20b10a194/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> Kutelak.igor@gmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Isaias -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Isaias F. S. Sousa</h3>
+              <p style="margin: 5px 0; color: #666;">Aluno Voluntário - Sistema web</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/isa%C3%ADas-felipe-silva-de-sousa-453902327/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> isaias.felipe@academico.ufpb.br
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- TODO: FALTA LINKEDIN Jefferson -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Jefferson G. Silva</h3>
+              <p style="margin: 5px 0; color: #666;">Aluno Voluntário - Sistema web</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> jeffeersonguilhermeh@gmail.com
+                  
+              </p>
+          </div>
+      </li>
+
+      <!-- Stênio -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">João P. S. F. Silva</h3>
+              <p style="margin: 5px 0; color: #666;">Aluno Voluntário - Tábuas de mortalidade</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-st%C3%AAnio-2861071b3/" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> jpsfs2@academico.ufpb.br
+                  
+              </p>
+          </div>
+      </li>
+
+      <!--TODO: FALTA LINKEDIN Nathiely -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Nathiely B. Silva</h3>
+              <p style="margin: 5px 0; color: #666;">Aluna Voluntária - Sistema web</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> nathiely.silva@academico.ufpb.br
+                  
+              </p>
+          </div>
+      </li>
+      
+    </ul>
+    </div>
+  `;
+
+  // Estilização do modal
+  Object.assign(overlay.style, {
+    display: 'none',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 1000
+  });
+
+  Object.assign(modal.style, {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'white',
+    padding: '25px',
+    borderRadius: '10px',
+    width: 'min(90%, 500px)',
+    boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+  });
+
+  Object.assign(closeBtn.style, {
+    position: 'absolute',
+    right: '15px',
+    top: '10px',
+    cursor: 'pointer',
+    fontSize: '28px',
+    color: '#666',
+    transition: 'color 0.2s'
+  });
+
+  // Montagem do modal
+  closeBtn.innerHTML = '&times;';
+  modal.append(closeBtn, content);
+  overlay.append(modal);
+  document.body.append(overlay);
+
+  // Container para centralização
+  const container = document.createElement('div');
+  Object.assign(container.style, {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    margin: '30px 0'
+  });
+
+  // Criação do botão centralizado
+  const btn = Inputs.button("👥 Conheça Nossa Equipe");
+  btn.className = "botao-equipe"; // ← Adicione esta linha
+
+  // Efeitos de hover
+  btn.addEventListener('mouseenter', () => {
+    btn.style.transform = 'scale(1.05)';
+    btn.style.boxShadow = '0 6px 8px rgba(0,0,0,0.2)';
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'scale(1)';
+    btn.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+  });
+
+  // Event listeners
+  btn.addEventListener('click', () => overlay.style.display = 'block');
+  closeBtn.addEventListener('click', () => overlay.style.display = 'none');
+  overlay.addEventListener('click', e => e.target === overlay && (overlay.style.display = 'none'));
+  document.addEventListener('keydown', e => e.key === 'Escape' && (overlay.style.display = 'none'));
+
+  // Adiciona botão ao container
+  container.append(btn);
+  
+  return container;
+}
+
+```
+
+
+```{ojs}
+html`
+<style>
+  /* Estilos Gerais */
+  .equipe-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .botao-equipe {
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .botao-equipe:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+  }
+
+  .modal-equipe {
+    position: relative;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    margin: 5% auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .lista-equipe {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .membro-equipe {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.2s;
+  }
+
+  .membro-equipe:hover {
+    transform: translateX(10px);
+    background: #f1f3f5;
+  }
+
+  .fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+  }
+
+  .fechar-modal:hover {
+    color: #333;
+  }
+  .botao-equipe {
+  background: #343a40 !important; /* Azul mais claro */
+  color: #ffffff !important;
+  /* mantém o restante das propriedades */
+}
+</style>
+
+<script>
+  // JavaScript Corrigido
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnAbrir = document.getElementById('btnEquipe');
+    const btnFechar = document.getElementById('fecharModal');
+    const modal = document.getElementById('modalEquipe');
+
+    if(btnAbrir && btnFechar && modal) {
+      // Abrir modal
+      btnAbrir.addEventListener('click', () => {
+        modal.style.display = 'block';
+      });
+
+      // Fechar modal
+      btnFechar.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      // Fechar ao clicar fora
+      window.addEventListener('click', (e) => {
+        if(e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      // Fechar com ESC
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+          modal.style.display = 'none';
+        }
+      });
+    } else {
+      console.error('Verifique os IDs dos elementos:', {btnAbrir, btnFechar, modal});
+    }
+  });
+  function copiarEmail() {
+        // Obtém o conteúdo do elemento que contém o email
+        const email = document.getElementById("email").textContent;
+        
+        // Copia o email para a área de transferência usando a Clipboard API
+        navigator.clipboard.writeText(email)
+          .then(() => {
+            // Exibe uma mensagem de confirmação
+            alert("Email copiado com sucesso!");
+          })
+          .catch(err => {
+            console.error("Erro ao copiar o email:", err);
+          });
+      }
+</script>
+`
+
+
+```

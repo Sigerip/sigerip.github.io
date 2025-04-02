@@ -1,0 +1,12 @@
+<body>
+    <a href="dados/dados1/metricas_erro_combinado.csv" download>
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV completo
+        </button>
+    </a>
+    <a download="dados/dados1/previsoes_combinado.csv" href="${"data:text/csv;charset=utf-8," + encodeURIComponent(csv)}">
+        <button style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 220px">
+          ⬇️ Baixar CSV filtrado
+        </button>
+    </a>
+</body>
