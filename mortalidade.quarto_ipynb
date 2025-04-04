@@ -1,0 +1,68 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Mortalidade\"\n",
+        "execute: \n",
+        "  echo: false\n",
+        "  panel: sidebar\n",
+        "---"
+      ],
+      "id": "ff6d8b31"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "mortalidade = pd.read_parquet(\"dados/tabuas_lc.parquet\")\n",
+        "print(mortalidade['local'].unique())\n",
+        "ojs_define(data = mortalidade)"
+      ],
+      "id": "73c16ec6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "```{ojs}\n",
+        "d3 = require(\"d3@7\")\n",
+        "\n",
+        "viewof ano_mort = Inputs.range([2024, 2070],\n",
+        "       {\n",
+        "        value: [2024],\n",
+        "        step: 1,\n",
+        "        label: \"Ano: \"\n",
+        "    }\n",
+        ")\n",
+        "\n",
+        "dados_filtrados = data\n",
+        "    .filter(d => +d.Ano === ano_mort)\n",
+        "    .map(d => ({\n",
+        "        estado: d.local,\n",
+        "        valor: d.qx\n",
+        "    }));\n",
+        "\n",
+        "Inputs.table(dados_filtrados)\n",
+        "```"
+      ],
+      "id": "db13fefb"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\isaias\\AppData\\Roaming\\Python\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

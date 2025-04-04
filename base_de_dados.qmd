@@ -1,0 +1,231 @@
+---
+execute: 
+  echo: false
+  panel: sidebar
+---
+```{ojs}
+d3 = require("d3@7")
+dados = await FileAttachment("dados/base_dados/tabua_concatenada.csv").csv()
+tabua = await FileAttachment("dados/base_dados/taxa_mortalidade.csv").csv()
+
+
+viewof regiao = Inputs.select([
+  "Brasil",
+  "Norte",
+  "Nordeste",
+  "Centro-Oeste",
+  "Sudeste",
+  "Sul",
+  "Acre",
+  "Alagoas",
+  "Amapá",
+  "Amazonas",
+  "Bahia",
+  "Ceará",
+  "Distrito Federal",
+  "Espírito Santo",
+  "Goiás",
+  "Maranhão",
+  "Mato Grosso",
+  "Mato Grosso do Sul",
+  "Minas Gerais",
+  "Pará",
+  "Paraíba",
+  "Paraná",
+  "Pernambuco",
+  "Piauí",
+  "Rio de Janeiro",
+  "Rio Grande do Norte",
+  "Rio Grande do Sul",
+  "Rondônia",
+  "Roraima",
+  "Santa Catarina",
+  "São Paulo",
+  "Sergipe",
+  "Tocantins"],
+  {
+        value: ['Brasil'],
+        label: "Local: "
+    })
+
+```
+
+::: {.panel-tabset}
+
+## Gráfico
+```{ojs}
+{
+  const width = 800;
+  const height = 650; // Aumentei a altura total para acomodar a legenda
+  const legendHeight = 50; // Altura dedicada para a legenda
+  const margin = { top: 30, right: 20, bottom: 40, left: 50 };
+  const numRows = 5;
+  const numCols = 4;
+  
+  // Cores para cada série
+  const cores = {
+    ambos: "steelblue",
+    masculino: "darkorange",
+    feminino: "green"
+  };
+
+  const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  const ageGroups = [...new Set(tabua.map(d => d.faixa_etaria))].sort();
+  
+  // Título geral
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .text("Mortalidade por Faixa Etária no Brasil (2000 - 2023)")
+    .attr("font-size", "16px")
+    .attr("font-weight", "bold");
+    
+  // Adiciona legenda em linha horizontal acima dos gráficos
+  const legend = svg.append("g")
+    .attr("transform", `translate(${width/2 - 150}, 35)`);
+    
+  const legendItems = Object.entries(cores);
+  const legendItemWidth = 100; // Largura de cada item da legenda
+  
+  legendItems.forEach(([key, color], i) => {
+    const itemX = i * legendItemWidth;
+    
+    legend.append("rect")
+      .attr("x", itemX)
+      .attr("y", 0)
+      .attr("width", 15)
+      .attr("height", 15)
+      .attr("fill", color);
+      
+    legend.append("text")
+      .attr("x", itemX + 20)
+      .attr("y", 12)
+      .text(key.charAt(0).toUpperCase() + key.slice(1))
+      .attr("font-size", "12px");
+  });
+
+  // Ajuste a área dos gráficos para começar após a legenda
+  const graphsStartY = legendHeight + 10;
+  
+  const subplotWidth = width / numCols;
+  const subplotHeight = (height - graphsStartY) / numRows;
+
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
+      const index = row * numCols + col;
+      if (index >= ageGroups.length) continue;
+      
+      const currentAge = ageGroups[index];
+      const subplot = svg.append("g")
+        .attr("transform", `translate(${col * subplotWidth}, ${graphsStartY + row * subplotHeight})`);
+      
+      // Processamento dos dados - filtrando por faixa etária
+      const filteredData = tabua.filter(d =>  
+          d.local === 'Brasil' && d.faixa_etaria === currentAge
+        ).map(d => ({
+          ...d,
+          Ano: +d.Ano,
+          ambos: Math.log(+d.ambos),
+          feminino: Math.log(+d.feminino),
+          masculino: Math.log(+d.masculino)
+        })).sort((a, b) => a.Ano - b.Ano);
+      
+      // Verifica se existem dados para esta faixa etária
+      if (filteredData.length === 0) {
+        subplot.append("text")
+          .attr("x", subplotWidth / 2)
+          .attr("y", subplotHeight / 2)
+          .attr("text-anchor", "middle")
+          .text(`Sem dados para: ${currentAge}`)
+          .attr("font-size", "12px");
+        continue;
+      }
+      
+      // Escalas atualizadas
+      const xScale = d3.scaleLinear()
+        .domain(d3.extent(filteredData, d => d.Ano))
+        .range([margin.left, subplotWidth - margin.right]);
+
+      const yValues = filteredData.flatMap(d => [d.ambos, d.feminino, d.masculino]);
+      const yScale = d3.scaleLinear()
+        .domain([d3.min(yValues), d3.max(yValues)]).nice()
+        .range([subplotHeight - margin.bottom, margin.top]);
+      
+      // Eixos
+      subplot.append("g")
+        .attr("transform", `translate(0, ${subplotHeight - margin.bottom})`)
+        .call(d3.axisBottom(xScale).ticks(5))
+        .append("text")
+        .attr("x", subplotWidth / 2)
+        .attr("y", 30)
+        .attr("text-anchor", "middle")
+        .text("Ano")
+        .attr("fill", "black");
+
+      subplot.append("g")
+        .attr("transform", `translate(${margin.left}, 0)`)
+        .call(d3.axisLeft(yScale).ticks(5))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -30)
+        .attr("x", -subplotHeight / 2)
+        .attr("text-anchor", "middle")
+        .text("log(Mx)")
+        .attr("fill", "black");
+
+      // Função para gerar linhas
+      const gerarLinha = (variavel, cor) => {
+        const linha = d3.line()
+          .x(d => xScale(d.Ano))
+          .y(d => yScale(d[variavel]))
+          //.curve(d3.curveMonotoneX); // Adiciona suavização para as linhas
+        
+        subplot.append("path")
+          .datum(filteredData)
+          .attr("d", linha)
+          .attr("fill", "none")
+          .attr("stroke", cor)
+          .attr("stroke-width", 2);
+
+      };
+
+      // Adiciona as três linhas
+      gerarLinha("ambos", cores.ambos);
+      gerarLinha("masculino", cores.masculino);
+      gerarLinha("feminino", cores.feminino);
+      
+      // Título
+      subplot.append("text")
+        .attr("x", subplotWidth / 2)
+        .attr("y", margin.top / 2)
+        .attr("text-anchor", "middle")
+        .text(`Faixa: ${currentAge}`)
+        .attr("font-size", "12px")
+        .attr("font-weight", "bold");
+    }
+  }
+    
+  return svg.node();
+}
+```
+
+## Base de Dados
+```{ojs}
+Inputs.table(dados)
+html`
+<body>
+    <br>
+    <p>Baixar 
+    <a href="dados/base_dados/tabua_concatenada.csv" download>
+        dados.
+    </a>
+    </p>
+</body>
+`
+
+```
+:::

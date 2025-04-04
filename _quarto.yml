@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "SIGERIP"
+  navbar:
+    logo: img.jpg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: base_de_dados.qmd
+        text: Base de Dados
+      - previsao.qmd
+      - modelos.qmd
+    right:  
+      - icon: github
+        href: https://github.com/isaiasfelipe01
+      - icon: instagram
+        href: https://www.instagram.com/sigerip.ufpb/
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
