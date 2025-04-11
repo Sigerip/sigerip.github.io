@@ -239,35 +239,38 @@ function createChart(data, title) {
 ## Dados
 
 ```{ojs}
+html`<h1>Tábua Conbiada (Arima + ETS)</h1>`
 Inputs.table(prev_comb)
 html`
 <body>
     <br>
     <p>Baixar 
     <a href="dados/dados1/tabuas_combinado.csv" download>
-        dados.
+        dados combinado.
     </a>
     </p>
 </body>
 `
+html`<h1>Tábua Lee-Miller</h1>`
 Inputs.table(prev_lm)
 html`
 <body>
     <br>
     <p>Baixar 
     <a href="dados/dados2/tabuas_lm.csv" download>
-        dados.
+        dados Lee-Miller.
     </a>
     </p>
 </body>
 `
+html`<h1>Tábua Lee-Carter</h1>`
 Inputs.table(prev_lc)
 html`
 <body>
     <br>
     <p>Baixar 
     <a href="dados/dados2/tabuas_lc.csv" download>
-        dados.
+        dados Lee-Carter.
     </a>
     </p>
 </body>

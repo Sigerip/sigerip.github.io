@@ -6,12 +6,12 @@ about:
   template: jolla
   image: img.jpg
   links:
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com
+    - icon: instagram
+      text: Instagram
+      href: https://www.instagram.com/sigerip.ufpb/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/Sigerip
 ---
 
 

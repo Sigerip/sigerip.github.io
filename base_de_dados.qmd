@@ -215,6 +215,7 @@ viewof regiao = Inputs.select([
 
 ## Base de Dados
 ```{ojs}
+html`<h1>Tábua Utilizada</h1>`
 Inputs.table(dados)
 html`
 <body>

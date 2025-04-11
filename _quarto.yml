@@ -12,9 +12,11 @@ website:
         text: Base de Dados
       - previsao.qmd
       - modelos.qmd
+      - href: expectativa_de_vida.qmd
+        text: Expectativa de Vida
     right:  
       - icon: github
-        href: https://github.com/isaiasfelipe01
+        href: https://github.com/Sigerip
       - icon: instagram
         href: https://www.instagram.com/sigerip.ufpb/
 
