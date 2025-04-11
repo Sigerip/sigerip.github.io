@@ -590,6 +590,7 @@ lc = qual.includes("Lee-Carter")
 ## Dados
 
 ```{ojs}
+html`<h1>Modelos</h1>`
 Inputs.table(data)
 html`
 <body>
