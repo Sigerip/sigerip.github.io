@@ -8,13 +8,15 @@ website:
     logo: img.jpg
     left:
       - href: index.qmd
-        text: Home
-      - href: base_de_dados.qmd
-        text: Base de Dados
-      - previsao.qmd
-      - modelos.qmd
+        text: Início
+      - href: dados_mortalidade.qmd
+        text: Dados de Mortalidade
+      - href: previsao_mortalidade.qmd
+        text: Previsão de Mortalidade
       - href: expectativa_de_vida.qmd
         text: Expectativa de Vida
+      - href: prev_exp_vida.qmd
+        text: Previsão de Expectativa de Vida
     right:  
       - icon: github
         href: https://github.com/Sigerip

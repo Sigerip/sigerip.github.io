@@ -1,0 +1,591 @@
+---
+execute: 
+  echo: false
+  panel: sidebar
+---
+
+## Evolução da taxa central de mortalidade entre 2000 e 2023
+
+::: {.panel-tabset}
+
+## Gráfico
+### Filtros
+```{ojs}
+d3 = require("d3@7")
+
+// Carregando dados
+dados = await FileAttachment("dados/base_dados/tabua_concatenada.csv").csv()
+tabua = await FileAttachment("dados/base_dados/taxa_mortalidade.csv").csv()
+
+// filtros
+anos = Array.from({length: 2023 - 2000 + 1}, (_, i) => 2000 + i);
+regioes = [...new Set(tabua.map(d => d.local))].sort();
+faixas_etaria = [...new Set(tabua.map(d => d.faixa_etaria))].sort();
+
+viewof seletores1 = {
+  const container = htl.html`
+    <div style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      justify-content: center;
+    ">
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Local:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="regiao-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 180px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${regioes.map(regiao => 
+              htl.html`<option value=${regiao}>${regiao}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+      
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Faixa etária:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="faixa-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 150px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${faixas_etaria.map(faixa => 
+              htl.html`<option value=${faixa}>${faixa}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Adiciona código para detectar a largura da tela e ajustar o layout
+  const mediaQuery = window.matchMedia('(max-width: 650px)');
+  
+  // Função para ajustar o layout baseado na largura da tela
+  const handleScreenChange = (e) => {
+    if (e.matches) {
+      // Tela pequena - coloca os elementos em coluna
+      container.style.flexDirection = 'column';
+      container.style.alignItems = 'center';
+    } else {
+      // Tela grande - mantém em linha
+      container.style.flexDirection = 'row';
+      container.style.alignItems = 'flex-start';
+    }
+  };
+  
+  // Verifica inicialmente
+  handleScreenChange(mediaQuery);
+  
+  // Adiciona o listener para mudanças de tamanho
+  mediaQuery.addEventListener('change', handleScreenChange);
+  
+  // Captura os elementos select para manipulação
+  const regiaoSelect = container.querySelector('#regiao-select');
+  const faixaSelect = container.querySelector('#faixa-select');
+  
+  // Define o valor do objeto retornado
+  container.value = {
+    regiao: regiaoSelect.value,
+    faixa: faixaSelect.value
+  };
+  
+  // Atualiza os valores quando houver mudança
+  regiaoSelect.addEventListener('change', () => {
+    container.value.regiao = regiaoSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+  
+  faixaSelect.addEventListener('change', () => {
+    container.value.faixa = faixaSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+  
+  return container;
+}
+
+// Você pode acessar os valores selecionados assim:
+regiao1 = seletores1.regiao
+faixa1 = seletores1.faixa
+```
+
+```{ojs}
+{
+  const width = 760;
+  const height = 500;
+  const margin = { top: 60, right: 30, bottom: 50, left: 50 };
+  const cores = {
+    ambos: "steelblue",
+    masculino: "darkorange",
+    feminino: "green"
+  };
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
+    .style("-webkit-tap-highlight-color", "transparent")
+    .style("overflow", "visible")
+
+  // Legenda
+  const legend = svg.append("g")
+    .attr("transform", `translate(${width/2 - 120}, 50)`);
+
+  Object.entries(cores).forEach(([key, color], i) => {
+    legend.append("rect")
+      .attr("x", i * 100)
+      .attr("y", 0)
+      .attr("width", 15)
+      .attr("height", 15)
+      .attr("fill", color);
+
+    legend.append("text")
+      .attr("x", i * 100 + 20)
+      .attr("y", 12)
+      .text(key.charAt(0).toUpperCase() + key.slice(1))
+      .attr("font-size", "12px");
+  });
+
+  // Processamento dos dados para todo o Brasil
+  const filteredData = tabua
+    .filter(d => d.local === regiao1 && d.faixa_etaria === faixa1)
+    .map(d => ({
+      ...d,
+      Ano: +d.Ano,
+      ambos: Math.log(+d.ambos),
+      feminino: Math.log(+d.feminino),
+      masculino: Math.log(+d.masculino),
+      faixa_etaria: +d.faixa_etaria
+    }))
+    .sort((a, b) => a.Ano - b.Ano);
+
+  // Escalas únicas para todo o gráfico
+  const xScale = d3.scaleLinear()
+    .domain(d3.extent(filteredData, d => d.Ano))
+    .range([margin.left, width - margin.right]);
+
+  const yValues = filteredData.flatMap(d => [d.ambos, d.feminino, d.masculino]);
+  const yScale = d3.scaleLinear()
+    .domain([d3.min(yValues), d3.max(yValues)]).nice()
+    .range([height - margin.bottom, margin.top]);
+
+  // Eixos
+  svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale).ticks(10))
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", 35)
+    .attr("text-anchor", "middle")
+    .text("Ano");
+
+  svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(yScale).ticks(8))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -40)
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
+    .text("log(Mx)");
+
+  // Função para gerar as linhas
+  const gerarLinha = (variavel, cor) => {
+    const linha = d3.line()
+      .x(d => xScale(d.Ano))
+      .y(d => yScale(d[variavel]))
+      //.curve(d3.curveMonotoneX); //suaviza a linha
+
+    svg.append("path")
+      .datum(filteredData)
+      .attr("d", linha)
+      .attr("fill", "none")
+      .attr("stroke", cor)
+      .attr("stroke-width", 2);
+  };
+
+  // Adiciona as três linhas principais
+  gerarLinha("ambos", cores.ambos);
+  gerarLinha("masculino", cores.masculino);
+  gerarLinha("feminino", cores.feminino);
+
+  return svg.node();
+}
+```
+
+## Tabela
+```{ojs}
+html`<h2>Tábua de mortalidade utilizada</h2>`
+Inputs.table(dados)
+html`
+<body>
+    <br>
+    <p>Baixar 
+    <a href="dados/base_dados/tabua_concatenada.csv" download>
+        dados.
+    </a>
+    </p>
+</body>
+`
+
+```
+:::
+
+
+## Taxa central de mortalidade por faixa etária entre 2000 e 2023
+
+::: {.panel-tabset}
+
+## Gráfico
+### Filtros
+```{ojs}
+viewof seletores3 = {
+  const container = htl.html`
+    <div style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      justify-content: center;
+    ">
+      <!-- Controles existentes -->
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Local:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="regiao-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 180px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${regioes.map(regiao => 
+              htl.html`<option value=${regiao}>${regiao}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+      
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Ano:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="ano-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 150px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${anos.map(ano => 
+              htl.html`<option value=${ano}>${ano}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Captura os elementos corretamente
+  const regiaoSelect = container.querySelector('#regiao-select');
+  const anoSelect = container.querySelector('#ano-select');
+  const checkboxes = container.querySelectorAll('.model-checkbox');
+
+  // Configuração inicial do valor
+  container.value = {
+    regiao: regiaoSelect.value,
+    ano: anoSelect.value,
+    modelos: Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value)
+  };
+
+  // Event listeners para selects
+  regiaoSelect.addEventListener('change', () => {
+    container.value.regiao = regiaoSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+
+  anoSelect.addEventListener('change', () => {
+    container.value.ano = anoSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+
+  // Código de responsividade (mantido igual)
+  const mediaQuery = window.matchMedia('(max-width: 650px)');
+  const handleScreenChange = (e) => {
+    if (e.matches) {
+      container.style.flexDirection = 'column';
+      container.style.alignItems = 'center';
+    } else {
+      container.style.flexDirection = 'row';
+      container.style.alignItems = 'flex-start';
+    }
+  };
+  handleScreenChange(mediaQuery);
+  mediaQuery.addEventListener('change', handleScreenChange);
+
+  return container;
+}
+
+regiao3 = seletores3.regiao
+ano3 = seletores3.ano
+
+{
+  const width = 760;
+  const height = 500;
+  const margin = { top: 60, right: 30, bottom: 120, left: 50 };
+  
+  // Cores para as diferentes categorias de sexo - usando as mesmas chaves que serão usadas depois
+  const cores = {
+    masculino: "darkorange",
+    feminino: "green",
+    ambos: "steelblue"
+  };
+
+  // Ordem das faixas etárias
+  const faixaEtariaOrder = [
+    '0', '1-4', '5-9', '10-14', '15-19', '20-24', '25-29',
+    '30-34', '35-39', '40-44', '45-49', '50-54', '55-59',
+    '60-64', '65-69', '70-74', '75-79', '80-84', '85-89', '90+'
+  ];
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
+    .style("-webkit-tap-highlight-color", "transparent")
+    .style("overflow", "visible");
+
+  // Legenda atualizada para os três sexos
+  const legend = svg.append("g")
+    .attr("transform", `translate(${width/2 - 150}, 30)`);
+
+  // Mapeamento para exibição na legenda
+  const legendLabels = {
+    masculino: "Homens",
+    feminino: "Mulheres",
+    ambos: "Ambos"
+  };
+
+  Object.entries(cores).forEach(([key, color], i) => {
+    legend.append("rect")
+      .attr("x", i * 100)
+      .attr("y", 0)
+      .attr("width", 15)
+      .attr("height", 15)
+      .attr("fill", color);
+
+    legend.append("text")
+      .attr("x", i * 100 + 20)
+      .attr("y", 12)
+      .text(legendLabels[key])
+      .attr("font-size", "12px");
+  });
+
+  // Mapeamento de sexo no conjunto de dados para as chaves usadas nas cores
+  const sexoMap = {
+    "Masculino": "masculino",
+    "Feminino": "feminino",
+    "Ambos": "ambos"
+  };
+
+  // Processamento dos dados agrupado por faixa etária e sexo
+  const groupedData = d3.rollup(
+    dados.filter(d => d.Local === regiao3 && d.Ano == ano3),
+    v => ({
+      mx: d3.mean(v, d => Math.log(+d.nMx))
+    }),
+    d => d.faixa_etaria,
+    d => d.sexo
+  );
+
+  // Criar um array de dados para os três sexos
+  const processedData = [];
+  
+  // Iterar sobre cada faixa etária na ordem definida
+  faixaEtariaOrder.forEach(faixa => {
+    const faixaData = groupedData.get(faixa);
+    
+    if (faixaData) {
+      // Para cada sexo (Masculino, Feminino, Ambos)
+      ['Masculino', 'Feminino', 'Ambos'].forEach(sexo => {
+        const valor = faixaData.get(sexo);
+        const sexoChave = sexoMap[sexo];
+        
+        processedData.push({
+          faixa_etaria: faixa,
+          sexo: sexoChave,
+          mx: valor ? valor.mx : null  // Usando null em vez de 0 para valores ausentes
+        });
+      });
+    } else {
+      // Se não houver dados para esta faixa etária, adicionar valores como null
+      ['Masculino', 'Feminino', 'Ambos'].forEach(sexo => {
+        const sexoChave = sexoMap[sexo];
+        
+        processedData.push({
+          faixa_etaria: faixa,
+          sexo: sexoChave,
+          mx: null  // Usando null em vez de 0
+        });
+      });
+    }
+  });
+
+  // Escalas
+  const xScale = d3.scalePoint()
+    .domain(faixaEtariaOrder)
+    .range([margin.left, width - margin.right])
+    .padding(0.5);
+
+  const yValues = processedData.filter(d => d.mx !== null).map(d => d.mx);
+  const yScale = d3.scaleLinear()
+    .domain([d3.min(yValues) || -10, d3.max(yValues) || 0]).nice()
+    .range([height - margin.bottom, margin.top]);
+
+  // Eixo X com rotação
+  const xAxis = svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale));
+
+  xAxis.selectAll("text")
+    .attr("transform", "rotate(-45)")
+    .attr("text-anchor", "end")
+    .attr("dx", "-0.5em")
+    .attr("dy", "0.15em");
+
+  xAxis.append("text")
+    .attr("x", width / 2)
+    .attr("y", 60)
+    .attr("text-anchor", "middle")
+    .text("Faixa Etária")
+    .attr("font-size", "12px");
+
+  // Eixo Y
+  svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(yScale).ticks(8))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -40)
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
+    .text("log(Mx)")
+    .attr("font-size", "12px");
+
+  // Desenhar linhas para cada sexo
+  const sexos = ['masculino', 'feminino', 'ambos'];
+  
+  sexos.forEach(sexo => {
+    const sexoData = processedData.filter(d => d.sexo === sexo);
+    
+    // Ordenar dados por faixa etária
+    sexoData.sort((a, b) => {
+      return faixaEtariaOrder.indexOf(a.faixa_etaria) - faixaEtariaOrder.indexOf(b.faixa_etaria);
+    });
+    
+    const linha = d3.line()
+      .x(d => xScale(d.faixa_etaria))
+      .y(d => yScale(d.mx))
+      .defined(d => d.mx !== null && !isNaN(d.mx));
+
+    svg.append("path")
+      .datum(sexoData)
+      .attr("d", linha)
+      .attr("fill", "none")
+      .attr("stroke", cores[sexo])
+      .attr("stroke-width", 2)
+      .attr("class", `line-${sexo}`);
+      
+    
+  });
+
+  return svg.node();
+}
+
+```
+
+## Tabela
+```{ojs}
+html`<h2>Tábua de mortalidade utilizada</h2>`
+Inputs.table(dados)
+html`
+<body>
+    <br>
+    <p>Baixar 
+    <a href="dados/base_dados/tabua_concatenada.csv" download>
+        dados.
+    </a>
+    </p>
+</body>
+`
+
+```
+:::

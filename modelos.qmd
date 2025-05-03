@@ -12,13 +12,6 @@ d3 = require("d3@7")
 data = await FileAttachment("dados/dados2/erros.csv").csv()
 tabua_comb = await FileAttachment("dados/dados1/previsoes_combinado.csv").csv()
 
-
-
-html`
-<p style="text-align: justify;">Aqui, você encontrará um conjunto de dados detalhados sobre mortalidade dividido entre: Brasil, Regiões e Estados, combinando informações reais extraídas do Instituto Brasileiro de Geografia e Estatística (IBGE) com projeções e análises desenvolvidas por nossa equipe.</p>
-<p style="text-align: justify;">Nosso objetivo é oferecer uma visão clara e acessível sobre a evolução dos padrões de mortalidade, permitindo comparações entre os dados históricos e nossas estimativas futuras. Utilizamos modelos estatísticos e atuariais para gerar previsões que podem ser aplicadas em diversas áreas, como seguros, previdência, saúde pública e planejamento estratégico.</p>
-<p style="text-align: justify;">Explore nossos gráficos interativos e relatórios para entender melhor as tendências e impactos da longevidade no Brasil.</p>
-`
 ```
 
 
