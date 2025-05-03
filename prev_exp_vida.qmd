@@ -596,7 +596,7 @@ html`
 <body>
     <br>
     <p>Baixar tábua de previsão do modelo 
-    <a href="dados/dados2/tabuas_lm.csv" download>
+    <a href="dados/dados2/tabua_lm.csv" download>
         Lee-Miller.
     </a>
     </p>
@@ -605,7 +605,7 @@ html`
 <body>
     <br>
     <p>Baixar tábua de previsão do modelo 
-    <a href="dados/dados2/tabuas_lc.csv" download>
+    <a href="dados/dados2/tabua_lc.csv" download>
         Lee-Carter.
     </a>
     </p>
