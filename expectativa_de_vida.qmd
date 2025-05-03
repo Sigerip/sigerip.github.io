@@ -3,25 +3,148 @@ execute:
   echo: false
   panel: sidebar
 ---
+### Evolução da expectativa de vida entre 2000 e 2023
+::: {.panel-tabset}
 
+## Gráfico
+### Filtros
 ```{ojs}
 d3 = require("d3@7")
 tabua = await FileAttachment("dados/base_dados/tabua_concatenada.csv").csv()
-regiao1 = [...new Set(tabua.map(d => d.Local))].sort();
-viewof regiao = Inputs.select(regiao1, {value: "Brasil", label: "Local"})
+regioes = [...new Set(tabua.map(d => d.Local))].sort();
+faixas_etaria = [...new Set(tabua.map(d => d.faixa_etaria))].sort();
 
-viewof faixa = Inputs.select(['0', '1-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44',
- '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75-79', '80-84', '85-89', '90+'],
- {
-    value: 0,
-    label: "Faixa Etária"
- })
 expectativa = tabua.filter(d => d.faixa_etaria === faixa && d.Local === regiao && d.sexo ==='Ambos').map(d => ({
     ano: +d.Ano,
     ex: +d.ex,
     faixa: d.faixa_etaria
 })
 )
+
+
+viewof seletores = {
+  const container = htl.html`
+    <div style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      justify-content: center;
+    ">
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Local:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="regiao-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 180px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${regioes.map(regiao => 
+              htl.html`<option value=${regiao}>${regiao}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+      
+      <div style="
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+      ">
+        <div style="text-align: center;">Faixa etária:</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <select id="faixa-select" class="compact-select" style="
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            text-align: center;
+            width: fit-content;
+            min-width: 150px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            margin-top: 10px;">
+            ${faixas_etaria.map(faixa => 
+              htl.html`<option value=${faixa}>${faixa}</option>`
+            )}
+          </select>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Adiciona código para detectar a largura da tela e ajustar o layout
+  const mediaQuery = window.matchMedia('(max-width: 650px)');
+  
+  // Função para ajustar o layout baseado na largura da tela
+  const handleScreenChange = (e) => {
+    if (e.matches) {
+      // Tela pequena - coloca os elementos em coluna
+      container.style.flexDirection = 'column';
+      container.style.alignItems = 'center';
+    } else {
+      // Tela grande - mantém em linha
+      container.style.flexDirection = 'row';
+      container.style.alignItems = 'flex-start';
+    }
+  };
+  
+  // Verifica inicialmente
+  handleScreenChange(mediaQuery);
+  
+  // Adiciona o listener para mudanças de tamanho
+  mediaQuery.addEventListener('change', handleScreenChange);
+  
+  // Captura os elementos select para manipulação
+  const regiaoSelect = container.querySelector('#regiao-select');
+  const faixaSelect = container.querySelector('#faixa-select');
+  
+  // Define o valor do objeto retornado
+  container.value = {
+    regiao: regiaoSelect.value,
+    faixa: faixaSelect.value
+  };
+  
+  // Atualiza os valores quando houver mudança
+  regiaoSelect.addEventListener('change', () => {
+    container.value.regiao = regiaoSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+  
+  faixaSelect.addEventListener('change', () => {
+    container.value.faixa = faixaSelect.value;
+    container.dispatchEvent(new CustomEvent('input'));
+  });
+  
+  return container;
+}
+
+// Você pode acessar os valores selecionados assim:
+regiao = seletores.regiao
+faixa = seletores.faixa
 
 ```
 
@@ -57,14 +180,6 @@ expectativa = tabua.filter(d => d.faixa_etaria === faixa && d.Local === regiao &
       .on("pointerenter pointermove", pointermoved)
       .on("pointerleave", pointerleft)
       .on("touchstart", event => event.preventDefault());
-  // título  
-  svg.append("text")
-      .attr("x", width / 2)
-      .attr("y", 15)
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .style("font-weight", "bold")
-      .text(`Evolução da expectativa entre 2000 à 2023 na faixa etária ${expectativa[0].faixa} em ${regiao}`);
 
   // Add the x-axis.
   svg.append("g")
@@ -156,3 +271,19 @@ expectativa = tabua.filter(d => d.faixa_etaria === faixa && d.Local === regiao &
 }
 ```
 
+## Tabela
+```{ojs}
+html`<h2>Tábua de mortalidade utilizada</h2>`
+Inputs.table(tabua)
+html`
+<body>
+    <br>
+    <p>Baixar 
+    <a href="dados/base_dados/tabua_concatenada.csv" download>
+        dados.
+    </a>
+    </p>
+</body>
+`
+```
+:::
