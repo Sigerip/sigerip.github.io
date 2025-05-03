@@ -12,8 +12,8 @@ execute:
 ```{ojs}
 d3 = require("d3@7")
 tabua_comb = await FileAttachment("dados/dados1/tabuas_combinado.csv").csv()
-tabua_lm = await FileAttachment("dados/dados2/tabuas_lm.csv").csv()
-tabua_lc = await FileAttachment("dados/dados2/tabuas_lc.csv").csv()
+tabua_lm = await FileAttachment("dados/dados2/tabua_lm.csv").csv()
+tabua_lc = await FileAttachment("dados/dados2/tabua_lc.csv").csv()
 regiao1 = [...new Set(tabua_comb.map(d => d.Local))].sort();
 anos = [...new Set(tabua_comb.map(d => d.Ano))].sort();
 faixas_etaria = [...new Set(tabua_comb.map(d => d.faixa_etaria))]
@@ -596,7 +596,7 @@ html`
 <body>
     <br>
     <p>Baixar tábua de previsão do modelo 
-    <a href="dados/dados2/tabuas_lm.csv" download>
+    <a href="dados/dados2/tabua_lm.csv" download>
         Lee-Miller.
     </a>
     </p>
@@ -605,7 +605,7 @@ html`
 <body>
     <br>
     <p>Baixar tábua de previsão do modelo 
-    <a href="dados/dados2/tabuas_lc.csv" download>
+    <a href="dados/dados2/tabua_lc.csv" download>
         Lee-Carter.
     </a>
     </p>
