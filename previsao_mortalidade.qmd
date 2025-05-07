@@ -4,7 +4,7 @@ execute:
   panel: sidebar
 ---
 
-## Previsão da taxa central de mortalidade para os anos 2024 a 2070
+## Previsão da taxa central de mortalidade para os anos 2024-2070
 
 ::: {.panel-tabset}
 
@@ -12,12 +12,12 @@ execute:
 ### Filtros
 ```{ojs}
 // Dados e filtros
-prev_comb = await FileAttachment('dados/dados1/previsoes_combinado.csv').csv()
+prev_comb = await FileAttachment('dados/dados1/previsoes_combinad.csv').csv()
 prev_lm = await FileAttachment('dados/dados2/previoes_lm.csv').csv()
 prev_lc = await FileAttachment('dados/dados2/previoes_lc.csv').csv()
 
 modelos = ["ARIMA+ETS", "Lee-Carter", "Lee-Miller"]
-regioes = [...new Set(prev_comb.map(d => d.Local))].sort();
+regioes = [...new Set(prev_lc.map(d => d.regiao))].sort()
 
 // Definição do componente reativo
 // Define o componente de seleção
@@ -133,16 +133,8 @@ viewof seletores2 = {
 
 // Extrair valores individuais em células separadas
 regiao2 = seletores2.regiao
-
 modelo2 = seletores2.modelo
-
 sexo = seletores2.sexo
-
-/*viewof regiao1 = Inputs.select(regioes,
-  {
-        value: ['Brasil'],
-        label: "Local: "
-    })*/
 
 data_filter1 = prev_comb.filter(d => d.Local === regiao2 && d.Sexo === sexo).map(d => ({
   ano: +d.Ano,
