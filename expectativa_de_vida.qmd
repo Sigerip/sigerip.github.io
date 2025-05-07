@@ -3,7 +3,7 @@ execute:
   echo: false
   panel: sidebar
 ---
-### Evolução da expectativa de vida entre 2000 e 2023
+### Expectativa de vida para 2000-2023
 ::: {.panel-tabset}
 
 ## Gráfico

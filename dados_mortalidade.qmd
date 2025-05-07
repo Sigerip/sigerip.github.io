@@ -4,7 +4,7 @@ execute:
   panel: sidebar
 ---
 
-## Evolução da taxa central de mortalidade entre 2000 e 2023
+## Taxa central de mortalidade por faixa etária entre 2000-2023
 
 ::: {.panel-tabset}
 
@@ -271,7 +271,7 @@ html`
 :::
 
 
-## Taxa central de mortalidade por faixa etária entre 2000 e 2023
+## Curva de mortalidade entre 2000-2023
 
 ::: {.panel-tabset}
 

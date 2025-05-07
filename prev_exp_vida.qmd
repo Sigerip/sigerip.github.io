@@ -4,14 +4,14 @@ execute:
   panel: sidebar
 ---
 
-### Previsão da evolução da expectativa de vida para 2024 à 2070
+### Previsão da expectativa de vida para 2024-2070
 ::: {.panel-tabset}
 
 ## Gráfico
 ### Filtros
 ```{ojs}
 d3 = require("d3@7")
-tabua_comb = await FileAttachment("dados/dados1/tabuas_combinado.csv").csv()
+tabua_comb = await FileAttachment("dados/dados1/tabuas_combinad.csv").csv()
 tabua_lm = await FileAttachment("dados/dados2/tabua_lm.csv").csv()
 tabua_lc = await FileAttachment("dados/dados2/tabua_lc.csv").csv()
 regiao1 = [...new Set(tabua_comb.map(d => d.Local))].sort();

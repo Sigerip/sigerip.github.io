@@ -17,7 +17,8 @@ about:
 
 
 ## Objetivo
-O projeto tem como objetivo principal impactar a comunidade interna e externa por meio do desenvolvimento de sistemas inteligentes de apoio à decisão com enfoque na gestão de riscos e previsão de dados demográficos e atuariais. Objetivos específicos: Dessa maneira, os objetivos específicos são: - Oportunizar à equipe do projeto uma formação cidadã e profissional ao resolver um problema real da sociedade, por meio de um sistema inteligente para web. - Promover a capacitação dos discentes da UFPB, integrando ensino, extensão e pesquisa a partir de uma aplicação de projeção de mortalidade humana. - Desenvolver uma aplicação web interativa a qual disponibilizará dados demográficos de expectativa de vida, quantitativo populacional, taxas de mortalidade, projeções dessas informações e de cálculos atuariais. - Disponibilizar o sistema desenvolvido na web de forma gratuita para toda a sociedade. - Realizar oficinas para capacitar a comunidade externa a tomar melhor decisões dos dados e projeções de taxa de mortalidade e expectativa de vida.
+
+O projeto tem como objetivo principal impactar a comunidade interna e externa por meio do desenvolvimento de sistemas inteligentes de apoio à decisão com enfoque na gestão de riscos e previsão de dados demográficos e atuariais.
 
 
 ```{ojs}
