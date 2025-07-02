@@ -395,101 +395,6 @@ erros2 = await FileAttachment("dados/dados1/metricas_erro_combinado_.csv").csv({
 regioes2 = [...new Set(erros.map(d => d.regiao))].sort()
 anos2 = [...new Set(erros.map(d => d.ano))].sort()
 
-viewof seletores4 = {
-  const form = html`<form style="
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  ">
-    <div style="min-width: 200px; max-width: 300px;">
-      <label style="display: block; text-align: center; margin-bottom: 8px;">Local:</label>
-      <select name="regiao" style="
-        display: block;
-        margin: 0 auto;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        font-size: 16px;
-        text-align: center;
-        width: fit-content;
-        min-width: 180px;
-        background-color: #f8f9fa;
-      ">
-        ${regioes2.map(r => `<option value="${r}">${r}</option>`).join('')}
-      </select>
-    </div>
-    
-    <div style="min-width: 200px; max-width: 300px;">
-      <label style="display: block; text-align: center; margin-bottom: 8px;">Modelo:</label>
-      <select name="modelo" style="
-        display: block;
-        margin: 0 auto;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        font-size: 16px;
-        text-align: center;
-        width: fit-content;
-        min-width: 180px;
-        background-color: #f8f9fa;
-      ">
-        ${modelos.map(m => `<option value="${m}">${m}</option>`).join('')}
-      </select>
-    </div>
-    
-    <div style="min-width: 200px; max-width: 300px;">
-      <label style="display: block; text-align: center; margin-bottom: 8px;">Sexo:</label>
-      <div style="
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-      ">
-        <label style="display: flex; align-items: center; gap: 5px;">
-          <input type="radio" name="sexo" value="Ambos" checked>
-          Ambos
-        </label>
-        <label style="display: flex; align-items: center; gap: 5px;">
-          <input type="radio" name="sexo" value="Homens">
-          Homens
-        </label>
-        <label style="display: flex; align-items: center; gap: 5px;">
-          <input type="radio" name="sexo" value="Mulheres">
-          Mulheres
-        </label>
-      </div>
-    </div>
-  </form>`;
-  
-  // Definir valor inicial
-  form.value = {
-    regiao: regioes2[5], // Exemplo: define um valor inicial
-    modelo: 'ARIMA+ETS',
-    sexo: 'Ambos'
-  };
-  
-  // Função para atualizar o valor e disparar o evento
-  const updateValue = () => {
-    form.value = {
-      regiao: form.querySelector('[name="regiao"]').value,
-      modelo: form.querySelector('[name="modelo"]').value,
-      sexo: form.querySelector('[name="sexo"]:checked').value
-    };
-    form.dispatchEvent(new Event('input'));
-  };
-  
-  // Adicionar listeners para todos os inputs
-  form.addEventListener('change', updateValue);
-  
-  return form;
-}
-
-
-regiao4 = seletores4.regiao
-modelo4 = seletores4.modelo
-sexo4 = seletores4.sexo
-
 /*erro = erros.filter(d => d.regiao === regiao4 && d.taxa === sexo4 && +d.ano === ano4)
   .map(d => ({
   faixa: d.faixa_etaria,
@@ -505,7 +410,7 @@ Inputs.table(erro)*/
   let dadosTabela;
 
   // 2. Agora, usamos 'if' para verificar qual modelo foi selecionado
-  if (seletores4.modelo === "Lee-Carter") {
+  if (seletores2.modelo === "Lee-Carter") {
     // 3. Se for Lee-Carter, mapeamos usando as colunas com sufixo _LC
     dadosTabela = erros.filter(d => d.regiao === regiao2 && d.taxa === sexo)
       .map(d => ({
@@ -514,7 +419,7 @@ Inputs.table(erro)*/
       MAPE: Number(d.MAPE_LC).toFixed(5),
       MAE: Number(d.MAE_LC).toFixed(5)
     }));
-    }else if (seletores4.modelo === "Lee-Miller") {
+    }else if (seletores2.modelo === "Lee-Miller") {
       dadosTabela = erros.filter(d => d.regiao === regiao2 && d.taxa === sexo)
       .map(d => ({
       faixa: d.faixa_etaria,
@@ -522,8 +427,8 @@ Inputs.table(erro)*/
       MAPE: Number(d.MAPE_LM).toFixed(5),
       MAE: Number(d.MAE_LM).toFixed(5)
     }));
-    }else if (seletores4.modelo === "ARIMA+ETS") {
-      dadosTabela = erros2.filter(d => d.Local === regiao2 && d.Sexo === sexo4)
+    }else if (seletores2.modelo === "ARIMA+ETS") {
+      dadosTabela = erros2.filter(d => d.Local === regiao2 && d.Sexo === sexo)
       .map(d => ({
       faixa: d.faixa,
       //mx_real: Number(d.mx_real).toFixed(5), 
