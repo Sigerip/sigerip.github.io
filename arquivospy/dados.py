@@ -14,8 +14,8 @@ mapeamento = {
     "Paraíba": "Paraíba",
     "Pará": "Pará",
 }
-df = pd.read_csv("C:/Users/isaias/Documents/ufpb/sigerip/dados/dados1/tabuas_combinado.csv")
+df = pd.read_csv("C:/Users/isaias/Documents/ufpb/sigerip/dados/dados1/metricas_erro_combinado.csv")
 df["Local"] = df["Local"].replace(mapeamento)
 print(df["Local"].unique())
 #salvar o dataframe corrigido
-df.to_csv("C:/Users/isaias/Documents/ufpb/sigerip/dados/dados1/tabuas_combinad.csv", index=False)
+df.to_csv("C:/Users/isaias/Documents/ufpb/sigerip/dados/dados1/metricas_erro_combinado_.csv", index=False)

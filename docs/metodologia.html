@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>metodologia – SIGERIP</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img.jpg" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">SIGERIP</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mort_inf.html"> 
+<span class="menu-text">Mortalidade Infantil</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dados_mortalidade.html"> 
+<span class="menu-text">Dados de Mortalidade</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./previsao_mortalidade.html"> 
+<span class="menu-text">Previsão de Mortalidade</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./expectativa_de_vida.html"> 
+<span class="menu-text">Expectativa de Vida</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./prev_exp_vida.html"> 
+<span class="menu-text">Previsão de Expectativa de Vida</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./metodologia.html" aria-current="page"> 
+<span class="menu-text">Metodologia</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Sigerip"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/sigerip.ufpb/"> <i class="bi bi-instagram" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#metodologia-de-coleta-e-tratamento-dos-dados-de-mortalidade-infantil" id="toc-metodologia-de-coleta-e-tratamento-dos-dados-de-mortalidade-infantil" class="nav-link active" data-scroll-target="#metodologia-de-coleta-e-tratamento-dos-dados-de-mortalidade-infantil">Metodologia de Coleta e Tratamento dos Dados de Mortalidade Infantil</a></li>
+  <li><a href="#projeções-de-mortalidade-do-ibge" id="toc-projeções-de-mortalidade-do-ibge" class="nav-link" data-scroll-target="#projeções-de-mortalidade-do-ibge">Projeções de Mortalidade do IBGE</a></li>
+  <li><a href="#modelo-lee-carter" id="toc-modelo-lee-carter" class="nav-link" data-scroll-target="#modelo-lee-carter">Modelo Lee-Carter</a></li>
+  <li><a href="#modelo-híbrido-arima-ets-com-ponderação-dinâmica" id="toc-modelo-híbrido-arima-ets-com-ponderação-dinâmica" class="nav-link" data-scroll-target="#modelo-híbrido-arima-ets-com-ponderação-dinâmica">Modelo Híbrido ARIMA-ETS com Ponderação Dinâmica</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="7" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 6;"><span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;!DOCTYPE html&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;html lang="pt-BR"&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;head&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;meta charset="UTF-8"&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;title&gt;Metodologias de Projeção de Mortalidade&lt;/title&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;style&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="vs">        body {</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="vs">            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="vs">            line-height: 1.6;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #333;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="vs">            background-color: #f8f9fa;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin: 0;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding: 20px;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="vs">        .container {</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="vs">            max-width: 900px;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin: 0 auto;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="vs">            background-color: #ffffff;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding: 2rem;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="vs">            border-radius: 8px;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="vs">            box-shadow: 0 4px 12px rgba(0,0,0,0.08);</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="vs">        h1 {</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #2c3e50;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="vs">            text-align: center;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="vs">            border-bottom: 2px solid #e0e0e0;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding-bottom: 10px;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-bottom: 30px;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="vs">        h2 {</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #34495e;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="vs">            border-bottom: 1px solid #e0e0e0;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding-bottom: 8px;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-top: 40px;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="vs">        h3 {</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #7f8c8d;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-top: 25px;</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="vs">        ul {</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="vs">            list-style-type: disc;</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding-left: 20px;</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="vs">        li {</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-bottom: 10px;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="vs">        p {</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-bottom: 15px;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="vs">        .formula {</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="vs">            background-color: #ecf0f1;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding: 15px;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="vs">            border-radius: 5px;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="vs">            font-size: 1.1em;</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="vs">            text-align: center;</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="vs">            overflow-x: auto;</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin: 20px 0;</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="vs">        code {</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="vs">            background-color: #e9ecef;</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="vs">            padding: 2px 5px;</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="vs">            border-radius: 4px;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="vs">            font-family: "Courier New", Courier, monospace;</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="vs">        .source {</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="vs">            font-style: italic;</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #555;</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="vs">            font-size: 0.9em;</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="vs">            margin-top: 20px;</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="vs">        a {</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="vs">            color: #2980b9;</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="vs">            text-decoration: none;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="vs">        a:hover {</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="vs">            text-decoration: underline;</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/style&gt;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/head&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<section id="metodologia-de-coleta-e-tratamento-dos-dados-de-mortalidade-infantil" class="level2">
+<h2 class="anchored" data-anchor-id="metodologia-de-coleta-e-tratamento-dos-dados-de-mortalidade-infantil">Metodologia de Coleta e Tratamento dos Dados de Mortalidade Infantil</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="93" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;body&gt;</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;A metodologia adotada para a coleta, tratamento e análise dos dados de mortalidade infantil neste projeto fundamenta-se em procedimentos técnicos rigorosos, com o objetivo de garantir a precisão, a comparabilidade e a integridade das informações em diferentes recortes geográficos, para o período de 2000 a 2023.&lt;/p&gt;</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Os dados utilizados foram obtidos a partir do arquivo consolidado disponível no link &lt;a href="https://docs.google.com/spreadsheets/d/1mJ4NdolOPlsAykFTHolrnh8odUaZE5WM/edit?gid=1015938775#gid=1015938775" target="_blank"&gt;Planilha de Dados Consolidados&lt;/a&gt;. As informações originais são provenientes do Sistema de Informações sobre Nascidos Vivos (SINASC) e do Sistema de Informações sobre Mortalidade (SIM), ambos disponibilizados pelo DATASUS (&lt;a href="https://datasus.saude.gov.br/informacoes-de-saude-tabnet/" target="_blank"&gt;Tabnet/DATASUS&lt;/a&gt;). No entanto, os dados presentes na planilha já foram consolidados e validados pelo Instituto Brasileiro de Geografia e Estatística (IBGE), o que confere maior confiabilidade e padronização às estatísticas apresentadas.&lt;/p&gt;</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;1. Estruturação das Bases de Dados&lt;/h3&gt;</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;O primeiro passo consistiu na organização dos dados em duas bases distintas: uma contendo informações agregadas em nível nacional, regional e estadual, e outra composta exclusivamente por dados municipais. Essa separação permite análises comparativas entre diferentes escalas geográficas, facilita a identificação de padrões regionais e aprimora o controle de qualidade dos registros, possibilitando a detecção de eventuais inconsistências ou lacunas nos dados.&lt;/p&gt;</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;2. Variável Analisada&lt;/h3&gt;</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;A principal variável analisada é a taxa de mortalidade infantil, definida como o número de óbitos de crianças menores de um ano de idade, por mil nascidos vivos, em determinado ano e localidade. Trata-se de um dos mais relevantes indicadores de saúde pública e desenvolvimento social, utilizado para monitorar tendências temporais, avaliar políticas de saúde e identificar desigualdades regionais e locais.&lt;/p&gt;</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;A taxa de mortalidade infantil (TMI) é calculada pela seguinte fórmula:&lt;/p&gt;</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="formula"&gt;</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mtext&gt;N&lt;/mtext&gt;&lt;mover accent='true'&gt;&lt;mtext&gt;u&lt;/mtext&gt;&lt;mo style="math-style:normal;math-depth:0;" stretchy="false"&gt;&amp;#x2ca;&lt;/mo&gt;&lt;/mover&gt;&lt;mtext&gt;mero&amp;#xa0;de&amp;#xa0;&lt;/mtext&gt;&lt;mover accent='true'&gt;&lt;mtext&gt;O&lt;/mtext&gt;&lt;mo style="math-style:normal;math-depth:0;" stretchy="false"&gt;&amp;#x2ca;&lt;/mo&gt;&lt;/mover&gt;&lt;mtext&gt;bitos&amp;#xa0;de&amp;#xa0;Menores&amp;#xa0;de&amp;#xa0;um&amp;#xa0;Ano&lt;/mtext&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mtext&gt;N&lt;/mtext&gt;&lt;mover accent='true'&gt;&lt;mtext&gt;u&lt;/mtext&gt;&lt;mo style="math-style:normal;math-depth:0;" stretchy="false"&gt;&amp;#x2ca;&lt;/mo&gt;&lt;/mover&gt;&lt;mtext&gt;merode&amp;#xa0;Nascidos&amp;#xa0;Vivos&lt;/mtext&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/math&gt;</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;onde:&lt;/p&gt;</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;ul&gt;</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;O numerador corresponde ao total de óbitos de crianças menores de um ano, registrados no SIM;&lt;/li&gt;</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;O denominador corresponde ao total de nascidos vivos, registrados no SINASC.&lt;/li&gt;</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/ul&gt;</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;3. Filtragem Temporal e Qualidade dos Registros&lt;/h3&gt;</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Considerando a existência de registros faltantes e inconsistências nos dados municipais referentes ao período de 1990 a 1999, optou-se por restringir as análises ao intervalo de 2000 a 2023. Essa decisão visa assegurar maior confiabilidade às estimativas, evitando distorções decorrentes de sub-registro ou ausência de informação em determinados municípios, especialmente nos anos anteriores a 2000.&lt;/p&gt;</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;4. Tratamento dos Registros Municipais&lt;/h3&gt;</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;No processamento da base municipal, foram excluídos todos os registros classificados como "Município Ignorado", de modo a garantir que as análises reflitam apenas localidades devidamente identificadas e com dados consistentes. Esse procedimento contribui para a robustez das estatísticas, para a comparabilidade entre os diferentes municípios e para a transparência dos resultados apresentados.&lt;/p&gt;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;5. Disponibilidade e Transparência dos Dados&lt;/h3&gt;</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Os dados tratados e organizados estão disponíveis para consulta e download no arquivo anexo, bem como na planilha pública referenciada. A disponibilização dos dados já consolidados pelo IBGE assegura a reprodutibilidade das análises e a transparência metodológica, permitindo que outros pesquisadores e gestores possam utilizar as mesmas informações em estudos e avaliações futuras.&lt;/p&gt;</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="projeções-de-mortalidade-do-ibge" class="level2">
+<h2 class="anchored" data-anchor-id="projeções-de-mortalidade-do-ibge">Projeções de Mortalidade do IBGE</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="134" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 133;"><span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;body&gt;</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div&gt;</span></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;section id="ibge"&gt;</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="vs">            </span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;p&gt;As projeções de mortalidade do IBGE, conforme descrito no documento "Projeções da população: notas metodológicas 01/2024", adotam os seguintes procedimentos:&lt;/p&gt;</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h3&gt;Nível da Mortalidade (Expectativa de Vida ao Nascer - &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;e_0&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;)&lt;/h3&gt;</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;ul&gt;</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;Foi assumida uma convergência progressiva da esperança de vida ao nascer entre todas as Unidades da Federação (UFs), com base em tendências recentes.&lt;/li&gt;</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;Os valores-limite adotados foram 85,0 anos para homens e 88,0 anos para mulheres, seguindo as Tábuas Modelo Oeste das Nações Unidas (UNITED NATIONS, 2011) e alinhados com as novas projeções da ONU (2024) para o Brasil.&lt;/li&gt;</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;A projeção da &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;e_0&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;) foi realizada por meio de um ajuste logístico, aplicado separadamente por sexo e UF, utilizando dois pontos de referência:</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="vs">                    &lt;ul&gt;</span></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a><span class="vs">                        &lt;li&gt;A estimativa para 2023 (base em dados observados).&lt;/li&gt;</span></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="vs">                        &lt;li&gt;O valor da tábua limite em 2100.&lt;/li&gt;</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="vs">                    &lt;/ul&gt;</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;/li&gt;</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;Essa abordagem visa garantir convergência regional no longo prazo, exceto para os homens do Amapá, onde foi utilizado um valor médio entre 2022 e 2023 devido a particularidades locais.&lt;/li&gt;</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/ul&gt;</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h3&gt;Padrão Etário da Mortalidade (Taxas Específicas por Idade)&lt;/h3&gt;</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;ul&gt;</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;As taxas de mortalidade por idade foram projetadas por meio de uma função linear, considerando a estrutura de mortalidade dos anos de 2023 e 2100.&lt;/li&gt;</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;O ajuste das curvas de mortalidade garantiu que a esperança de vida ao nascer calculada a partir das taxas projetadas coincidisse com a &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;e_0&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;) obtida independentemente na primeira etapa.&lt;/li&gt;</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/ul&gt;</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h3&gt;Fontes e Notas Adicionais&lt;/h3&gt;</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;ul&gt;</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;A metodologia foi definida após análise comparativa de diferentes abordagens, incluindo tábuas históricas do IBGE (1980, 1991, 2000, 2010) e estimativas anuais recentes.&lt;/li&gt;</span></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;li&gt;O limite inferior da curva logística foi fixado em 35 anos para homens e 40 anos para mulheres, enquanto o superior foi calibrado para minimizar o Erro Quadrático Médio (EQM).&lt;/li&gt;</span></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/ul&gt;</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;p class="source"&gt;</span></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a><span class="vs">                &lt;strong&gt;Fonte:&lt;/strong&gt; IBGE. Projeções da população: notas metodológicas 01/2024. Disponível em: &lt;a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&amp;id=2102111" target="_blank"&gt;https://biblioteca.ibge.gov.br/...&lt;/a&gt;</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/p&gt;</span></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/section&gt;</span></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body&gt;</span></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/html&gt;</span></span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-lee-carter" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-lee-carter">Modelo Lee-Carter</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="181" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 180;"><span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;section id="lee-carter"&gt;</span></span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Base do Modelo&lt;/h3&gt;</span></span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;O método de Lee &amp; Carter (1992) foi aplicado para projeção da mortalidade, modelando a taxa central de mortalidade (&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;m_{x,t}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;) como:&lt;/p&gt;</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="formula"&gt;</span></span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mi&gt;log&lt;/mi&gt;&lt;mo&gt;&amp;#8289;&lt;/mo&gt;&lt;/mrow&gt;&lt;mo stretchy="false" form="prefix"&gt;(&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo stretchy="false" form="postfix"&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;</span><span class="sc">\l</span><span class="vs">og(m_{x,t}) = a_x + b_x </span><span class="sc">\c</span><span class="vs">dot k_t + </span><span class="sc">\e</span><span class="vs">psilon_{x,t}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;</span></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Onde:&lt;/p&gt;</span></span>
+<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;ul&gt;</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;a_x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/code&gt;: Média histórica da mortalidade na idade &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;annotation encoding="application/x-tex"&gt;x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;.&lt;/li&gt;</span></span>
+<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;b_x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/code&gt;: Sensibilidade da idade &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;annotation encoding="application/x-tex"&gt;x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; a variações no índice &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;k_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;.&lt;/li&gt;</span></span>
+<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;k_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/code&gt;: Índice temporal de mortalidade (modelado como um processo estocástico ARIMA).&lt;/li&gt;</span></span>
+<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;</span><span class="sc">\e</span><span class="vs">psilon_{x,t}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/code&gt;: Erro aleatório.&lt;/li&gt;</span></span>
+<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/ul&gt;</span></span>
+<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Implementação&lt;/h3&gt;</span></span>
+<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Utilizou-se o pacote &lt;code&gt;demography&lt;/code&gt; do R (lca ou forecast), que estima os parâmetros &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;a_x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;, &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;b_x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; e &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;k_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; via Singular Value Decomposition (SVD) e projeta &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;k_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; com ARIMA(0,1,0) (random walk com drift) como padrão.&lt;/p&gt;</span></span>
+<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Métricas de Avaliação de Erro&lt;/h3&gt;</span></span>
+<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Para validar a acurácia das projeções, calcularam-se MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto médio simétrico) para comparar valores observados e projetados.&lt;/p&gt;</span></span>
+<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Incerteza das Projeções&lt;/h3&gt;</span></span>
+<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Os intervalos de confiança (IC 95%) foram gerados por simulação estocástica, considerando a variabilidade dos parâmetros &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;b_x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; e &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;k_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;.&lt;/p&gt;</span></span>
+<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p class="source"&gt;&lt;strong&gt;Referência:&lt;/strong&gt; Lee &amp; Carter (1992); pacote demography (Hyndman et al.).&lt;/p&gt;</span></span>
+<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/section&gt;</span></span>
+<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-híbrido-arima-ets-com-ponderação-dinâmica" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-híbrido-arima-ets-com-ponderação-dinâmica">Modelo Híbrido ARIMA-ETS com Ponderação Dinâmica</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="213" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 212;"><span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;section id="hibrido"&gt;</span></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Base do Modelo&lt;/h3&gt;</span></span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;O método combina modelos ARIMA (para capturar autocorrelação e tendência) e ETS (para suavização exponencial com amortecimento de tendência), ponderados dinamicamente conforme seu desempenho em validação. A previsão final é dada por:&lt;/p&gt;</span></span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="formula"&gt;</span></span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;math display="block" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mover&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo accent="true"&gt;̂&lt;/mo&gt;&lt;/mover&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msub&gt;&lt;mover&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo accent="true"&gt;̂&lt;/mo&gt;&lt;/mover&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;msub&gt;&lt;mover&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo accent="true"&gt;̂&lt;/mo&gt;&lt;/mover&gt;&lt;mrow&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;</span><span class="sc">\h</span><span class="vs">at{y}_t = w_{ARIMA} </span><span class="sc">\c</span><span class="vs">dot </span><span class="sc">\h</span><span class="vs">at{y}_{ARIMA,t} + w_{ETS} </span><span class="sc">\c</span><span class="vs">dot </span><span class="sc">\h</span><span class="vs">at{y}_{ETS,t}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;</span></span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;ul&gt;</span></span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;ARIMA(p,d,q):&lt;/strong&gt; Ajustado automaticamente via minimização do AIC.&lt;/li&gt;</span></span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;ETS (Holt-Winters):&lt;/strong&gt; Modelo aditivo com tendência amortecida.&lt;/li&gt;</span></span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Pesos (&lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;w_{ARIMA}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/code&gt;, &lt;code&gt;&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;w_{ETS}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/code&gt;):&lt;/strong&gt; Definidos pelo inverso do MSE na validação, priorizando o modelo mais preciso.&lt;/li&gt;</span></span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/ul&gt;</span></span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Implementação&lt;/h3&gt;</span></span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;ul&gt;</span></span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Treino (2000–2010):&lt;/strong&gt; Ajuste dos modelos ARIMA e ETS.&lt;/li&gt;</span></span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Validação (2011–2014):&lt;/strong&gt; Cálculo dos pesos ótimos.&lt;/li&gt;</span></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Teste (2015–2019):&lt;/strong&gt; Avaliação final com métricas robustas.&lt;/li&gt;</span></span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/ul&gt;</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Métricas de Avaliação&lt;/h3&gt;</span></span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Foram calculados: MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto simétrico).&lt;/p&gt;</span></span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h3&gt;Intervalos de Confiança&lt;/h3&gt;</span></span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Os intervalos de confiança (IC 95%) foram estimados por simulação de Monte Carlo, considerando:&lt;/p&gt;</span></span>
+<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;ul&gt;</span></span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Variabilidade do ARIMA:&lt;/strong&gt; Distribuição dos resíduos e incerteza nos parâmetros &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mo stretchy="false" form="prefix"&gt;(&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;mo stretchy="false" form="postfix"&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;(p,d,q)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;.&lt;/li&gt;</span></span>
+<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Variabilidade do ETS:&lt;/strong&gt; Erro de suavização e parâmetros de tendência.&lt;/li&gt;</span></span>
+<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;li&gt;&lt;strong&gt;Propagação de incerteza:&lt;/strong&gt; Combinação das distribuições preditivas de ambos modelos, mantendo a proporção dos pesos &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;w_{ARIMA}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt; e &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mrow&gt;&lt;mi&gt;E&lt;/mi&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;w_{ETS}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;.&lt;/li&gt;</span></span>
+<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/ul&gt;</span></span>
+<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p class="source"&gt;&lt;strong&gt;Referência:&lt;/strong&gt; Baseado em metodologias de Hyndman &amp; Athanasopoulos (2018).&lt;/p&gt;</span></span>
+<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/section&gt;</span></span>
+<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgXHJcbjwhRE9DVFlQRSBodG1sPlxyXG48aHRtbCBsYW5nPVwicHQtQlJcIj5cclxuPGhlYWQ+XHJcbiAgICA8bWV0YSBjaGFyc2V0PVwiVVRGLThcIj5cclxuICAgIDxtZXRhIG5hbWU9XCJ2aWV3cG9ydFwiIGNvbnRlbnQ9XCJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wXCI+XHJcbiAgICA8dGl0bGU+TWV0b2RvbG9naWFzIGRlIFByb2plw6fDo28gZGUgTW9ydGFsaWRhZGU8L3RpdGxlPlxyXG4gICAgPHN0eWxlPlxyXG4gICAgICAgIGJvZHkge1xyXG4gICAgICAgICAgICBmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBcIlNlZ29lIFVJXCIsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZjtcclxuICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDEuNjtcclxuICAgICAgICAgICAgY29sb3I6ICMzMzM7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMDtcclxuICAgICAgICAgICAgcGFkZGluZzogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgLmNvbnRhaW5lciB7XHJcbiAgICAgICAgICAgIG1heC13aWR0aDogOTAwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gICAgICAgICAgICBwYWRkaW5nOiAycmVtO1xyXG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA4cHg7XHJcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDAgNHB4IDEycHggcmdiYSgwLDAsMCwwLjA4KTtcclxuICAgICAgICB9XHJcbiAgICAgICAgaDEge1xyXG4gICAgICAgICAgICBjb2xvcjogIzJjM2U1MDtcclxuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgICAgICBib3JkZXItYm90dG9tOiAycHggc29saWQgI2UwZTBlMDtcclxuICAgICAgICAgICAgcGFkZGluZy1ib3R0b206IDEwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDMwcHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGgyIHtcclxuICAgICAgICAgICAgY29sb3I6ICMzNDQ5NWU7XHJcbiAgICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZTBlMGUwO1xyXG4gICAgICAgICAgICBwYWRkaW5nLWJvdHRvbTogOHB4O1xyXG4gICAgICAgICAgICBtYXJnaW4tdG9wOiA0MHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBoMyB7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjN2Y4YzhkO1xyXG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAyNXB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICB1bCB7XHJcbiAgICAgICAgICAgIGxpc3Qtc3R5bGUtdHlwZTogZGlzYztcclxuICAgICAgICAgICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICBsaSB7XHJcbiAgICAgICAgICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHAge1xyXG4gICAgICAgICAgICBtYXJnaW4tYm90dG9tOiAxNXB4O1xyXG4gICAgICAgIH1cclxuICAgICAgICAuZm9ybXVsYSB7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNlY2YwZjE7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxLjFlbTtcclxuICAgICAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgICAgICBvdmVyZmxvdy14OiBhdXRvO1xyXG4gICAgICAgICAgICBtYXJnaW46IDIwcHggMDtcclxuICAgICAgICB9XHJcbiAgICAgICAgY29kZSB7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNlOWVjZWY7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDJweCA1cHg7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICAgICAgICAgICAgZm9udC1mYW1pbHk6IFwiQ291cmllciBOZXdcIiwgQ291cmllciwgbW9ub3NwYWNlO1xyXG4gICAgICAgIH1cclxuICAgICAgICAuc291cmNlIHtcclxuICAgICAgICAgICAgZm9udC1zdHlsZTogaXRhbGljO1xyXG4gICAgICAgICAgICBjb2xvcjogIzU1NTtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAwLjllbTtcclxuICAgICAgICAgICAgbWFyZ2luLXRvcDogMjBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgYSB7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjMjk4MGI5O1xyXG4gICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGE6aG92ZXIge1xyXG4gICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuICAgICAgICB9XHJcbiAgICA8L3N0eWxlPlxyXG48L2hlYWQ+YFxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGBcclxuPGJvZHk+XHJcbiAgICA8cD5BIG1ldG9kb2xvZ2lhIGFkb3RhZGEgcGFyYSBhIGNvbGV0YSwgdHJhdGFtZW50byBlIGFuw6FsaXNlIGRvcyBkYWRvcyBkZSBtb3J0YWxpZGFkZSBpbmZhbnRpbCBuZXN0ZSBwcm9qZXRvIGZ1bmRhbWVudGEtc2UgZW0gcHJvY2VkaW1lbnRvcyB0w6ljbmljb3Mgcmlnb3Jvc29zLCBjb20gbyBvYmpldGl2byBkZSBnYXJhbnRpciBhIHByZWNpc8OjbywgYSBjb21wYXJhYmlsaWRhZGUgZSBhIGludGVncmlkYWRlIGRhcyBpbmZvcm1hw6fDtWVzIGVtIGRpZmVyZW50ZXMgcmVjb3J0ZXMgZ2VvZ3LDoWZpY29zLCBwYXJhIG8gcGVyw61vZG8gZGUgMjAwMCBhIDIwMjMuPC9wPlxyXG5cclxuICAgIDxwPk9zIGRhZG9zIHV0aWxpemFkb3MgZm9yYW0gb2J0aWRvcyBhIHBhcnRpciBkbyBhcnF1aXZvIGNvbnNvbGlkYWRvIGRpc3BvbsOtdmVsIG5vIGxpbmsgPGEgaHJlZj1cImh0dHBzOi8vZG9jcy5nb29nbGUuY29tL3NwcmVhZHNoZWV0cy9kLzFtSjROZG9sT1Bsc0F5a0ZUSG9scm5oOG9kVWFaRTVXTS9lZGl0P2dpZD0xMDE1OTM4Nzc1I2dpZD0xMDE1OTM4Nzc1XCIgdGFyZ2V0PVwiX2JsYW5rXCI+UGxhbmlsaGEgZGUgRGFkb3MgQ29uc29saWRhZG9zPC9hPi4gQXMgaW5mb3JtYcOnw7VlcyBvcmlnaW5haXMgc8OjbyBwcm92ZW5pZW50ZXMgZG8gU2lzdGVtYSBkZSBJbmZvcm1hw6fDtWVzIHNvYnJlIE5hc2NpZG9zIFZpdm9zIChTSU5BU0MpIGUgZG8gU2lzdGVtYSBkZSBJbmZvcm1hw6fDtWVzIHNvYnJlIE1vcnRhbGlkYWRlIChTSU0pLCBhbWJvcyBkaXNwb25pYmlsaXphZG9zIHBlbG8gREFUQVNVUyAoPGEgaHJlZj1cImh0dHBzOi8vZGF0YXN1cy5zYXVkZS5nb3YuYnIvaW5mb3JtYWNvZXMtZGUtc2F1ZGUtdGFibmV0L1wiIHRhcmdldD1cIl9ibGFua1wiPlRhYm5ldC9EQVRBU1VTPC9hPikuIE5vIGVudGFudG8sIG9zIGRhZG9zIHByZXNlbnRlcyBuYSBwbGFuaWxoYSBqw6EgZm9yYW0gY29uc29saWRhZG9zIGUgdmFsaWRhZG9zIHBlbG8gSW5zdGl0dXRvIEJyYXNpbGVpcm8gZGUgR2VvZ3JhZmlhIGUgRXN0YXTDrXN0aWNhIChJQkdFKSwgbyBxdWUgY29uZmVyZSBtYWlvciBjb25maWFiaWxpZGFkZSBlIHBhZHJvbml6YcOnw6NvIMOgcyBlc3RhdMOtc3RpY2FzIGFwcmVzZW50YWRhcy48L3A+XHJcblxyXG4gICAgPGgzPjEuIEVzdHJ1dHVyYcOnw6NvIGRhcyBCYXNlcyBkZSBEYWRvczwvaDM+XHJcblxyXG4gICAgPHA+TyBwcmltZWlybyBwYXNzbyBjb25zaXN0aXUgbmEgb3JnYW5pemHDp8OjbyBkb3MgZGFkb3MgZW0gZHVhcyBiYXNlcyBkaXN0aW50YXM6IHVtYSBjb250ZW5kbyBpbmZvcm1hw6fDtWVzIGFncmVnYWRhcyBlbSBuw612ZWwgbmFjaW9uYWwsIHJlZ2lvbmFsIGUgZXN0YWR1YWwsIGUgb3V0cmEgY29tcG9zdGEgZXhjbHVzaXZhbWVudGUgcG9yIGRhZG9zIG11bmljaXBhaXMuIEVzc2Egc2VwYXJhw6fDo28gcGVybWl0ZSBhbsOhbGlzZXMgY29tcGFyYXRpdmFzIGVudHJlIGRpZmVyZW50ZXMgZXNjYWxhcyBnZW9ncsOhZmljYXMsIGZhY2lsaXRhIGEgaWRlbnRpZmljYcOnw6NvIGRlIHBhZHLDtWVzIHJlZ2lvbmFpcyBlIGFwcmltb3JhIG8gY29udHJvbGUgZGUgcXVhbGlkYWRlIGRvcyByZWdpc3Ryb3MsIHBvc3NpYmlsaXRhbmRvIGEgZGV0ZWPDp8OjbyBkZSBldmVudHVhaXMgaW5jb25zaXN0w6puY2lhcyBvdSBsYWN1bmFzIG5vcyBkYWRvcy48L3A+XHJcblxyXG4gICAgPGgzPjIuIFZhcmnDoXZlbCBBbmFsaXNhZGE8L2gzPlxyXG4gICAgPHA+QSBwcmluY2lwYWwgdmFyacOhdmVsIGFuYWxpc2FkYSDDqSBhIHRheGEgZGUgbW9ydGFsaWRhZGUgaW5mYW50aWwsIGRlZmluaWRhIGNvbW8gbyBuw7ptZXJvIGRlIMOzYml0b3MgZGUgY3JpYW7Dp2FzIG1lbm9yZXMgZGUgdW0gYW5vIGRlIGlkYWRlLCBwb3IgbWlsIG5hc2NpZG9zIHZpdm9zLCBlbSBkZXRlcm1pbmFkbyBhbm8gZSBsb2NhbGlkYWRlLiBUcmF0YS1zZSBkZSB1bSBkb3MgbWFpcyByZWxldmFudGVzIGluZGljYWRvcmVzIGRlIHNhw7pkZSBww7pibGljYSBlIGRlc2Vudm9sdmltZW50byBzb2NpYWwsIHV0aWxpemFkbyBwYXJhIG1vbml0b3JhciB0ZW5kw6puY2lhcyB0ZW1wb3JhaXMsIGF2YWxpYXIgcG9sw610aWNhcyBkZSBzYcO6ZGUgZSBpZGVudGlmaWNhciBkZXNpZ3VhbGRhZGVzIHJlZ2lvbmFpcyBlIGxvY2Fpcy48L3A+XHJcblxyXG4gICAgPHA+QSB0YXhhIGRlIG1vcnRhbGlkYWRlIGluZmFudGlsIChUTUkpIMOpIGNhbGN1bGFkYSBwZWxhIHNlZ3VpbnRlIGbDs3JtdWxhOjwvcD5cclxuICAgIFxyXG4gICAgPGRpdiBjbGFzcz1cImZvcm11bGFcIj5cclxuICAgICAgICA8bWF0aCB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48bWk+VDwvbWk+PG1pPk08L21pPjxtaT5JPC9taT48bW8+PTwvbW8+PG1mcmFjPjxtcm93PjxtdGV4dD5OPC9tdGV4dD48bW92ZXIgYWNjZW50PSd0cnVlJz48bXRleHQ+dTwvbXRleHQ+PG1vIHN0eWxlPVwibWF0aC1zdHlsZTpub3JtYWw7bWF0aC1kZXB0aDowO1wiIHN0cmV0Y2h5PVwiZmFsc2VcIj4mI3gyY2E7PC9tbz48L21vdmVyPjxtdGV4dD5tZXJvJiN4YTA7ZGUmI3hhMDs8L210ZXh0Pjxtb3ZlciBhY2NlbnQ9J3RydWUnPjxtdGV4dD5PPC9tdGV4dD48bW8gc3R5bGU9XCJtYXRoLXN0eWxlOm5vcm1hbDttYXRoLWRlcHRoOjA7XCIgc3RyZXRjaHk9XCJmYWxzZVwiPiYjeDJjYTs8L21vPjwvbW92ZXI+PG10ZXh0PmJpdG9zJiN4YTA7ZGUmI3hhMDtNZW5vcmVzJiN4YTA7ZGUmI3hhMDt1bSYjeGEwO0FubzwvbXRleHQ+PC9tcm93Pjxtcm93PjxtdGV4dD5OPC9tdGV4dD48bW92ZXIgYWNjZW50PSd0cnVlJz48bXRleHQ+dTwvbXRleHQ+PG1vIHN0eWxlPVwibWF0aC1zdHlsZTpub3JtYWw7bWF0aC1kZXB0aDowO1wiIHN0cmV0Y2h5PVwiZmFsc2VcIj4mI3gyY2E7PC9tbz48L21vdmVyPjxtdGV4dD5tZXJvZGUmI3hhMDtOYXNjaWRvcyYjeGEwO1Zpdm9zPC9tdGV4dD48L21yb3c+PC9tZnJhYz48L21hdGg+XHJcbiAgICA8L2Rpdj5cclxuXHJcbiAgICA8cD5vbmRlOjwvcD5cclxuICAgIDx1bD5cclxuICAgICAgICA8bGk+TyBudW1lcmFkb3IgY29ycmVzcG9uZGUgYW8gdG90YWwgZGUgw7NiaXRvcyBkZSBjcmlhbsOnYXMgbWVub3JlcyBkZSB1bSBhbm8sIHJlZ2lzdHJhZG9zIG5vIFNJTTs8L2xpPlxyXG4gICAgICAgIDxsaT5PIGRlbm9taW5hZG9yIGNvcnJlc3BvbmRlIGFvIHRvdGFsIGRlIG5hc2NpZG9zIHZpdm9zLCByZWdpc3RyYWRvcyBubyBTSU5BU0MuPC9saT5cclxuICAgIDwvdWw+XHJcbiAgICBcclxuICAgIDxoMz4zLiBGaWx0cmFnZW0gVGVtcG9yYWwgZSBRdWFsaWRhZGUgZG9zIFJlZ2lzdHJvczwvaDM+XHJcbiAgICA8cD5Db25zaWRlcmFuZG8gYSBleGlzdMOqbmNpYSBkZSByZWdpc3Ryb3MgZmFsdGFudGVzIGUgaW5jb25zaXN0w6puY2lhcyBub3MgZGFkb3MgbXVuaWNpcGFpcyByZWZlcmVudGVzIGFvIHBlcsOtb2RvIGRlIDE5OTAgYSAxOTk5LCBvcHRvdS1zZSBwb3IgcmVzdHJpbmdpciBhcyBhbsOhbGlzZXMgYW8gaW50ZXJ2YWxvIGRlIDIwMDAgYSAyMDIzLiBFc3NhIGRlY2lzw6NvIHZpc2EgYXNzZWd1cmFyIG1haW9yIGNvbmZpYWJpbGlkYWRlIMOgcyBlc3RpbWF0aXZhcywgZXZpdGFuZG8gZGlzdG9yw6fDtWVzIGRlY29ycmVudGVzIGRlIHN1Yi1yZWdpc3RybyBvdSBhdXPDqm5jaWEgZGUgaW5mb3JtYcOnw6NvIGVtIGRldGVybWluYWRvcyBtdW5pY8OtcGlvcywgZXNwZWNpYWxtZW50ZSBub3MgYW5vcyBhbnRlcmlvcmVzIGEgMjAwMC48L3A+XHJcbiAgICBcclxuICAgIDxoMz40LiBUcmF0YW1lbnRvIGRvcyBSZWdpc3Ryb3MgTXVuaWNpcGFpczwvaDM+XHJcbiAgICBcclxuICAgIDxwPk5vIHByb2Nlc3NhbWVudG8gZGEgYmFzZSBtdW5pY2lwYWwsIGZvcmFtIGV4Y2x1w61kb3MgdG9kb3Mgb3MgcmVnaXN0cm9zIGNsYXNzaWZpY2Fkb3MgY29tbyBcIk11bmljw61waW8gSWdub3JhZG9cIiwgZGUgbW9kbyBhIGdhcmFudGlyIHF1ZSBhcyBhbsOhbGlzZXMgcmVmbGl0YW0gYXBlbmFzIGxvY2FsaWRhZGVzIGRldmlkYW1lbnRlIGlkZW50aWZpY2FkYXMgZSBjb20gZGFkb3MgY29uc2lzdGVudGVzLiBFc3NlIHByb2NlZGltZW50byBjb250cmlidWkgcGFyYSBhIHJvYnVzdGV6IGRhcyBlc3RhdMOtc3RpY2FzLCBwYXJhIGEgY29tcGFyYWJpbGlkYWRlIGVudHJlIG9zIGRpZmVyZW50ZXMgbXVuaWPDrXBpb3MgZSBwYXJhIGEgdHJhbnNwYXLDqm5jaWEgZG9zIHJlc3VsdGFkb3MgYXByZXNlbnRhZG9zLjwvcD5cclxuICAgIFxyXG4gICAgPGgzPjUuIERpc3BvbmliaWxpZGFkZSBlIFRyYW5zcGFyw6puY2lhIGRvcyBEYWRvczwvaDM+XHJcbiAgICBcclxuICAgIDxwPk9zIGRhZG9zIHRyYXRhZG9zIGUgb3JnYW5pemFkb3MgZXN0w6NvIGRpc3BvbsOtdmVpcyBwYXJhIGNvbnN1bHRhIGUgZG93bmxvYWQgbm8gYXJxdWl2byBhbmV4bywgYmVtIGNvbW8gbmEgcGxhbmlsaGEgcMO6YmxpY2EgcmVmZXJlbmNpYWRhLiBBIGRpc3BvbmliaWxpemHDp8OjbyBkb3MgZGFkb3MgasOhIGNvbnNvbGlkYWRvcyBwZWxvIElCR0UgYXNzZWd1cmEgYSByZXByb2R1dGliaWxpZGFkZSBkYXMgYW7DoWxpc2VzIGUgYSB0cmFuc3BhcsOqbmNpYSBtZXRvZG9sw7NnaWNhLCBwZXJtaXRpbmRvIHF1ZSBvdXRyb3MgcGVzcXVpc2Fkb3JlcyBlIGdlc3RvcmVzIHBvc3NhbSB1dGlsaXphciBhcyBtZXNtYXMgaW5mb3JtYcOnw7VlcyBlbSBlc3R1ZG9zIGUgYXZhbGlhw6fDtWVzIGZ1dHVyYXMuPC9wPlxyXG48L2JvZHlcclxuYFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYFxyXG48Ym9keT5cclxuXHJcbiAgICA8ZGl2PlxyXG4gICAgICAgIDxzZWN0aW9uIGlkPVwiaWJnZVwiPlxyXG4gICAgICAgICAgICBcclxuICAgICAgICAgICAgPHA+QXMgcHJvamXDp8O1ZXMgZGUgbW9ydGFsaWRhZGUgZG8gSUJHRSwgY29uZm9ybWUgZGVzY3JpdG8gbm8gZG9jdW1lbnRvIFwiUHJvamXDp8O1ZXMgZGEgcG9wdWxhw6fDo286IG5vdGFzIG1ldG9kb2zDs2dpY2FzIDAxLzIwMjRcIiwgYWRvdGFtIG9zIHNlZ3VpbnRlcyBwcm9jZWRpbWVudG9zOjwvcD5cclxuXHJcbiAgICAgICAgICAgIDxoMz5Ow612ZWwgZGEgTW9ydGFsaWRhZGUgKEV4cGVjdGF0aXZhIGRlIFZpZGEgYW8gTmFzY2VyIC0gPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPmU8L21pPjxtbj4wPC9tbj48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPmVfMDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+KTwvaDM+XHJcbiAgICAgICAgICAgIDx1bD5cclxuICAgICAgICAgICAgICAgIDxsaT5Gb2kgYXNzdW1pZGEgdW1hIGNvbnZlcmfDqm5jaWEgcHJvZ3Jlc3NpdmEgZGEgZXNwZXJhbsOnYSBkZSB2aWRhIGFvIG5hc2NlciBlbnRyZSB0b2RhcyBhcyBVbmlkYWRlcyBkYSBGZWRlcmHDp8OjbyAoVUZzKSwgY29tIGJhc2UgZW0gdGVuZMOqbmNpYXMgcmVjZW50ZXMuPC9saT5cclxuICAgICAgICAgICAgICAgIDxsaT5PcyB2YWxvcmVzLWxpbWl0ZSBhZG90YWRvcyBmb3JhbSA4NSwwIGFub3MgcGFyYSBob21lbnMgZSA4OCwwIGFub3MgcGFyYSBtdWxoZXJlcywgc2VndWluZG8gYXMgVMOhYnVhcyBNb2RlbG8gT2VzdGUgZGFzIE5hw6fDtWVzIFVuaWRhcyAoVU5JVEVEIE5BVElPTlMsIDIwMTEpIGUgYWxpbmhhZG9zIGNvbSBhcyBub3ZhcyBwcm9qZcOnw7VlcyBkYSBPTlUgKDIwMjQpIHBhcmEgbyBCcmFzaWwuPC9saT5cclxuICAgICAgICAgICAgICAgIDxsaT5BIHByb2plw6fDo28gZGEgPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPmU8L21pPjxtbj4wPC9tbj48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPmVfMDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+KSBmb2kgcmVhbGl6YWRhIHBvciBtZWlvIGRlIHVtIGFqdXN0ZSBsb2fDrXN0aWNvLCBhcGxpY2FkbyBzZXBhcmFkYW1lbnRlIHBvciBzZXhvIGUgVUYsIHV0aWxpemFuZG8gZG9pcyBwb250b3MgZGUgcmVmZXLDqm5jaWE6XHJcbiAgICAgICAgICAgICAgICAgICAgPHVsPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8bGk+QSBlc3RpbWF0aXZhIHBhcmEgMjAyMyAoYmFzZSBlbSBkYWRvcyBvYnNlcnZhZG9zKS48L2xpPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8bGk+TyB2YWxvciBkYSB0w6FidWEgbGltaXRlIGVtIDIxMDAuPC9saT5cclxuICAgICAgICAgICAgICAgICAgICA8L3VsPlxyXG4gICAgICAgICAgICAgICAgPC9saT5cclxuICAgICAgICAgICAgICAgIDxsaT5Fc3NhIGFib3JkYWdlbSB2aXNhIGdhcmFudGlyIGNvbnZlcmfDqm5jaWEgcmVnaW9uYWwgbm8gbG9uZ28gcHJhem8sIGV4Y2V0byBwYXJhIG9zIGhvbWVucyBkbyBBbWFww6EsIG9uZGUgZm9pIHV0aWxpemFkbyB1bSB2YWxvciBtw6lkaW8gZW50cmUgMjAyMiBlIDIwMjMgZGV2aWRvIGEgcGFydGljdWxhcmlkYWRlcyBsb2NhaXMuPC9saT5cclxuICAgICAgICAgICAgPC91bD5cclxuXHJcbiAgICAgICAgICAgIDxoMz5QYWRyw6NvIEV0w6FyaW8gZGEgTW9ydGFsaWRhZGUgKFRheGFzIEVzcGVjw61maWNhcyBwb3IgSWRhZGUpPC9oMz5cclxuICAgICAgICAgICAgPHVsPlxyXG4gICAgICAgICAgICAgICAgPGxpPkFzIHRheGFzIGRlIG1vcnRhbGlkYWRlIHBvciBpZGFkZSBmb3JhbSBwcm9qZXRhZGFzIHBvciBtZWlvIGRlIHVtYSBmdW7Dp8OjbyBsaW5lYXIsIGNvbnNpZGVyYW5kbyBhIGVzdHJ1dHVyYSBkZSBtb3J0YWxpZGFkZSBkb3MgYW5vcyBkZSAyMDIzIGUgMjEwMC48L2xpPlxyXG4gICAgICAgICAgICAgICAgPGxpPk8gYWp1c3RlIGRhcyBjdXJ2YXMgZGUgbW9ydGFsaWRhZGUgZ2FyYW50aXUgcXVlIGEgZXNwZXJhbsOnYSBkZSB2aWRhIGFvIG5hc2NlciBjYWxjdWxhZGEgYSBwYXJ0aXIgZGFzIHRheGFzIHByb2pldGFkYXMgY29pbmNpZGlzc2UgY29tIGEgPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPmU8L21pPjxtbj4wPC9tbj48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPmVfMDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+KSBvYnRpZGEgaW5kZXBlbmRlbnRlbWVudGUgbmEgcHJpbWVpcmEgZXRhcGEuPC9saT5cclxuICAgICAgICAgICAgPC91bD5cclxuXHJcbiAgICAgICAgICAgIDxoMz5Gb250ZXMgZSBOb3RhcyBBZGljaW9uYWlzPC9oMz5cclxuICAgICAgICAgICAgPHVsPlxyXG4gICAgICAgICAgICAgICAgPGxpPkEgbWV0b2RvbG9naWEgZm9pIGRlZmluaWRhIGFww7NzIGFuw6FsaXNlIGNvbXBhcmF0aXZhIGRlIGRpZmVyZW50ZXMgYWJvcmRhZ2VucywgaW5jbHVpbmRvIHTDoWJ1YXMgaGlzdMOzcmljYXMgZG8gSUJHRSAoMTk4MCwgMTk5MSwgMjAwMCwgMjAxMCkgZSBlc3RpbWF0aXZhcyBhbnVhaXMgcmVjZW50ZXMuPC9saT5cclxuICAgICAgICAgICAgICAgIDxsaT5PIGxpbWl0ZSBpbmZlcmlvciBkYSBjdXJ2YSBsb2fDrXN0aWNhIGZvaSBmaXhhZG8gZW0gMzUgYW5vcyBwYXJhIGhvbWVucyBlIDQwIGFub3MgcGFyYSBtdWxoZXJlcywgZW5xdWFudG8gbyBzdXBlcmlvciBmb2kgY2FsaWJyYWRvIHBhcmEgbWluaW1pemFyIG8gRXJybyBRdWFkcsOhdGljbyBNw6lkaW8gKEVRTSkuPC9saT5cclxuICAgICAgICAgICAgPC91bD5cclxuICAgICAgICAgICAgPHAgY2xhc3M9XCJzb3VyY2VcIj5cclxuICAgICAgICAgICAgICAgIDxzdHJvbmc+Rm9udGU6PC9zdHJvbmc+IElCR0UuIFByb2plw6fDtWVzIGRhIHBvcHVsYcOnw6NvOiBub3RhcyBtZXRvZG9sw7NnaWNhcyAwMS8yMDI0LiBEaXNwb27DrXZlbCBlbTogPGEgaHJlZj1cImh0dHBzOi8vYmlibGlvdGVjYS5pYmdlLmdvdi5ici9pbmRleC5waHAvYmlibGlvdGVjYS1jYXRhbG9nbz92aWV3PWRldGFsaGVzJmlkPTIxMDIxMTFcIiB0YXJnZXQ9XCJfYmxhbmtcIj5odHRwczovL2JpYmxpb3RlY2EuaWJnZS5nb3YuYnIvLi4uPC9hPlxyXG4gICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgPC9zZWN0aW9uPlxyXG4gICAgICAgIFxyXG4gICAgPC9kaXY+XHJcblxyXG48L2JvZHk+XHJcbjwvaHRtbD5cclxuYFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYFxyXG48c2VjdGlvbiBpZD1cImxlZS1jYXJ0ZXJcIj5cclxuICAgIFxyXG4gICAgPGgzPkJhc2UgZG8gTW9kZWxvPC9oMz5cclxuICAgIDxwPk8gbcOpdG9kbyBkZSBMZWUgJiBDYXJ0ZXIgKDE5OTIpIGZvaSBhcGxpY2FkbyBwYXJhIHByb2plw6fDo28gZGEgbW9ydGFsaWRhZGUsIG1vZGVsYW5kbyBhIHRheGEgY2VudHJhbCBkZSBtb3J0YWxpZGFkZSAoPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPm08L21pPjxtcm93PjxtaT54PC9taT48bW8+LDwvbW8+PG1pPnQ8L21pPjwvbXJvdz48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPm1fe3gsdH08L2Fubm90YXRpb24+PC9zZW1hbnRpY3M+PC9tYXRoPikgY29tbzo8L3A+XHJcbiAgICA8ZGl2IGNsYXNzPVwiZm9ybXVsYVwiPlxyXG4gICAgICAgIDxtYXRoIGRpc3BsYXk9XCJibG9ja1wiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1yb3c+PG1yb3c+PG1pPmxvZzwvbWk+PG1vPiYjODI4OTs8L21vPjwvbXJvdz48bW8gc3RyZXRjaHk9XCJmYWxzZVwiIGZvcm09XCJwcmVmaXhcIj4oPC9tbz48bXN1Yj48bWk+bTwvbWk+PG1yb3c+PG1pPng8L21pPjxtbz4sPC9tbz48bWk+dDwvbWk+PC9tcm93PjwvbXN1Yj48bW8gc3RyZXRjaHk9XCJmYWxzZVwiIGZvcm09XCJwb3N0Zml4XCI+KTwvbW8+PG1vPj08L21vPjxtc3ViPjxtaT5hPC9taT48bWk+eDwvbWk+PC9tc3ViPjxtbz4rPC9tbz48bXN1Yj48bWk+YjwvbWk+PG1pPng8L21pPjwvbXN1Yj48bW8+4ouFPC9tbz48bXN1Yj48bWk+azwvbWk+PG1pPnQ8L21pPjwvbXN1Yj48bW8+KzwvbW8+PG1zdWI+PG1pPs+1PC9taT48bXJvdz48bWk+eDwvbWk+PG1vPiw8L21vPjxtaT50PC9taT48L21yb3c+PC9tc3ViPjwvbXJvdz48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+XFxsb2cobV97eCx0fSkgPSBhX3ggKyBiX3ggXFxjZG90IGtfdCArIFxcZXBzaWxvbl97eCx0fTwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+XHJcbiAgICA8L2Rpdj5cclxuICAgIDxwPk9uZGU6PC9wPlxyXG4gICAgPHVsPlxyXG4gICAgICAgIDxsaT48Y29kZT48bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+YTwvbWk+PG1pPng8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+YV94PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD48L2NvZGU+OiBNw6lkaWEgaGlzdMOzcmljYSBkYSBtb3J0YWxpZGFkZSBuYSBpZGFkZSA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bWk+eDwvbWk+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPng8L2Fubm90YXRpb24+PC9zZW1hbnRpY3M+PC9tYXRoPi48L2xpPlxyXG4gICAgICAgIDxsaT48Y29kZT48bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+YjwvbWk+PG1pPng8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+Yl94PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD48L2NvZGU+OiBTZW5zaWJpbGlkYWRlIGRhIGlkYWRlIDxtYXRoIGRpc3BsYXk9XCJpbmxpbmVcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtaT54PC9taT48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+eDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+IGEgdmFyaWHDp8O1ZXMgbm8gw61uZGljZSA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+azwvbWk+PG1pPnQ8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+a190PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4uPC9saT5cclxuICAgICAgICA8bGk+PGNvZGU+PG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPms8L21pPjxtaT50PC9taT48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPmtfdDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+PC9jb2RlPjogw41uZGljZSB0ZW1wb3JhbCBkZSBtb3J0YWxpZGFkZSAobW9kZWxhZG8gY29tbyB1bSBwcm9jZXNzbyBlc3RvY8Ohc3RpY28gQVJJTUEpLjwvbGk+XHJcbiAgICAgICAgPGxpPjxjb2RlPjxtYXRoIGRpc3BsYXk9XCJpbmxpbmVcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtc3ViPjxtaT7PtTwvbWk+PG1yb3c+PG1pPng8L21pPjxtbz4sPC9tbz48bWk+dDwvbWk+PC9tcm93PjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+XFxlcHNpbG9uX3t4LHR9PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvY29kZT46IEVycm8gYWxlYXTDs3Jpby48L2xpPlxyXG4gICAgPC91bD5cclxuXHJcbiAgICA8aDM+SW1wbGVtZW50YcOnw6NvPC9oMz5cclxuICAgIDxwPlV0aWxpem91LXNlIG8gcGFjb3RlIDxjb2RlPmRlbW9ncmFwaHk8L2NvZGU+IGRvIFIgKGxjYSBvdSBmb3JlY2FzdCksIHF1ZSBlc3RpbWEgb3MgcGFyw6JtZXRyb3MgPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPmE8L21pPjxtaT54PC9taT48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPmFfeDwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+LCA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+YjwvbWk+PG1pPng8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+Yl94PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4gZSA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+azwvbWk+PG1pPnQ8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+a190PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4gdmlhIFNpbmd1bGFyIFZhbHVlIERlY29tcG9zaXRpb24gKFNWRCkgZSBwcm9qZXRhIDxtYXRoIGRpc3BsYXk9XCJpbmxpbmVcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtc3ViPjxtaT5rPC9taT48bWk+dDwvbWk+PC9tc3ViPjxhbm5vdGF0aW9uIGVuY29kaW5nPVwiYXBwbGljYXRpb24veC10ZXhcIj5rX3Q8L2Fubm90YXRpb24+PC9zZW1hbnRpY3M+PC9tYXRoPiBjb20gQVJJTUEoMCwxLDApIChyYW5kb20gd2FsayBjb20gZHJpZnQpIGNvbW8gcGFkcsOjby48L3A+XHJcblxyXG4gICAgPGgzPk3DqXRyaWNhcyBkZSBBdmFsaWHDp8OjbyBkZSBFcnJvPC9oMz5cclxuICAgIDxwPlBhcmEgdmFsaWRhciBhIGFjdXLDoWNpYSBkYXMgcHJvamXDp8O1ZXMsIGNhbGN1bGFyYW0tc2UgTVNFIChlcnJvIHF1YWRyw6F0aWNvIG3DqWRpbyksIE1BRSAoZXJybyBhYnNvbHV0byBtw6lkaW8pIGUgc01BUEUgKGVycm8gcGVyY2VudHVhbCBhYnNvbHV0byBtw6lkaW8gc2ltw6l0cmljbykgcGFyYSBjb21wYXJhciB2YWxvcmVzIG9ic2VydmFkb3MgZSBwcm9qZXRhZG9zLjwvcD5cclxuXHJcbiAgICA8aDM+SW5jZXJ0ZXphIGRhcyBQcm9qZcOnw7VlczwvaDM+XHJcbiAgICA8cD5PcyBpbnRlcnZhbG9zIGRlIGNvbmZpYW7Dp2EgKElDIDk1JSkgZm9yYW0gZ2VyYWRvcyBwb3Igc2ltdWxhw6fDo28gZXN0b2PDoXN0aWNhLCBjb25zaWRlcmFuZG8gYSB2YXJpYWJpbGlkYWRlIGRvcyBwYXLDom1ldHJvcyA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+YjwvbWk+PG1pPng8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+Yl94PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4gZSA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+azwvbWk+PG1pPnQ8L21pPjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+a190PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4uPC9wPlxyXG4gICAgPHAgY2xhc3M9XCJzb3VyY2VcIj48c3Ryb25nPlJlZmVyw6puY2lhOjwvc3Ryb25nPiBMZWUgJiBDYXJ0ZXIgKDE5OTIpOyBwYWNvdGUgZGVtb2dyYXBoeSAoSHluZG1hbiBldCBhbC4pLjwvcD5cclxuPC9zZWN0aW9uPlxyXG5gXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgXHJcbjxzZWN0aW9uIGlkPVwiaGlicmlkb1wiPlxyXG5cclxuICAgIDxoMz5CYXNlIGRvIE1vZGVsbzwvaDM+XHJcbiAgICA8cD5PIG3DqXRvZG8gY29tYmluYSBtb2RlbG9zIEFSSU1BIChwYXJhIGNhcHR1cmFyIGF1dG9jb3JyZWxhw6fDo28gZSB0ZW5kw6puY2lhKSBlIEVUUyAocGFyYSBzdWF2aXphw6fDo28gZXhwb25lbmNpYWwgY29tIGFtb3J0ZWNpbWVudG8gZGUgdGVuZMOqbmNpYSksIHBvbmRlcmFkb3MgZGluYW1pY2FtZW50ZSBjb25mb3JtZSBzZXUgZGVzZW1wZW5obyBlbSB2YWxpZGHDp8Ojby4gQSBwcmV2aXPDo28gZmluYWwgw6kgZGFkYSBwb3I6PC9wPlxyXG4gICAgPGRpdiBjbGFzcz1cImZvcm11bGFcIj5cclxuICAgICAgICA8bWF0aCBkaXNwbGF5PVwiYmxvY2tcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtcm93Pjxtc3ViPjxtb3Zlcj48bWk+eTwvbWk+PG1vIGFjY2VudD1cInRydWVcIj7MgjwvbW8+PC9tb3Zlcj48bWk+dDwvbWk+PC9tc3ViPjxtbz49PC9tbz48bXN1Yj48bWk+dzwvbWk+PG1yb3c+PG1pPkE8L21pPjxtaT5SPC9taT48bWk+STwvbWk+PG1pPk08L21pPjxtaT5BPC9taT48L21yb3c+PC9tc3ViPjxtbz7ii4U8L21vPjxtc3ViPjxtb3Zlcj48bWk+eTwvbWk+PG1vIGFjY2VudD1cInRydWVcIj7MgjwvbW8+PC9tb3Zlcj48bXJvdz48bWk+QTwvbWk+PG1pPlI8L21pPjxtaT5JPC9taT48bWk+TTwvbWk+PG1pPkE8L21pPjxtbz4sPC9tbz48bWk+dDwvbWk+PC9tcm93PjwvbXN1Yj48bW8+KzwvbW8+PG1zdWI+PG1pPnc8L21pPjxtcm93PjxtaT5FPC9taT48bWk+VDwvbWk+PG1pPlM8L21pPjwvbXJvdz48L21zdWI+PG1vPuKLhTwvbW8+PG1zdWI+PG1vdmVyPjxtaT55PC9taT48bW8gYWNjZW50PVwidHJ1ZVwiPsyCPC9tbz48L21vdmVyPjxtcm93PjxtaT5FPC9taT48bWk+VDwvbWk+PG1pPlM8L21pPjxtbz4sPC9tbz48bWk+dDwvbWk+PC9tcm93PjwvbXN1Yj48L21yb3c+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPlxcaGF0e3l9X3QgPSB3X3tBUklNQX0gXFxjZG90IFxcaGF0e3l9X3tBUklNQSx0fSArIHdfe0VUU30gXFxjZG90IFxcaGF0e3l9X3tFVFMsdH08L2Fubm90YXRpb24+PC9zZW1hbnRpY3M+PC9tYXRoPlxyXG4gICAgPC9kaXY+XHJcbiAgICA8dWw+XHJcbiAgICAgICAgPGxpPjxzdHJvbmc+QVJJTUEocCxkLHEpOjwvc3Ryb25nPiBBanVzdGFkbyBhdXRvbWF0aWNhbWVudGUgdmlhIG1pbmltaXphw6fDo28gZG8gQUlDLjwvbGk+XHJcbiAgICAgICAgPGxpPjxzdHJvbmc+RVRTIChIb2x0LVdpbnRlcnMpOjwvc3Ryb25nPiBNb2RlbG8gYWRpdGl2byBjb20gdGVuZMOqbmNpYSBhbW9ydGVjaWRhLjwvbGk+XHJcbiAgICAgICAgPGxpPjxzdHJvbmc+UGVzb3MgKDxjb2RlPjxtYXRoIGRpc3BsYXk9XCJpbmxpbmVcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtc3ViPjxtaT53PC9taT48bXJvdz48bWk+QTwvbWk+PG1pPlI8L21pPjxtaT5JPC9taT48bWk+TTwvbWk+PG1pPkE8L21pPjwvbXJvdz48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPndfe0FSSU1BfTwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+PC9jb2RlPiwgPGNvZGU+PG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPnc8L21pPjxtcm93PjxtaT5FPC9taT48bWk+VDwvbWk+PG1pPlM8L21pPjwvbXJvdz48L21zdWI+PGFubm90YXRpb24gZW5jb2Rpbmc9XCJhcHBsaWNhdGlvbi94LXRleFwiPndfe0VUU308L2Fubm90YXRpb24+PC9zZW1hbnRpY3M+PC9tYXRoPjwvY29kZT4pOjwvc3Ryb25nPiBEZWZpbmlkb3MgcGVsbyBpbnZlcnNvIGRvIE1TRSBuYSB2YWxpZGHDp8OjbywgcHJpb3JpemFuZG8gbyBtb2RlbG8gbWFpcyBwcmVjaXNvLjwvbGk+XHJcbiAgICA8L3VsPlxyXG5cclxuICAgIDxoMz5JbXBsZW1lbnRhw6fDo288L2gzPlxyXG4gICAgPHVsPlxyXG4gICAgICAgIDxsaT48c3Ryb25nPlRyZWlubyAoMjAwMOKAkzIwMTApOjwvc3Ryb25nPiBBanVzdGUgZG9zIG1vZGVsb3MgQVJJTUEgZSBFVFMuPC9saT5cclxuICAgICAgICA8bGk+PHN0cm9uZz5WYWxpZGHDp8OjbyAoMjAxMeKAkzIwMTQpOjwvc3Ryb25nPiBDw6FsY3VsbyBkb3MgcGVzb3Mgw7N0aW1vcy48L2xpPlxyXG4gICAgICAgIDxsaT48c3Ryb25nPlRlc3RlICgyMDE14oCTMjAxOSk6PC9zdHJvbmc+IEF2YWxpYcOnw6NvIGZpbmFsIGNvbSBtw6l0cmljYXMgcm9idXN0YXMuPC9saT5cclxuICAgIDwvdWw+XHJcblxyXG4gICAgPGgzPk3DqXRyaWNhcyBkZSBBdmFsaWHDp8OjbzwvaDM+XHJcbiAgICA8cD5Gb3JhbSBjYWxjdWxhZG9zOiBNU0UgKGVycm8gcXVhZHLDoXRpY28gbcOpZGlvKSwgTUFFIChlcnJvIGFic29sdXRvIG3DqWRpbykgZSBzTUFQRSAoZXJybyBwZXJjZW50dWFsIGFic29sdXRvIHNpbcOpdHJpY28pLjwvcD5cclxuXHJcbiAgICA8aDM+SW50ZXJ2YWxvcyBkZSBDb25maWFuw6dhPC9oMz5cclxuICAgIDxwPk9zIGludGVydmFsb3MgZGUgY29uZmlhbsOnYSAoSUMgOTUlKSBmb3JhbSBlc3RpbWFkb3MgcG9yIHNpbXVsYcOnw6NvIGRlIE1vbnRlIENhcmxvLCBjb25zaWRlcmFuZG86PC9wPlxyXG4gICAgPHVsPlxyXG4gICAgICAgIDxsaT48c3Ryb25nPlZhcmlhYmlsaWRhZGUgZG8gQVJJTUE6PC9zdHJvbmc+IERpc3RyaWJ1acOnw6NvIGRvcyByZXPDrWR1b3MgZSBpbmNlcnRlemEgbm9zIHBhcsOibWV0cm9zIDxtYXRoIGRpc3BsYXk9XCJpbmxpbmVcIiB4bWxucz1cImh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUxcIj48c2VtYW50aWNzPjxtcm93PjxtbyBzdHJldGNoeT1cImZhbHNlXCIgZm9ybT1cInByZWZpeFwiPig8L21vPjxtaT5wPC9taT48bW8+LDwvbW8+PG1pPmQ8L21pPjxtbz4sPC9tbz48bWk+cTwvbWk+PG1vIHN0cmV0Y2h5PVwiZmFsc2VcIiBmb3JtPVwicG9zdGZpeFwiPik8L21vPjwvbXJvdz48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+KHAsZCxxKTwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+LjwvbGk+XHJcbiAgICAgICAgPGxpPjxzdHJvbmc+VmFyaWFiaWxpZGFkZSBkbyBFVFM6PC9zdHJvbmc+IEVycm8gZGUgc3Vhdml6YcOnw6NvIGUgcGFyw6JtZXRyb3MgZGUgdGVuZMOqbmNpYS48L2xpPlxyXG4gICAgICAgIDxsaT48c3Ryb25nPlByb3BhZ2HDp8OjbyBkZSBpbmNlcnRlemE6PC9zdHJvbmc+IENvbWJpbmHDp8OjbyBkYXMgZGlzdHJpYnVpw6fDtWVzIHByZWRpdGl2YXMgZGUgYW1ib3MgbW9kZWxvcywgbWFudGVuZG8gYSBwcm9wb3LDp8OjbyBkb3MgcGVzb3MgPG1hdGggZGlzcGxheT1cImlubGluZVwiIHhtbG5zPVwiaHR0cDovL3d3dy53My5vcmcvMTk5OC9NYXRoL01hdGhNTFwiPjxzZW1hbnRpY3M+PG1zdWI+PG1pPnc8L21pPjxtcm93PjxtaT5BPC9taT48bWk+UjwvbWk+PG1pPkk8L21pPjxtaT5NPC9taT48bWk+QTwvbWk+PC9tcm93PjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+d197QVJJTUF9PC9hbm5vdGF0aW9uPjwvc2VtYW50aWNzPjwvbWF0aD4gZSA8bWF0aCBkaXNwbGF5PVwiaW5saW5lXCIgeG1sbnM9XCJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MXCI+PHNlbWFudGljcz48bXN1Yj48bWk+dzwvbWk+PG1yb3c+PG1pPkU8L21pPjxtaT5UPC9taT48bWk+UzwvbWk+PC9tcm93PjwvbXN1Yj48YW5ub3RhdGlvbiBlbmNvZGluZz1cImFwcGxpY2F0aW9uL3gtdGV4XCI+d197RVRTfTwvYW5ub3RhdGlvbj48L3NlbWFudGljcz48L21hdGg+LjwvbGk+XHJcbiAgICA8L3VsPlxyXG4gICAgPHAgY2xhc3M9XCJzb3VyY2VcIj48c3Ryb25nPlJlZmVyw6puY2lhOjwvc3Ryb25nPiBCYXNlYWRvIGVtIG1ldG9kb2xvZ2lhcyBkZSBIeW5kbWFuICYgQXRoYW5hc29wb3Vsb3MgKDIwMTgpLjwvcD5cclxuPC9zZWN0aW9uPlxyXG5gXHJcbiJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

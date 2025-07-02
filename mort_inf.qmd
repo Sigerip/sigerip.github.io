@@ -1,0 +1,438 @@
+---
+execute: 
+  echo: false
+  panel: sidebar
+---
+
+## Taxa de Mortalidade Infantil
+
+::: {.panel-tabset}
+
+## Gráfico
+```{ojs}
+// CÉLULA 1: CARREGAR OS DADOS
+// Verifique se o nome do arquivo está exatamente correto.
+// Se o arquivo estiver em outra pasta, use o caminho relativo, ex: "dados/meus_dados.csv"
+
+dadosOriginais = FileAttachment("dados/mort_infantil.csv").csv({typed: true})
+
+listaDeEstados = [
+  { nome: "Acre", codigo: "12" },
+  { nome: "Alagoas", codigo: "27" },
+  { nome: "Amapá", codigo: 16 },
+  { nome: "Amazonas", codigo: "13" },
+  { nome: "Bahia", codigo: "29" },
+  { nome: "Ceará", codigo: "23" },
+  { nome: "Distrito Federal", codigo: "53" },
+  { nome: "Espírito Santo", codigo: "32" },
+  { nome: "Goiás", codigo: "52" },
+  { nome: "Maranhão", codigo: "21" },
+  { nome: "Mato Grosso", codigo: "51" },
+  { nome: "Mato Grosso do Sul", codigo: "50" },
+  { nome: "Minas Gerais", codigo: "31" },
+  { nome: "Pará", codigo: "15" },
+  { nome: "Paraíba", codigo: "25" },
+  { nome: "Paraná", codigo: "41" },
+  { nome: "Pernambuco", codigo: "26" },
+  { nome: "Piauí", codigo: "22" },
+  { nome: "Rio Grande do Norte", codigo: "24" },
+  { nome: "Rio Grande do Sul", codigo: "43" },
+  { nome: "Rio de Janeiro", codigo: "33" },
+  { nome: "Rondônia", codigo: "11" },
+  { nome: "Roraima", codigo: "14" },
+  { nome: "Santa Catarina", codigo: "42" },
+  { nome: "São Paulo", codigo: "35" },
+  { nome: "Sergipe", codigo: "28" },
+  { nome: "Tocantins", codigo: "17" }
+];
+
+dadosProcessados = dadosOriginais.map(d => {
+  const codigo = String(d.cod_IBGE);
+  let nivel = "Desconhecido";
+
+  if (d.Localidade === "Brasil") {
+    nivel = "Brasil";
+  } else if (codigo.length === 1) {
+    nivel = "Região";
+  } else if (codigo.length === 2) {
+    nivel = "Estado";
+  } else if (codigo.length === 7) {
+    nivel = "Município";
+  }
+
+  // Retorna o dado original com a nova coluna 'nivel'
+  return {...d, nivel: nivel};
+})
+
+// CÉLULA 3: CRIAR AS LISTAS PARA OS MENUS
+
+// Lista de nomes de Regiões
+listaRegioes = Array.from(new Set(
+  dadosProcessados
+    .filter(d => d.nivel === "Região")
+    .map(d => d.Localidade)
+)).sort();
+
+// Lista de Estados (nomes e códigos)
+listaEstados = dadosProcessados
+  .filter(d => d.nivel === "Estado")
+  .map(d => ({ nome: d.Localidade, codigo: String(d.cod_IBGE) }))
+  .sort((a, b) => a.nome.localeCompare(b.nome));
+
+// Lista de nomes de Estados para o menu
+listaNomesEstados = [...new Set(listaEstados.map(e => e.nome))].sort();
+
+// CÉLULA 4 (NOVA): SELETOR DE NÍVEL
+viewof nivel = Inputs.radio(["Brasil", "Região", "Estado", "Município"], {
+  label: "1. Escolha o Nível",
+  value: "Brasil"
+})
+
+
+viewof localidadeComFiltro = {
+  if (nivel === "Brasil") {
+    return Inputs.text({label: "Localidade", value: "Brasil", disabled: true});
+  }
+
+  if (nivel === "Região") {
+    return Inputs.select(listaRegioes, {label: "2. Escolha a Região"});
+  }
+
+  if (nivel === "Estado") {
+    return Inputs.select(listaNomesEstados, {label: "2. Escolha o Estado"});
+  }
+
+  if (nivel === "Município") {
+    const container = html`
+      <div style="font-family: var(--sans-serif, system-ui);">
+        <div style="margin-bottom: 15px;">
+          <label style="font-weight: 500; display: block; margin-bottom: 5px;">
+            2. Escolha o Estado:
+          </label>
+          <select id="seletorEstado" style="
+            width: 100%; 
+            padding: 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+            background: white;
+          ">
+            ${listaDeEstados.map(e => 
+              `<option value="${e.codigo}">${e.nome}</option>`
+            ).join('')}
+          </select>
+        </div>
+
+        <div>
+          <label style="font-weight: 500; display: block; margin-bottom: 5px;">
+            3. Busque o Município:
+          </label>
+          
+          <div style="position: relative;">
+            <input 
+              type="text" 
+              id="inputBusca" 
+              placeholder="Digite para buscar município..." 
+              autocomplete="off"
+              style="
+                width: 100%; 
+                padding: 8px; 
+                border: 1px solid #ccc; 
+                border-radius: 4px;
+                box-sizing: border-box;
+              "
+            >
+            
+            <div id="dropdown" style="
+              position: absolute;
+              top: 100%;
+              left: 0;
+              right: 0;
+              background: white;
+              border: 1px solid #ccc;
+              border-top: none;
+              border-radius: 0 0 4px 4px;
+              max-height: 350px;
+              overflow-y: auto;
+              display: none;
+              z-index: 1000;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            "></div>
+          </div>
+          
+          <div id="municipioSelecionado" style="
+            margin-top: 8px; 
+            font-size: 0.9em; 
+            color: #666;
+            font-style: italic;
+          "></div>
+        </div>
+      </div>
+    `;
+
+    const seletorEstado = container.querySelector('#seletorEstado');
+    const inputBusca = container.querySelector('#inputBusca');
+    const dropdown = container.querySelector('#dropdown');
+    const municipioSelecionado = container.querySelector('#municipioSelecionado');
+
+    let municipiosDisponiveis = [];
+    let valorSelecionado = '';
+
+    // Função para buscar municípios do estado
+    function carregarMunicipios() {
+      const codigoEstado = seletorEstado.value;
+      
+      // Remove duplicatas usando Set
+      const municipiosUnicos = [...new Set(
+        dadosProcessados
+          .filter(d => 
+            d.nivel === "Município" && 
+            String(d.cod_IBGE).startsWith(codigoEstado)
+          )
+          .map(d => d.Localidade)
+      )].sort();
+      
+      municipiosDisponiveis = municipiosUnicos;
+      
+      // Pré-seleciona o primeiro município
+      if (municipiosDisponiveis.length > 0) {
+        valorSelecionado = municipiosDisponiveis[0];
+        inputBusca.value = valorSelecionado;
+        municipioSelecionado.textContent = `Município selecionado: ${valorSelecionado}`;
+        
+        // Dispara evento inicial
+        container.value = valorSelecionado;
+        container.dispatchEvent(new CustomEvent("input"));
+      } else {
+        inputBusca.value = '';
+        valorSelecionado = '';
+        municipioSelecionado.textContent = '';
+      }
+      
+      dropdown.style.display = 'none';
+      inputBusca.placeholder = `Digite para buscar entre ${municipiosDisponiveis.length} municípios...`;
+    }
+
+    // Função para filtrar e mostrar opções
+    function mostrarOpcoes(filtro = '') {
+      const opcoesFiltradas = municipiosDisponiveis.filter(municipio =>
+        municipio.toLowerCase().includes(filtro.toLowerCase())
+      ).slice(0, 100); // Aumenta para 100 resultados
+
+      if (opcoesFiltradas.length === 0) {
+        dropdown.innerHTML = '<div style="padding: 12px; color: #999; text-align: center;">Nenhum município encontrado</div>';
+      } else {
+        dropdown.innerHTML = opcoesFiltradas
+          .map(municipio => `
+            <div class="opcao-municipio" data-value="${municipio}" style="
+              padding: 10px 12px;
+              cursor: pointer;
+              border-bottom: 1px solid #f0f0f0;
+              transition: background-color 0.2s ease;
+              font-size: 14px;
+            ">${municipio}</div>
+          `).join('');
+        
+        // Adiciona eventos de clique
+        dropdown.querySelectorAll('.opcao-municipio').forEach(opcao => {
+          opcao.addEventListener('click', () => {
+            valorSelecionado = opcao.dataset.value;
+            inputBusca.value = valorSelecionado;
+            municipioSelecionado.textContent = `Município selecionado: ${valorSelecionado}`;
+            dropdown.style.display = 'none';
+            
+            // Dispara evento de mudança
+            container.value = valorSelecionado;
+            container.dispatchEvent(new CustomEvent("input"));
+          });
+
+          // Hover effect
+          opcao.addEventListener('mouseenter', () => {
+            opcao.style.backgroundColor = '#f8f9fa';
+          });
+          opcao.addEventListener('mouseleave', () => {
+            opcao.style.backgroundColor = 'white';
+          });
+        });
+      }
+
+      dropdown.style.display = opcoesFiltradas.length > 0 || filtro ? 'block' : 'none';
+    }
+
+    // Event listeners
+    seletorEstado.addEventListener('change', carregarMunicipios);
+
+    inputBusca.addEventListener('input', (e) => {
+      const filtro = e.target.value;
+      if (filtro.length > 0) {
+        mostrarOpcoes(filtro);
+      } else {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    inputBusca.addEventListener('focus', () => {
+      if (municipiosDisponiveis.length > 0) {
+        mostrarOpcoes(inputBusca.value);
+      }
+    });
+
+    // Fecha dropdown ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    // Navegação por teclado
+    inputBusca.addEventListener('keydown', (e) => {
+      const opcoes = dropdown.querySelectorAll('.opcao-municipio');
+      const ativas = Array.from(opcoes);
+      const currentIndex = ativas.findIndex(opcao => 
+        opcao.style.backgroundColor === 'rgb(224, 242, 254)'
+      );
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = Math.min(currentIndex + 1, ativas.length - 1);
+        ativas.forEach((opcao, i) => {
+          opcao.style.backgroundColor = i === nextIndex ? '#e0f2fe' : 'white';
+        });
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = Math.max(currentIndex - 1, 0);
+        ativas.forEach((opcao, i) => {
+          opcao.style.backgroundColor = i === prevIndex ? '#e0f2fe' : 'white';
+        });
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const opcaoSelecionada = ativas[currentIndex];
+        if (opcaoSelecionada) {
+          opcaoSelecionada.click();
+        }
+      } else if (e.key === 'Escape') {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    // Inicializa
+    carregarMunicipios();
+    
+    return container;
+  }
+}
+
+```
+
+
+```{ojs}
+{
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+  
+  const width = 760;
+  const height = 500;
+  const margin = { top: 60, right: 30, bottom: 50, left: 50 };
+  const cores = {
+    Taxa: "steelblue",
+    masculino: "darkorange",
+    feminino: "green"
+  };
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
+    .style("-webkit-tap-highlight-color", "transparent")
+    .style("overflow", "visible")
+
+  // Legenda
+  const legend = svg.append("g")
+    .attr("transform", `translate(${width/2 - 120}, 50)`);
+
+  // Processamento dos dados para todo o Brasil
+  const filteredData = dadosOriginais
+    .filter(d => d.Localidade === localidadeComFiltro)
+    .map(d => ({
+      ...d,
+      Ano: +d.Ano,
+      Taxa: +d.Taxa
+    }))
+    .sort((a, b) => a.Ano - b.Ano);
+
+  // Escalas únicas para todo o gráfico
+  const xScale = d3.scaleLinear()
+    .domain(d3.extent(filteredData, d => d.Ano))
+    .range([margin.left, width - margin.right]);
+
+  const yValues = filteredData.flatMap(d => d.Taxa);
+  const yScale = d3.scaleLinear()
+    .domain([d3.min(yValues), d3.max(yValues)]).nice()
+    .range([height - margin.bottom, margin.top]);
+
+  // Eixos
+  svg.append("g")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale).ticks(10))
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", 35)
+    .attr("text-anchor", "middle")
+    .attr("fill", "black")
+    .text("Ano");
+
+  svg.append("g")
+    .attr("transform", `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(yScale).ticks(8))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -40)
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
+    .attr("fill", "black")
+    .text("Taxa");
+
+  // Função para gerar as linhas
+  const gerarLinha = (variavel, cor) => {
+    const linha = d3.line()
+      .x(d => xScale(d.Ano))
+      .y(d => yScale(d[variavel]))
+      //.curve(d3.curveMonotoneX); //suaviza a linha
+
+    svg.append("path")
+      .datum(filteredData)
+      .attr("d", linha)
+      .attr("fill", "none")
+      .attr("stroke", cor)
+      .attr("stroke-width", 2);
+  };
+
+  // Adiciona as três linhas principais
+  gerarLinha("Taxa", cores.Taxa);
+
+  return svg.node();
+}
+```
+
+## Tabela
+```{ojs}
+html`<h2>Tábua de mortalidade utilizada</h2>`
+Inputs.table(dadosOriginais)
+html`
+<body>
+    <br>
+    <p>Baixar 
+    <a href="dados/output.csv" download>
+        dados.
+    </a>
+    </p>
+</body>
+`
+
+```
+:::

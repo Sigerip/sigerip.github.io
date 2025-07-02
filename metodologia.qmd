@@ -1,0 +1,248 @@
+---
+execute: 
+  echo: false
+  panel: sidebar
+---
+
+```{ojs}
+html`
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologias de Projeção de Mortalidade</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-top: 25px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .formula {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            text-align: center;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .source {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>`
+
+```
+
+## Metodologia de Coleta e Tratamento dos Dados de Mortalidade Infantil
+```{ojs}
+html`
+<body>
+    <p>A metodologia adotada para a coleta, tratamento e análise dos dados de mortalidade infantil neste projeto fundamenta-se em procedimentos técnicos rigorosos, com o objetivo de garantir a precisão, a comparabilidade e a integridade das informações em diferentes recortes geográficos, para o período de 2000 a 2023.</p>
+
+    <p>Os dados utilizados foram obtidos a partir do arquivo consolidado disponível no link <a href="https://docs.google.com/spreadsheets/d/1mJ4NdolOPlsAykFTHolrnh8odUaZE5WM/edit?gid=1015938775#gid=1015938775" target="_blank">Planilha de Dados Consolidados</a>. As informações originais são provenientes do Sistema de Informações sobre Nascidos Vivos (SINASC) e do Sistema de Informações sobre Mortalidade (SIM), ambos disponibilizados pelo DATASUS (<a href="https://datasus.saude.gov.br/informacoes-de-saude-tabnet/" target="_blank">Tabnet/DATASUS</a>). No entanto, os dados presentes na planilha já foram consolidados e validados pelo Instituto Brasileiro de Geografia e Estatística (IBGE), o que confere maior confiabilidade e padronização às estatísticas apresentadas.</p>
+
+    <h3>1. Estruturação das Bases de Dados</h3>
+
+    <p>O primeiro passo consistiu na organização dos dados em duas bases distintas: uma contendo informações agregadas em nível nacional, regional e estadual, e outra composta exclusivamente por dados municipais. Essa separação permite análises comparativas entre diferentes escalas geográficas, facilita a identificação de padrões regionais e aprimora o controle de qualidade dos registros, possibilitando a detecção de eventuais inconsistências ou lacunas nos dados.</p>
+
+    <h3>2. Variável Analisada</h3>
+    <p>A principal variável analisada é a taxa de mortalidade infantil, definida como o número de óbitos de crianças menores de um ano de idade, por mil nascidos vivos, em determinado ano e localidade. Trata-se de um dos mais relevantes indicadores de saúde pública e desenvolvimento social, utilizado para monitorar tendências temporais, avaliar políticas de saúde e identificar desigualdades regionais e locais.</p>
+
+    <p>A taxa de mortalidade infantil (TMI) é calculada pela seguinte fórmula:</p>
+    
+    <div class="formula">
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>T</mi><mi>M</mi><mi>I</mi><mo>=</mo><mfrac><mrow><mtext>N</mtext><mover accent='true'><mtext>u</mtext><mo style="math-style:normal;math-depth:0;" stretchy="false">&#x2ca;</mo></mover><mtext>mero&#xa0;de&#xa0;</mtext><mover accent='true'><mtext>O</mtext><mo style="math-style:normal;math-depth:0;" stretchy="false">&#x2ca;</mo></mover><mtext>bitos&#xa0;de&#xa0;Menores&#xa0;de&#xa0;um&#xa0;Ano</mtext></mrow><mrow><mtext>N</mtext><mover accent='true'><mtext>u</mtext><mo style="math-style:normal;math-depth:0;" stretchy="false">&#x2ca;</mo></mover><mtext>merode&#xa0;Nascidos&#xa0;Vivos</mtext></mrow></mfrac></math>
+    </div>
+
+    <p>onde:</p>
+    <ul>
+        <li>O numerador corresponde ao total de óbitos de crianças menores de um ano, registrados no SIM;</li>
+        <li>O denominador corresponde ao total de nascidos vivos, registrados no SINASC.</li>
+    </ul>
+    
+    <h3>3. Filtragem Temporal e Qualidade dos Registros</h3>
+    <p>Considerando a existência de registros faltantes e inconsistências nos dados municipais referentes ao período de 1990 a 1999, optou-se por restringir as análises ao intervalo de 2000 a 2023. Essa decisão visa assegurar maior confiabilidade às estimativas, evitando distorções decorrentes de sub-registro ou ausência de informação em determinados municípios, especialmente nos anos anteriores a 2000.</p>
+    
+    <h3>4. Tratamento dos Registros Municipais</h3>
+    
+    <p>No processamento da base municipal, foram excluídos todos os registros classificados como "Município Ignorado", de modo a garantir que as análises reflitam apenas localidades devidamente identificadas e com dados consistentes. Esse procedimento contribui para a robustez das estatísticas, para a comparabilidade entre os diferentes municípios e para a transparência dos resultados apresentados.</p>
+    
+    <h3>5. Disponibilidade e Transparência dos Dados</h3>
+    
+    <p>Os dados tratados e organizados estão disponíveis para consulta e download no arquivo anexo, bem como na planilha pública referenciada. A disponibilização dos dados já consolidados pelo IBGE assegura a reprodutibilidade das análises e a transparência metodológica, permitindo que outros pesquisadores e gestores possam utilizar as mesmas informações em estudos e avaliações futuras.</p>
+</body
+`
+```
+
+## Projeções de Mortalidade do IBGE
+```{ojs}
+html`
+<body>
+
+    <div>
+        <section id="ibge">
+            
+            <p>As projeções de mortalidade do IBGE, conforme descrito no documento "Projeções da população: notas metodológicas 01/2024", adotam os seguintes procedimentos:</p>
+
+            <h3>Nível da Mortalidade (Expectativa de Vida ao Nascer - <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>0</mn></msub><annotation encoding="application/x-tex">e_0</annotation></semantics></math>)</h3>
+            <ul>
+                <li>Foi assumida uma convergência progressiva da esperança de vida ao nascer entre todas as Unidades da Federação (UFs), com base em tendências recentes.</li>
+                <li>Os valores-limite adotados foram 85,0 anos para homens e 88,0 anos para mulheres, seguindo as Tábuas Modelo Oeste das Nações Unidas (UNITED NATIONS, 2011) e alinhados com as novas projeções da ONU (2024) para o Brasil.</li>
+                <li>A projeção da <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>0</mn></msub><annotation encoding="application/x-tex">e_0</annotation></semantics></math>) foi realizada por meio de um ajuste logístico, aplicado separadamente por sexo e UF, utilizando dois pontos de referência:
+                    <ul>
+                        <li>A estimativa para 2023 (base em dados observados).</li>
+                        <li>O valor da tábua limite em 2100.</li>
+                    </ul>
+                </li>
+                <li>Essa abordagem visa garantir convergência regional no longo prazo, exceto para os homens do Amapá, onde foi utilizado um valor médio entre 2022 e 2023 devido a particularidades locais.</li>
+            </ul>
+
+            <h3>Padrão Etário da Mortalidade (Taxas Específicas por Idade)</h3>
+            <ul>
+                <li>As taxas de mortalidade por idade foram projetadas por meio de uma função linear, considerando a estrutura de mortalidade dos anos de 2023 e 2100.</li>
+                <li>O ajuste das curvas de mortalidade garantiu que a esperança de vida ao nascer calculada a partir das taxas projetadas coincidisse com a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>0</mn></msub><annotation encoding="application/x-tex">e_0</annotation></semantics></math>) obtida independentemente na primeira etapa.</li>
+            </ul>
+
+            <h3>Fontes e Notas Adicionais</h3>
+            <ul>
+                <li>A metodologia foi definida após análise comparativa de diferentes abordagens, incluindo tábuas históricas do IBGE (1980, 1991, 2000, 2010) e estimativas anuais recentes.</li>
+                <li>O limite inferior da curva logística foi fixado em 35 anos para homens e 40 anos para mulheres, enquanto o superior foi calibrado para minimizar o Erro Quadrático Médio (EQM).</li>
+            </ul>
+            <p class="source">
+                <strong>Fonte:</strong> IBGE. Projeções da população: notas metodológicas 01/2024. Disponível em: <a href="https://biblioteca.ibge.gov.br/index.php/biblioteca-catalogo?view=detalhes&id=2102111" target="_blank">https://biblioteca.ibge.gov.br/...</a>
+            </p>
+        </section>
+        
+    </div>
+
+</body>
+</html>
+`
+```
+
+## Modelo Lee-Carter
+
+```{ojs}
+html`
+<section id="lee-carter">
+    
+    <h3>Base do Modelo</h3>
+    <p>O método de Lee & Carter (1992) foi aplicado para projeção da mortalidade, modelando a taxa central de mortalidade (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mrow><mi>x</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">m_{x,t}</annotation></semantics></math>) como:</p>
+    <div class="formula">
+        <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>log</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>m</mi><mrow><mi>x</mi><mo>,</mo><mi>t</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>a</mi><mi>x</mi></msub><mo>+</mo><msub><mi>b</mi><mi>x</mi></msub><mo>⋅</mo><msub><mi>k</mi><mi>t</mi></msub><mo>+</mo><msub><mi>ϵ</mi><mrow><mi>x</mi><mo>,</mo><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\log(m_{x,t}) = a_x + b_x \cdot k_t + \epsilon_{x,t}</annotation></semantics></math>
+    </div>
+    <p>Onde:</p>
+    <ul>
+        <li><code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>x</mi></msub><annotation encoding="application/x-tex">a_x</annotation></semantics></math></code>: Média histórica da mortalidade na idade <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</li>
+        <li><code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>x</mi></msub><annotation encoding="application/x-tex">b_x</annotation></semantics></math></code>: Sensibilidade da idade <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> a variações no índice <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math>.</li>
+        <li><code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math></code>: Índice temporal de mortalidade (modelado como um processo estocástico ARIMA).</li>
+        <li><code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mrow><mi>x</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">\epsilon_{x,t}</annotation></semantics></code>: Erro aleatório.</li>
+    </ul>
+
+    <h3>Implementação</h3>
+    <p>Utilizou-se o pacote <code>demography</code> do R (lca ou forecast), que estima os parâmetros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>x</mi></msub><annotation encoding="application/x-tex">a_x</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>x</mi></msub><annotation encoding="application/x-tex">b_x</annotation></semantics></math> e <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math> via Singular Value Decomposition (SVD) e projeta <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math> com ARIMA(0,1,0) (random walk com drift) como padrão.</p>
+
+    <h3>Métricas de Avaliação de Erro</h3>
+    <p>Para validar a acurácia das projeções, calcularam-se MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto médio simétrico) para comparar valores observados e projetados.</p>
+
+    <h3>Incerteza das Projeções</h3>
+    <p>Os intervalos de confiança (IC 95%) foram gerados por simulação estocástica, considerando a variabilidade dos parâmetros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>x</mi></msub><annotation encoding="application/x-tex">b_x</annotation></semantics></math> e <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math>.</p>
+    <p class="source"><strong>Referência:</strong> Lee & Carter (1992); pacote demography (Hyndman et al.).</p>
+</section>
+`
+```
+
+## Modelo Híbrido ARIMA-ETS com Ponderação Dinâmica
+
+```{ojs}
+html`
+<section id="hibrido">
+
+    <h3>Base do Modelo</h3>
+    <p>O método combina modelos ARIMA (para capturar autocorrelação e tendência) e ETS (para suavização exponencial com amortecimento de tendência), ponderados dinamicamente conforme seu desempenho em validação. A previsão final é dada por:</p>
+    <div class="formula">
+        <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><mo>=</mo><msub><mi>w</mi><mrow><mi>A</mi><mi>R</mi><mi>I</mi><mi>M</mi><mi>A</mi></mrow></msub><mo>⋅</mo><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mrow><mi>A</mi><mi>R</mi><mi>I</mi><mi>M</mi><mi>A</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>+</mo><msub><mi>w</mi><mrow><mi>E</mi><mi>T</mi><mi>S</mi></mrow></msub><mo>⋅</mo><msub><mover><mi>y</mi><mo accent="true">̂</mo></mover><mrow><mi>E</mi><mi>T</mi><mi>S</mi><mo>,</mo><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\hat{y}_t = w_{ARIMA} \cdot \hat{y}_{ARIMA,t} + w_{ETS} \cdot \hat{y}_{ETS,t}</annotation></semantics></math>
+    </div>
+    <ul>
+        <li><strong>ARIMA(p,d,q):</strong> Ajustado automaticamente via minimização do AIC.</li>
+        <li><strong>ETS (Holt-Winters):</strong> Modelo aditivo com tendência amortecida.</li>
+        <li><strong>Pesos (<code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mrow><mi>A</mi><mi>R</mi><mi>I</mi><mi>M</mi><mi>A</mi></mrow></msub><annotation encoding="application/x-tex">w_{ARIMA}</annotation></semantics></math></code>, <code><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mrow><mi>E</mi><mi>T</mi><mi>S</mi></mrow></msub><annotation encoding="application/x-tex">w_{ETS}</annotation></semantics></math></code>):</strong> Definidos pelo inverso do MSE na validação, priorizando o modelo mais preciso.</li>
+    </ul>
+
+    <h3>Implementação</h3>
+    <ul>
+        <li><strong>Treino (2000–2010):</strong> Ajuste dos modelos ARIMA e ETS.</li>
+        <li><strong>Validação (2011–2014):</strong> Cálculo dos pesos ótimos.</li>
+        <li><strong>Teste (2015–2019):</strong> Avaliação final com métricas robustas.</li>
+    </ul>
+
+    <h3>Métricas de Avaliação</h3>
+    <p>Foram calculados: MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto simétrico).</p>
+
+    <h3>Intervalos de Confiança</h3>
+    <p>Os intervalos de confiança (IC 95%) foram estimados por simulação de Monte Carlo, considerando:</p>
+    <ul>
+        <li><strong>Variabilidade do ARIMA:</strong> Distribuição dos resíduos e incerteza nos parâmetros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>d</mi><mo>,</mo><mi>q</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(p,d,q)</annotation></semantics></math>.</li>
+        <li><strong>Variabilidade do ETS:</strong> Erro de suavização e parâmetros de tendência.</li>
+        <li><strong>Propagação de incerteza:</strong> Combinação das distribuições preditivas de ambos modelos, mantendo a proporção dos pesos <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mrow><mi>A</mi><mi>R</mi><mi>I</mi><mi>M</mi><mi>A</mi></mrow></msub><annotation encoding="application/x-tex">w_{ARIMA}</annotation></semantics></math> e <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mrow><mi>E</mi><mi>T</mi><mi>S</mi></mrow></msub><annotation encoding="application/x-tex">w_{ETS}</annotation></semantics></math>.</li>
+    </ul>
+    <p class="source"><strong>Referência:</strong> Baseado em metodologias de Hyndman & Athanasopoulos (2018).</p>
+</section>
+`
+```

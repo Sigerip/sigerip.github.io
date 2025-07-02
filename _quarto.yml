@@ -9,6 +9,8 @@ website:
     left:
       - href: index.qmd
         text: Início
+      - href: mort_inf.qmd
+        text: Mortalidade Infantil
       - href: dados_mortalidade.qmd
         text: Dados de Mortalidade
       - href: previsao_mortalidade.qmd
@@ -17,6 +19,8 @@ website:
         text: Expectativa de Vida
       - href: prev_exp_vida.qmd
         text: Previsão de Expectativa de Vida
+      - href: metodologia.qmd
+        text: Metodologia
     right:  
       - icon: github
         href: https://github.com/Sigerip
@@ -28,6 +32,4 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-
+    lang: pt-BR
