@@ -9,7 +9,6 @@ execute:
 ::: {.panel-tabset}
 
 ## Gráfico
-### Filtros
 ```{ojs}
 d3 = require("d3@7")
 
@@ -19,7 +18,8 @@ tabua = await FileAttachment("dados/base_dados/taxa_mortalidade.csv").csv()
 
 // filtros
 anos = Array.from({length: 2023 - 2000 + 1}, (_, i) => 2000 + i);
-regioes = [...new Set(tabua.map(d => d.local))].sort();
+regioes = ["Brasil", "Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+
 faixas_etaria = [...new Set(tabua.map(d => d.faixa_etaria))].sort();
 
 viewof seletores1 = {
@@ -149,6 +149,14 @@ faixa1 = seletores1.faixa
 
 ```{ojs}
 {
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+  
   const width = 760;
   const height = 500;
   const margin = { top: 60, right: 30, bottom: 50, left: 50 };
@@ -216,6 +224,7 @@ faixa1 = seletores1.faixa
     .attr("x", width / 2)
     .attr("y", 35)
     .attr("text-anchor", "middle")
+    .attr("fill", "black")
     .text("Ano");
 
   svg.append("g")
@@ -226,6 +235,7 @@ faixa1 = seletores1.faixa
     .attr("y", -40)
     .attr("x", -height / 2)
     .attr("text-anchor", "middle")
+    .attr("fill", "black")
     .text("log(Mx)");
 
   // Função para gerar as linhas
@@ -250,6 +260,7 @@ faixa1 = seletores1.faixa
 
   return svg.node();
 }
+html`<p>Para acessar a metodologia utilizada, <a href="metodologia.html#proje%C3%A7%C3%B5es-de-mortalidade-do-ibge">clique aqui</a>.</p>`
 ```
 
 ## Tabela
@@ -276,7 +287,6 @@ html`
 ::: {.panel-tabset}
 
 ## Gráfico
-### Filtros
 ```{ojs}
 viewof seletores3 = {
   const container = htl.html`
@@ -397,6 +407,14 @@ regiao3 = seletores3.regiao
 ano3 = seletores3.ano
 
 {
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+
   const width = 760;
   const height = 500;
   const margin = { top: 60, right: 30, bottom: 120, left: 50 };
@@ -525,8 +543,8 @@ ano3 = seletores3.ano
     .attr("x", width / 2)
     .attr("y", 60)
     .attr("text-anchor", "middle")
-    .text("Faixa Etária")
-    .attr("font-size", "12px");
+    .attr("fill", "black")
+    .text("Faixa Etária");
 
   // Eixo Y
   svg.append("g")
@@ -537,8 +555,8 @@ ano3 = seletores3.ano
     .attr("y", -40)
     .attr("x", -height / 2)
     .attr("text-anchor", "middle")
-    .text("log(Mx)")
-    .attr("font-size", "12px");
+    .attr("fill", "black")
+    .text("log(Mx)");
 
   // Desenhar linhas para cada sexo
   const sexos = ['masculino', 'feminino', 'ambos'];
@@ -569,6 +587,7 @@ ano3 = seletores3.ano
 
   return svg.node();
 }
+html`<p>Para acessar a metodologia utilizada, <a href="metodologia.html#proje%C3%A7%C3%B5es-de-mortalidade-do-ibge">clique aqui</a>.</p>`
 
 ```
 

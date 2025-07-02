@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
@@ -87,17 +87,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -121,8 +121,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">SIGERIP</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -130,6 +130,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mort_inf.html"> 
+<span class="menu-text">Mortalidade Infantil</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./dados_mortalidade.html"> 
@@ -146,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="./prev_exp_vida.html"> 
 <span class="menu-text">Previsão de Expectativa de Vida</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./metodologia.html"> 
+<span class="menu-text">Metodologia</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -172,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Nesta página</h2>
    
   <ul>
   <li><a href="#taxa-central-de-mortalidade-de-2000-à-2023-para-os-modelos-de-lee-miler-e-lee-carter" id="toc-taxa-central-de-mortalidade-de-2000-à-2023-para-os-modelos-de-lee-miler-e-lee-carter" class="nav-link active" data-scroll-target="#taxa-central-de-mortalidade-de-2000-à-2023-para-os-modelos-de-lee-miler-e-lee-carter">Taxa central de mortalidade de 2000 à 2023 para os modelos de Lee-Miler e Lee-Carter</a></li>
@@ -203,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="-2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados2/erros.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tabua_comb <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados1/previsoes_combinado.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tabua_comb <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados1/previsoes_combinado.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -261,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  {</span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>        <span class="dt">value</span><span class="op">:</span> [<span class="st">'Brasil'</span>]<span class="op">,</span></span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="dt">label</span><span class="op">:</span> <span class="st">"Local: "</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    })</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -776,7 +784,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-555"><a href="#cb3-555" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb3-556"><a href="#cb3-556" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-557"><a href="#cb3-557" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb3-558"><a href="#cb3-558" aria-hidden="true" tabindex="-1"></a>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-558"><a href="#cb3-558" aria-hidden="true" tabindex="-1"></a>}}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -815,7 +823,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-575"><a href="#cb4-575" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;p&gt;Nenhum dado selecionado.&lt;/p&gt;`</span></span>
 <span id="cb4-576"><a href="#cb4-576" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb4-577"><a href="#cb4-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-578"><a href="#cb4-578" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-578"><a href="#cb4-578" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-4-1" data-nodetype="declaration">
@@ -855,7 +863,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="584" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 583;"><span id="cb5-584"><a href="#cb5-584" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Modelos&lt;/h1&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="584" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 583;"><span id="cb5-584"><a href="#cb5-584" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Modelos&lt;/h1&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="expression">
@@ -863,7 +871,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="585" data-source-offset="-24"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 584;"><span id="cb6-585"><a href="#cb6-585" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="585" data-source-offset="-24"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 584;"><span id="cb6-585"><a href="#cb6-585" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-2" data-nodetype="expression">
@@ -880,7 +888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-592"><a href="#cb7-592" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/a&gt;</span></span>
 <span id="cb7-593"><a href="#cb7-593" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
 <span id="cb7-594"><a href="#cb7-594" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body&gt;</span></span>
-<span id="cb7-595"><a href="#cb7-595" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-595"><a href="#cb7-595" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-3" data-nodetype="expression">
@@ -1119,7 +1127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-824"><a href="#cb8-824" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> qual1<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span> </span>
 <span id="cb8-825"><a href="#cb8-825" aria-hidden="true" tabindex="-1"></a>    <span class="op">?</span> <span class="fu">html</span><span class="vs">`&lt;p&gt;Nenhum dado selecionado.&lt;/p&gt;`</span></span>
 <span id="cb8-826"><a href="#cb8-826" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> container<span class="op">;</span></span>
-<span id="cb8-827"><a href="#cb8-827" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-827"><a href="#cb8-827" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-6-1" data-nodetype="declaration">
@@ -1208,7 +1216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="833" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 832;"><span id="cb9-833"><a href="#cb9-833" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Conbiada (Arima + ETS)&lt;/h1&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="833" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 832;"><span id="cb9-833"><a href="#cb9-833" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Conbiada (Arima + ETS)&lt;/h1&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-1" data-nodetype="expression">
@@ -1216,7 +1224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="834" data-source-offset="-45"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 833;"><span id="cb10-834"><a href="#cb10-834" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_comb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="834" data-source-offset="-45"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 833;"><span id="cb10-834"><a href="#cb10-834" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_comb)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-2" data-nodetype="expression">
@@ -1233,7 +1241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-841"><a href="#cb11-841" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/a&gt;</span></span>
 <span id="cb11-842"><a href="#cb11-842" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
 <span id="cb11-843"><a href="#cb11-843" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body&gt;</span></span>
-<span id="cb11-844"><a href="#cb11-844" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-844"><a href="#cb11-844" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-3" data-nodetype="expression">
@@ -1241,7 +1249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="845" data-source-offset="-228"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 844;"><span id="cb12-845"><a href="#cb12-845" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Lee-Miller&lt;/h1&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="845" data-source-offset="-228"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 844;"><span id="cb12-845"><a href="#cb12-845" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Lee-Miller&lt;/h1&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-4" data-nodetype="expression">
@@ -1249,7 +1257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="846" data-source-offset="-261"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 845;"><span id="cb13-846"><a href="#cb13-846" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="846" data-source-offset="-261"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 845;"><span id="cb13-846"><a href="#cb13-846" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_lm)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-5" data-nodetype="expression">
@@ -1266,7 +1274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-853"><a href="#cb14-853" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/a&gt;</span></span>
 <span id="cb14-854"><a href="#cb14-854" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
 <span id="cb14-855"><a href="#cb14-855" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body&gt;</span></span>
-<span id="cb14-856"><a href="#cb14-856" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-856"><a href="#cb14-856" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-6" data-nodetype="expression">
@@ -1274,7 +1282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="857" data-source-offset="-436"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 856;"><span id="cb15-857"><a href="#cb15-857" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Lee-Carter&lt;/h1&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="857" data-source-offset="-436"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 856;"><span id="cb15-857"><a href="#cb15-857" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h1&gt;Tábua Lee-Carter&lt;/h1&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-7" data-nodetype="expression">
@@ -1282,7 +1290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="858" data-source-offset="-469"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 857;"><span id="cb16-858"><a href="#cb16-858" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_lc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="858" data-source-offset="-469"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 857;"><span id="cb16-858"><a href="#cb16-858" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(prev_lc)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-8" data-nodetype="expression">
@@ -1299,7 +1307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-865"><a href="#cb17-865" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/a&gt;</span></span>
 <span id="cb17-866"><a href="#cb17-866" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
 <span id="cb17-867"><a href="#cb17-867" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/body&gt;</span></span>
-<span id="cb17-868"><a href="#cb17-868" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-868"><a href="#cb17-868" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-9" data-nodetype="expression">
@@ -1373,12 +1381,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiada");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiada");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",

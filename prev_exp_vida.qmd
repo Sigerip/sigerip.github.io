@@ -8,13 +8,12 @@ execute:
 ::: {.panel-tabset}
 
 ## Gráfico
-### Filtros
 ```{ojs}
 d3 = require("d3@7")
 tabua_comb = await FileAttachment("dados/dados1/tabuas_combinad.csv").csv()
 tabua_lm = await FileAttachment("dados/dados2/tabua_lm.csv").csv()
 tabua_lc = await FileAttachment("dados/dados2/tabua_lc.csv").csv()
-regiao1 = [...new Set(tabua_comb.map(d => d.Local))].sort();
+regioes = ["Brasil", "Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"];
 anos = [...new Set(tabua_comb.map(d => d.Ano))].sort();
 faixas_etaria = [...new Set(tabua_comb.map(d => d.faixa_etaria))]
 
@@ -52,7 +51,7 @@ viewof seletores = {
             background-position: right 8px center;
             background-size: 16px;
             margin-top: 10px;">
-            ${regiao1.map(regiao => 
+            ${regioes.map(regiao => 
               htl.html`<option value=${regiao}>${regiao}</option>`
             )}
           </select>
@@ -206,10 +205,18 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
 ```{ojs}
 {
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+
   //Combinado
   if (modelo.includes('ARIMA+ETS')){
     // Declare the chart dimensions and margins.
-    const width = 928;
+    const width = 760;
     const height = 500;
     const marginTop = 20;
     const marginRight = 30;
@@ -235,20 +242,29 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
         .style("-webkit-tap-highlight-color", "transparent")
         .style("overflow", "visible")
-        .on("pointerenter pointermove", pointermoved)
-        .on("pointerleave", pointerleft)
+        //.on("pointerenter pointermove", pointermoved)
+        //.on("pointerleave", pointerleft)
         .on("touchstart", event => event.preventDefault());
 
     // Add the x-axis.
     svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+        
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", height) // Posição abaixo do eixo
+      .style("font-size", "14px")
+      .style("fill", "currentColor")
+      .text("Ano");
 
     // Add the y-axis, remove the domain line, add grid lines and a label.
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y).ticks(height / 40))
         .call(g => g.select(".domain").remove())
+        .style("font-size", "12px")
         .call(g => g.selectAll(".tick line").clone()
             .attr("x2", width - marginLeft - marginRight)
             .attr("stroke-opacity", 0.1))
@@ -257,6 +273,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
             .attr("y", 10)
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
+            .style("font-size", "18px")
             .text("ex"));
 
     // Append a path for the line.
@@ -267,7 +284,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("d", line(ex_comb));
 
     // Create the tooltip container.
-    const tooltip = svg.append("g");
+    /*const tooltip = svg.append("g");
 
     function formatValue(value) {
       return value.toLocaleString("en", {
@@ -316,7 +333,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
     function pointerleft() {
       tooltip.style("display", "none");
-    }
+    }*/
 
     // Wraps the text with a callout path of the correct size, as measured in the page.
     function size(text, path) {
@@ -330,8 +347,15 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
   //Lee-Miller
   else if (modelo.includes('Lee-Miller')){
+    const ptBRLocaleDefinition = {
+      decimal: ",",
+      thousands: "",
+      grouping: [3],
+      currency: ["R$", ""]
+    };
+    d3.formatDefaultLocale(ptBRLocaleDefinition);
     // Declare the chart dimensions and margins.
-    const width = 928;
+    const width = 760;
     const height = 500;
     const marginTop = 20;
     const marginRight = 30;
@@ -357,8 +381,8 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
         .style("-webkit-tap-highlight-color", "transparent")
         .style("overflow", "visible")
-        .on("pointerenter pointermove", pointermoved)
-        .on("pointerleave", pointerleft)
+        //.on("pointerenter pointermove", pointermoved)
+        //.on("pointerleave", pointerleft)
         .on("touchstart", event => event.preventDefault());
 
     // Add the x-axis.
@@ -371,6 +395,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y).ticks(height / 40))
         .call(g => g.select(".domain").remove())
+        .style("font-size", "12px")
         .call(g => g.selectAll(".tick line").clone()
             .attr("x2", width - marginLeft - marginRight)
             .attr("stroke-opacity", 0.1))
@@ -379,6 +404,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
             .attr("y", 10)
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
+            .style("font-size", "18px")
             .text("ex"));
 
     // Append a path for the line.
@@ -389,10 +415,10 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("d", line(ex_lm));
 
     // Create the tooltip container.
-    const tooltip = svg.append("g");
+    /*const tooltip = svg.append("g");
 
     function formatValue(value) {
-      return value.toLocaleString("en", {
+      return value.toLocaleString("pt-BR", {
         style: "decimal", // Altera para estilo numérico
         minimumFractionDigits: 2, // Mantém 2 casas decimais
         maximumFractionDigits: 2
@@ -400,7 +426,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
     }
     
     function formatDate(date) {
-      return date.toLocaleString("en", {
+      return date.toLocaleString("pt-BR", {
         month: "short",
         day: "numeric",
         year: "numeric",
@@ -438,7 +464,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
     function pointerleft() {
       tooltip.style("display", "none");
-    }
+    }*/
 
     // Wraps the text with a callout path of the correct size, as measured in the page.
     function size(text, path) {
@@ -452,8 +478,16 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
   //Lee-Carter
   else if (modelo.includes('Lee-Carter')){
+    const ptBRLocaleDefinition = {
+      decimal: ",",
+      thousands: "",
+      grouping: [3],
+      currency: ["R$", ""]
+    };
+    d3.formatDefaultLocale(ptBRLocaleDefinition);
+
     // Declare the chart dimensions and margins.
-    const width = 928;
+    const width = 760;
     const height = 500;
     const marginTop = 20;
     const marginRight = 30;
@@ -479,8 +513,8 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
         .style("-webkit-tap-highlight-color", "transparent")
         .style("overflow", "visible")
-        .on("pointerenter pointermove", pointermoved)
-        .on("pointerleave", pointerleft)
+        //.on("pointerenter pointermove", pointermoved)
+        //.on("pointerleave", pointerleft)
         .on("touchstart", event => event.preventDefault());
 
     // Add the x-axis.
@@ -493,6 +527,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y).ticks(height / 40))
         .call(g => g.select(".domain").remove())
+        .style("font-size", "12px")
         .call(g => g.selectAll(".tick line").clone()
             .attr("x2", width - marginLeft - marginRight)
             .attr("stroke-opacity", 0.1))
@@ -501,6 +536,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
             .attr("y", 10)
             .attr("fill", "currentColor")
             .attr("text-anchor", "start")
+            .style("font-size", "18px")
             .text("ex"));
 
     // Append a path for the line.
@@ -511,7 +547,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
         .attr("d", line(ex_lc));
 
     // Create the tooltip container.
-    const tooltip = svg.append("g");
+    /*const tooltip = svg.append("g");
 
     function formatValue(value) {
       return value.toLocaleString("en", {
@@ -522,7 +558,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
     }
     
     function formatDate(date) {
-      return date.toLocaleString("en", {
+      return date.toLocaleString("pt-BR", {
         month: "short",
         day: "numeric",
         year: "numeric",
@@ -560,7 +596,7 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
 
     function pointerleft() {
       tooltip.style("display", "none");
-    }
+    }*/
 
     // Wraps the text with a callout path of the correct size, as measured in the page.
     function size(text, path) {
@@ -570,6 +606,17 @@ ex_lc = tabua_lc.filter(d => d.faixa_etaria === faixa && d.local === regiao && d
     }
 
     return svg.node();
+  }
+}
+{  
+  if (modelo.includes("ARIMA+ETS")) {
+    return html`<p>Para acessar a metodologia utilizada no modelo combinado ARIMA com ETS, <a href="metodologia.html#modelo-h%C3%ADbrido-arima-ets-com-pondera%C3%A7%C3%A3o-din%C3%A2mica">clique aqui</a>.</p>`;
+  }
+  else if (modelo.includes("Lee-Miller")) {
+    return html`<p>Para acessar a metodologia utilizada no modelo Lee-Miller, <a href="metodologia.html#modelo-lee-carter">clique aqui</a>.</p>`;
+  }
+  else if (modelo.includes("Lee-Carter")) {
+    return html`<p>Para acessar a metodologia utilizada no modelo Lee-Carter, <a href="metodologia.html#modelo-lee-carter">clique aqui</a>.</p>`;
   }
 }
 ```

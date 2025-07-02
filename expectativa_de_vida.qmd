@@ -7,11 +7,11 @@ execute:
 ::: {.panel-tabset}
 
 ## Gráfico
-### Filtros
 ```{ojs}
 d3 = require("d3@7")
 tabua = await FileAttachment("dados/base_dados/tabua_concatenada.csv").csv()
-regioes = [...new Set(tabua.map(d => d.Local))].sort();
+
+regioes = ["Brasil", "Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
 faixas_etaria = [...new Set(tabua.map(d => d.faixa_etaria))].sort();
 
 expectativa = tabua.filter(d => d.faixa_etaria === faixa && d.Local === regiao && d.sexo ==='Ambos').map(d => ({
@@ -150,8 +150,16 @@ faixa = seletores.faixa
 
 ```{ojs}
 {
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+
   // Declare the chart dimensions and margins.
-  const width = 928;
+  const width = 760;
   const height = 500;
   const marginTop = 20;
   const marginRight = 30;
@@ -186,11 +194,20 @@ faixa = seletores.faixa
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
 
+  svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width / 2)
+      .attr("y", height) // Posição abaixo do eixo
+      .style("font-size", "14px")
+      .style("fill", "currentColor")
+      .text("Ano");
+
   // Add the y-axis, remove the domain line, add grid lines and a label.
   svg.append("g")
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(y).ticks(height / 40))
       .call(g => g.select(".domain").remove())
+      .style("font-size", "12px")
       .call(g => g.selectAll(".tick line").clone()
           .attr("x2", width - marginLeft - marginRight)
           .attr("stroke-opacity", 0.1))
@@ -199,6 +216,7 @@ faixa = seletores.faixa
           .attr("y", 10)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
+          .style("font-size", "18px")
           .text("ex"));
 
   // Append a path for the line.
@@ -220,7 +238,7 @@ faixa = seletores.faixa
   }
   
   function formatDate(date) {
-    return date.toLocaleString("en", {
+    return date.toLocaleString("pt-BR", {
       month: "short",
       day: "numeric",
       year: "numeric",
@@ -269,6 +287,8 @@ faixa = seletores.faixa
 
   return svg.node();
 }
+
+html`<p>Para acessar a metodologia, <a href="metodologia.html#proje%C3%A7%C3%B5es-de-mortalidade-do-ibge">clique aqui</a>.</p>`
 ```
 
 ## Tabela

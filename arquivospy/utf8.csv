@@ -1,0 +1,1123 @@
+Localidade;Código IBGE;Código DataSUS;Ano;Taxa
+Brasil;0;0;1990;47.1
+Brasil;0;0;1991;44.39
+Brasil;0;0;1992;41.85
+Brasil;0;0;1993;39.45
+Brasil;0;0;1994;37.2
+Brasil;0;0;1995;35.07
+Brasil;0;0;1996;33.06
+Brasil;0;0;1997;31.17
+Brasil;0;0;1998;29.38
+Brasil;0;0;1999;27.7
+Brasil;0;0;2000;26.1
+Brasil;0;0;2001;24.9
+Brasil;0;0;2002;24.9
+Brasil;0;0;2003;23.4
+Brasil;0;0;2004;21.5
+Brasil;0;0;2005;20.4
+Brasil;0;0;2006;19.6
+Brasil;0;0;2007;18.6
+Brasil;0;0;2008;17.7
+Brasil;0;0;2009;16.8
+Brasil;0;0;2010;16.0
+Brasil;0;0;2011;15.3
+Brasil;0;0;2012;13.5
+Brasil;0;0;2013;13.4
+Brasil;0;0;2014;12.9
+Brasil;0;0;2015;12.4
+Brasil;0;0;2016;12.7
+Brasil;0;0;2017;12.4
+Brasil;0;0;2018;12.2
+Brasil;0;0;2019;12.4
+Brasil;0;0;2020;11.5
+Brasil;0;0;2021;11.9
+Brasil;0;0;2022;12.6
+Brasil;0;0;2023;12.62
+Norte;1;1;1990;45.86
+Norte;1;1;1991;44.35
+Norte;1;1;1992;42.89
+Norte;1;1;1993;41.47
+Norte;1;1;1994;40.11
+Norte;1;1;1995;38.79
+Norte;1;1;1996;37.51
+Norte;1;1;1997;36.27
+Norte;1;1;1998;35.07
+Norte;1;1;1999;33.92
+Norte;1;1;2000;32.8
+Norte;1;1;2001;32.1
+Norte;1;1;2002;32.1
+Norte;1;1;2003;29.7
+Norte;1;1;2004;27.8
+Norte;1;1;2005;27.1
+Norte;1;1;2006;26.8
+Norte;1;1;2007;25.3
+Norte;1;1;2008;23.1
+Norte;1;1;2009;22.3
+Norte;1;1;2010;21.0
+Norte;1;1;2011;19.9
+Norte;1;1;2012;16.6
+Norte;1;1;2013;16.5
+Norte;1;1;2014;15.7
+Norte;1;1;2015;15.2
+Norte;1;1;2016;15.5
+Norte;1;1;2017;15.4
+Norte;1;1;2018;15.3
+Norte;1;1;2019;15.1
+Norte;1;1;2020;14.5
+Norte;1;1;2021;15.0
+Norte;1;1;2022;15.1
+Norte;1;1;2023;15.9
+Nordeste;2;2;1990;75.76
+Nordeste;2;2;1991;70.31
+Nordeste;2;2;1992;65.26
+Nordeste;2;2;1993;60.57
+Nordeste;2;2;1994;56.21
+Nordeste;2;2;1995;52.17
+Nordeste;2;2;1996;48.42
+Nordeste;2;2;1997;44.94
+Nordeste;2;2;1998;41.71
+Nordeste;2;2;1999;38.71
+Nordeste;2;2;2000;35.9
+Nordeste;2;2;2001;33.4
+Nordeste;2;2;2002;33.4
+Nordeste;2;2;2003;30.8
+Nordeste;2;2;2004;27.8
+Nordeste;2;2;2005;25.9
+Nordeste;2;2;2006;24.8
+Nordeste;2;2;2007;23.2
+Nordeste;2;2;2008;21.8
+Nordeste;2;2;2009;20.3
+Nordeste;2;2;2010;19.1
+Nordeste;2;2;2011;18.0
+Nordeste;2;2;2012;15.0
+Nordeste;2;2;2013;15.5
+Nordeste;2;2;2014;14.5
+Nordeste;2;2;2015;14.0
+Nordeste;2;2;2016;14.5
+Nordeste;2;2;2017;14.1
+Nordeste;2;2;2018;13.5
+Nordeste;2;2;2019;13.7
+Nordeste;2;2;2020;13.0
+Nordeste;2;2;2021;13.1
+Nordeste;2;2;2022;14.1
+Nordeste;2;2;2023;13.8
+Sudeste;3;3;1990;32.59
+Sudeste;3;3;1991;31.05
+Sudeste;3;3;1992;29.58
+Sudeste;3;3;1993;28.19
+Sudeste;3;3;1994;26.86
+Sudeste;3;3;1995;25.59
+Sudeste;3;3;1996;24.38
+Sudeste;3;3;1997;23.23
+Sudeste;3;3;1998;22.13
+Sudeste;3;3;1999;21.09
+Sudeste;3;3;2000;20.1
+Sudeste;3;3;2001;19.2
+Sudeste;3;3;2002;19.2
+Sudeste;3;3;2003;18.3
+Sudeste;3;3;2004;16.8
+Sudeste;3;3;2005;16.0
+Sudeste;3;3;2006;15.3
+Sudeste;3;3;2007;14.8
+Sudeste;3;3;2008;14.3
+Sudeste;3;3;2009;13.9
+Sudeste;3;3;2010;13.4
+Sudeste;3;3;2011;13.0
+Sudeste;3;3;2012;12.2
+Sudeste;3;3;2013;12.0
+Sudeste;3;3;2014;11.7
+Sudeste;3;3;2015;11.3
+Sudeste;3;3;2016;11.7
+Sudeste;3;3;2017;11.3
+Sudeste;3;3;2018;11.2
+Sudeste;3;3;2019;11.5
+Sudeste;3;3;2020;10.5
+Sudeste;3;3;2021;10.9
+Sudeste;3;3;2022;11.6
+Sudeste;3;3;2023;11.74
+Sul;4;4;1990;28.28
+Sul;4;4;1991;26.86
+Sul;4;4;1992;25.52
+Sul;4;4;1993;24.24
+Sul;4;4;1994;23.03
+Sul;4;4;1995;21.88
+Sul;4;4;1996;20.78
+Sul;4;4;1997;19.74
+Sul;4;4;1998;18.75
+Sul;4;4;1999;17.82
+Sul;4;4;2000;16.9
+Sul;4;4;2001;16.5
+Sul;4;4;2002;16.5
+Sul;4;4;2003;16.1
+Sul;4;4;2004;14.9
+Sul;4;4;2005;14.1
+Sul;4;4;2006;13.4
+Sul;4;4;2007;13.0
+Sul;4;4;2008;12.5
+Sul;4;4;2009;12.0
+Sul;4;4;2010;11.6
+Sul;4;4;2011;11.3
+Sul;4;4;2012;11.1
+Sul;4;4;2013;10.7
+Sul;4;4;2014;10.8
+Sul;4;4;2015;10.4
+Sul;4;4;2016;10.0
+Sul;4;4;2017;10.1
+Sul;4;4;2018;9.9
+Sul;4;4;2019;10.2
+Sul;4;4;2020;9.1
+Sul;4;4;2021;9.4
+Sul;4;4;2022;10.2
+Sul;4;4;2023;9.94
+Centro-Oeste;5;5;1990;34.35
+Centro-Oeste;5;5;1991;32.9
+Centro-Oeste;5;5;1992;31.51
+Centro-Oeste;5;5;1993;30.18
+Centro-Oeste;5;5;1994;28.91
+Centro-Oeste;5;5;1995;27.69
+Centro-Oeste;5;5;1996;26.52
+Centro-Oeste;5;5;1997;25.4
+Centro-Oeste;5;5;1998;24.33
+Centro-Oeste;5;5;1999;23.31
+Centro-Oeste;5;5;2000;22.3
+Centro-Oeste;5;5;2001;21.4
+Centro-Oeste;5;5;2002;21.4
+Centro-Oeste;5;5;2003;20.6
+Centro-Oeste;5;5;2004;19.7
+Centro-Oeste;5;5;2005;19.3
+Centro-Oeste;5;5;2006;18.5
+Centro-Oeste;5;5;2007;17.7
+Centro-Oeste;5;5;2008;17.1
+Centro-Oeste;5;5;2009;16.4
+Centro-Oeste;5;5;2010;15.9
+Centro-Oeste;5;5;2011;15.5
+Centro-Oeste;5;5;2012;13.6
+Centro-Oeste;5;5;2013;13.6
+Centro-Oeste;5;5;2014;13.0
+Centro-Oeste;5;5;2015;12.2
+Centro-Oeste;5;5;2016;12.7
+Centro-Oeste;5;5;2017;11.7
+Centro-Oeste;5;5;2018;11.8
+Centro-Oeste;5;5;2019;11.8
+Centro-Oeste;5;5;2020;11.2
+Centro-Oeste;5;5;2021;11.7
+Centro-Oeste;5;5;2022;12.6
+Centro-Oeste;5;5;2023;12.8
+Rondônia;11;11;1990;42.63
+Rondônia;11;11;1991;41.42
+Rondônia;11;11;1992;40.24
+Rondônia;11;11;1993;39.09
+Rondônia;11;11;1994;37.98
+Rondônia;11;11;1995;36.9
+Rondônia;11;11;1996;35.85
+Rondônia;11;11;1997;34.83
+Rondônia;11;11;1998;33.84
+Rondônia;11;11;1999;32.88
+Rondônia;11;11;2000;31.9
+Rondônia;11;11;2001;31.2
+Rondônia;11;11;2002;31.2
+Rondônia;11;11;2003;27.4
+Rondônia;11;11;2004;25.9
+Rondônia;11;11;2005;24.9
+Rondônia;11;11;2006;25.4
+Rondônia;11;11;2007;23.5
+Rondônia;11;11;2008;21.7
+Rondônia;11;11;2009;20.2
+Rondônia;11;11;2010;18.9
+Rondônia;11;11;2011;17.1
+Rondônia;11;11;2012;13.7
+Rondônia;11;11;2013;13.9
+Rondônia;11;11;2014;14.3
+Rondônia;11;11;2015;14.5
+Rondônia;11;11;2016;13.4
+Rondônia;11;11;2017;12.8
+Rondônia;11;11;2018;12.7
+Rondônia;11;11;2019;11.5
+Rondônia;11;11;2020;13.0
+Rondônia;11;11;2021;12.3
+Rondônia;11;11;2022;13.4
+Rondônia;11;11;2023;12.3
+Acre;12;12;1990;56.45
+Acre;12;12;1991;52.85
+Acre;12;12;1992;49.48
+Acre;12;12;1993;46.32
+Acre;12;12;1994;43.37
+Acre;12;12;1995;40.6
+Acre;12;12;1996;38.01
+Acre;12;12;1997;35.59
+Acre;12;12;1998;33.32
+Acre;12;12;1999;31.19
+Acre;12;12;2000;29.2
+Acre;12;12;2001;29.9
+Acre;12;12;2002;29.9
+Acre;12;12;2003;26.9
+Acre;12;12;2004;25.2
+Acre;12;12;2005;24.9
+Acre;12;12;2006;25.6
+Acre;12;12;2007;25.0
+Acre;12;12;2008;23.4
+Acre;12;12;2009;22.0
+Acre;12;12;2010;20.4
+Acre;12;12;2011;18.5
+Acre;12;12;2012;16.4
+Acre;12;12;2013;16.4
+Acre;12;12;2014;17.0
+Acre;12;12;2015;17.1
+Acre;12;12;2016;15.2
+Acre;12;12;2017;13.6
+Acre;12;12;2018;16.5
+Acre;12;12;2019;15.9
+Acre;12;12;2020;16.0
+Acre;12;12;2021;17.8
+Acre;12;12;2022;17.2
+Acre;12;12;2023;17.03
+Amazonas;13;13;1990;44.49
+Amazonas;13;13;1991;43.41
+Amazonas;13;13;1992;42.36
+Amazonas;13;13;1993;41.33
+Amazonas;13;13;1994;40.33
+Amazonas;13;13;1995;39.35
+Amazonas;13;13;1996;38.4
+Amazonas;13;13;1997;37.47
+Amazonas;13;13;1998;36.56
+Amazonas;13;13;1999;35.67
+Amazonas;13;13;2000;34.8
+Amazonas;13;13;2001;33.8
+Amazonas;13;13;2002;33.8
+Amazonas;13;13;2003;30.1
+Amazonas;13;13;2004;27.3
+Amazonas;13;13;2005;25.7
+Amazonas;13;13;2006;26.4
+Amazonas;13;13;2007;24.8
+Amazonas;13;13;2008;22.0
+Amazonas;13;13;2009;21.4
+Amazonas;13;13;2010;20.6
+Amazonas;13;13;2011;20.0
+Amazonas;13;13;2012;16.8
+Amazonas;13;13;2013;17.2
+Amazonas;13;13;2014;15.7
+Amazonas;13;13;2015;15.5
+Amazonas;13;13;2016;16.0
+Amazonas;13;13;2017;16.6
+Amazonas;13;13;2018;16.0
+Amazonas;13;13;2019;16.0
+Amazonas;13;13;2020;13.9
+Amazonas;13;13;2021;14.8
+Amazonas;13;13;2022;15.7
+Amazonas;13;13;2023;17.08
+Roraima;14;14;1990;39.65
+Roraima;14;14;1991;37.42
+Roraima;14;14;1992;35.31
+Roraima;14;14;1993;33.32
+Roraima;14;14;1994;31.45
+Roraima;14;14;1995;29.68
+Roraima;14;14;1996;28.01
+Roraima;14;14;1997;26.43
+Roraima;14;14;1998;24.95
+Roraima;14;14;1999;23.54
+Roraima;14;14;2000;22.2
+Roraima;14;14;2001;21.2
+Roraima;14;14;2002;21.2
+Roraima;14;14;2003;20.4
+Roraima;14;14;2004;22.1
+Roraima;14;14;2005;22.3
+Roraima;14;14;2006;22.4
+Roraima;14;14;2007;22.2
+Roraima;14;14;2008;20.6
+Roraima;14;14;2009;19.1
+Roraima;14;14;2010;18.0
+Roraima;14;14;2011;15.4
+Roraima;14;14;2012;16.5
+Roraima;14;14;2013;19.3
+Roraima;14;14;2014;20.2
+Roraima;14;14;2015;16.7
+Roraima;14;14;2016;18.5
+Roraima;14;14;2017;17.9
+Roraima;14;14;2018;19.9
+Roraima;14;14;2019;18.1
+Roraima;14;14;2020;19.2
+Roraima;14;14;2021;19.4
+Roraima;14;14;2022;18.8
+Roraima;14;14;2023;23.85
+Pará;15;15;1990;46.23
+Pará;15;15;1991;44.6
+Pará;15;15;1992;43.03
+Pará;15;15;1993;41.51
+Pará;15;15;1994;40.05
+Pará;15;15;1995;38.64
+Pará;15;15;1996;37.28
+Pará;15;15;1997;35.97
+Pará;15;15;1998;34.7
+Pará;15;15;1999;33.48
+Pará;15;15;2000;32.3
+Pará;15;15;2001;31.9
+Pará;15;15;2002;31.9
+Pará;15;15;2003;30.6
+Pará;15;15;2004;29.0
+Pará;15;15;2005;28.6
+Pará;15;15;2006;27.5
+Pará;15;15;2007;25.8
+Pará;15;15;2008;23.6
+Pará;15;15;2009;22.9
+Pará;15;15;2010;21.5
+Pará;15;15;2011;20.6
+Pará;15;15;2012;17.0
+Pará;15;15;2013;16.5
+Pará;15;15;2014;15.7
+Pará;15;15;2015;15.0
+Pará;15;15;2016;15.7
+Pará;15;15;2017;15.4
+Pará;15;15;2018;15.0
+Pará;15;15;2019;15.1
+Pará;15;15;2020;14.9
+Pará;15;15;2021;14.7
+Pará;15;15;2022;14.7
+Pará;15;15;2023;15.04
+Amapá;16;16;1990;38.1
+Amapá;16;16;1991;37.54
+Amapá;16;16;1992;36.99
+Amapá;16;16;1993;36.45
+Amapá;16;16;1994;35.91
+Amapá;16;16;1995;35.39
+Amapá;16;16;1996;34.87
+Amapá;16;16;1997;34.36
+Amapá;16;16;1998;33.86
+Amapá;16;16;1999;33.36
+Amapá;16;16;2000;32.9
+Amapá;16;16;2001;29.2
+Amapá;16;16;2002;29.2
+Amapá;16;16;2003;27.4
+Amapá;16;16;2004;27.3
+Amapá;16;16;2005;27.8
+Amapá;16;16;2006;27.5
+Amapá;16;16;2007;30.2
+Amapá;16;16;2008;29.0
+Amapá;16;16;2009;28.8
+Amapá;16;16;2010;25.4
+Amapá;16;16;2011;24.1
+Amapá;16;16;2012;20.4
+Amapá;16;16;2013;19.9
+Amapá;16;16;2014;18.1
+Amapá;16;16;2015;16.8
+Amapá;16;16;2016;18.3
+Amapá;16;16;2017;19.6
+Amapá;16;16;2018;18.5
+Amapá;16;16;2019;18.8
+Amapá;16;16;2020;18.0
+Amapá;16;16;2021;19.9
+Amapá;16;16;2022;18.1
+Amapá;16;16;2023;21.01
+Tocantins;17;17;1990;44.91
+Tocantins;17;17;1991;44.04
+Tocantins;17;17;1992;43.18
+Tocantins;17;17;1993;42.35
+Tocantins;17;17;1994;41.52
+Tocantins;17;17;1995;40.72
+Tocantins;17;17;1996;39.93
+Tocantins;17;17;1997;39.16
+Tocantins;17;17;1998;38.4
+Tocantins;17;17;1999;37.65
+Tocantins;17;17;2000;36.9
+Tocantins;17;17;2001;35.8
+Tocantins;17;17;2002;35.8
+Tocantins;17;17;2003;32.9
+Tocantins;17;17;2004;29.5
+Tocantins;17;17;2005;28.2
+Tocantins;17;17;2006;27.8
+Tocantins;17;17;2007;24.7
+Tocantins;17;17;2008;22.3
+Tocantins;17;17;2009;21.3
+Tocantins;17;17;2010;20.5
+Tocantins;17;17;2011;19.3
+Tocantins;17;17;2012;14.2
+Tocantins;17;17;2013;13.6
+Tocantins;17;17;2014;12.7
+Tocantins;17;17;2015;13.0
+Tocantins;17;17;2016;12.5
+Tocantins;17;17;2017;12.4
+Tocantins;17;17;2018;12.7
+Tocantins;17;17;2019;11.7
+Tocantins;17;17;2020;10.6
+Tocantins;17;17;2021;12.6
+Tocantins;17;17;2022;12.3
+Tocantins;17;17;2023;12.7
+Maranhão;21;21;1990;76.56
+Maranhão;21;21;1991;71.15
+Maranhão;21;21;1992;66.12
+Maranhão;21;21;1993;61.45
+Maranhão;21;21;1994;57.11
+Maranhão;21;21;1995;53.08
+Maranhão;21;21;1996;49.33
+Maranhão;21;21;1997;45.84
+Maranhão;21;21;1998;42.6
+Maranhão;21;21;1999;39.59
+Maranhão;21;21;2000;36.8
+Maranhão;21;21;2001;32.5
+Maranhão;21;21;2002;32.5
+Maranhão;21;21;2003;30.2
+Maranhão;21;21;2004;27.7
+Maranhão;21;21;2005;26.5
+Maranhão;21;21;2006;26.8
+Maranhão;21;21;2007;25.7
+Maranhão;21;21;2008;24.3
+Maranhão;21;21;2009;23.0
+Maranhão;21;21;2010;21.9
+Maranhão;21;21;2011;20.0
+Maranhão;21;21;2012;14.7
+Maranhão;21;21;2013;16.5
+Maranhão;21;21;2014;15.5
+Maranhão;21;21;2015;15.2
+Maranhão;21;21;2016;15.0
+Maranhão;21;21;2017;15.8
+Maranhão;21;21;2018;14.1
+Maranhão;21;21;2019;14.4
+Maranhão;21;21;2020;13.7
+Maranhão;21;21;2021;13.5
+Maranhão;21;21;2022;15.3
+Maranhão;21;21;2023;14.85
+Piauí;22;22;1990;64.97
+Piauí;22;22;1991;61.54
+Piauí;22;22;1992;58.3
+Piauí;22;22;1993;55.22
+Piauí;22;22;1994;52.31
+Piauí;22;22;1995;49.55
+Piauí;22;22;1996;46.94
+Piauí;22;22;1997;44.46
+Piauí;22;22;1998;42.12
+Piauí;22;22;1999;39.9
+Piauí;22;22;2000;37.8
+Piauí;22;22;2001;35.3
+Piauí;22;22;2002;35.3
+Piauí;22;22;2003;31.5
+Piauí;22;22;2004;28.3
+Piauí;22;22;2005;27.3
+Piauí;22;22;2006;26.6
+Piauí;22;22;2007;24.7
+Piauí;22;22;2008;23.5
+Piauí;22;22;2009;22.0
+Piauí;22;22;2010;20.7
+Piauí;22;22;2011;20.8
+Piauí;22;22;2012;16.6
+Piauí;22;22;2013;16.4
+Piauí;22;22;2014;15.5
+Piauí;22;22;2015;14.8
+Piauí;22;22;2016;16.2
+Piauí;22;22;2017;15.6
+Piauí;22;22;2018;14.9
+Piauí;22;22;2019;14.6
+Piauí;22;22;2020;13.9
+Piauí;22;22;2021;13.7
+Piauí;22;22;2022;15.8
+Piauí;22;22;2023;14.99
+Ceará;23;23;1990;79.53
+Ceará;23;23;1991;73.63
+Ceará;23;23;1992;68.17
+Ceará;23;23;1993;63.11
+Ceará;23;23;1994;58.43
+Ceará;23;23;1995;54.09
+Ceará;23;23;1996;50.08
+Ceará;23;23;1997;46.37
+Ceará;23;23;1998;42.93
+Ceará;23;23;1999;39.74
+Ceará;23;23;2000;36.8
+Ceará;23;23;2001;32.1
+Ceará;23;23;2002;32.1
+Ceará;23;23;2003;30.4
+Ceará;23;23;2004;26.9
+Ceará;23;23;2005;24.2
+Ceará;23;23;2006;22.1
+Ceará;23;23;2007;21.1
+Ceará;23;23;2008;19.1
+Ceará;23;23;2009;17.6
+Ceará;23;23;2010;16.2
+Ceará;23;23;2011;15.2
+Ceará;23;23;2012;12.7
+Ceará;23;23;2013;13.8
+Ceará;23;23;2014;12.3
+Ceará;23;23;2015;12.1
+Ceará;23;23;2016;12.6
+Ceará;23;23;2017;13.2
+Ceará;23;23;2018;12.1
+Ceará;23;23;2019;12.2
+Ceará;23;23;2020;11.6
+Ceará;23;23;2021;10.7
+Ceará;23;23;2022;11.7
+Ceará;23;23;2023;11.72
+Rio Grande do Norte;24;24;1990;75.67
+Rio Grande do Norte;24;24;1991;69.94
+Rio Grande do Norte;24;24;1992;64.65
+Rio Grande do Norte;24;24;1993;59.77
+Rio Grande do Norte;24;24;1994;55.25
+Rio Grande do Norte;24;24;1995;51.07
+Rio Grande do Norte;24;24;1996;47.21
+Rio Grande do Norte;24;24;1997;43.64
+Rio Grande do Norte;24;24;1998;40.34
+Rio Grande do Norte;24;24;1999;37.29
+Rio Grande do Norte;24;24;2000;34.5
+Rio Grande do Norte;24;24;2001;31.9
+Rio Grande do Norte;24;24;2002;31.9
+Rio Grande do Norte;24;24;2003;30.4
+Rio Grande do Norte;24;24;2004;27.2
+Rio Grande do Norte;24;24;2005;25.3
+Rio Grande do Norte;24;24;2006;24.5
+Rio Grande do Norte;24;24;2007;22.0
+Rio Grande do Norte;24;24;2008;21.3
+Rio Grande do Norte;24;24;2009;19.1
+Rio Grande do Norte;24;24;2010;17.2
+Rio Grande do Norte;24;24;2011;16.9
+Rio Grande do Norte;24;24;2012;14.0
+Rio Grande do Norte;24;24;2013;14.4
+Rio Grande do Norte;24;24;2014;12.8
+Rio Grande do Norte;24;24;2015;13.8
+Rio Grande do Norte;24;24;2016;12.8
+Rio Grande do Norte;24;24;2017;12.3
+Rio Grande do Norte;24;24;2018;11.7
+Rio Grande do Norte;24;24;2019;12.4
+Rio Grande do Norte;24;24;2020;11.3
+Rio Grande do Norte;24;24;2021;12.2
+Rio Grande do Norte;24;24;2022;11.1
+Rio Grande do Norte;24;24;2023;11.17
+Paraíba;25;25;1990;81.93
+Paraíba;25;25;1991;76.1
+Paraíba;25;25;1992;70.68
+Paraíba;25;25;1993;65.65
+Paraíba;25;25;1994;60.98
+Paraíba;25;25;1995;56.64
+Paraíba;25;25;1996;52.61
+Paraíba;25;25;1997;48.86
+Paraíba;25;25;1998;45.39
+Paraíba;25;25;1999;42.16
+Paraíba;25;25;2000;39.2
+Paraíba;25;25;2001;36.7
+Paraíba;25;25;2002;36.7
+Paraíba;25;25;2003;30.9
+Paraíba;25;25;2004;27.0
+Paraíba;25;25;2005;25.3
+Paraíba;25;25;2006;24.2
+Paraíba;25;25;2007;22.7
+Paraíba;25;25;2008;21.5
+Paraíba;25;25;2009;19.3
+Paraíba;25;25;2010;18.2
+Paraíba;25;25;2011;17.5
+Paraíba;25;25;2012;14.5
+Paraíba;25;25;2013;14.6
+Paraíba;25;25;2014;13.5
+Paraíba;25;25;2015;11.6
+Paraíba;25;25;2016;12.6
+Paraíba;25;25;2017;13.3
+Paraíba;25;25;2018;11.7
+Paraíba;25;25;2019;13.0
+Paraíba;25;25;2020;12.7
+Paraíba;25;25;2021;12.6
+Paraíba;25;25;2022;14.7
+Paraíba;25;25;2023;12.98
+Pernambuco;26;26;1990;76.97
+Pernambuco;26;26;1991;70.92
+Pernambuco;26;26;1992;65.35
+Pernambuco;26;26;1993;60.22
+Pernambuco;26;26;1994;55.49
+Pernambuco;26;26;1995;51.13
+Pernambuco;26;26;1996;47.11
+Pernambuco;26;26;1997;43.41
+Pernambuco;26;26;1998;40.0
+Pernambuco;26;26;1999;36.85
+Pernambuco;26;26;2000;34.0
+Pernambuco;26;26;2001;30.9
+Pernambuco;26;26;2002;30.9
+Pernambuco;26;26;2003;29.2
+Pernambuco;26;26;2004;26.7
+Pernambuco;26;26;2005;23.4
+Pernambuco;26;26;2006;22.1
+Pernambuco;26;26;2007;20.1
+Pernambuco;26;26;2008;19.4
+Pernambuco;26;26;2009;18.1
+Pernambuco;26;26;2010;17.0
+Pernambuco;26;26;2011;15.6
+Pernambuco;26;26;2012;14.2
+Pernambuco;26;26;2013;14.1
+Pernambuco;26;26;2014;13.2
+Pernambuco;26;26;2015;13.0
+Pernambuco;26;26;2016;13.9
+Pernambuco;26;26;2017;12.1
+Pernambuco;26;26;2018;12.4
+Pernambuco;26;26;2019;12.2
+Pernambuco;26;26;2020;11.6
+Pernambuco;26;26;2021;12.4
+Pernambuco;26;26;2022;13.3
+Pernambuco;26;26;2023;13.24
+Alagoas;27;27;1990;102.19
+Alagoas;27;27;1991;92.49
+Alagoas;27;27;1992;83.71
+Alagoas;27;27;1993;75.77
+Alagoas;27;27;1994;68.57
+Alagoas;27;27;1995;62.07
+Alagoas;27;27;1996;56.18
+Alagoas;27;27;1997;50.84
+Alagoas;27;27;1998;46.02
+Alagoas;27;27;1999;41.65
+Alagoas;27;27;2000;37.7
+Alagoas;27;27;2001;36.5
+Alagoas;27;27;2002;36.5
+Alagoas;27;27;2003;34.4
+Alagoas;27;27;2004;29.2
+Alagoas;27;27;2005;27.8
+Alagoas;27;27;2006;25.9
+Alagoas;27;27;2007;23.3
+Alagoas;27;27;2008;21.6
+Alagoas;27;27;2009;20.1
+Alagoas;27;27;2010;18.6
+Alagoas;27;27;2011;17.0
+Alagoas;27;27;2012;15.2
+Alagoas;27;27;2013;16.2
+Alagoas;27;27;2014;15.3
+Alagoas;27;27;2015;14.6
+Alagoas;27;27;2016;14.3
+Alagoas;27;27;2017;13.4
+Alagoas;27;27;2018;12.5
+Alagoas;27;27;2019;13.2
+Alagoas;27;27;2020;12.0
+Alagoas;27;27;2021;13.4
+Alagoas;27;27;2022;12.8
+Alagoas;27;27;2023;13.52
+Sergipe;28;28;1990;65.55
+Sergipe;28;28;1991;62.01
+Sergipe;28;28;1992;58.67
+Sergipe;28;28;1993;55.51
+Sergipe;28;28;1994;52.51
+Sergipe;28;28;1995;49.68
+Sergipe;28;28;1996;47.0
+Sergipe;28;28;1997;44.47
+Sergipe;28;28;1998;42.07
+Sergipe;28;28;1999;39.8
+Sergipe;28;28;2000;37.7
+Sergipe;28;28;2001;35.5
+Sergipe;28;28;2002;35.5
+Sergipe;28;28;2003;33.8
+Sergipe;28;28;2004;28.7
+Sergipe;28;28;2005;27.2
+Sergipe;28;28;2006;25.5
+Sergipe;28;28;2007;22.8
+Sergipe;28;28;2008;20.3
+Sergipe;28;28;2009;18.8
+Sergipe;28;28;2010;18.2
+Sergipe;28;28;2011;17.6
+Sergipe;28;28;2012;16.3
+Sergipe;28;28;2013;15.1
+Sergipe;28;28;2014;15.8
+Sergipe;28;28;2015;15.0
+Sergipe;28;28;2016;15.4
+Sergipe;28;28;2017;15.4
+Sergipe;28;28;2018;16.8
+Sergipe;28;28;2019;17.3
+Sergipe;28;28;2020;15.9
+Sergipe;28;28;2021;14.0
+Sergipe;28;28;2022;17.6
+Sergipe;28;28;2023;18.51
+Bahia;29;29;1990;66.01
+Bahia;29;29;1991;61.88
+Bahia;29;29;1992;58.0
+Bahia;29;29;1993;54.36
+Bahia;29;29;1994;50.95
+Bahia;29;29;1995;47.76
+Bahia;29;29;1996;44.77
+Bahia;29;29;1997;41.96
+Bahia;29;29;1998;39.33
+Bahia;29;29;1999;36.87
+Bahia;29;29;2000;34.6
+Bahia;29;29;2001;34.2
+Bahia;29;29;2002;34.2
+Bahia;29;29;2003;31.0
+Bahia;29;29;2004;29.0
+Bahia;29;29;2005;27.5
+Bahia;29;29;2006;26.3
+Bahia;29;29;2007;24.9
+Bahia;29;29;2008;23.6
+Bahia;29;29;2009;22.1
+Bahia;29;29;2010;21.0
+Bahia;29;29;2011;20.1
+Bahia;29;29;2012;17.0
+Bahia;29;29;2013;17.0
+Bahia;29;29;2014;16.4
+Bahia;29;29;2015;15.3
+Bahia;29;29;2016;16.0
+Bahia;29;29;2017;15.1
+Bahia;29;29;2018;15.2
+Bahia;29;29;2019;15.1
+Bahia;29;29;2020;14.3
+Bahia;29;29;2021;14.9
+Bahia;29;29;2022;15.3
+Bahia;29;29;2023;14.79
+Minas Gerais;31;31;1990;38.95
+Minas Gerais;31;31;1991;37.37
+Minas Gerais;31;31;1992;35.85
+Minas Gerais;31;31;1993;34.39
+Minas Gerais;31;31;1994;33.0
+Minas Gerais;31;31;1995;31.66
+Minas Gerais;31;31;1996;30.37
+Minas Gerais;31;31;1997;29.14
+Minas Gerais;31;31;1998;27.95
+Minas Gerais;31;31;1999;26.82
+Minas Gerais;31;31;2000;25.7
+Minas Gerais;31;31;2001;24.7
+Minas Gerais;31;31;2002;24.7
+Minas Gerais;31;31;2003;23.3
+Minas Gerais;31;31;2004;21.2
+Minas Gerais;31;31;2005;20.3
+Minas Gerais;31;31;2006;19.2
+Minas Gerais;31;31;2007;18.3
+Minas Gerais;31;31;2008;17.6
+Minas Gerais;31;31;2009;17.0
+Minas Gerais;31;31;2010;16.2
+Minas Gerais;31;31;2011;15.5
+Minas Gerais;31;31;2012;12.7
+Minas Gerais;31;31;2013;12.1
+Minas Gerais;31;31;2014;11.3
+Minas Gerais;31;31;2015;11.4
+Minas Gerais;31;31;2016;11.5
+Minas Gerais;31;31;2017;11.4
+Minas Gerais;31;31;2018;11.0
+Minas Gerais;31;31;2019;11.5
+Minas Gerais;31;31;2020;10.4
+Minas Gerais;31;31;2021;10.7
+Minas Gerais;31;31;2022;11.4
+Minas Gerais;31;31;2023;11.28
+Espírito Santo;32;32;1990;33.24
+Espírito Santo;32;32;1991;31.28
+Espírito Santo;32;32;1992;29.44
+Espírito Santo;32;32;1993;27.71
+Espírito Santo;32;32;1994;26.08
+Espírito Santo;32;32;1995;24.54
+Espírito Santo;32;32;1996;23.1
+Espírito Santo;32;32;1997;21.74
+Espírito Santo;32;32;1998;20.46
+Espírito Santo;32;32;1999;19.26
+Espírito Santo;32;32;2000;18.1
+Espírito Santo;32;32;2001;17.6
+Espírito Santo;32;32;2002;17.6
+Espírito Santo;32;32;2003;16.8
+Espírito Santo;32;32;2004;15.7
+Espírito Santo;32;32;2005;15.4
+Espírito Santo;32;32;2006;15.1
+Espírito Santo;32;32;2007;14.7
+Espírito Santo;32;32;2008;13.6
+Espírito Santo;32;32;2009;12.9
+Espírito Santo;32;32;2010;11.9
+Espírito Santo;32;32;2011;11.7
+Espírito Santo;32;32;2012;11.5
+Espírito Santo;32;32;2013;11.0
+Espírito Santo;32;32;2014;11.3
+Espírito Santo;32;32;2015;11.4
+Espírito Santo;32;32;2016;11.7
+Espírito Santo;32;32;2017;10.7
+Espírito Santo;32;32;2018;10.6
+Espírito Santo;32;32;2019;10.7
+Espírito Santo;32;32;2020;9.8
+Espírito Santo;32;32;2021;11.2
+Espírito Santo;32;32;2022;10.8
+Espírito Santo;32;32;2023;11.59
+Rio de Janeiro;33;33;1990;32.34
+Rio de Janeiro;33;33;1991;30.9
+Rio de Janeiro;33;33;1992;29.52
+Rio de Janeiro;33;33;1993;28.21
+Rio de Janeiro;33;33;1994;26.95
+Rio de Janeiro;33;33;1995;25.75
+Rio de Janeiro;33;33;1996;24.6
+Rio de Janeiro;33;33;1997;23.51
+Rio de Janeiro;33;33;1998;22.46
+Rio de Janeiro;33;33;1999;21.46
+Rio de Janeiro;33;33;2000;20.5
+Rio de Janeiro;33;33;2001;19.4
+Rio de Janeiro;33;33;2002;19.4
+Rio de Janeiro;33;33;2003;18.8
+Rio de Janeiro;33;33;2004;17.7
+Rio de Janeiro;33;33;2005;16.8
+Rio de Janeiro;33;33;2006;15.8
+Rio de Janeiro;33;33;2007;15.2
+Rio de Janeiro;33;33;2008;14.8
+Rio de Janeiro;33;33;2009;14.5
+Rio de Janeiro;33;33;2010;14.3
+Rio de Janeiro;33;33;2011;14.1
+Rio de Janeiro;33;33;2012;13.8
+Rio de Janeiro;33;33;2013;13.1
+Rio de Janeiro;33;33;2014;12.7
+Rio de Janeiro;33;33;2015;12.6
+Rio de Janeiro;33;33;2016;13.6
+Rio de Janeiro;33;33;2017;12.4
+Rio de Janeiro;33;33;2018;12.7
+Rio de Janeiro;33;33;2019;13.2
+Rio de Janeiro;33;33;2020;12.6
+Rio de Janeiro;33;33;2021;12.7
+Rio de Janeiro;33;33;2022;13.2
+Rio de Janeiro;33;33;2023;13.45
+São Paulo;35;35;1990;30.76
+São Paulo;35;35;1991;29.05
+São Paulo;35;35;1992;27.44
+São Paulo;35;35;1993;25.91
+São Paulo;35;35;1994;24.47
+São Paulo;35;35;1995;23.11
+São Paulo;35;35;1996;21.83
+São Paulo;35;35;1997;20.62
+São Paulo;35;35;1998;19.47
+São Paulo;35;35;1999;18.39
+São Paulo;35;35;2000;17.4
+São Paulo;35;35;2001;16.5
+São Paulo;35;35;2002;16.5
+São Paulo;35;35;2003;15.7
+São Paulo;35;35;2004;14.4
+São Paulo;35;35;2005;13.8
+São Paulo;35;35;2006;13.3
+São Paulo;35;35;2007;13.1
+São Paulo;35;35;2008;12.8
+São Paulo;35;35;2009;12.4
+São Paulo;35;35;2010;12.0
+São Paulo;35;35;2011;11.6
+São Paulo;35;35;2012;11.5
+São Paulo;35;35;2013;11.6
+São Paulo;35;35;2014;11.5
+São Paulo;35;35;2015;10.8
+São Paulo;35;35;2016;11.1
+São Paulo;35;35;2017;10.9
+São Paulo;35;35;2018;10.8
+São Paulo;35;35;2019;11.0
+São Paulo;35;35;2020;9.9
+São Paulo;35;35;2021;10.4
+São Paulo;35;35;2022;11.3
+São Paulo;35;35;2023;11.37
+Paraná;41;41;1990;35.08
+Paraná;41;41;1991;32.99
+Paraná;41;41;1992;31.04
+Paraná;41;41;1993;29.19
+Paraná;41;41;1994;27.46
+Paraná;41;41;1995;25.83
+Paraná;41;41;1996;24.3
+Paraná;41;41;1997;22.85
+Paraná;41;41;1998;21.5
+Paraná;41;41;1999;20.22
+Paraná;41;41;2000;19.0
+Paraná;41;41;2001;18.1
+Paraná;41;41;2002;18.1
+Paraná;41;41;2003;17.0
+Paraná;41;41;2004;15.6
+Paraná;41;41;2005;14.7
+Paraná;41;41;2006;14.0
+Paraná;41;41;2007;13.5
+Paraná;41;41;2008;13.0
+Paraná;41;41;2009;12.6
+Paraná;41;41;2010;12.0
+Paraná;41;41;2011;11.8
+Paraná;41;41;2012;11.7
+Paraná;41;41;2013;11.0
+Paraná;41;41;2014;11.2
+Paraná;41;41;2015;10.9
+Paraná;41;41;2016;10.5
+Paraná;41;41;2017;10.4
+Paraná;41;41;2018;10.3
+Paraná;41;41;2019;10.3
+Paraná;41;41;2020;9.3
+Paraná;41;41;2021;9.5
+Paraná;41;41;2022;10.3
+Paraná;41;41;2023;10.79
+Santa Catarina;42;42;1990;33.56
+Santa Catarina;42;42;1991;31.15
+Santa Catarina;42;42;1992;28.91
+Santa Catarina;42;42;1993;26.82
+Santa Catarina;42;42;1994;24.89
+Santa Catarina;42;42;1995;23.1
+Santa Catarina;42;42;1996;21.44
+Santa Catarina;42;42;1997;19.89
+Santa Catarina;42;42;1998;18.46
+Santa Catarina;42;42;1999;17.13
+Santa Catarina;42;42;2000;15.9
+Santa Catarina;42;42;2001;15.5
+Santa Catarina;42;42;2002;15.5
+Santa Catarina;42;42;2003;15.0
+Santa Catarina;42;42;2004;13.4
+Santa Catarina;42;42;2005;12.9
+Santa Catarina;42;42;2006;12.6
+Santa Catarina;42;42;2007;12.3
+Santa Catarina;42;42;2008;11.9
+Santa Catarina;42;42;2009;11.2
+Santa Catarina;42;42;2010;11.2
+Santa Catarina;42;42;2011;10.8
+Santa Catarina;42;42;2012;10.6
+Santa Catarina;42;42;2013;10.5
+Santa Catarina;42;42;2014;10.1
+Santa Catarina;42;42;2015;9.9
+Santa Catarina;42;42;2016;8.8
+Santa Catarina;42;42;2017;9.9
+Santa Catarina;42;42;2018;9.5
+Santa Catarina;42;42;2019;9.6
+Santa Catarina;42;42;2020;9.3
+Santa Catarina;42;42;2021;9.2
+Santa Catarina;42;42;2022;9.8
+Santa Catarina;42;42;2023;9.07
+Rio Grande do Sul;43;43;1990;26.23
+Rio Grande do Sul;43;43;1991;24.86
+Rio Grande do Sul;43;43;1992;23.56
+Rio Grande do Sul;43;43;1993;22.33
+Rio Grande do Sul;43;43;1994;21.16
+Rio Grande do Sul;43;43;1995;20.06
+Rio Grande do Sul;43;43;1996;19.01
+Rio Grande do Sul;43;43;1997;18.01
+Rio Grande do Sul;43;43;1998;17.07
+Rio Grande do Sul;43;43;1999;16.18
+Rio Grande do Sul;43;43;2000;15.3
+Rio Grande do Sul;43;43;2001;15.5
+Rio Grande do Sul;43;43;2002;15.5
+Rio Grande do Sul;43;43;2003;15.8
+Rio Grande do Sul;43;43;2004;15.0
+Rio Grande do Sul;43;43;2005;14.0
+Rio Grande do Sul;43;43;2006;13.2
+Rio Grande do Sul;43;43;2007;12.9
+Rio Grande do Sul;43;43;2008;12.4
+Rio Grande do Sul;43;43;2009;11.9
+Rio Grande do Sul;43;43;2010;11.3
+Rio Grande do Sul;43;43;2011;11.1
+Rio Grande do Sul;43;43;2012;10.8
+Rio Grande do Sul;43;43;2013;10.6
+Rio Grande do Sul;43;43;2014;10.7
+Rio Grande do Sul;43;43;2015;10.1
+Rio Grande do Sul;43;43;2016;10.2
+Rio Grande do Sul;43;43;2017;10.1
+Rio Grande do Sul;43;43;2018;9.8
+Rio Grande do Sul;43;43;2019;10.6
+Rio Grande do Sul;43;43;2020;8.6
+Rio Grande do Sul;43;43;2021;9.6
+Rio Grande do Sul;43;43;2022;10.5
+Rio Grande do Sul;43;43;2023;9.66
+Mato Grosso do Sul;50;50;1990;32.32
+Mato Grosso do Sul;50;50;1991;31.42
+Mato Grosso do Sul;50;50;1992;30.55
+Mato Grosso do Sul;50;50;1993;29.7
+Mato Grosso do Sul;50;50;1994;28.87
+Mato Grosso do Sul;50;50;1995;28.06
+Mato Grosso do Sul;50;50;1996;27.28
+Mato Grosso do Sul;50;50;1997;26.52
+Mato Grosso do Sul;50;50;1998;25.78
+Mato Grosso do Sul;50;50;1999;25.07
+Mato Grosso do Sul;50;50;2000;24.4
+Mato Grosso do Sul;50;50;2001;22.8
+Mato Grosso do Sul;50;50;2002;22.8
+Mato Grosso do Sul;50;50;2003;21.5
+Mato Grosso do Sul;50;50;2004;20.3
+Mato Grosso do Sul;50;50;2005;19.8
+Mato Grosso do Sul;50;50;2006;19.1
+Mato Grosso do Sul;50;50;2007;18.2
+Mato Grosso do Sul;50;50;2008;18.0
+Mato Grosso do Sul;50;50;2009;16.9
+Mato Grosso do Sul;50;50;2010;15.4
+Mato Grosso do Sul;50;50;2011;13.9
+Mato Grosso do Sul;50;50;2012;13.4
+Mato Grosso do Sul;50;50;2013;12.8
+Mato Grosso do Sul;50;50;2014;13.0
+Mato Grosso do Sul;50;50;2015;12.0
+Mato Grosso do Sul;50;50;2016;12.9
+Mato Grosso do Sul;50;50;2017;10.6
+Mato Grosso do Sul;50;50;2018;11.3
+Mato Grosso do Sul;50;50;2019;11.1
+Mato Grosso do Sul;50;50;2020;10.9
+Mato Grosso do Sul;50;50;2021;10.7
+Mato Grosso do Sul;50;50;2022;12.4
+Mato Grosso do Sul;50;50;2023;13.55
+Mato Grosso;51;51;1990;37.55
+Mato Grosso;51;51;1991;36.64
+Mato Grosso;51;51;1992;35.75
+Mato Grosso;51;51;1993;34.88
+Mato Grosso;51;51;1994;34.04
+Mato Grosso;51;51;1995;33.21
+Mato Grosso;51;51;1996;32.41
+Mato Grosso;51;51;1997;31.62
+Mato Grosso;51;51;1998;30.85
+Mato Grosso;51;51;1999;30.11
+Mato Grosso;51;51;2000;29.4
+Mato Grosso;51;51;2001;27.6
+Mato Grosso;51;51;2002;27.6
+Mato Grosso;51;51;2003;25.6
+Mato Grosso;51;51;2004;24.3
+Mato Grosso;51;51;2005;24.0
+Mato Grosso;51;51;2006;23.3
+Mato Grosso;51;51;2007;22.1
+Mato Grosso;51;51;2008;21.4
+Mato Grosso;51;51;2009;20.8
+Mato Grosso;51;51;2010;19.6
+Mato Grosso;51;51;2011;18.5
+Mato Grosso;51;51;2012;14.0
+Mato Grosso;51;51;2013;14.6
+Mato Grosso;51;51;2014;14.7
+Mato Grosso;51;51;2015;13.8
+Mato Grosso;51;51;2016;13.8
+Mato Grosso;51;51;2017;12.6
+Mato Grosso;51;51;2018;12.2
+Mato Grosso;51;51;2019;12.7
+Mato Grosso;51;51;2020;12.1
+Mato Grosso;51;51;2021;12.7
+Mato Grosso;51;51;2022;14.1
+Mato Grosso;51;51;2023;14.04
+Goiás;52;52;1990;35.1
+Goiás;52;52;1991;33.38
+Goiás;52;52;1992;31.74
+Goiás;52;52;1993;30.18
+Goiás;52;52;1994;28.7
+Goiás;52;52;1995;27.29
+Goiás;52;52;1996;25.95
+Goiás;52;52;1997;24.67
+Goiás;52;52;1998;23.46
+Goiás;52;52;1999;22.31
+Goiás;52;52;2000;21.2
+Goiás;52;52;2001;20.8
+Goiás;52;52;2002;20.8
+Goiás;52;52;2003;20.7
+Goiás;52;52;2004;19.9
+Goiás;52;52;2005;19.1
+Goiás;52;52;2006;18.5
+Goiás;52;52;2007;17.8
+Goiás;52;52;2008;16.7
+Goiás;52;52;2009;15.8
+Goiás;52;52;2010;15.9
+Goiás;52;52;2011;16.1
+Goiás;52;52;2012;14.4
+Goiás;52;52;2013;13.9
+Goiás;52;52;2014;12.8
+Goiás;52;52;2015;12.2
+Goiás;52;52;2016;13.0
+Goiás;52;52;2017;11.9
+Goiás;52;52;2018;12.5
+Goiás;52;52;2019;13.1
+Goiás;52;52;2020;11.4
+Goiás;52;52;2021;12.1
+Goiás;52;52;2022;12.7
+Goiás;52;52;2023;12.44
+Distrito Federal;53;53;1990;28.88
+Distrito Federal;53;53;1991;27.1
+Distrito Federal;53;53;1992;25.43
+Distrito Federal;53;53;1993;23.86
+Distrito Federal;53;53;1994;22.38
+Distrito Federal;53;53;1995;21.0
+Distrito Federal;53;53;1996;19.71
+Distrito Federal;53;53;1997;18.49
+Distrito Federal;53;53;1998;17.35
+Distrito Federal;53;53;1999;16.28
+Distrito Federal;53;53;2000;15.3
+Distrito Federal;53;53;2001;14.5
+Distrito Federal;53;53;2002;14.5
+Distrito Federal;53;53;2003;14.2
+Distrito Federal;53;53;2004;13.7
+Distrito Federal;53;53;2005;13.6
+Distrito Federal;53;53;2006;12.6
+Distrito Federal;53;53;2007;12.0
+Distrito Federal;53;53;2008;11.7
+Distrito Federal;53;53;2009;12.3
+Distrito Federal;53;53;2010;12.2
+Distrito Federal;53;53;2011;12.1
+Distrito Federal;53;53;2012;11.6
+Distrito Federal;53;53;2013;12.7
+Distrito Federal;53;53;2014;11.4
+Distrito Federal;53;53;2015;10.6
+Distrito Federal;53;53;2016;10.3
+Distrito Federal;53;53;2017;11.1
+Distrito Federal;53;53;2018;10.3
+Distrito Federal;53;53;2019;8.5
+Distrito Federal;53;53;2020;9.8
+Distrito Federal;53;53;2021;10.6
+Distrito Federal;53;53;2022;10.1
+Distrito Federal;53;53;2023;10.83
