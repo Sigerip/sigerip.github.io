@@ -1,0 +1,23 @@
+{
+  "dados_mortalidade.qmd": {
+    "dados_mortalidade.html": "cb53b386"
+  },
+  "expectativa_de_vida.qmd": {
+    "expectativa_de_vida.html": "a9198e46"
+  },
+  "index.qmd": {
+    "index.html": "465d2d84"
+  },
+  "metodologia.qmd": {
+    "metodologia.html": "7624f19e"
+  },
+  "mort_inf.qmd": {
+    "mort_inf.html": "2e4c9dfb"
+  },
+  "previsao_mortalidade.qmd": {
+    "previsao_mortalidade.html": "1eafecf5"
+  },
+  "prev_exp_vida.qmd": {
+    "prev_exp_vida.html": "32eb7041"
+  }
+}
