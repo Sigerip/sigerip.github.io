@@ -1,7 +1,7 @@
 ---
 execute: 
-  echo: false
-  panel: sidebar
+    echo: false
+    panel: sidebar
 ---
 
 ```{ojs}
@@ -199,7 +199,7 @@ html`
     <p>Utilizou-se o pacote <code>demography</code> do R (lca ou forecast), que estima os parâmetros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>x</mi></msub><annotation encoding="application/x-tex">a_x</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>x</mi></msub><annotation encoding="application/x-tex">b_x</annotation></semantics></math> e <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math> via Singular Value Decomposition (SVD) e projeta <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math> com ARIMA(0,1,0) (random walk com drift) como padrão.</p>
 
     <h3>Métricas de Avaliação de Erro</h3>
-    <p>Para validar a acurácia das projeções, calcularam-se MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto médio simétrico) para comparar valores observados e projetados.</p>
+    <p>Para validar a acurácia das projeções, calcularam-se RMSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto médio simétrico) para comparar valores observados e projetados.</p>
 
     <h3>Incerteza das Projeções</h3>
     <p>Os intervalos de confiança (IC 95%) foram gerados por simulação estocástica, considerando a variabilidade dos parâmetros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>x</mi></msub><annotation encoding="application/x-tex">b_x</annotation></semantics></math> e <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math>.</p>
@@ -233,7 +233,7 @@ html`
     </ul>
 
     <h3>Métricas de Avaliação</h3>
-    <p>Foram calculados: MSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto simétrico).</p>
+    <p>Foram calculados: RMSE (erro quadrático médio), MAE (erro absoluto médio) e sMAPE (erro percentual absoluto simétrico).</p>
 
     <h3>Intervalos de Confiança</h3>
     <p>Os intervalos de confiança (IC 95%) foram estimados por simulação de Monte Carlo, considerando:</p>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -64,15 +65,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -201,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="14" data-source-offset="-20"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>prev_comb <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">'dados/dados1/previsoes_combinad.csv'</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="14" data-source-offset="-20"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 13;"><span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>prev_comb <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">'dados/dados1/previsao_concatenados.csv'</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>prev_lm <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">'dados/dados2/previoes_lm.csv'</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>prev_lc <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">'dados/dados2/previoes_lc.csv'</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
@@ -330,7 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>data_filter1 <span class="op">=</span> prev_comb<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Local</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Sexo</span> <span class="op">===</span> sexo)<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
 <span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="dt">ano</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">Ano</span><span class="op">,</span></span>
 <span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="dt">prev</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(d<span class="op">.</span><span class="at">nMx_previsão</span>)</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="dt">prev</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(d<span class="op">.</span><span class="at">previsao</span>)</span>
 <span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>}))</span>
 <span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>data_filter2 <span class="op">=</span> prev_lm<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
@@ -627,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="342" data-source-offset="-9982"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 341;"><span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a>{  </span>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="342" data-source-offset="-9981"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 341;"><span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a>{  </span>
 <span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (modelo2<span class="op">.</span><span class="fu">includes</span>(<span class="st">"ARIMA+ETS"</span>)) {</span>
 <span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;p&gt;Para acessar a metodologia utilizada no modelo combinado ARIMA com ETS, &lt;a href="metodologia.html#modelo-h%C3%ADbrido-arima-ets-com-pondera%C3%A7%C3%A3o-din%C3%A2mica"&gt;clique aqui&lt;/a&gt;.&lt;/p&gt;`</span><span class="op">;</span></span>
 <span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a>  }</span>
@@ -701,7 +703,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;body&gt;</span></span>
 <span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;br&gt;</span></span>
 <span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Baixar previsões do modelo combinado </span></span>
-<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;a href="dados/dados1/previsoes_combinado.csv" download&gt;</span></span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;a href="dados/dados1/previsao_concatenados.csv" download&gt;</span></span>
 <span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a><span class="vs">        ARIMA+ETS.</span></span>
 <span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/a&gt;</span></span>
 <span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
@@ -733,66 +735,197 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="métricas-de-erro" class="level2">
 <h2 class="anchored" data-anchor-id="métricas-de-erro">Métricas de Erro</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">BoxPlot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Barras</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Tabela</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="392" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 391;"><span id="cb10-392"><a href="#cb10-392" aria-hidden="true" tabindex="-1"></a>erros <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados2/erros.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb10-393"><a href="#cb10-393" aria-hidden="true" tabindex="-1"></a>erros2 <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados1/metricas_erro_combinado_.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb10-394"><a href="#cb10-394" aria-hidden="true" tabindex="-1"></a><span class="co">//modelos = ["ARIMA+ETS", "Lee-Carter", "Lee-Miller"]</span></span>
-<span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a>regioes2 <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(erros<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span>))]<span class="op">.</span><span class="fu">sort</span>()</span>
-<span id="cb10-396"><a href="#cb10-396" aria-hidden="true" tabindex="-1"></a>anos2 <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(erros<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ano</span>))]<span class="op">.</span><span class="fu">sort</span>()</span>
-<span id="cb10-397"><a href="#cb10-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-398"><a href="#cb10-398" aria-hidden="true" tabindex="-1"></a><span class="co">/*erro = erros.filter(d =&gt; d.regiao === regiao4 &amp;&amp; d.taxa === sexo4 &amp;&amp; +d.ano === ano4)</span></span>
-<span id="cb10-399"><a href="#cb10-399" aria-hidden="true" tabindex="-1"></a><span class="co">  .map(d =&gt; ({</span></span>
-<span id="cb10-400"><a href="#cb10-400" aria-hidden="true" tabindex="-1"></a><span class="co">  faixa: d.faixa_etaria,</span></span>
-<span id="cb10-401"><a href="#cb10-401" aria-hidden="true" tabindex="-1"></a><span class="co">  mx_real: Number(d.mx_real).toFixed(5), </span></span>
-<span id="cb10-402"><a href="#cb10-402" aria-hidden="true" tabindex="-1"></a><span class="co">  mx_prev: Number(d.mx_lc).toFixed(5),</span></span>
-<span id="cb10-403"><a href="#cb10-403" aria-hidden="true" tabindex="-1"></a><span class="co">  RMSE: Number(d.RMSE_LC).toFixed(5),</span></span>
-<span id="cb10-404"><a href="#cb10-404" aria-hidden="true" tabindex="-1"></a><span class="co">  MAPE: Number(d.MAPE_LC).toFixed(5),</span></span>
-<span id="cb10-405"><a href="#cb10-405" aria-hidden="true" tabindex="-1"></a><span class="co">  MAE: Number(d.MAE_LC).toFixed(5)</span></span>
-<span id="cb10-406"><a href="#cb10-406" aria-hidden="true" tabindex="-1"></a><span class="co">}))</span></span>
-<span id="cb10-407"><a href="#cb10-407" aria-hidden="true" tabindex="-1"></a><span class="co">Inputs.table(erro)*/</span></span>
-<span id="cb10-408"><a href="#cb10-408" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb10-409"><a href="#cb10-409" aria-hidden="true" tabindex="-1"></a><span class="co">// Variável para guardar o resultado final</span></span>
-<span id="cb10-410"><a href="#cb10-410" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> dadosTabela<span class="op">;</span></span>
-<span id="cb10-411"><a href="#cb10-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-412"><a href="#cb10-412" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 2. Agora, usamos 'if' para verificar qual modelo foi selecionado</span></span>
-<span id="cb10-413"><a href="#cb10-413" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"Lee-Carter"</span>) {</span>
-<span id="cb10-414"><a href="#cb10-414" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 3. Se for Lee-Carter, mapeamos usando as colunas com sufixo _LC</span></span>
-<span id="cb10-415"><a href="#cb10-415" aria-hidden="true" tabindex="-1"></a>    dadosTabela <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
-<span id="cb10-416"><a href="#cb10-416" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
-<span id="cb10-417"><a href="#cb10-417" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
-<span id="cb10-418"><a href="#cb10-418" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-419"><a href="#cb10-419" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-420"><a href="#cb10-420" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)</span>
-<span id="cb10-421"><a href="#cb10-421" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
-<span id="cb10-422"><a href="#cb10-422" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"Lee-Miller"</span>) {</span>
-<span id="cb10-423"><a href="#cb10-423" aria-hidden="true" tabindex="-1"></a>      dadosTabela <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
-<span id="cb10-424"><a href="#cb10-424" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
-<span id="cb10-425"><a href="#cb10-425" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
-<span id="cb10-426"><a href="#cb10-426" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-427"><a href="#cb10-427" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-428"><a href="#cb10-428" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)</span>
-<span id="cb10-429"><a href="#cb10-429" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
-<span id="cb10-430"><a href="#cb10-430" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"ARIMA+ETS"</span>) {</span>
-<span id="cb10-431"><a href="#cb10-431" aria-hidden="true" tabindex="-1"></a>      dadosTabela <span class="op">=</span> erros2<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Local</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Sexo</span> <span class="op">===</span> sexo)</span>
-<span id="cb10-432"><a href="#cb10-432" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
-<span id="cb10-433"><a href="#cb10-433" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa</span><span class="op">,</span></span>
-<span id="cb10-434"><a href="#cb10-434" aria-hidden="true" tabindex="-1"></a>      <span class="co">//mx_real: Number(d.mx_real).toFixed(5), </span></span>
-<span id="cb10-435"><a href="#cb10-435" aria-hidden="true" tabindex="-1"></a>      <span class="co">//mx_prev: Number(d.mx_lm).toFixed(5),</span></span>
-<span id="cb10-436"><a href="#cb10-436" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-437"><a href="#cb10-437" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
-<span id="cb10-438"><a href="#cb10-438" aria-hidden="true" tabindex="-1"></a>      <span class="co">//MAE: Number(d.MAE_LM).toFixed(5)</span></span>
-<span id="cb10-439"><a href="#cb10-439" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
-<span id="cb10-440"><a href="#cb10-440" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb10-441"><a href="#cb10-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-442"><a href="#cb10-442" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(dadosTabela)<span class="op">;</span></span>
-<span id="cb10-443"><a href="#cb10-443" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="395" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 394;"><span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h3&gt;BoxPlot dos erros na escala Logarítmaca&lt;/h3&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+<div id="ojs-cell-3-1" data-nodetype="expression">
 
 </div>
 </div>
 </div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="396" data-source-offset="-56"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 395;"><span id="cb11-396"><a href="#cb11-396" aria-hidden="true" tabindex="-1"></a>viewof erro_select <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"MAE"</span><span class="op">,</span> <span class="st">"MAPE"</span><span class="op">,</span> <span class="st">"RMSE"</span>]<span class="op">,</span> {</span>
+<span id="cb11-397"><a href="#cb11-397" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Métrica de Erro"</span><span class="op">,</span></span>
+<span id="cb11-398"><a href="#cb11-398" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"MAE"</span></span>
+<span id="cb11-399"><a href="#cb11-399" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-400"><a href="#cb11-400" aria-hidden="true" tabindex="-1"></a><span class="co">// Processar dados</span></span>
+<span id="cb11-401"><a href="#cb11-401" aria-hidden="true" tabindex="-1"></a>erros_lc <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
+<span id="cb11-402"><a href="#cb11-402" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-403"><a href="#cb11-403" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb11-404"><a href="#cb11-404" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LC</span>)<span class="op">,</span></span>
+<span id="cb11-405"><a href="#cb11-405" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LC</span>)<span class="op">,</span></span>
+<span id="cb11-406"><a href="#cb11-406" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LC</span>)<span class="op">,</span></span>
+<span id="cb11-407"><a href="#cb11-407" aria-hidden="true" tabindex="-1"></a>      <span class="dt">modelo</span><span class="op">:</span> <span class="st">"Lee-Carter"</span></span>
+<span id="cb11-408"><a href="#cb11-408" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-410"><a href="#cb11-410" aria-hidden="true" tabindex="-1"></a>erros_lm <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
+<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-412"><a href="#cb11-412" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb11-413"><a href="#cb11-413" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LM</span>)<span class="op">,</span></span>
+<span id="cb11-414"><a href="#cb11-414" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LM</span>)<span class="op">,</span></span>
+<span id="cb11-415"><a href="#cb11-415" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LM</span>)<span class="op">,</span></span>
+<span id="cb11-416"><a href="#cb11-416" aria-hidden="true" tabindex="-1"></a>      <span class="dt">modelo</span><span class="op">:</span> <span class="st">"Lee-Miller"</span></span>
+<span id="cb11-417"><a href="#cb11-417" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb11-418"><a href="#cb11-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-419"><a href="#cb11-419" aria-hidden="true" tabindex="-1"></a>erros_ae <span class="op">=</span> erros2<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Local</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Sexo</span> <span class="op">===</span> sexo)</span>
+<span id="cb11-420"><a href="#cb11-420" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-421"><a href="#cb11-421" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb11-422"><a href="#cb11-422" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE</span>)<span class="op">,</span></span>
+<span id="cb11-423"><a href="#cb11-423" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE</span>)<span class="op">,</span></span>
+<span id="cb11-424"><a href="#cb11-424" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE</span>)<span class="op">,</span></span>
+<span id="cb11-425"><a href="#cb11-425" aria-hidden="true" tabindex="-1"></a>      <span class="dt">modelo</span><span class="op">:</span> <span class="st">"ARIMA+ETS"</span></span>
+<span id="cb11-426"><a href="#cb11-426" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb11-427"><a href="#cb11-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-428"><a href="#cb11-428" aria-hidden="true" tabindex="-1"></a><span class="co">// Importar D3</span></span>
+<span id="cb11-429"><a href="#cb11-429" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span>
+<span id="cb11-430"><a href="#cb11-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-431"><a href="#cb11-431" aria-hidden="true" tabindex="-1"></a><span class="co">// Unir dados</span></span>
+<span id="cb11-432"><a href="#cb11-432" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> [<span class="op">...</span>erros_ae<span class="op">,</span> <span class="op">...</span>erros_lc<span class="op">,</span> <span class="op">...</span>erros_lm]</span>
+<span id="cb11-433"><a href="#cb11-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-434"><a href="#cb11-434" aria-hidden="true" tabindex="-1"></a><span class="co">// Preparar dados para o gráfico</span></span>
+<span id="cb11-435"><a href="#cb11-435" aria-hidden="true" tabindex="-1"></a>plotData <span class="op">=</span> data1<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb11-436"><a href="#cb11-436" aria-hidden="true" tabindex="-1"></a>  <span class="dt">modelo</span><span class="op">:</span> d<span class="op">.</span><span class="at">modelo</span><span class="op">,</span></span>
+<span id="cb11-437"><a href="#cb11-437" aria-hidden="true" tabindex="-1"></a>  <span class="dt">valor</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(d[erro_select])<span class="op">,</span></span>
+<span id="cb11-438"><a href="#cb11-438" aria-hidden="true" tabindex="-1"></a>  <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa</span></span>
+<span id="cb11-439"><a href="#cb11-439" aria-hidden="true" tabindex="-1"></a>}))<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> <span class="op">!</span><span class="pp">isNaN</span>(d<span class="op">.</span><span class="at">valor</span>)) <span class="co">// remover valores inválidos</span></span>
+<span id="cb11-440"><a href="#cb11-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-441"><a href="#cb11-441" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">createboxplot</span>(data<span class="op">,</span> metrica) {</span>
+<span id="cb11-442"><a href="#cb11-442" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Configurações</span></span>
+<span id="cb11-443"><a href="#cb11-443" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb11-444"><a href="#cb11-444" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">760</span></span>
+<span id="cb11-445"><a href="#cb11-445" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb11-446"><a href="#cb11-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-447"><a href="#cb11-447" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Calcular domínio do Y baseado nos dados reais</span></span>
+<span id="cb11-448"><a href="#cb11-448" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> yMin <span class="op">=</span> d3<span class="op">.</span><span class="fu">min</span>(plotData<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valor</span>)</span>
+<span id="cb11-449"><a href="#cb11-449" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> yMax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(plotData<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valor</span>)</span>
+<span id="cb11-450"><a href="#cb11-450" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> yPadding <span class="op">=</span> (yMax <span class="op">-</span> yMin) <span class="op">*</span> <span class="fl">0.1</span></span>
+<span id="cb11-451"><a href="#cb11-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-452"><a href="#cb11-452" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escalas</span></span>
+<span id="cb11-453"><a href="#cb11-453" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleBand</span>()</span>
+<span id="cb11-454"><a href="#cb11-454" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"ARIMA+ETS"</span><span class="op">,</span> <span class="st">"Lee-Carter"</span><span class="op">,</span> <span class="st">"Lee-Miller"</span>])</span>
+<span id="cb11-455"><a href="#cb11-455" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> width <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])</span>
+<span id="cb11-456"><a href="#cb11-456" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">padding</span>(<span class="fl">0.3</span>)</span>
+<span id="cb11-457"><a href="#cb11-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-458"><a href="#cb11-458" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb11-459"><a href="#cb11-459" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>([yMin <span class="op">-</span> yPadding<span class="op">,</span> yMax <span class="op">+</span> yPadding])</span>
+<span id="cb11-460"><a href="#cb11-460" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
+<span id="cb11-461"><a href="#cb11-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-462"><a href="#cb11-462" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> color <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
+<span id="cb11-463"><a href="#cb11-463" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>(modelos) <span class="co">// Mapeia os nomes dos modelos...</span></span>
+<span id="cb11-464"><a href="#cb11-464" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">'#e41a1c'</span><span class="op">,</span> <span class="st">'#377eb8'</span><span class="op">,</span> <span class="st">'#4daf4a'</span>])<span class="op">;</span> <span class="co">// ...para as cores desejadas.</span></span>
+<span id="cb11-465"><a href="#cb11-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-466"><a href="#cb11-466" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Criar SVG</span></span>
+<span id="cb11-467"><a href="#cb11-467" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)</span>
+<span id="cb11-468"><a href="#cb11-468" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> width)</span>
+<span id="cb11-469"><a href="#cb11-469" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height)</span>
+<span id="cb11-470"><a href="#cb11-470" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"viewBox"</span><span class="op">,</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> width<span class="op">,</span> height])</span>
+<span id="cb11-471"><a href="#cb11-471" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"style"</span><span class="op">,</span> <span class="st">"max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;"</span>)</span>
+<span id="cb11-472"><a href="#cb11-472" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"-webkit-tap-highlight-color"</span><span class="op">,</span> <span class="st">"transparent"</span>)</span>
+<span id="cb11-473"><a href="#cb11-473" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"background"</span><span class="op">,</span> <span class="st">"#fffdfdff"</span>)<span class="op">;</span></span>
+<span id="cb11-474"><a href="#cb11-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-475"><a href="#cb11-475" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Função para calcular estatísticas do boxplot</span></span>
+<span id="cb11-476"><a href="#cb11-476" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">boxQuartiles</span>(values) {</span>
+<span id="cb11-477"><a href="#cb11-477" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> sorted <span class="op">=</span> values<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valor</span>)<span class="op">.</span><span class="fu">sort</span>(d3<span class="op">.</span><span class="at">ascending</span>)<span class="op">;</span></span>
+<span id="cb11-478"><a href="#cb11-478" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> q1 <span class="op">=</span> d3<span class="op">.</span><span class="fu">quantile</span>(sorted<span class="op">,</span> <span class="fl">0.25</span>)<span class="op">;</span></span>
+<span id="cb11-479"><a href="#cb11-479" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> q2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">quantile</span>(sorted<span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb11-480"><a href="#cb11-480" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> q3 <span class="op">=</span> d3<span class="op">.</span><span class="fu">quantile</span>(sorted<span class="op">,</span> <span class="fl">0.75</span>)<span class="op">;</span></span>
+<span id="cb11-481"><a href="#cb11-481" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> iqr <span class="op">=</span> q3 <span class="op">-</span> q1<span class="op">;</span></span>
+<span id="cb11-482"><a href="#cb11-482" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> min <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(d3<span class="op">.</span><span class="fu">min</span>(sorted)<span class="op">,</span> q1 <span class="op">-</span> <span class="fl">1.5</span> <span class="op">*</span> iqr)<span class="op">;</span></span>
+<span id="cb11-483"><a href="#cb11-483" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> max <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(d3<span class="op">.</span><span class="fu">max</span>(sorted)<span class="op">,</span> q3 <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> iqr)<span class="op">;</span></span>
+<span id="cb11-484"><a href="#cb11-484" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {q1<span class="op">,</span> q2<span class="op">,</span> q3<span class="op">,</span> min<span class="op">,</span> max}<span class="op">;</span></span>
+<span id="cb11-485"><a href="#cb11-485" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-486"><a href="#cb11-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-487"><a href="#cb11-487" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Agrupar dados por modelo</span></span>
+<span id="cb11-488"><a href="#cb11-488" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> grouped <span class="op">=</span> d3<span class="op">.</span><span class="fu">group</span>(plotData<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">modelo</span>)<span class="op">;</span></span>
+<span id="cb11-489"><a href="#cb11-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-490"><a href="#cb11-490" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Desenhar boxplots</span></span>
+<span id="cb11-491"><a href="#cb11-491" aria-hidden="true" tabindex="-1"></a>  grouped<span class="op">.</span><span class="fu">forEach</span>((values<span class="op">,</span> modelo) <span class="kw">=&gt;</span> {</span>
+<span id="cb11-492"><a href="#cb11-492" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> stats <span class="op">=</span> <span class="fu">boxQuartiles</span>(values)<span class="op">;</span></span>
+<span id="cb11-493"><a href="#cb11-493" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> xPos <span class="op">=</span> <span class="fu">x</span>(modelo) <span class="op">+</span> x<span class="op">.</span><span class="fu">bandwidth</span>() <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb11-494"><a href="#cb11-494" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> boxWidth <span class="op">=</span> x<span class="op">.</span><span class="fu">bandwidth</span>() <span class="op">*</span> <span class="fl">0.6</span><span class="op">;</span></span>
+<span id="cb11-495"><a href="#cb11-495" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-496"><a href="#cb11-496" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">;</span></span>
+<span id="cb11-497"><a href="#cb11-497" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-498"><a href="#cb11-498" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Whiskers</span></span>
+<span id="cb11-499"><a href="#cb11-499" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb11-500"><a href="#cb11-500" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> xPos)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> xPos)</span>
+<span id="cb11-501"><a href="#cb11-501" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">min</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q1</span>))</span>
+<span id="cb11-502"><a href="#cb11-502" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span> <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-503"><a href="#cb11-503" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-504"><a href="#cb11-504" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb11-505"><a href="#cb11-505" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> xPos)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> xPos)</span>
+<span id="cb11-506"><a href="#cb11-506" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">max</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q3</span>))</span>
+<span id="cb11-507"><a href="#cb11-507" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span> <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-508"><a href="#cb11-508" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-509"><a href="#cb11-509" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Caps dos whiskers</span></span>
+<span id="cb11-510"><a href="#cb11-510" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb11-511"><a href="#cb11-511" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> xPos <span class="op">-</span> boxWidth<span class="op">/</span><span class="dv">4</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> xPos <span class="op">+</span> boxWidth<span class="op">/</span><span class="dv">4</span>)</span>
+<span id="cb11-512"><a href="#cb11-512" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">min</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">min</span>))</span>
+<span id="cb11-513"><a href="#cb11-513" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span> <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-514"><a href="#cb11-514" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-515"><a href="#cb11-515" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb11-516"><a href="#cb11-516" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> xPos <span class="op">-</span> boxWidth<span class="op">/</span><span class="dv">4</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> xPos <span class="op">+</span> boxWidth<span class="op">/</span><span class="dv">4</span>)</span>
+<span id="cb11-517"><a href="#cb11-517" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">max</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">max</span>))</span>
+<span id="cb11-518"><a href="#cb11-518" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span> <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-519"><a href="#cb11-519" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-520"><a href="#cb11-520" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Caixa</span></span>
+<span id="cb11-521"><a href="#cb11-521" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb11-522"><a href="#cb11-522" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> xPos <span class="op">-</span> boxWidth<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb11-523"><a href="#cb11-523" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q3</span>))</span>
+<span id="cb11-524"><a href="#cb11-524" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> boxWidth)</span>
+<span id="cb11-525"><a href="#cb11-525" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q1</span>) <span class="op">-</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q3</span>))</span>
+<span id="cb11-526"><a href="#cb11-526" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="fu">color</span>(modelo)) <span class="co">// Mantém o preenchimento colorido</span></span>
+<span id="cb11-527"><a href="#cb11-527" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.7</span>)</span>
+<span id="cb11-528"><a href="#cb11-528" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>) <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-529"><a href="#cb11-529" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)<span class="op">;</span></span>
+<span id="cb11-530"><a href="#cb11-530" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-531"><a href="#cb11-531" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Mediana</span></span>
+<span id="cb11-532"><a href="#cb11-532" aria-hidden="true" tabindex="-1"></a>    g<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb11-533"><a href="#cb11-533" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> xPos <span class="op">-</span> boxWidth<span class="op">/</span><span class="dv">2</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> xPos <span class="op">+</span> boxWidth<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb11-534"><a href="#cb11-534" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q2</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(stats<span class="op">.</span><span class="at">q2</span>))</span>
+<span id="cb11-535"><a href="#cb11-535" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>) <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-536"><a href="#cb11-536" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb11-537"><a href="#cb11-537" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-538"><a href="#cb11-538" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Pontos individuais (jitter)</span></span>
+<span id="cb11-539"><a href="#cb11-539" aria-hidden="true" tabindex="-1"></a>    values<span class="op">.</span><span class="fu">forEach</span>(d <span class="kw">=&gt;</span> {</span>
+<span id="cb11-540"><a href="#cb11-540" aria-hidden="true" tabindex="-1"></a>      svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb11-541"><a href="#cb11-541" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> xPos <span class="op">+</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">-</span> <span class="fl">0.5</span>) <span class="op">*</span> boxWidth <span class="op">*</span> <span class="fl">0.8</span>)</span>
+<span id="cb11-542"><a href="#cb11-542" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">valor</span>))</span>
+<span id="cb11-543"><a href="#cb11-543" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="fl">2.5</span>)</span>
+<span id="cb11-544"><a href="#cb11-544" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"gray"</span>) <span class="co">// Mantém o preenchimento colorido</span></span>
+<span id="cb11-545"><a href="#cb11-545" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-546"><a href="#cb11-546" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>) <span class="co">// &lt;== Alterado para preto</span></span>
+<span id="cb11-547"><a href="#cb11-547" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span> <span class="co">// Espessura menor para o contorno dos pontos</span></span>
+<span id="cb11-548"><a href="#cb11-548" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb11-549"><a href="#cb11-549" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb11-550"><a href="#cb11-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-551"><a href="#cb11-551" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Eixos</span></span>
+<span id="cb11-552"><a href="#cb11-552" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb11-553"><a href="#cb11-553" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span>height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb11-554"><a href="#cb11-554" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisBottom</span>(x))<span class="op">;</span></span>
+<span id="cb11-555"><a href="#cb11-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-556"><a href="#cb11-556" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb11-557"><a href="#cb11-557" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>margin<span class="op">.</span><span class="at">left</span><span class="sc">}</span><span class="vs">,0)`</span>)</span>
+<span id="cb11-558"><a href="#cb11-558" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisLeft</span>(y))<span class="op">;</span></span>
+<span id="cb11-559"><a href="#cb11-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-560"><a href="#cb11-560" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Título do eixo Y</span></span>
+<span id="cb11-561"><a href="#cb11-561" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb11-562"><a href="#cb11-562" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"rotate(-90)"</span>)</span>
+<span id="cb11-563"><a href="#cb11-563" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">0</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">left</span>)</span>
+<span id="cb11-564"><a href="#cb11-564" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">0</span> <span class="op">-</span> (height <span class="op">/</span> <span class="dv">2</span>))</span>
+<span id="cb11-565"><a href="#cb11-565" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> <span class="st">"1em"</span>)</span>
+<span id="cb11-566"><a href="#cb11-566" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb11-567"><a href="#cb11-567" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(metrica)<span class="op">;</span></span>
+<span id="cb11-568"><a href="#cb11-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-569"><a href="#cb11-569" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Retornar o SVG</span></span>
+<span id="cb11-570"><a href="#cb11-570" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb11-571"><a href="#cb11-571" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-572"><a href="#cb11-572" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-573"><a href="#cb11-573" aria-hidden="true" tabindex="-1"></a><span class="fu">createboxplot</span>(plotData<span class="op">,</span> erro_select)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-2" data-nodetype="declaration">
@@ -816,8 +949,313 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-5" data-nodetype="expression">
+<div id="ojs-cell-3-5" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-10" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="575" data-source-offset="-5872"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 574;"><span id="cb12-575"><a href="#cb12-575" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p&gt;Para acessar a métodologia das métricas de erro do modelo Arima+ETS &lt;a href="metodologia.html#modelo-h%C3%ADbrido-arima-ets-com-pondera%C3%A7%C3%A3o-din%C3%A2mica"&gt;clique aqui&lt;/a&gt;, para os modelos Lee-Carter e Lee-Miller &lt;a href="metodologia.html#modelo-lee-carter"&gt;clique aqui&lt;/a&gt;&lt;/p&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-11" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="580" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 579;"><span id="cb13-580"><a href="#cb13-580" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h3&gt;Métricas de erro por Grupo Etário em log&lt;/h3&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="581" data-source-offset="-57"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 580;"><span id="cb14-581"><a href="#cb14-581" aria-hidden="true" tabindex="-1"></a>viewof erro_select2 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"MAE"</span><span class="op">,</span> <span class="st">"MAPE"</span><span class="op">,</span> <span class="st">"RMSE"</span>]<span class="op">,</span> {</span>
+<span id="cb14-582"><a href="#cb14-582" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Métrica de Erro"</span><span class="op">,</span></span>
+<span id="cb14-583"><a href="#cb14-583" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"MAE"</span></span>
+<span id="cb14-584"><a href="#cb14-584" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb14-585"><a href="#cb14-585" aria-hidden="true" tabindex="-1"></a>plotData2 <span class="op">=</span> data1<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-586"><a href="#cb14-586" aria-hidden="true" tabindex="-1"></a>  <span class="dt">modelo</span><span class="op">:</span> d<span class="op">.</span><span class="at">modelo</span><span class="op">,</span></span>
+<span id="cb14-587"><a href="#cb14-587" aria-hidden="true" tabindex="-1"></a>  <span class="dt">valor</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(d[erro_select2])<span class="op">,</span></span>
+<span id="cb14-588"><a href="#cb14-588" aria-hidden="true" tabindex="-1"></a>  <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa</span></span>
+<span id="cb14-589"><a href="#cb14-589" aria-hidden="true" tabindex="-1"></a>}))<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> <span class="op">!</span><span class="pp">isNaN</span>(d<span class="op">.</span><span class="at">valor</span>))</span>
+<span id="cb14-590"><a href="#cb14-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-591"><a href="#cb14-591" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">grafico_barra</span>(data){</span>
+<span id="cb14-592"><a href="#cb14-592" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">50</span>})</span>
+<span id="cb14-593"><a href="#cb14-593" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb14-594"><a href="#cb14-594" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">800</span></span>
+<span id="cb14-595"><a href="#cb14-595" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-596"><a href="#cb14-596" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-597"><a href="#cb14-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-598"><a href="#cb14-598" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lista dos subgrupos (modelos)</span></span>
+<span id="cb14-599"><a href="#cb14-599" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> subgroups <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">modelo</span>))]<span class="op">.</span><span class="fu">sort</span>()</span>
+<span id="cb14-600"><a href="#cb14-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-601"><a href="#cb14-601" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Lista dos grupos (faixas etárias) - mantendo a ordem original</span></span>
+<span id="cb14-602"><a href="#cb14-602" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> groups <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">faixa</span>))]</span>
+<span id="cb14-603"><a href="#cb14-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-604"><a href="#cb14-604" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Criar o SVG</span></span>
+<span id="cb14-605"><a href="#cb14-605" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">create</span>(<span class="st">"svg"</span>)</span>
+<span id="cb14-606"><a href="#cb14-606" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> width <span class="op">+</span> margin<span class="op">.</span><span class="at">left</span> <span class="op">+</span> margin<span class="op">.</span><span class="at">right</span>)</span>
+<span id="cb14-607"><a href="#cb14-607" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height <span class="op">+</span> margin<span class="op">.</span><span class="at">top</span> <span class="op">+</span> margin<span class="op">.</span><span class="at">bottom</span>)</span>
+<span id="cb14-608"><a href="#cb14-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-609"><a href="#cb14-609" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-610"><a href="#cb14-610" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>margin<span class="op">.</span><span class="at">left</span><span class="sc">}</span><span class="vs">,</span><span class="sc">${</span>margin<span class="op">.</span><span class="at">top</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb14-611"><a href="#cb14-611" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-612"><a href="#cb14-612" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escalas</span></span>
+<span id="cb14-613"><a href="#cb14-613" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escala Y para as faixas etárias (grupos)</span></span>
+<span id="cb14-614"><a href="#cb14-614" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleBand</span>()</span>
+<span id="cb14-615"><a href="#cb14-615" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>(groups)</span>
+<span id="cb14-616"><a href="#cb14-616" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> height])</span>
+<span id="cb14-617"><a href="#cb14-617" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">padding</span>(<span class="fl">0.2</span>)</span>
+<span id="cb14-618"><a href="#cb14-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-619"><a href="#cb14-619" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escala X para os valores</span></span>
+<span id="cb14-620"><a href="#cb14-620" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb14-621"><a href="#cb14-621" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>([d3<span class="op">.</span><span class="fu">min</span>(data<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valor</span>)<span class="op">-</span><span class="fl">0.5</span><span class="op">,</span> d3<span class="op">.</span><span class="fu">max</span>(data<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">valor</span>)])</span>
+<span id="cb14-622"><a href="#cb14-622" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> width])</span>
+<span id="cb14-623"><a href="#cb14-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-624"><a href="#cb14-624" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escala Y para subgrupos (posição das barras dentro de cada faixa etária)</span></span>
+<span id="cb14-625"><a href="#cb14-625" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ySubgroup <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleBand</span>()</span>
+<span id="cb14-626"><a href="#cb14-626" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>(subgroups)</span>
+<span id="cb14-627"><a href="#cb14-627" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> y<span class="op">.</span><span class="fu">bandwidth</span>()])</span>
+<span id="cb14-628"><a href="#cb14-628" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">padding</span>(<span class="fl">0.05</span>)</span>
+<span id="cb14-629"><a href="#cb14-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-630"><a href="#cb14-630" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Escala de cores</span></span>
+<span id="cb14-631"><a href="#cb14-631" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> color <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
+<span id="cb14-632"><a href="#cb14-632" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">domain</span>(subgroups)</span>
+<span id="cb14-633"><a href="#cb14-633" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">'#e41a1c'</span><span class="op">,</span> <span class="st">'#377eb8'</span><span class="op">,</span> <span class="st">'#4daf4a'</span>])</span>
+<span id="cb14-634"><a href="#cb14-634" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-635"><a href="#cb14-635" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adicionar eixo X</span></span>
+<span id="cb14-636"><a href="#cb14-636" aria-hidden="true" tabindex="-1"></a>  g<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-637"><a href="#cb14-637" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span>height<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb14-638"><a href="#cb14-638" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisBottom</span>(x))</span>
+<span id="cb14-639"><a href="#cb14-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-640"><a href="#cb14-640" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adicionar eixo Y</span></span>
+<span id="cb14-641"><a href="#cb14-641" aria-hidden="true" tabindex="-1"></a>  g<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-642"><a href="#cb14-642" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisLeft</span>(y))</span>
+<span id="cb14-643"><a href="#cb14-643" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-644"><a href="#cb14-644" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Criar as barras</span></span>
+<span id="cb14-645"><a href="#cb14-645" aria-hidden="true" tabindex="-1"></a>  g<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-646"><a href="#cb14-646" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-647"><a href="#cb14-647" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(groups)</span>
+<span id="cb14-648"><a href="#cb14-648" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb14-649"><a href="#cb14-649" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-650"><a href="#cb14-650" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(0,</span><span class="sc">${</span><span class="fu">y</span>(d)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb14-651"><a href="#cb14-651" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)</span>
+<span id="cb14-652"><a href="#cb14-652" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">data</span>(faixa <span class="kw">=&gt;</span> {</span>
+<span id="cb14-653"><a href="#cb14-653" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> subgroups<span class="op">.</span><span class="fu">map</span>(modelo <span class="kw">=&gt;</span> {</span>
+<span id="cb14-654"><a href="#cb14-654" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> dataPoint <span class="op">=</span> data<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">faixa</span> <span class="op">===</span> faixa <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> modelo)<span class="op">;</span></span>
+<span id="cb14-655"><a href="#cb14-655" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb14-656"><a href="#cb14-656" aria-hidden="true" tabindex="-1"></a>          <span class="dt">modelo</span><span class="op">:</span> modelo<span class="op">,</span></span>
+<span id="cb14-657"><a href="#cb14-657" aria-hidden="true" tabindex="-1"></a>          <span class="dt">valor</span><span class="op">:</span> dataPoint <span class="op">?</span> dataPoint<span class="op">.</span><span class="at">valor</span> <span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb14-658"><a href="#cb14-658" aria-hidden="true" tabindex="-1"></a>          <span class="dt">faixa</span><span class="op">:</span> faixa</span>
+<span id="cb14-659"><a href="#cb14-659" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb14-660"><a href="#cb14-660" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
+<span id="cb14-661"><a href="#cb14-661" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb14-662"><a href="#cb14-662" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb14-663"><a href="#cb14-663" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb14-664"><a href="#cb14-664" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb14-665"><a href="#cb14-665" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">ySubgroup</span>(d<span class="op">.</span><span class="at">modelo</span>))</span>
+<span id="cb14-666"><a href="#cb14-666" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">valor</span>))</span>
+<span id="cb14-667"><a href="#cb14-667" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> ySubgroup<span class="op">.</span><span class="fu">bandwidth</span>())</span>
+<span id="cb14-668"><a href="#cb14-668" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">color</span>(d<span class="op">.</span><span class="at">modelo</span>))</span>
+<span id="cb14-669"><a href="#cb14-669" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-670"><a href="#cb14-670" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Adicionar rótulos dos eixos</span></span>
+<span id="cb14-671"><a href="#cb14-671" aria-hidden="true" tabindex="-1"></a>  g<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb14-672"><a href="#cb14-672" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"rotate(-90)"</span>)</span>
+<span id="cb14-673"><a href="#cb14-673" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">0</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">left</span>)</span>
+<span id="cb14-674"><a href="#cb14-674" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">0</span> <span class="op">-</span> (height <span class="op">/</span> <span class="dv">2</span>))</span>
+<span id="cb14-675"><a href="#cb14-675" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> <span class="st">"1em"</span>)</span>
+<span id="cb14-676"><a href="#cb14-676" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb14-677"><a href="#cb14-677" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="st">"Faixa Etária"</span>)</span>
+<span id="cb14-678"><a href="#cb14-678" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-679"><a href="#cb14-679" aria-hidden="true" tabindex="-1"></a>  g<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb14-680"><a href="#cb14-680" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>width <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>height <span class="op">+</span> margin<span class="op">.</span><span class="at">bottom</span> <span class="op">-</span><span class="dv">10</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb14-681"><a href="#cb14-681" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb14-682"><a href="#cb14-682" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="st">"Valor em log"</span>)</span>
+<span id="cb14-683"><a href="#cb14-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-684"><a href="#cb14-684" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> legendItemSpacing <span class="op">=</span> <span class="dv">110</span><span class="op">;</span> <span class="co">// Espaço que cada item da legenda ocupa</span></span>
+<span id="cb14-685"><a href="#cb14-685" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalLegendWidth <span class="op">=</span> subgroups<span class="op">.</span><span class="at">length</span> <span class="op">*</span> legendItemSpacing<span class="op">;</span></span>
+<span id="cb14-686"><a href="#cb14-686" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> legendStartX <span class="op">=</span> (width <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> (totalLegendWidth <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb14-687"><a href="#cb14-687" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-688"><a href="#cb14-688" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> legend <span class="op">=</span> g<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-689"><a href="#cb14-689" aria-hidden="true" tabindex="-1"></a>      <span class="co">// --- 2. Aplicar o novo posicionamento ---</span></span>
+<span id="cb14-690"><a href="#cb14-690" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Posição X calculada para centralizar e Y movido mais para cima (-25)</span></span>
+<span id="cb14-691"><a href="#cb14-691" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>legendStartX<span class="sc">}</span><span class="vs">, -25)`</span>) </span>
+<span id="cb14-692"><a href="#cb14-692" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-family"</span><span class="op">,</span> <span class="st">"sans-serif"</span>)</span>
+<span id="cb14-693"><a href="#cb14-693" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb14-694"><a href="#cb14-694" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"start"</span>)</span>
+<span id="cb14-695"><a href="#cb14-695" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-696"><a href="#cb14-696" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">data</span>(subgroups) </span>
+<span id="cb14-697"><a href="#cb14-697" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">join</span>(<span class="st">"g"</span>)</span>
+<span id="cb14-698"><a href="#cb14-698" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> (d<span class="op">,</span> i) <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>i <span class="op">*</span> legendItemSpacing<span class="sc">}</span><span class="vs">, 0)`</span>)<span class="op">;</span> </span>
+<span id="cb14-699"><a href="#cb14-699" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-700"><a href="#cb14-700" aria-hidden="true" tabindex="-1"></a>  legend<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb14-701"><a href="#cb14-701" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb14-702"><a href="#cb14-702" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">15</span>)</span>
+<span id="cb14-703"><a href="#cb14-703" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">15</span>)</span>
+<span id="cb14-704"><a href="#cb14-704" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">color</span>(d))<span class="op">;</span> </span>
+<span id="cb14-705"><a href="#cb14-705" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-706"><a href="#cb14-706" aria-hidden="true" tabindex="-1"></a>  legend<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb14-707"><a href="#cb14-707" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">20</span>) </span>
+<span id="cb14-708"><a href="#cb14-708" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="fl">9.5</span>)</span>
+<span id="cb14-709"><a href="#cb14-709" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"dy"</span><span class="op">,</span> <span class="st">"0.32em"</span>)</span>
+<span id="cb14-710"><a href="#cb14-710" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d)<span class="op">;</span></span>
+<span id="cb14-711"><a href="#cb14-711" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-712"><a href="#cb14-712" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-713"><a href="#cb14-713" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Retornar o SVG</span></span>
+<span id="cb14-714"><a href="#cb14-714" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb14-715"><a href="#cb14-715" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-716"><a href="#cb14-716" aria-hidden="true" tabindex="-1"></a><span class="fu">grafico_barra</span>(plotData2)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="721" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 720;"><span id="cb15-721"><a href="#cb15-721" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;h3&gt;Tabela de Métricas de Erro&lt;/h3&gt;`</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="722" data-source-offset="-43"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 721;"><span id="cb16-722"><a href="#cb16-722" aria-hidden="true" tabindex="-1"></a>erros <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados2/erros.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb16-723"><a href="#cb16-723" aria-hidden="true" tabindex="-1"></a>erros2 <span class="op">=</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"dados/dados1/erros_concatenados.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb16-724"><a href="#cb16-724" aria-hidden="true" tabindex="-1"></a>regioes2 <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(erros<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span>))]<span class="op">.</span><span class="fu">sort</span>()</span>
+<span id="cb16-725"><a href="#cb16-725" aria-hidden="true" tabindex="-1"></a>anos2 <span class="op">=</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(erros<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">ano</span>))]<span class="op">.</span><span class="fu">sort</span>()</span>
+<span id="cb16-726"><a href="#cb16-726" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-727"><a href="#cb16-727" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb16-728"><a href="#cb16-728" aria-hidden="true" tabindex="-1"></a><span class="co">// Variável para guardar o resultado final</span></span>
+<span id="cb16-729"><a href="#cb16-729" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> dadosTabela<span class="op">;</span></span>
+<span id="cb16-730"><a href="#cb16-730" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"Lee-Carter"</span>) {</span>
+<span id="cb16-731"><a href="#cb16-731" aria-hidden="true" tabindex="-1"></a>    dadosTabela <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
+<span id="cb16-732"><a href="#cb16-732" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb16-733"><a href="#cb16-733" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb16-734"><a href="#cb16-734" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-735"><a href="#cb16-735" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-736"><a href="#cb16-736" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LC</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)</span>
+<span id="cb16-737"><a href="#cb16-737" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb16-738"><a href="#cb16-738" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"Lee-Miller"</span>) {</span>
+<span id="cb16-739"><a href="#cb16-739" aria-hidden="true" tabindex="-1"></a>      dadosTabela <span class="op">=</span> erros<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">regiao</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">taxa</span> <span class="op">===</span> sexo)</span>
+<span id="cb16-740"><a href="#cb16-740" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb16-741"><a href="#cb16-741" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb16-742"><a href="#cb16-742" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-743"><a href="#cb16-743" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-744"><a href="#cb16-744" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE_LM</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)</span>
+<span id="cb16-745"><a href="#cb16-745" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb16-746"><a href="#cb16-746" aria-hidden="true" tabindex="-1"></a>    }<span class="cf">else</span> <span class="cf">if</span> (seletores2<span class="op">.</span><span class="at">modelo</span> <span class="op">===</span> <span class="st">"ARIMA+ETS"</span>) {</span>
+<span id="cb16-747"><a href="#cb16-747" aria-hidden="true" tabindex="-1"></a>      dadosTabela <span class="op">=</span> erros2<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Local</span> <span class="op">===</span> regiao2 <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Sexo</span> <span class="op">===</span> sexo)</span>
+<span id="cb16-748"><a href="#cb16-748" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb16-749"><a href="#cb16-749" aria-hidden="true" tabindex="-1"></a>      <span class="dt">faixa</span><span class="op">:</span> d<span class="op">.</span><span class="at">faixa_etaria</span><span class="op">,</span></span>
+<span id="cb16-750"><a href="#cb16-750" aria-hidden="true" tabindex="-1"></a>      <span class="dt">RMSE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">RMSE</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-751"><a href="#cb16-751" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAPE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAPE</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="op">,</span></span>
+<span id="cb16-752"><a href="#cb16-752" aria-hidden="true" tabindex="-1"></a>      <span class="dt">MAE</span><span class="op">:</span> <span class="bu">Number</span>(d<span class="op">.</span><span class="at">MAE</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)</span>
+<span id="cb16-753"><a href="#cb16-753" aria-hidden="true" tabindex="-1"></a>    }))<span class="op">;</span></span>
+<span id="cb16-754"><a href="#cb16-754" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-755"><a href="#cb16-755" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-756"><a href="#cb16-756" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> Inputs<span class="op">.</span><span class="fu">table</span>(dadosTabela)<span class="op">;</span></span>
+<span id="cb16-757"><a href="#cb16-757" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -828,7 +1266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIERhZG9zIGUgZmlsdHJvc1xyXG5wcmV2X2NvbWIgPSBhd2FpdCBGaWxlQXR0YWNobWVudCgnZGFkb3MvZGFkb3MxL3ByZXZpc29lc19jb21iaW5hZC5jc3YnKS5jc3YoKVxyXG5wcmV2X2xtID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoJ2RhZG9zL2RhZG9zMi9wcmV2aW9lc19sbS5jc3YnKS5jc3YoKVxyXG5wcmV2X2xjID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoJ2RhZG9zL2RhZG9zMi9wcmV2aW9lc19sYy5jc3YnKS5jc3YoKVxyXG5cclxubW9kZWxvcyA9IFtcIkFSSU1BK0VUU1wiLCBcIkxlZS1DYXJ0ZXJcIiwgXCJMZWUtTWlsbGVyXCJdXHJcbnJlZ2lvZXMgPSBbXCJCcmFzaWxcIiwgXCJDZW50cm8tT2VzdGVcIiwgXCJOb3JkZXN0ZVwiLCBcIk5vcnRlXCIsIFwiU3VkZXN0ZVwiLCBcIlN1bFwiLCBcIkFjcmVcIiwgXCJBbGFnb2FzXCIsIFwiQW1hcMOhXCIsIFwiQW1hem9uYXNcIiwgXCJCYWhpYVwiLCBcIkNlYXLDoVwiLCBcIkRpc3RyaXRvIEZlZGVyYWxcIiwgXCJFc3DDrXJpdG8gU2FudG9cIiwgXCJHb2nDoXNcIiwgXCJNYXJhbmjDo29cIiwgXCJNYXRvIEdyb3Nzb1wiLCBcIk1hdG8gR3Jvc3NvIGRvIFN1bFwiLCBcIk1pbmFzIEdlcmFpc1wiLCBcIlBhcsOhXCIsIFwiUGFyYcOtYmFcIiwgXCJQYXJhbsOhXCIsIFwiUGVybmFtYnVjb1wiLCBcIlBpYXXDrVwiLCBcIlJpbyBkZSBKYW5laXJvXCIsIFwiUmlvIEdyYW5kZSBkbyBOb3J0ZVwiLCBcIlJpbyBHcmFuZGUgZG8gU3VsXCIsIFwiUm9uZMO0bmlhXCIsIFwiUm9yYWltYVwiLCBcIlNhbnRhIENhdGFyaW5hXCIsIFwiU8OjbyBQYXVsb1wiLCBcIlNlcmdpcGVcIiwgXCJUb2NhbnRpbnNcIl1cclxuXHJcbi8vIERlZmluacOnw6NvIGRvIGNvbXBvbmVudGUgcmVhdGl2b1xyXG4vLyBEZWZpbmUgbyBjb21wb25lbnRlIGRlIHNlbGXDp8Ojb1xyXG52aWV3b2Ygc2VsZXRvcmVzMiA9IHtcclxuICBjb25zdCBmb3JtID0gaHRtbGA8Zm9ybSBzdHlsZT1cIlxyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgICBnYXA6IDMwcHg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBcIj5cclxuICAgIDwhLS0gU2VsZWN0IHBhcmEgUmVnacOjbyAtLT5cclxuICAgIDxkaXYgc3R5bGU9XCJtaW4td2lkdGg6IDIwMHB4OyBtYXgtd2lkdGg6IDMwMHB4O1wiPlxyXG4gICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBibG9jazsgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tYm90dG9tOiA4cHg7XCI+TG9jYWw6PC9sYWJlbD5cclxuICAgICAgPHNlbGVjdCBuYW1lPVwicmVnaWFvXCIgc3R5bGU9XCJcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICBwYWRkaW5nOiA2cHggMTJweDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgbWluLXdpZHRoOiAxODBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhO1xyXG4gICAgICBcIj5cclxuICAgICAgICAke3JlZ2lvZXMubWFwKHIgPT4gYDxvcHRpb24gdmFsdWU9XCIke3J9XCI+JHtyfTwvb3B0aW9uPmApLmpvaW4oJycpfVxyXG4gICAgICA8L3NlbGVjdD5cclxuICAgIDwvZGl2PlxyXG4gICAgXHJcbiAgICA8IS0tIENoZWNrYm94ZXMgcGFyYSBNb2RlbG9zIC0tPlxyXG4gICAgPGRpdiBzdHlsZT1cIm1pbi13aWR0aDogMjAwcHg7IG1heC13aWR0aDogMzAwcHg7XCI+XHJcbiAgICAgIDxsYWJlbCBzdHlsZT1cImRpc3BsYXk6IGJsb2NrOyB0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi1ib3R0b206IDhweDtcIj5Nb2RlbG86PC9sYWJlbD5cclxuICAgICAgPHNlbGVjdCBuYW1lPVwibW9kZWxvXCIgc3R5bGU9XCJcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICBwYWRkaW5nOiA2cHggMTJweDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgbWluLXdpZHRoOiAxODBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhO1xyXG4gICAgICBcIj5cclxuICAgICAgICAke21vZGVsb3MubWFwKHIgPT4gYDxvcHRpb24gdmFsdWU9XCIke3J9XCI+JHtyfTwvb3B0aW9uPmApLmpvaW4oJycpfVxyXG4gICAgICA8L3NlbGVjdD5cclxuICAgIDwvZGl2PlxyXG4gICAgXHJcbiAgICA8IS0tIFJhZGlvIHBhcmEgU2V4byAtLT5cclxuICAgIDxkaXYgc3R5bGU9XCJtaW4td2lkdGg6IDIwMHB4OyBtYXgtd2lkdGg6IDMwMHB4O1wiPlxyXG4gICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBibG9jazsgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tYm90dG9tOiA4cHg7XCI+U2V4bzo8L2xhYmVsPlxyXG4gICAgICA8ZGl2IHN0eWxlPVwiXHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBnYXA6IDE1cHg7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgIFwiPlxyXG4gICAgICAgIDxsYWJlbCBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogNXB4O1wiPlxyXG4gICAgICAgICAgPGlucHV0IHR5cGU9XCJyYWRpb1wiIG5hbWU9XCJzZXhvXCIgdmFsdWU9XCJBbWJvc1wiIGNoZWNrZWQ+XHJcbiAgICAgICAgICBBbWJvc1xyXG4gICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgPGxhYmVsIHN0eWxlPVwiZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA1cHg7XCI+XHJcbiAgICAgICAgICA8aW5wdXQgdHlwZT1cInJhZGlvXCIgbmFtZT1cInNleG9cIiB2YWx1ZT1cIkhvbWVuc1wiPlxyXG4gICAgICAgICAgSG9tZW5zXHJcbiAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDVweDtcIj5cclxuICAgICAgICAgIDxpbnB1dCB0eXBlPVwicmFkaW9cIiBuYW1lPVwic2V4b1wiIHZhbHVlPVwiTXVsaGVyZXNcIj5cclxuICAgICAgICAgIE11bGhlcmVzXHJcbiAgICAgICAgPC9sYWJlbD5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICA8L2Zvcm0+YDtcclxuICBcclxuICAvLyBEZWZpbmlyIHZhbG9yIGluaWNpYWxcclxuICBmb3JtLnZhbHVlID0ge1xyXG4gICAgcmVnaWFvOiByZWdpb2VzWzVdLFxyXG4gICAgbW9kZWxvOiAnQVJJTUErRVRTJyxcclxuICAgIHNleG86ICdBbWJvcydcclxuICB9O1xyXG4gIFxyXG4gIC8vIEF0dWFsaXphciB2YWxvciBhbyBtb2RpZmljYXIgc2VsZWN0XHJcbiAgZm9ybS5xdWVyeVNlbGVjdG9yKCdzZWxlY3RbbmFtZT1cInJlZ2lhb1wiXScpLmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsIGUgPT4ge1xyXG4gICAgZm9ybS52YWx1ZSA9IHtcclxuICAgICAgLi4uZm9ybS52YWx1ZSxcclxuICAgICAgcmVnaWFvOiBlLnRhcmdldC52YWx1ZVxyXG4gICAgfTtcclxuICAgIGZvcm0uZGlzcGF0Y2hFdmVudChuZXcgRXZlbnQoJ2lucHV0JykpO1xyXG4gIH0pO1xyXG4gIFxyXG4gIC8vIEF0dWFsaXphciB2YWxvciBhbyBtb2RpZmljYXIgY2hlY2tib3hlc1xyXG4gIGZvcm0ucXVlcnlTZWxlY3Rvcignc2VsZWN0W25hbWU9XCJtb2RlbG9cIl0nKS5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCBlID0+IHtcclxuICAgIGZvcm0udmFsdWUgPSB7XHJcbiAgICAgIC4uLmZvcm0udmFsdWUsXHJcbiAgICAgIG1vZGVsbzogZS50YXJnZXQudmFsdWVcclxuICAgIH07XHJcbiAgICBmb3JtLmRpc3BhdGNoRXZlbnQobmV3IEV2ZW50KCdpbnB1dCcpKTtcclxuICB9KTtcclxuICBcclxuICAvLyBBdHVhbGl6YXIgdmFsb3IgYW8gbW9kaWZpY2FyIHJhZGlvc1xyXG4gIGNvbnN0IHJhZGlvcyA9IGZvcm0ucXVlcnlTZWxlY3RvckFsbCgnaW5wdXRbbmFtZT1cInNleG9cIl0nKTtcclxuICBmb3IgKGNvbnN0IHJhZGlvIG9mIHJhZGlvcykge1xyXG4gICAgcmFkaW8uYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJywgKCkgPT4ge1xyXG4gICAgICBmb3JtLnZhbHVlID0ge1xyXG4gICAgICAgIC4uLmZvcm0udmFsdWUsXHJcbiAgICAgICAgc2V4bzogcmFkaW8udmFsdWVcclxuICAgICAgfTtcclxuICAgICAgZm9ybS5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgnaW5wdXQnKSk7XHJcbiAgICB9KTtcclxuICB9XHJcbiAgXHJcbiAgcmV0dXJuIGZvcm07XHJcbn1cclxuXHJcbi8vIEV4dHJhaXIgdmFsb3JlcyBpbmRpdmlkdWFpcyBlbSBjw6lsdWxhcyBzZXBhcmFkYXNcclxucmVnaWFvMiA9IHNlbGV0b3JlczIucmVnaWFvXHJcbm1vZGVsbzIgPSBzZWxldG9yZXMyLm1vZGVsb1xyXG5zZXhvID0gc2VsZXRvcmVzMi5zZXhvXHJcblxyXG5cclxuXHJcbmRhdGFfZmlsdGVyMSA9IHByZXZfY29tYi5maWx0ZXIoZCA9PiBkLkxvY2FsID09PSByZWdpYW8yICYmIGQuU2V4byA9PT0gc2V4bykubWFwKGQgPT4gKHtcclxuICBhbm86ICtkLkFubyxcclxuICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgcHJldjogTWF0aC5sb2coZC5uTXhfcHJldmlzw6NvKVxyXG59KSlcclxuXHJcbmRhdGFfZmlsdGVyMiA9IHByZXZfbG0uZmlsdGVyKGQgPT4gZC5yZWdpYW8gPT09IHJlZ2lhbzIgJiYgZC50YXhhID09PSBzZXhvKS5tYXAoZCA9PiAoe1xyXG4gIGFubzogK2QuYW5vLFxyXG4gIGZhaXhhOiBkLkZhaXhhX0V0YXJpYSxcclxuICBwcmV2OiBNYXRoLmxvZyhkLnByZXZpc3RvKVxyXG59KSlcclxuXHJcbmRhdGFfZmlsdGVyMyA9IHByZXZfbGMuZmlsdGVyKGQgPT4gZC5yZWdpYW8gPT09IHJlZ2lhbzIgJiYgZC50YXhhID09PSBzZXhvKS5tYXAoZCA9PiAoe1xyXG4gIGFubzogK2QuYW5vLFxyXG4gIGZhaXhhOiBkLkZhaXhhX0V0YXJpYSxcclxuICBwcmV2OiBNYXRoLmxvZyhkLnByZXZpc3RvKVxyXG59KSlcclxuXHJcbi8vIEZ1bsOnw6NvIHByaW5jaXBhbCBwYXJhIGNyaWFyIGdyw6FmaWNvc1xyXG5mdW5jdGlvbiBjcmVhdGVDaGFydChkYXRhLCB0aXRsZSkge1xyXG5cclxuICBjb25zdCBwdEJSTG9jYWxlRGVmaW5pdGlvbiA9IHtcclxuICAgIGRlY2ltYWw6IFwiLFwiLFxyXG4gICAgdGhvdXNhbmRzOiBcIlwiLFxyXG4gICAgZ3JvdXBpbmc6IFszXSxcclxuICAgIGN1cnJlbmN5OiBbXCJSJFwiLCBcIlwiXVxyXG4gIH07XHJcbiAgZDMuZm9ybWF0RGVmYXVsdExvY2FsZShwdEJSTG9jYWxlRGVmaW5pdGlvbik7XHJcblxyXG4gIGNvbnN0IHdpZHRoID0gNzYwO1xyXG4gIGNvbnN0IGhlaWdodCA9IDUwMDtcclxuICBjb25zdCBtYXJnaW4gPSB7dG9wOiAzMCwgcmlnaHQ6IDIwLCBib3R0b206IDQwLCBsZWZ0OiA1MH07XHJcbiAgXHJcbiAgY29uc3Qgc3ZnID0gZDMuY3JlYXRlKFwic3ZnXCIpXHJcbiAgICAuYXR0cihcInZpZXdCb3hcIiwgWzAsIDAsIHdpZHRoLCBoZWlnaHRdKVxyXG4gICAgICAuYXR0cihcIndpZHRoXCIsIHdpZHRoKVxyXG4gICAgICAuYXR0cihcImhlaWdodFwiLCBoZWlnaHQpXHJcbiAgICAgIC5hdHRyKFwic3R5bGVcIiwgXCJtYXgtd2lkdGg6IDEwMCU7IGhlaWdodDogYXV0bzsgaGVpZ2h0OiBpbnRyaW5zaWM7IGZvbnQ6IDEwcHggc2Fucy1zZXJpZjtcIilcclxuICAgICAgLnN0eWxlKFwiLXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yXCIsIFwidHJhbnNwYXJlbnRcIilcclxuICAgICAgLnN0eWxlKFwib3ZlcmZsb3dcIiwgXCJ2aXNpYmxlXCIpO1xyXG5cclxuICAvLyBFc2NhbGFzXHJcbiAgY29uc3QgeCA9IGQzLnNjYWxlUG9pbnQoKVxyXG4gICAgLmRvbWFpbihbLi4ubmV3IFNldChkYXRhLm1hcChkID0+IGQuZmFpeGEpKV0pXHJcbiAgICAucmFuZ2UoW21hcmdpbi5sZWZ0LCB3aWR0aCAtIG1hcmdpbi5yaWdodF0pXHJcbiAgICAucGFkZGluZygwLjUpO1xyXG5cclxuICBjb25zdCB5ID0gZDMuc2NhbGVMaW5lYXIoKVxyXG4gICAgLmRvbWFpbihkMy5leHRlbnQoZGF0YSwgZCA9PiBkLnByZXYpKS5uaWNlKClcclxuICAgIC5yYW5nZShbaGVpZ2h0IC0gbWFyZ2luLmJvdHRvbSwgbWFyZ2luLnRvcF0pO1xyXG5cclxuICAvLyBFaXhvc1xyXG4gIHN2Zy5hcHBlbmQoXCJnXCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKDAsJHtoZWlnaHQgLSBtYXJnaW4uYm90dG9tfSlgKVxyXG4gICAgLmNhbGwoZDMuYXhpc0JvdHRvbSh4KSlcclxuICAgIC5zZWxlY3RBbGwoXCJ0ZXh0XCIpXHJcbiAgICAuc3R5bGUoXCJ0ZXh0LWFuY2hvclwiLCBcImVuZFwiKVxyXG4gICAgLmF0dHIoXCJkeFwiLCBcIi0uOGVtXCIpXHJcbiAgICAuYXR0cihcImR5XCIsIFwiLjE1ZW1cIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIFwicm90YXRlKC00NSlcIik7XHJcblxyXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXHJcbiAgICAuYXR0cihcInhcIiwgd2lkdGggLyAyKVxyXG4gICAgLmF0dHIoXCJ5XCIsIGhlaWdodCkgLy8gUG9zacOnw6NvIGFiYWl4byBkbyBlaXhvXHJcbiAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIxNHB4XCIpXHJcbiAgICAuc3R5bGUoXCJmaWxsXCIsIFwiY3VycmVudENvbG9yXCIpXHJcbiAgICAudGV4dChcIkZhaXhhIEV0w6FyaWFcIik7XHJcbiAgICBcclxuXHJcbiAgc3ZnLmFwcGVuZChcImdcIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoJHttYXJnaW4ubGVmdH0sMClgKVxyXG4gICAgLmNhbGwoZDMuYXhpc0xlZnQoeSkudGlja3MoaGVpZ2h0IC8gNDApKVxyXG4gICAgLmNhbGwoZyA9PiBnLnNlbGVjdChcIi5kb21haW5cIikucmVtb3ZlKCkpXHJcbiAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIxMnB4XCIpXHJcbiAgICAuY2FsbChnID0+IGcuc2VsZWN0QWxsKFwiLnRpY2sgbGluZVwiKS5jbG9uZSgpXHJcbiAgICAgIC5hdHRyKFwieDJcIiwgd2lkdGggLSBtYXJnaW4ubGVmdCAtIG1hcmdpbi5yaWdodClcclxuICAgICAgLmF0dHIoXCJzdHJva2Utb3BhY2l0eVwiLCAwLjEpKVxyXG4gICAgLmNhbGwoZyA9PiBnLmFwcGVuZChcInRleHRcIilcclxuICAgICAgLmF0dHIoXCJ4XCIsIC1tYXJnaW4ubGVmdClcclxuICAgICAgLmF0dHIoXCJ5XCIsIDE1KVxyXG4gICAgICAuYXR0cihcImZpbGxcIiwgXCJjdXJyZW50Q29sb3JcIilcclxuICAgICAgLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCBcInN0YXJ0XCIpXHJcbiAgICAgIC5zdHlsZShcImZvbnQtc2l6ZVwiLCBcIjE4cHhcIilcclxuICAgICAgLnRleHQoXCJsb2coTXgpXCIpKTtcclxuICBcclxuXHJcbiAgLy8gR3JhZGllbnRlIGUgY29yZXNcclxuICBjb25zdCBjb2xvclNjYWxlID0gZDMuc2NhbGVTZXF1ZW50aWFsKGQzLmludGVycG9sYXRlVmlyaWRpcylcclxuICAgIC5kb21haW4oWzIwMjQsIDIwNzBdKTtcclxuXHJcbiAgY29uc3QgZGVmcyA9IHN2Zy5hcHBlbmQoXCJkZWZzXCIpO1xyXG4gIGNvbnN0IG5lc3RlZERhdGEgPSBkMy5ncm91cHMoZGF0YSwgZCA9PiBkLmFubyk7XHJcblxyXG4gIG5lc3RlZERhdGEuZm9yRWFjaCgoW3llYXIsIHZhbHVlc10pID0+IHtcclxuICAgIGNvbnN0IGdyYWRpZW50SWQgPSBgZ3JhZGllbnQtJHt0aXRsZX0tJHt5ZWFyfWA7XHJcbiAgICBcclxuICAgIGNvbnN0IGdyYWRpZW50ID0gZGVmcy5hcHBlbmQoXCJsaW5lYXJHcmFkaWVudFwiKVxyXG4gICAgICAuYXR0cihcImlkXCIsIGdyYWRpZW50SWQpXHJcbiAgICAgIC5hdHRyKFwiZ3JhZGllbnRVbml0c1wiLCBcInVzZXJTcGFjZU9uVXNlXCIpXHJcbiAgICAgIC5hdHRyKFwieDFcIiwgbWFyZ2luLmxlZnQpXHJcbiAgICAgIC5hdHRyKFwieTFcIiwgMClcclxuICAgICAgLmF0dHIoXCJ4MlwiLCB3aWR0aCAtIG1hcmdpbi5yaWdodClcclxuICAgICAgLmF0dHIoXCJ5MlwiLCAwKTtcclxuXHJcbiAgICBncmFkaWVudC5hcHBlbmQoXCJzdG9wXCIpXHJcbiAgICAgIC5hdHRyKFwib2Zmc2V0XCIsIFwiMCVcIilcclxuICAgICAgLmF0dHIoXCJzdG9wLWNvbG9yXCIsIGNvbG9yU2NhbGUoeWVhcikpO1xyXG5cclxuICAgIGdyYWRpZW50LmFwcGVuZChcInN0b3BcIilcclxuICAgICAgLmF0dHIoXCJvZmZzZXRcIiwgXCIxMDAlXCIpXHJcbiAgICAgIC5hdHRyKFwic3RvcC1jb2xvclwiLCBjb2xvclNjYWxlKE1hdGgubWluKHllYXIgKyAxMCwgMjA3MCkpKTtcclxuICB9KTtcclxuXHJcbiAgLy8gTGluaGFzXHJcbiAgY29uc3QgbGluZSA9IGQzLmxpbmUoKVxyXG4gICAgLngoZCA9PiB4KGQuZmFpeGEpKVxyXG4gICAgLnkoZCA9PiB5KGQucHJldikpO1xyXG5cclxuICBuZXN0ZWREYXRhLmZvckVhY2goKFt5ZWFyLCB2YWx1ZXNdKSA9PiB7XHJcbiAgICBzdmcuYXBwZW5kKFwicGF0aFwiKVxyXG4gICAgICAuZGF0dW0odmFsdWVzKVxyXG4gICAgICAuYXR0cihcImZpbGxcIiwgXCJub25lXCIpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIGB1cmwoI2dyYWRpZW50LSR7dGl0bGV9LSR7eWVhcn0pYClcclxuICAgICAgLmF0dHIoXCJzdHJva2Utd2lkdGhcIiwgMi41KVxyXG4gICAgICAuYXR0cihcImRcIiwgbGluZSk7XHJcbiAgfSk7XHJcblxyXG4gIC8vIExlZ2VuZGFcclxuICBjb25zdCBsZWdlbmRXaWR0aCA9IDIwMDtcclxuICBjb25zdCBsZWdlbmRIZWlnaHQgPSAyMDtcclxuICBjb25zdCBsZWdlbmRYID0gd2lkdGggLSBtYXJnaW4ucmlnaHQgLSBsZWdlbmRXaWR0aDtcclxuICBjb25zdCBsZWdlbmRZID0gbWFyZ2luLnRvcDtcclxuXHJcbiAgY29uc3QgbGVnZW5kR3JhZGllbnQgPSBkZWZzLmFwcGVuZChcImxpbmVhckdyYWRpZW50XCIpXHJcbiAgICAuYXR0cihcImlkXCIsIGBsZWdlbmQtJHt0aXRsZX1gKVxyXG4gICAgLmF0dHIoXCJ4MVwiLCBcIjAlXCIpXHJcbiAgICAuYXR0cihcInkxXCIsIFwiMCVcIilcclxuICAgIC5hdHRyKFwieDJcIiwgXCIxMDAlXCIpXHJcbiAgICAuYXR0cihcInkyXCIsIFwiMCVcIik7XHJcblxyXG4gIGNvbnN0IHllYXJzID0gWzIwMjQsIDIwMzUsIDIwNDUsIDIwNTUsIDIwNzBdO1xyXG4gIHllYXJzLmZvckVhY2goKHllYXIsIGkpID0+IHtcclxuICAgIGxlZ2VuZEdyYWRpZW50LmFwcGVuZChcInN0b3BcIilcclxuICAgICAgLmF0dHIoXCJvZmZzZXRcIiwgYCR7aSAqIDEwMCAvICh5ZWFycy5sZW5ndGggLSAxKX0lYClcclxuICAgICAgLmF0dHIoXCJzdG9wLWNvbG9yXCIsIGNvbG9yU2NhbGUoeWVhcikpO1xyXG4gIH0pO1xyXG5cclxuICBzdmcuYXBwZW5kKFwicmVjdFwiKVxyXG4gICAgLmF0dHIoXCJ4XCIsIGxlZ2VuZFgpXHJcbiAgICAuYXR0cihcInlcIiwgbGVnZW5kWSlcclxuICAgIC5hdHRyKFwid2lkdGhcIiwgbGVnZW5kV2lkdGgpXHJcbiAgICAuYXR0cihcImhlaWdodFwiLCBsZWdlbmRIZWlnaHQpXHJcbiAgICAuc3R5bGUoXCJmaWxsXCIsIGB1cmwoI2xlZ2VuZC0ke3RpdGxlfSlgKTtcclxuXHJcbiAgc3ZnLmFwcGVuZChcInRleHRcIilcclxuICAgIC5hdHRyKFwieFwiLCBsZWdlbmRYKVxyXG4gICAgLmF0dHIoXCJ5XCIsIGxlZ2VuZFkgLSA1KVxyXG4gICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMnB4XCIpXHJcbiAgICAudGV4dChcIkFub3MgKDIwMjQtMjA3MClcIik7XHJcblxyXG4gIHllYXJzLmZvckVhY2goKHllYXIsIGkpID0+IHtcclxuICAgIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAgIC5hdHRyKFwieFwiLCBsZWdlbmRYICsgKGkgKiBsZWdlbmRXaWR0aCAvICh5ZWFycy5sZW5ndGggLSAxKSkpXHJcbiAgICAgIC5hdHRyKFwieVwiLCBsZWdlbmRZICsgbGVnZW5kSGVpZ2h0ICsgMTUpXHJcbiAgICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgXCJtaWRkbGVcIilcclxuICAgICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMHB4XCIpXHJcbiAgICAgIC50ZXh0KHllYXIpO1xyXG4gIH0pO1xyXG5cclxuICAvLyBUw610dWxvXHJcbiAgc3ZnLmFwcGVuZChcInRleHRcIilcclxuICAgIC5hdHRyKFwieFwiLCB3aWR0aCAvIDIpXHJcbiAgICAuYXR0cihcInlcIiwgMjApXHJcbiAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXHJcbiAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIxLjJlbVwiKVxyXG4gICAgLnRleHQodGl0bGUpO1xyXG5cclxuICByZXR1cm4gc3ZnLm5vZGUoKTtcclxufVxyXG5cclxuLy8gUmVuZGVyaXphw6fDo28gZG9zIGdyw6FmaWNvc1xyXG57XHJcbiAgY29uc3QgY29udGFpbmVyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XHJcbiAgY29udGFpbmVyLnN0eWxlLmRpc3BsYXkgPSBcImdyaWRcIjtcclxuICBjb250YWluZXIuc3R5bGUuZ2FwID0gXCIycmVtXCI7XHJcbiAgY29udGFpbmVyLnN0eWxlLmp1c3RpZnlDb250ZW50ID0gXCJjZW50ZXJcIjtcclxuXHJcbiAgaWYgKG1vZGVsbzIuaW5jbHVkZXMoXCJBUklNQStFVFNcIikpIHtcclxuICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChjcmVhdGVDaGFydChkYXRhX2ZpbHRlcjEsIFwiQVJJTUErRVRTXCIpKTtcclxuICB9XHJcbiAgaWYgKG1vZGVsbzIuaW5jbHVkZXMoXCJMZWUtTWlsbGVyXCIpKSB7XHJcbiAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoY3JlYXRlQ2hhcnQoZGF0YV9maWx0ZXIyLCBcIkxlZS1NaWxsZXJcIikpO1xyXG4gIH1cclxuICBpZiAobW9kZWxvMi5pbmNsdWRlcyhcIkxlZS1DYXJ0ZXJcIikpIHtcclxuICAgIGNvbnRhaW5lci5hcHBlbmRDaGlsZChjcmVhdGVDaGFydChkYXRhX2ZpbHRlcjMsIFwiTGVlLUNhcnRlclwiKSk7XHJcbiAgfVxyXG5cclxuICByZXR1cm4gbW9kZWxvMi5sZW5ndGggPT09IDAgXHJcbiAgICA/IGh0bWxgPHA+TmVuaHVtIGRhZG8gc2VsZWNpb25hZG8uPC9wPmBcclxuICAgIDogY29udGFpbmVyO1xyXG59XHJcbnsgIFxyXG4gIGlmIChtb2RlbG8yLmluY2x1ZGVzKFwiQVJJTUErRVRTXCIpKSB7XHJcbiAgICByZXR1cm4gaHRtbGA8cD5QYXJhIGFjZXNzYXIgYSBtZXRvZG9sb2dpYSB1dGlsaXphZGEgbm8gbW9kZWxvIGNvbWJpbmFkbyBBUklNQSBjb20gRVRTLCA8YSBocmVmPVwibWV0b2RvbG9naWEuaHRtbCNtb2RlbG8taCVDMyVBRGJyaWRvLWFyaW1hLWV0cy1jb20tcG9uZGVyYSVDMyVBNyVDMyVBM28tZGluJUMzJUEybWljYVwiPmNsaXF1ZSBhcXVpPC9hPi48L3A+YDtcclxuICB9XHJcbiAgZWxzZSBpZiAobW9kZWxvMi5pbmNsdWRlcyhcIkxlZS1NaWxsZXJcIikpIHtcclxuICAgIHJldHVybiBodG1sYDxwPlBhcmEgYWNlc3NhciBhIG1ldG9kb2xvZ2lhIHV0aWxpemFkYSBubyBtb2RlbG8gTGVlLU1pbGxlciwgPGEgaHJlZj1cIm1ldG9kb2xvZ2lhLmh0bWwjbW9kZWxvLWxlZS1jYXJ0ZXJcIj5jbGlxdWUgYXF1aTwvYT4uPC9wPmA7XHJcbiAgfVxyXG4gIGVsc2UgaWYgKG1vZGVsbzIuaW5jbHVkZXMoXCJMZWUtQ2FydGVyXCIpKSB7XHJcbiAgICByZXR1cm4gaHRtbGA8cD5QYXJhIGFjZXNzYXIgYSBtZXRvZG9sb2dpYSB1dGlsaXphZGEgbm8gbW9kZWxvIExlZS1DYXJ0ZXIsIDxhIGhyZWY9XCJtZXRvZG9sb2dpYS5odG1sI21vZGVsby1sZWUtY2FydGVyXCI+Y2xpcXVlIGFxdWk8L2E+LjwvcD5gO1xyXG4gIH1cclxufVxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxoMj5UYWJlbGEgZGUgcHJldmlzw6NvIG1vZGVsbyBBUklNQStFVFM8L2gyPmBcclxuSW5wdXRzLnRhYmxlKHByZXZfY29tYilcclxuaHRtbGA8aDI+VGFiZWxhIGRlIHByZXZpc8OjbyBtb2RlbG8gTGVlLU1pbGxlcjwvaDI+YFxyXG5JbnB1dHMudGFibGUocHJldl9sbSlcclxuaHRtbGA8aDI+VGFiZWxhIGRlIHByZXZpc8OjbyBtb2RlbG8gTGVlLUNhcnRlcjwvaDI+YFxyXG5JbnB1dHMudGFibGUocHJldl9sYylcclxuaHRtbGBcclxuPGJvZHk+XHJcbiAgICA8YnI+XHJcbiAgICA8cD5CYWl4YXIgcHJldmlzw7VlcyBkbyBtb2RlbG8gY29tYmluYWRvIFxyXG4gICAgPGEgaHJlZj1cImRhZG9zL2RhZG9zMS9wcmV2aXNvZXNfY29tYmluYWRvLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIEFSSU1BK0VUUy5cclxuICAgIDwvYT5cclxuICAgIDwvcD5cclxuXHJcbiAgICA8cD5CYWl4YXIgcHJldmlzw7VlcyBkbyBtb2RlbG8gXHJcbiAgICA8YSBocmVmPVwiZGFkb3MvZGFkb3MyL3ByZXZpb2VzX2xjLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIExlZS1DYXJ0ZXIuXHJcbiAgICA8L2E+XHJcbiAgICA8L3A+XHJcblxyXG4gICAgPHA+QmFpeGFyIHByZXZpc8O1ZXMgZG8gbW9kZWxvXHJcbiAgICA8YSBocmVmPVwiZGFkb3MvZGFkb3MyL3ByZXZpb2VzX2xtLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIExlZS1NaWxsZXIuXHJcbiAgICA8L2E+XHJcbiAgICA8L3A+XHJcbjwvYm9keT5cclxuYFxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXJyb3MgPSBhd2FpdCBGaWxlQXR0YWNobWVudChcImRhZG9zL2RhZG9zMi9lcnJvcy5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXHJcbmVycm9zMiA9IGF3YWl0IEZpbGVBdHRhY2htZW50KFwiZGFkb3MvZGFkb3MxL21ldHJpY2FzX2Vycm9fY29tYmluYWRvXy5jc3ZcIikuY3N2KHt0eXBlZDogdHJ1ZX0pXHJcbi8vbW9kZWxvcyA9IFtcIkFSSU1BK0VUU1wiLCBcIkxlZS1DYXJ0ZXJcIiwgXCJMZWUtTWlsbGVyXCJdXHJcbnJlZ2lvZXMyID0gWy4uLm5ldyBTZXQoZXJyb3MubWFwKGQgPT4gZC5yZWdpYW8pKV0uc29ydCgpXHJcbmFub3MyID0gWy4uLm5ldyBTZXQoZXJyb3MubWFwKGQgPT4gZC5hbm8pKV0uc29ydCgpXHJcblxyXG4vKmVycm8gPSBlcnJvcy5maWx0ZXIoZCA9PiBkLnJlZ2lhbyA9PT0gcmVnaWFvNCAmJiBkLnRheGEgPT09IHNleG80ICYmICtkLmFubyA9PT0gYW5vNClcclxuICAubWFwKGQgPT4gKHtcclxuICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgbXhfcmVhbDogTnVtYmVyKGQubXhfcmVhbCkudG9GaXhlZCg1KSwgXHJcbiAgbXhfcHJldjogTnVtYmVyKGQubXhfbGMpLnRvRml4ZWQoNSksXHJcbiAgUk1TRTogTnVtYmVyKGQuUk1TRV9MQykudG9GaXhlZCg1KSxcclxuICBNQVBFOiBOdW1iZXIoZC5NQVBFX0xDKS50b0ZpeGVkKDUpLFxyXG4gIE1BRTogTnVtYmVyKGQuTUFFX0xDKS50b0ZpeGVkKDUpXHJcbn0pKVxyXG5JbnB1dHMudGFibGUoZXJybykqL1xyXG57XHJcbi8vIFZhcmnDoXZlbCBwYXJhIGd1YXJkYXIgbyByZXN1bHRhZG8gZmluYWxcclxuICBsZXQgZGFkb3NUYWJlbGE7XHJcblxyXG4gIC8vIDIuIEFnb3JhLCB1c2Ftb3MgJ2lmJyBwYXJhIHZlcmlmaWNhciBxdWFsIG1vZGVsbyBmb2kgc2VsZWNpb25hZG9cclxuICBpZiAoc2VsZXRvcmVzMi5tb2RlbG8gPT09IFwiTGVlLUNhcnRlclwiKSB7XHJcbiAgICAvLyAzLiBTZSBmb3IgTGVlLUNhcnRlciwgbWFwZWFtb3MgdXNhbmRvIGFzIGNvbHVuYXMgY29tIHN1Zml4byBfTENcclxuICAgIGRhZG9zVGFiZWxhID0gZXJyb3MuZmlsdGVyKGQgPT4gZC5yZWdpYW8gPT09IHJlZ2lhbzIgJiYgZC50YXhhID09PSBzZXhvKVxyXG4gICAgICAubWFwKGQgPT4gKHtcclxuICAgICAgZmFpeGE6IGQuZmFpeGFfZXRhcmlhLFxyXG4gICAgICBSTVNFOiBOdW1iZXIoZC5STVNFX0xDKS50b0ZpeGVkKDUpLFxyXG4gICAgICBNQVBFOiBOdW1iZXIoZC5NQVBFX0xDKS50b0ZpeGVkKDUpLFxyXG4gICAgICBNQUU6IE51bWJlcihkLk1BRV9MQykudG9GaXhlZCg1KVxyXG4gICAgfSkpO1xyXG4gICAgfWVsc2UgaWYgKHNlbGV0b3JlczIubW9kZWxvID09PSBcIkxlZS1NaWxsZXJcIikge1xyXG4gICAgICBkYWRvc1RhYmVsYSA9IGVycm9zLmZpbHRlcihkID0+IGQucmVnaWFvID09PSByZWdpYW8yICYmIGQudGF4YSA9PT0gc2V4bylcclxuICAgICAgLm1hcChkID0+ICh7XHJcbiAgICAgIGZhaXhhOiBkLmZhaXhhX2V0YXJpYSxcclxuICAgICAgUk1TRTogTnVtYmVyKGQuUk1TRV9MTSkudG9GaXhlZCg1KSxcclxuICAgICAgTUFQRTogTnVtYmVyKGQuTUFQRV9MTSkudG9GaXhlZCg1KSxcclxuICAgICAgTUFFOiBOdW1iZXIoZC5NQUVfTE0pLnRvRml4ZWQoNSlcclxuICAgIH0pKTtcclxuICAgIH1lbHNlIGlmIChzZWxldG9yZXMyLm1vZGVsbyA9PT0gXCJBUklNQStFVFNcIikge1xyXG4gICAgICBkYWRvc1RhYmVsYSA9IGVycm9zMi5maWx0ZXIoZCA9PiBkLkxvY2FsID09PSByZWdpYW8yICYmIGQuU2V4byA9PT0gc2V4bylcclxuICAgICAgLm1hcChkID0+ICh7XHJcbiAgICAgIGZhaXhhOiBkLmZhaXhhLFxyXG4gICAgICAvL214X3JlYWw6IE51bWJlcihkLm14X3JlYWwpLnRvRml4ZWQoNSksIFxyXG4gICAgICAvL214X3ByZXY6IE51bWJlcihkLm14X2xtKS50b0ZpeGVkKDUpLFxyXG4gICAgICBSTVNFOiBOdW1iZXIoZC5STVNFKS50b0ZpeGVkKDUpLFxyXG4gICAgICBNQVBFOiBOdW1iZXIoZC5NQVBFKS50b0ZpeGVkKDUpLFxyXG4gICAgICAvL01BRTogTnVtYmVyKGQuTUFFX0xNKS50b0ZpeGVkKDUpXHJcbiAgICB9KSk7XHJcbiAgICB9XHJcblxyXG4gIHJldHVybiBJbnB1dHMudGFibGUoZGFkb3NUYWJlbGEpO1xyXG59XHJcblxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzZWxldG9yZXMyJykifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIERhZG9zIGUgZmlsdHJvc1xyXG5wcmV2X2NvbWIgPSBhd2FpdCBGaWxlQXR0YWNobWVudCgnZGFkb3MvZGFkb3MxL3ByZXZpc2FvX2NvbmNhdGVuYWRvcy5jc3YnKS5jc3YoKVxyXG5wcmV2X2xtID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoJ2RhZG9zL2RhZG9zMi9wcmV2aW9lc19sbS5jc3YnKS5jc3YoKVxyXG5wcmV2X2xjID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoJ2RhZG9zL2RhZG9zMi9wcmV2aW9lc19sYy5jc3YnKS5jc3YoKVxyXG5cclxubW9kZWxvcyA9IFtcIkFSSU1BK0VUU1wiLCBcIkxlZS1DYXJ0ZXJcIiwgXCJMZWUtTWlsbGVyXCJdXHJcbnJlZ2lvZXMgPSBbXCJCcmFzaWxcIiwgXCJDZW50cm8tT2VzdGVcIiwgXCJOb3JkZXN0ZVwiLCBcIk5vcnRlXCIsIFwiU3VkZXN0ZVwiLCBcIlN1bFwiLCBcIkFjcmVcIiwgXCJBbGFnb2FzXCIsIFwiQW1hcMOhXCIsIFwiQW1hem9uYXNcIiwgXCJCYWhpYVwiLCBcIkNlYXLDoVwiLCBcIkRpc3RyaXRvIEZlZGVyYWxcIiwgXCJFc3DDrXJpdG8gU2FudG9cIiwgXCJHb2nDoXNcIiwgXCJNYXJhbmjDo29cIiwgXCJNYXRvIEdyb3Nzb1wiLCBcIk1hdG8gR3Jvc3NvIGRvIFN1bFwiLCBcIk1pbmFzIEdlcmFpc1wiLCBcIlBhcsOhXCIsIFwiUGFyYcOtYmFcIiwgXCJQYXJhbsOhXCIsIFwiUGVybmFtYnVjb1wiLCBcIlBpYXXDrVwiLCBcIlJpbyBkZSBKYW5laXJvXCIsIFwiUmlvIEdyYW5kZSBkbyBOb3J0ZVwiLCBcIlJpbyBHcmFuZGUgZG8gU3VsXCIsIFwiUm9uZMO0bmlhXCIsIFwiUm9yYWltYVwiLCBcIlNhbnRhIENhdGFyaW5hXCIsIFwiU8OjbyBQYXVsb1wiLCBcIlNlcmdpcGVcIiwgXCJUb2NhbnRpbnNcIl1cclxuXHJcbi8vIERlZmluacOnw6NvIGRvIGNvbXBvbmVudGUgcmVhdGl2b1xyXG4vLyBEZWZpbmUgbyBjb21wb25lbnRlIGRlIHNlbGXDp8Ojb1xyXG52aWV3b2Ygc2VsZXRvcmVzMiA9IHtcclxuICBjb25zdCBmb3JtID0gaHRtbGA8Zm9ybSBzdHlsZT1cIlxyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgICBnYXA6IDMwcHg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBcIj5cclxuICAgIDwhLS0gU2VsZWN0IHBhcmEgUmVnacOjbyAtLT5cclxuICAgIDxkaXYgc3R5bGU9XCJtaW4td2lkdGg6IDIwMHB4OyBtYXgtd2lkdGg6IDMwMHB4O1wiPlxyXG4gICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBibG9jazsgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tYm90dG9tOiA4cHg7XCI+TG9jYWw6PC9sYWJlbD5cclxuICAgICAgPHNlbGVjdCBuYW1lPVwicmVnaWFvXCIgc3R5bGU9XCJcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICBwYWRkaW5nOiA2cHggMTJweDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgbWluLXdpZHRoOiAxODBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhO1xyXG4gICAgICBcIj5cclxuICAgICAgICAke3JlZ2lvZXMubWFwKHIgPT4gYDxvcHRpb24gdmFsdWU9XCIke3J9XCI+JHtyfTwvb3B0aW9uPmApLmpvaW4oJycpfVxyXG4gICAgICA8L3NlbGVjdD5cclxuICAgIDwvZGl2PlxyXG4gICAgXHJcbiAgICA8IS0tIENoZWNrYm94ZXMgcGFyYSBNb2RlbG9zIC0tPlxyXG4gICAgPGRpdiBzdHlsZT1cIm1pbi13aWR0aDogMjAwcHg7IG1heC13aWR0aDogMzAwcHg7XCI+XHJcbiAgICAgIDxsYWJlbCBzdHlsZT1cImRpc3BsYXk6IGJsb2NrOyB0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi1ib3R0b206IDhweDtcIj5Nb2RlbG86PC9sYWJlbD5cclxuICAgICAgPHNlbGVjdCBuYW1lPVwibW9kZWxvXCIgc3R5bGU9XCJcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgICBwYWRkaW5nOiA2cHggMTJweDtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgbWluLXdpZHRoOiAxODBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhO1xyXG4gICAgICBcIj5cclxuICAgICAgICAke21vZGVsb3MubWFwKHIgPT4gYDxvcHRpb24gdmFsdWU9XCIke3J9XCI+JHtyfTwvb3B0aW9uPmApLmpvaW4oJycpfVxyXG4gICAgICA8L3NlbGVjdD5cclxuICAgIDwvZGl2PlxyXG4gICAgXHJcbiAgICA8IS0tIFJhZGlvIHBhcmEgU2V4byAtLT5cclxuICAgIDxkaXYgc3R5bGU9XCJtaW4td2lkdGg6IDIwMHB4OyBtYXgtd2lkdGg6IDMwMHB4O1wiPlxyXG4gICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBibG9jazsgdGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tYm90dG9tOiA4cHg7XCI+U2V4bzo8L2xhYmVsPlxyXG4gICAgICA8ZGl2IHN0eWxlPVwiXHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBnYXA6IDE1cHg7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgIFwiPlxyXG4gICAgICAgIDxsYWJlbCBzdHlsZT1cImRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogNXB4O1wiPlxyXG4gICAgICAgICAgPGlucHV0IHR5cGU9XCJyYWRpb1wiIG5hbWU9XCJzZXhvXCIgdmFsdWU9XCJBbWJvc1wiIGNoZWNrZWQ+XHJcbiAgICAgICAgICBBbWJvc1xyXG4gICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgPGxhYmVsIHN0eWxlPVwiZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA1cHg7XCI+XHJcbiAgICAgICAgICA8aW5wdXQgdHlwZT1cInJhZGlvXCIgbmFtZT1cInNleG9cIiB2YWx1ZT1cIkhvbWVuc1wiPlxyXG4gICAgICAgICAgSG9tZW5zXHJcbiAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICA8bGFiZWwgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDVweDtcIj5cclxuICAgICAgICAgIDxpbnB1dCB0eXBlPVwicmFkaW9cIiBuYW1lPVwic2V4b1wiIHZhbHVlPVwiTXVsaGVyZXNcIj5cclxuICAgICAgICAgIE11bGhlcmVzXHJcbiAgICAgICAgPC9sYWJlbD5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICA8L2Zvcm0+YDtcclxuICBcclxuICAvLyBEZWZpbmlyIHZhbG9yIGluaWNpYWxcclxuICBmb3JtLnZhbHVlID0ge1xyXG4gICAgcmVnaWFvOiByZWdpb2VzWzVdLFxyXG4gICAgbW9kZWxvOiAnQVJJTUErRVRTJyxcclxuICAgIHNleG86ICdBbWJvcydcclxuICB9O1xyXG4gIFxyXG4gIC8vIEF0dWFsaXphciB2YWxvciBhbyBtb2RpZmljYXIgc2VsZWN0XHJcbiAgZm9ybS5xdWVyeVNlbGVjdG9yKCdzZWxlY3RbbmFtZT1cInJlZ2lhb1wiXScpLmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsIGUgPT4ge1xyXG4gICAgZm9ybS52YWx1ZSA9IHtcclxuICAgICAgLi4uZm9ybS52YWx1ZSxcclxuICAgICAgcmVnaWFvOiBlLnRhcmdldC52YWx1ZVxyXG4gICAgfTtcclxuICAgIGZvcm0uZGlzcGF0Y2hFdmVudChuZXcgRXZlbnQoJ2lucHV0JykpO1xyXG4gIH0pO1xyXG4gIFxyXG4gIC8vIEF0dWFsaXphciB2YWxvciBhbyBtb2RpZmljYXIgY2hlY2tib3hlc1xyXG4gIGZvcm0ucXVlcnlTZWxlY3Rvcignc2VsZWN0W25hbWU9XCJtb2RlbG9cIl0nKS5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCBlID0+IHtcclxuICAgIGZvcm0udmFsdWUgPSB7XHJcbiAgICAgIC4uLmZvcm0udmFsdWUsXHJcbiAgICAgIG1vZGVsbzogZS50YXJnZXQudmFsdWVcclxuICAgIH07XHJcbiAgICBmb3JtLmRpc3BhdGNoRXZlbnQobmV3IEV2ZW50KCdpbnB1dCcpKTtcclxuICB9KTtcclxuICBcclxuICAvLyBBdHVhbGl6YXIgdmFsb3IgYW8gbW9kaWZpY2FyIHJhZGlvc1xyXG4gIGNvbnN0IHJhZGlvcyA9IGZvcm0ucXVlcnlTZWxlY3RvckFsbCgnaW5wdXRbbmFtZT1cInNleG9cIl0nKTtcclxuICBmb3IgKGNvbnN0IHJhZGlvIG9mIHJhZGlvcykge1xyXG4gICAgcmFkaW8uYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJywgKCkgPT4ge1xyXG4gICAgICBmb3JtLnZhbHVlID0ge1xyXG4gICAgICAgIC4uLmZvcm0udmFsdWUsXHJcbiAgICAgICAgc2V4bzogcmFkaW8udmFsdWVcclxuICAgICAgfTtcclxuICAgICAgZm9ybS5kaXNwYXRjaEV2ZW50KG5ldyBFdmVudCgnaW5wdXQnKSk7XHJcbiAgICB9KTtcclxuICB9XHJcbiAgXHJcbiAgcmV0dXJuIGZvcm07XHJcbn1cclxuXHJcbi8vIEV4dHJhaXIgdmFsb3JlcyBpbmRpdmlkdWFpcyBlbSBjw6lsdWxhcyBzZXBhcmFkYXNcclxucmVnaWFvMiA9IHNlbGV0b3JlczIucmVnaWFvXHJcbm1vZGVsbzIgPSBzZWxldG9yZXMyLm1vZGVsb1xyXG5zZXhvID0gc2VsZXRvcmVzMi5zZXhvXHJcblxyXG5cclxuXHJcbmRhdGFfZmlsdGVyMSA9IHByZXZfY29tYi5maWx0ZXIoZCA9PiBkLkxvY2FsID09PSByZWdpYW8yICYmIGQuU2V4byA9PT0gc2V4bykubWFwKGQgPT4gKHtcclxuICBhbm86ICtkLkFubyxcclxuICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgcHJldjogTWF0aC5sb2coZC5wcmV2aXNhbylcclxufSkpXHJcblxyXG5kYXRhX2ZpbHRlcjIgPSBwcmV2X2xtLmZpbHRlcihkID0+IGQucmVnaWFvID09PSByZWdpYW8yICYmIGQudGF4YSA9PT0gc2V4bykubWFwKGQgPT4gKHtcclxuICBhbm86ICtkLmFubyxcclxuICBmYWl4YTogZC5GYWl4YV9FdGFyaWEsXHJcbiAgcHJldjogTWF0aC5sb2coZC5wcmV2aXN0bylcclxufSkpXHJcblxyXG5kYXRhX2ZpbHRlcjMgPSBwcmV2X2xjLmZpbHRlcihkID0+IGQucmVnaWFvID09PSByZWdpYW8yICYmIGQudGF4YSA9PT0gc2V4bykubWFwKGQgPT4gKHtcclxuICBhbm86ICtkLmFubyxcclxuICBmYWl4YTogZC5GYWl4YV9FdGFyaWEsXHJcbiAgcHJldjogTWF0aC5sb2coZC5wcmV2aXN0bylcclxufSkpXHJcblxyXG4vLyBGdW7Dp8OjbyBwcmluY2lwYWwgcGFyYSBjcmlhciBncsOhZmljb3NcclxuZnVuY3Rpb24gY3JlYXRlQ2hhcnQoZGF0YSwgdGl0bGUpIHtcclxuXHJcbiAgY29uc3QgcHRCUkxvY2FsZURlZmluaXRpb24gPSB7XHJcbiAgICBkZWNpbWFsOiBcIixcIixcclxuICAgIHRob3VzYW5kczogXCJcIixcclxuICAgIGdyb3VwaW5nOiBbM10sXHJcbiAgICBjdXJyZW5jeTogW1wiUiRcIiwgXCJcIl1cclxuICB9O1xyXG4gIGQzLmZvcm1hdERlZmF1bHRMb2NhbGUocHRCUkxvY2FsZURlZmluaXRpb24pO1xyXG5cclxuICBjb25zdCB3aWR0aCA9IDc2MDtcclxuICBjb25zdCBoZWlnaHQgPSA1MDA7XHJcbiAgY29uc3QgbWFyZ2luID0ge3RvcDogMzAsIHJpZ2h0OiAyMCwgYm90dG9tOiA0MCwgbGVmdDogNTB9O1xyXG4gIFxyXG4gIGNvbnN0IHN2ZyA9IGQzLmNyZWF0ZShcInN2Z1wiKVxyXG4gICAgLmF0dHIoXCJ2aWV3Qm94XCIsIFswLCAwLCB3aWR0aCwgaGVpZ2h0XSlcclxuICAgICAgLmF0dHIoXCJ3aWR0aFwiLCB3aWR0aClcclxuICAgICAgLmF0dHIoXCJoZWlnaHRcIiwgaGVpZ2h0KVxyXG4gICAgICAuYXR0cihcInN0eWxlXCIsIFwibWF4LXdpZHRoOiAxMDAlOyBoZWlnaHQ6IGF1dG87IGhlaWdodDogaW50cmluc2ljOyBmb250OiAxMHB4IHNhbnMtc2VyaWY7XCIpXHJcbiAgICAgIC5zdHlsZShcIi13ZWJraXQtdGFwLWhpZ2hsaWdodC1jb2xvclwiLCBcInRyYW5zcGFyZW50XCIpXHJcbiAgICAgIC5zdHlsZShcIm92ZXJmbG93XCIsIFwidmlzaWJsZVwiKTtcclxuXHJcbiAgLy8gRXNjYWxhc1xyXG4gIGNvbnN0IHggPSBkMy5zY2FsZVBvaW50KClcclxuICAgIC5kb21haW4oWy4uLm5ldyBTZXQoZGF0YS5tYXAoZCA9PiBkLmZhaXhhKSldKVxyXG4gICAgLnJhbmdlKFttYXJnaW4ubGVmdCwgd2lkdGggLSBtYXJnaW4ucmlnaHRdKVxyXG4gICAgLnBhZGRpbmcoMC41KTtcclxuXHJcbiAgY29uc3QgeSA9IGQzLnNjYWxlTGluZWFyKClcclxuICAgIC5kb21haW4oZDMuZXh0ZW50KGRhdGEsIGQgPT4gZC5wcmV2KSkubmljZSgpXHJcbiAgICAucmFuZ2UoW2hlaWdodCAtIG1hcmdpbi5ib3R0b20sIG1hcmdpbi50b3BdKTtcclxuXHJcbiAgLy8gRWl4b3NcclxuICBzdmcuYXBwZW5kKFwiZ1wiKVxyXG4gICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgwLCR7aGVpZ2h0IC0gbWFyZ2luLmJvdHRvbX0pYClcclxuICAgIC5jYWxsKGQzLmF4aXNCb3R0b20oeCkpXHJcbiAgICAuc2VsZWN0QWxsKFwidGV4dFwiKVxyXG4gICAgLnN0eWxlKFwidGV4dC1hbmNob3JcIiwgXCJlbmRcIilcclxuICAgIC5hdHRyKFwiZHhcIiwgXCItLjhlbVwiKVxyXG4gICAgLmF0dHIoXCJkeVwiLCBcIi4xNWVtXCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBcInJvdGF0ZSgtNDUpXCIpO1xyXG5cclxuICBzdmcuYXBwZW5kKFwidGV4dFwiKVxyXG4gICAgLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxyXG4gICAgLmF0dHIoXCJ4XCIsIHdpZHRoIC8gMilcclxuICAgIC5hdHRyKFwieVwiLCBoZWlnaHQpIC8vIFBvc2nDp8OjbyBhYmFpeG8gZG8gZWl4b1xyXG4gICAgLnN0eWxlKFwiZm9udC1zaXplXCIsIFwiMTRweFwiKVxyXG4gICAgLnN0eWxlKFwiZmlsbFwiLCBcImN1cnJlbnRDb2xvclwiKVxyXG4gICAgLnRleHQoXCJGYWl4YSBFdMOhcmlhXCIpO1xyXG4gICAgXHJcblxyXG4gIHN2Zy5hcHBlbmQoXCJnXCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKCR7bWFyZ2luLmxlZnR9LDApYClcclxuICAgIC5jYWxsKGQzLmF4aXNMZWZ0KHkpLnRpY2tzKGhlaWdodCAvIDQwKSlcclxuICAgIC5jYWxsKGcgPT4gZy5zZWxlY3QoXCIuZG9tYWluXCIpLnJlbW92ZSgpKVxyXG4gICAgLnN0eWxlKFwiZm9udC1zaXplXCIsIFwiMTJweFwiKVxyXG4gICAgLmNhbGwoZyA9PiBnLnNlbGVjdEFsbChcIi50aWNrIGxpbmVcIikuY2xvbmUoKVxyXG4gICAgICAuYXR0cihcIngyXCIsIHdpZHRoIC0gbWFyZ2luLmxlZnQgLSBtYXJnaW4ucmlnaHQpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlLW9wYWNpdHlcIiwgMC4xKSlcclxuICAgIC5jYWxsKGcgPT4gZy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAgIC5hdHRyKFwieFwiLCAtbWFyZ2luLmxlZnQpXHJcbiAgICAgIC5hdHRyKFwieVwiLCAxNSlcclxuICAgICAgLmF0dHIoXCJmaWxsXCIsIFwiY3VycmVudENvbG9yXCIpXHJcbiAgICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgXCJzdGFydFwiKVxyXG4gICAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIxOHB4XCIpXHJcbiAgICAgIC50ZXh0KFwibG9nKE14KVwiKSk7XHJcbiAgXHJcblxyXG4gIC8vIEdyYWRpZW50ZSBlIGNvcmVzXHJcbiAgY29uc3QgY29sb3JTY2FsZSA9IGQzLnNjYWxlU2VxdWVudGlhbChkMy5pbnRlcnBvbGF0ZVZpcmlkaXMpXHJcbiAgICAuZG9tYWluKFsyMDI0LCAyMDcwXSk7XHJcblxyXG4gIGNvbnN0IGRlZnMgPSBzdmcuYXBwZW5kKFwiZGVmc1wiKTtcclxuICBjb25zdCBuZXN0ZWREYXRhID0gZDMuZ3JvdXBzKGRhdGEsIGQgPT4gZC5hbm8pO1xyXG5cclxuICBuZXN0ZWREYXRhLmZvckVhY2goKFt5ZWFyLCB2YWx1ZXNdKSA9PiB7XHJcbiAgICBjb25zdCBncmFkaWVudElkID0gYGdyYWRpZW50LSR7dGl0bGV9LSR7eWVhcn1gO1xyXG4gICAgXHJcbiAgICBjb25zdCBncmFkaWVudCA9IGRlZnMuYXBwZW5kKFwibGluZWFyR3JhZGllbnRcIilcclxuICAgICAgLmF0dHIoXCJpZFwiLCBncmFkaWVudElkKVxyXG4gICAgICAuYXR0cihcImdyYWRpZW50VW5pdHNcIiwgXCJ1c2VyU3BhY2VPblVzZVwiKVxyXG4gICAgICAuYXR0cihcIngxXCIsIG1hcmdpbi5sZWZ0KVxyXG4gICAgICAuYXR0cihcInkxXCIsIDApXHJcbiAgICAgIC5hdHRyKFwieDJcIiwgd2lkdGggLSBtYXJnaW4ucmlnaHQpXHJcbiAgICAgIC5hdHRyKFwieTJcIiwgMCk7XHJcblxyXG4gICAgZ3JhZGllbnQuYXBwZW5kKFwic3RvcFwiKVxyXG4gICAgICAuYXR0cihcIm9mZnNldFwiLCBcIjAlXCIpXHJcbiAgICAgIC5hdHRyKFwic3RvcC1jb2xvclwiLCBjb2xvclNjYWxlKHllYXIpKTtcclxuXHJcbiAgICBncmFkaWVudC5hcHBlbmQoXCJzdG9wXCIpXHJcbiAgICAgIC5hdHRyKFwib2Zmc2V0XCIsIFwiMTAwJVwiKVxyXG4gICAgICAuYXR0cihcInN0b3AtY29sb3JcIiwgY29sb3JTY2FsZShNYXRoLm1pbih5ZWFyICsgMTAsIDIwNzApKSk7XHJcbiAgfSk7XHJcblxyXG4gIC8vIExpbmhhc1xyXG4gIGNvbnN0IGxpbmUgPSBkMy5saW5lKClcclxuICAgIC54KGQgPT4geChkLmZhaXhhKSlcclxuICAgIC55KGQgPT4geShkLnByZXYpKTtcclxuXHJcbiAgbmVzdGVkRGF0YS5mb3JFYWNoKChbeWVhciwgdmFsdWVzXSkgPT4ge1xyXG4gICAgc3ZnLmFwcGVuZChcInBhdGhcIilcclxuICAgICAgLmRhdHVtKHZhbHVlcylcclxuICAgICAgLmF0dHIoXCJmaWxsXCIsIFwibm9uZVwiKVxyXG4gICAgICAuYXR0cihcInN0cm9rZVwiLCBgdXJsKCNncmFkaWVudC0ke3RpdGxlfS0ke3llYXJ9KWApXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDIuNSlcclxuICAgICAgLmF0dHIoXCJkXCIsIGxpbmUpO1xyXG4gIH0pO1xyXG5cclxuICAvLyBMZWdlbmRhXHJcbiAgY29uc3QgbGVnZW5kV2lkdGggPSAyMDA7XHJcbiAgY29uc3QgbGVnZW5kSGVpZ2h0ID0gMjA7XHJcbiAgY29uc3QgbGVnZW5kWCA9IHdpZHRoIC0gbWFyZ2luLnJpZ2h0IC0gbGVnZW5kV2lkdGg7XHJcbiAgY29uc3QgbGVnZW5kWSA9IG1hcmdpbi50b3A7XHJcblxyXG4gIGNvbnN0IGxlZ2VuZEdyYWRpZW50ID0gZGVmcy5hcHBlbmQoXCJsaW5lYXJHcmFkaWVudFwiKVxyXG4gICAgLmF0dHIoXCJpZFwiLCBgbGVnZW5kLSR7dGl0bGV9YClcclxuICAgIC5hdHRyKFwieDFcIiwgXCIwJVwiKVxyXG4gICAgLmF0dHIoXCJ5MVwiLCBcIjAlXCIpXHJcbiAgICAuYXR0cihcIngyXCIsIFwiMTAwJVwiKVxyXG4gICAgLmF0dHIoXCJ5MlwiLCBcIjAlXCIpO1xyXG5cclxuICBjb25zdCB5ZWFycyA9IFsyMDI0LCAyMDM1LCAyMDQ1LCAyMDU1LCAyMDcwXTtcclxuICB5ZWFycy5mb3JFYWNoKCh5ZWFyLCBpKSA9PiB7XHJcbiAgICBsZWdlbmRHcmFkaWVudC5hcHBlbmQoXCJzdG9wXCIpXHJcbiAgICAgIC5hdHRyKFwib2Zmc2V0XCIsIGAke2kgKiAxMDAgLyAoeWVhcnMubGVuZ3RoIC0gMSl9JWApXHJcbiAgICAgIC5hdHRyKFwic3RvcC1jb2xvclwiLCBjb2xvclNjYWxlKHllYXIpKTtcclxuICB9KTtcclxuXHJcbiAgc3ZnLmFwcGVuZChcInJlY3RcIilcclxuICAgIC5hdHRyKFwieFwiLCBsZWdlbmRYKVxyXG4gICAgLmF0dHIoXCJ5XCIsIGxlZ2VuZFkpXHJcbiAgICAuYXR0cihcIndpZHRoXCIsIGxlZ2VuZFdpZHRoKVxyXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgbGVnZW5kSGVpZ2h0KVxyXG4gICAgLnN0eWxlKFwiZmlsbFwiLCBgdXJsKCNsZWdlbmQtJHt0aXRsZX0pYCk7XHJcblxyXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAuYXR0cihcInhcIiwgbGVnZW5kWClcclxuICAgIC5hdHRyKFwieVwiLCBsZWdlbmRZIC0gNSlcclxuICAgIC5hdHRyKFwiZm9udC1zaXplXCIsIFwiMTJweFwiKVxyXG4gICAgLnRleHQoXCJBbm9zICgyMDI0LTIwNzApXCIpO1xyXG5cclxuICB5ZWFycy5mb3JFYWNoKCh5ZWFyLCBpKSA9PiB7XHJcbiAgICBzdmcuYXBwZW5kKFwidGV4dFwiKVxyXG4gICAgICAuYXR0cihcInhcIiwgbGVnZW5kWCArIChpICogbGVnZW5kV2lkdGggLyAoeWVhcnMubGVuZ3RoIC0gMSkpKVxyXG4gICAgICAuYXR0cihcInlcIiwgbGVnZW5kWSArIGxlZ2VuZEhlaWdodCArIDE1KVxyXG4gICAgICAuYXR0cihcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXHJcbiAgICAgIC5hdHRyKFwiZm9udC1zaXplXCIsIFwiMTBweFwiKVxyXG4gICAgICAudGV4dCh5ZWFyKTtcclxuICB9KTtcclxuXHJcbiAgLy8gVMOtdHVsb1xyXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAuYXR0cihcInhcIiwgd2lkdGggLyAyKVxyXG4gICAgLmF0dHIoXCJ5XCIsIDIwKVxyXG4gICAgLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxyXG4gICAgLnN0eWxlKFwiZm9udC1zaXplXCIsIFwiMS4yZW1cIilcclxuICAgIC50ZXh0KHRpdGxlKTtcclxuXHJcbiAgcmV0dXJuIHN2Zy5ub2RlKCk7XHJcbn1cclxuXHJcbi8vIFJlbmRlcml6YcOnw6NvIGRvcyBncsOhZmljb3Ncclxue1xyXG4gIGNvbnN0IGNvbnRhaW5lciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xyXG4gIGNvbnRhaW5lci5zdHlsZS5kaXNwbGF5ID0gXCJncmlkXCI7XHJcbiAgY29udGFpbmVyLnN0eWxlLmdhcCA9IFwiMnJlbVwiO1xyXG4gIGNvbnRhaW5lci5zdHlsZS5qdXN0aWZ5Q29udGVudCA9IFwiY2VudGVyXCI7XHJcblxyXG4gIGlmIChtb2RlbG8yLmluY2x1ZGVzKFwiQVJJTUErRVRTXCIpKSB7XHJcbiAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoY3JlYXRlQ2hhcnQoZGF0YV9maWx0ZXIxLCBcIkFSSU1BK0VUU1wiKSk7XHJcbiAgfVxyXG4gIGlmIChtb2RlbG8yLmluY2x1ZGVzKFwiTGVlLU1pbGxlclwiKSkge1xyXG4gICAgY29udGFpbmVyLmFwcGVuZENoaWxkKGNyZWF0ZUNoYXJ0KGRhdGFfZmlsdGVyMiwgXCJMZWUtTWlsbGVyXCIpKTtcclxuICB9XHJcbiAgaWYgKG1vZGVsbzIuaW5jbHVkZXMoXCJMZWUtQ2FydGVyXCIpKSB7XHJcbiAgICBjb250YWluZXIuYXBwZW5kQ2hpbGQoY3JlYXRlQ2hhcnQoZGF0YV9maWx0ZXIzLCBcIkxlZS1DYXJ0ZXJcIikpO1xyXG4gIH1cclxuXHJcbiAgcmV0dXJuIG1vZGVsbzIubGVuZ3RoID09PSAwIFxyXG4gICAgPyBodG1sYDxwPk5lbmh1bSBkYWRvIHNlbGVjaW9uYWRvLjwvcD5gXHJcbiAgICA6IGNvbnRhaW5lcjtcclxufVxyXG57ICBcclxuICBpZiAobW9kZWxvMi5pbmNsdWRlcyhcIkFSSU1BK0VUU1wiKSkge1xyXG4gICAgcmV0dXJuIGh0bWxgPHA+UGFyYSBhY2Vzc2FyIGEgbWV0b2RvbG9naWEgdXRpbGl6YWRhIG5vIG1vZGVsbyBjb21iaW5hZG8gQVJJTUEgY29tIEVUUywgPGEgaHJlZj1cIm1ldG9kb2xvZ2lhLmh0bWwjbW9kZWxvLWglQzMlQURicmlkby1hcmltYS1ldHMtY29tLXBvbmRlcmElQzMlQTclQzMlQTNvLWRpbiVDMyVBMm1pY2FcIj5jbGlxdWUgYXF1aTwvYT4uPC9wPmA7XHJcbiAgfVxyXG4gIGVsc2UgaWYgKG1vZGVsbzIuaW5jbHVkZXMoXCJMZWUtTWlsbGVyXCIpKSB7XHJcbiAgICByZXR1cm4gaHRtbGA8cD5QYXJhIGFjZXNzYXIgYSBtZXRvZG9sb2dpYSB1dGlsaXphZGEgbm8gbW9kZWxvIExlZS1NaWxsZXIsIDxhIGhyZWY9XCJtZXRvZG9sb2dpYS5odG1sI21vZGVsby1sZWUtY2FydGVyXCI+Y2xpcXVlIGFxdWk8L2E+LjwvcD5gO1xyXG4gIH1cclxuICBlbHNlIGlmIChtb2RlbG8yLmluY2x1ZGVzKFwiTGVlLUNhcnRlclwiKSkge1xyXG4gICAgcmV0dXJuIGh0bWxgPHA+UGFyYSBhY2Vzc2FyIGEgbWV0b2RvbG9naWEgdXRpbGl6YWRhIG5vIG1vZGVsbyBMZWUtQ2FydGVyLCA8YSBocmVmPVwibWV0b2RvbG9naWEuaHRtbCNtb2RlbG8tbGVlLWNhcnRlclwiPmNsaXF1ZSBhcXVpPC9hPi48L3A+YDtcclxuICB9XHJcbn1cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8aDI+VGFiZWxhIGRlIHByZXZpc8OjbyBtb2RlbG8gQVJJTUErRVRTPC9oMj5gXHJcbklucHV0cy50YWJsZShwcmV2X2NvbWIpXHJcbmh0bWxgPGgyPlRhYmVsYSBkZSBwcmV2aXPDo28gbW9kZWxvIExlZS1NaWxsZXI8L2gyPmBcclxuSW5wdXRzLnRhYmxlKHByZXZfbG0pXHJcbmh0bWxgPGgyPlRhYmVsYSBkZSBwcmV2aXPDo28gbW9kZWxvIExlZS1DYXJ0ZXI8L2gyPmBcclxuSW5wdXRzLnRhYmxlKHByZXZfbGMpXHJcbmh0bWxgXHJcbjxib2R5PlxyXG4gICAgPGJyPlxyXG4gICAgPHA+QmFpeGFyIHByZXZpc8O1ZXMgZG8gbW9kZWxvIGNvbWJpbmFkbyBcclxuICAgIDxhIGhyZWY9XCJkYWRvcy9kYWRvczEvcHJldmlzYW9fY29uY2F0ZW5hZG9zLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIEFSSU1BK0VUUy5cclxuICAgIDwvYT5cclxuICAgIDwvcD5cclxuXHJcbiAgICA8cD5CYWl4YXIgcHJldmlzw7VlcyBkbyBtb2RlbG8gXHJcbiAgICA8YSBocmVmPVwiZGFkb3MvZGFkb3MyL3ByZXZpb2VzX2xjLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIExlZS1DYXJ0ZXIuXHJcbiAgICA8L2E+XHJcbiAgICA8L3A+XHJcblxyXG4gICAgPHA+QmFpeGFyIHByZXZpc8O1ZXMgZG8gbW9kZWxvXHJcbiAgICA8YSBocmVmPVwiZGFkb3MvZGFkb3MyL3ByZXZpb2VzX2xtLmNzdlwiIGRvd25sb2FkPlxyXG4gICAgICAgIExlZS1NaWxsZXIuXHJcbiAgICA8L2E+XHJcbiAgICA8L3A+XHJcbjwvYm9keT5cclxuYFxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8aDM+Qm94UGxvdCBkb3MgZXJyb3MgbmEgZXNjYWxhIExvZ2Fyw610bWFjYTwvaDM+YFxyXG52aWV3b2YgZXJyb19zZWxlY3QgPSBJbnB1dHMuc2VsZWN0KFtcIk1BRVwiLCBcIk1BUEVcIiwgXCJSTVNFXCJdLCB7XHJcbiAgbGFiZWw6IFwiTcOpdHJpY2EgZGUgRXJyb1wiLFxyXG4gIHZhbHVlOiBcIk1BRVwiXHJcbn0pXHJcbi8vIFByb2Nlc3NhciBkYWRvc1xyXG5lcnJvc19sYyA9IGVycm9zLmZpbHRlcihkID0+IGQucmVnaWFvID09PSByZWdpYW8yICYmIGQudGF4YSA9PT0gc2V4bylcclxuICAgICAgLm1hcChkID0+ICh7XHJcbiAgICAgIGZhaXhhOiBkLmZhaXhhX2V0YXJpYSxcclxuICAgICAgUk1TRTogTnVtYmVyKGQuUk1TRV9MQyksXHJcbiAgICAgIE1BUEU6IE51bWJlcihkLk1BUEVfTEMpLFxyXG4gICAgICBNQUU6IE51bWJlcihkLk1BRV9MQyksXHJcbiAgICAgIG1vZGVsbzogXCJMZWUtQ2FydGVyXCJcclxuICAgIH0pKTtcclxuXHJcbmVycm9zX2xtID0gZXJyb3MuZmlsdGVyKGQgPT4gZC5yZWdpYW8gPT09IHJlZ2lhbzIgJiYgZC50YXhhID09PSBzZXhvKVxyXG4gICAgICAubWFwKGQgPT4gKHtcclxuICAgICAgZmFpeGE6IGQuZmFpeGFfZXRhcmlhLFxyXG4gICAgICBSTVNFOiBOdW1iZXIoZC5STVNFX0xNKSxcclxuICAgICAgTUFQRTogTnVtYmVyKGQuTUFQRV9MTSksXHJcbiAgICAgIE1BRTogTnVtYmVyKGQuTUFFX0xNKSxcclxuICAgICAgbW9kZWxvOiBcIkxlZS1NaWxsZXJcIlxyXG4gICAgfSkpO1xyXG5cclxuZXJyb3NfYWUgPSBlcnJvczIuZmlsdGVyKGQgPT4gZC5Mb2NhbCA9PT0gcmVnaWFvMiAmJiBkLlNleG8gPT09IHNleG8pXHJcbiAgICAgIC5tYXAoZCA9PiAoe1xyXG4gICAgICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgICAgIFJNU0U6IE51bWJlcihkLlJNU0UpLFxyXG4gICAgICBNQVBFOiBOdW1iZXIoZC5NQVBFKSxcclxuICAgICAgTUFFOiBOdW1iZXIoZC5NQUUpLFxyXG4gICAgICBtb2RlbG86IFwiQVJJTUErRVRTXCJcclxuICAgIH0pKTtcclxuXHJcbi8vIEltcG9ydGFyIEQzXHJcbmQzID0gcmVxdWlyZShcImQzQDdcIilcclxuXHJcbi8vIFVuaXIgZGFkb3NcclxuZGF0YTEgPSBbLi4uZXJyb3NfYWUsIC4uLmVycm9zX2xjLCAuLi5lcnJvc19sbV1cclxuXHJcbi8vIFByZXBhcmFyIGRhZG9zIHBhcmEgbyBncsOhZmljb1xyXG5wbG90RGF0YSA9IGRhdGExLm1hcChkID0+ICh7XHJcbiAgbW9kZWxvOiBkLm1vZGVsbyxcclxuICB2YWxvcjogTWF0aC5sb2coZFtlcnJvX3NlbGVjdF0pLFxyXG4gIGZhaXhhOiBkLmZhaXhhXHJcbn0pKS5maWx0ZXIoZCA9PiAhaXNOYU4oZC52YWxvcikpIC8vIHJlbW92ZXIgdmFsb3JlcyBpbnbDoWxpZG9zXHJcblxyXG5mdW5jdGlvbiBjcmVhdGVib3hwbG90KGRhdGEsIG1ldHJpY2EpIHtcclxuICAvLyBDb25maWd1cmHDp8O1ZXNcclxuICBjb25zdCBtYXJnaW4gPSAoe3RvcDogMzAsIHJpZ2h0OiAyMCwgYm90dG9tOiA0MCwgbGVmdDogNTB9KVxyXG4gIGNvbnN0IHdpZHRoID0gNzYwXHJcbiAgY29uc3QgaGVpZ2h0ID0gNTAwXHJcblxyXG4gIC8vIENhbGN1bGFyIGRvbcOtbmlvIGRvIFkgYmFzZWFkbyBub3MgZGFkb3MgcmVhaXNcclxuICBjb25zdCB5TWluID0gZDMubWluKHBsb3REYXRhLCBkID0+IGQudmFsb3IpXHJcbiAgY29uc3QgeU1heCA9IGQzLm1heChwbG90RGF0YSwgZCA9PiBkLnZhbG9yKVxyXG4gIGNvbnN0IHlQYWRkaW5nID0gKHlNYXggLSB5TWluKSAqIDAuMVxyXG5cclxuICAvLyBFc2NhbGFzXHJcbiAgY29uc3QgeCA9IGQzLnNjYWxlQmFuZCgpXHJcbiAgICAuZG9tYWluKFtcIkFSSU1BK0VUU1wiLCBcIkxlZS1DYXJ0ZXJcIiwgXCJMZWUtTWlsbGVyXCJdKVxyXG4gICAgLnJhbmdlKFttYXJnaW4ubGVmdCwgd2lkdGggLSBtYXJnaW4ucmlnaHRdKVxyXG4gICAgLnBhZGRpbmcoMC4zKVxyXG5cclxuICBjb25zdCB5ID0gZDMuc2NhbGVMaW5lYXIoKVxyXG4gICAgLmRvbWFpbihbeU1pbiAtIHlQYWRkaW5nLCB5TWF4ICsgeVBhZGRpbmddKVxyXG4gICAgLnJhbmdlKFtoZWlnaHQgLSBtYXJnaW4uYm90dG9tLCBtYXJnaW4udG9wXSlcclxuXHJcbiAgY29uc3QgY29sb3IgPSBkMy5zY2FsZU9yZGluYWwoKVxyXG4gICAgLmRvbWFpbihtb2RlbG9zKSAvLyBNYXBlaWEgb3Mgbm9tZXMgZG9zIG1vZGVsb3MuLi5cclxuICAgIC5yYW5nZShbJyNlNDFhMWMnLCAnIzM3N2ViOCcsICcjNGRhZjRhJ10pOyAvLyAuLi5wYXJhIGFzIGNvcmVzIGRlc2VqYWRhcy5cclxuXHJcbiAgLy8gQ3JpYXIgU1ZHXHJcbiAgY29uc3Qgc3ZnID0gZDMuY3JlYXRlKFwic3ZnXCIpXHJcbiAgICAuYXR0cihcIndpZHRoXCIsIHdpZHRoKVxyXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgaGVpZ2h0KVxyXG4gICAgLmF0dHIoXCJ2aWV3Qm94XCIsIFswLCAwLCB3aWR0aCwgaGVpZ2h0XSlcclxuICAgIC5hdHRyKFwic3R5bGVcIiwgXCJtYXgtd2lkdGg6IDEwMCU7IGhlaWdodDogYXV0bzsgaGVpZ2h0OiBpbnRyaW5zaWM7IGZvbnQ6IDEwcHggc2Fucy1zZXJpZjtcIilcclxuICAgIC5zdHlsZShcIi13ZWJraXQtdGFwLWhpZ2hsaWdodC1jb2xvclwiLCBcInRyYW5zcGFyZW50XCIpXHJcbiAgICAuc3R5bGUoXCJiYWNrZ3JvdW5kXCIsIFwiI2ZmZmRmZGZmXCIpO1xyXG5cclxuICAvLyBGdW7Dp8OjbyBwYXJhIGNhbGN1bGFyIGVzdGF0w61zdGljYXMgZG8gYm94cGxvdFxyXG4gIGZ1bmN0aW9uIGJveFF1YXJ0aWxlcyh2YWx1ZXMpIHtcclxuICAgIGNvbnN0IHNvcnRlZCA9IHZhbHVlcy5tYXAoZCA9PiBkLnZhbG9yKS5zb3J0KGQzLmFzY2VuZGluZyk7XHJcbiAgICBjb25zdCBxMSA9IGQzLnF1YW50aWxlKHNvcnRlZCwgMC4yNSk7XHJcbiAgICBjb25zdCBxMiA9IGQzLnF1YW50aWxlKHNvcnRlZCwgMC41KTtcclxuICAgIGNvbnN0IHEzID0gZDMucXVhbnRpbGUoc29ydGVkLCAwLjc1KTtcclxuICAgIGNvbnN0IGlxciA9IHEzIC0gcTE7XHJcbiAgICBjb25zdCBtaW4gPSBNYXRoLm1heChkMy5taW4oc29ydGVkKSwgcTEgLSAxLjUgKiBpcXIpO1xyXG4gICAgY29uc3QgbWF4ID0gTWF0aC5taW4oZDMubWF4KHNvcnRlZCksIHEzICsgMS41ICogaXFyKTtcclxuICAgIHJldHVybiB7cTEsIHEyLCBxMywgbWluLCBtYXh9O1xyXG4gIH1cclxuXHJcbiAgLy8gQWdydXBhciBkYWRvcyBwb3IgbW9kZWxvXHJcbiAgY29uc3QgZ3JvdXBlZCA9IGQzLmdyb3VwKHBsb3REYXRhLCBkID0+IGQubW9kZWxvKTtcclxuXHJcbiAgLy8gRGVzZW5oYXIgYm94cGxvdHNcclxuICBncm91cGVkLmZvckVhY2goKHZhbHVlcywgbW9kZWxvKSA9PiB7XHJcbiAgICBjb25zdCBzdGF0cyA9IGJveFF1YXJ0aWxlcyh2YWx1ZXMpO1xyXG4gICAgY29uc3QgeFBvcyA9IHgobW9kZWxvKSArIHguYmFuZHdpZHRoKCkgLyAyO1xyXG4gICAgY29uc3QgYm94V2lkdGggPSB4LmJhbmR3aWR0aCgpICogMC42O1xyXG4gICAgXHJcbiAgICBjb25zdCBnID0gc3ZnLmFwcGVuZChcImdcIik7XHJcbiAgICBcclxuICAgIC8vIFdoaXNrZXJzXHJcbiAgICBnLmFwcGVuZChcImxpbmVcIilcclxuICAgICAgLmF0dHIoXCJ4MVwiLCB4UG9zKS5hdHRyKFwieDJcIiwgeFBvcylcclxuICAgICAgLmF0dHIoXCJ5MVwiLCB5KHN0YXRzLm1pbikpLmF0dHIoXCJ5MlwiLCB5KHN0YXRzLnExKSlcclxuICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCJibGFja1wiKS5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDEuNSk7IC8vIDw9PSBBbHRlcmFkbyBwYXJhIHByZXRvXHJcbiAgICAgIFxyXG4gICAgZy5hcHBlbmQoXCJsaW5lXCIpXHJcbiAgICAgIC5hdHRyKFwieDFcIiwgeFBvcykuYXR0cihcIngyXCIsIHhQb3MpXHJcbiAgICAgIC5hdHRyKFwieTFcIiwgeShzdGF0cy5tYXgpKS5hdHRyKFwieTJcIiwgeShzdGF0cy5xMykpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiYmxhY2tcIikuYXR0cihcInN0cm9rZS13aWR0aFwiLCAxLjUpOyAvLyA8PT0gQWx0ZXJhZG8gcGFyYSBwcmV0b1xyXG4gICAgICBcclxuICAgIC8vIENhcHMgZG9zIHdoaXNrZXJzXHJcbiAgICBnLmFwcGVuZChcImxpbmVcIilcclxuICAgICAgLmF0dHIoXCJ4MVwiLCB4UG9zIC0gYm94V2lkdGgvNCkuYXR0cihcIngyXCIsIHhQb3MgKyBib3hXaWR0aC80KVxyXG4gICAgICAuYXR0cihcInkxXCIsIHkoc3RhdHMubWluKSkuYXR0cihcInkyXCIsIHkoc3RhdHMubWluKSlcclxuICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCJibGFja1wiKS5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDEuNSk7IC8vIDw9PSBBbHRlcmFkbyBwYXJhIHByZXRvXHJcbiAgICAgIFxyXG4gICAgZy5hcHBlbmQoXCJsaW5lXCIpXHJcbiAgICAgIC5hdHRyKFwieDFcIiwgeFBvcyAtIGJveFdpZHRoLzQpLmF0dHIoXCJ4MlwiLCB4UG9zICsgYm94V2lkdGgvNClcclxuICAgICAgLmF0dHIoXCJ5MVwiLCB5KHN0YXRzLm1heCkpLmF0dHIoXCJ5MlwiLCB5KHN0YXRzLm1heCkpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiYmxhY2tcIikuYXR0cihcInN0cm9rZS13aWR0aFwiLCAxLjUpOyAvLyA8PT0gQWx0ZXJhZG8gcGFyYSBwcmV0b1xyXG4gICAgICBcclxuICAgIC8vIENhaXhhXHJcbiAgICBnLmFwcGVuZChcInJlY3RcIilcclxuICAgICAgLmF0dHIoXCJ4XCIsIHhQb3MgLSBib3hXaWR0aC8yKVxyXG4gICAgICAuYXR0cihcInlcIiwgeShzdGF0cy5xMykpXHJcbiAgICAgIC5hdHRyKFwid2lkdGhcIiwgYm94V2lkdGgpXHJcbiAgICAgIC5hdHRyKFwiaGVpZ2h0XCIsIHkoc3RhdHMucTEpIC0geShzdGF0cy5xMykpXHJcbiAgICAgIC5hdHRyKFwiZmlsbFwiLCBjb2xvcihtb2RlbG8pKSAvLyBNYW50w6ltIG8gcHJlZW5jaGltZW50byBjb2xvcmlkb1xyXG4gICAgICAuYXR0cihcImZpbGwtb3BhY2l0eVwiLCAwLjcpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiYmxhY2tcIikgLy8gPD09IEFsdGVyYWRvIHBhcmEgcHJldG9cclxuICAgICAgLmF0dHIoXCJzdHJva2Utd2lkdGhcIiwgMS41KTtcclxuICAgICAgXHJcbiAgICAvLyBNZWRpYW5hXHJcbiAgICBnLmFwcGVuZChcImxpbmVcIilcclxuICAgICAgLmF0dHIoXCJ4MVwiLCB4UG9zIC0gYm94V2lkdGgvMikuYXR0cihcIngyXCIsIHhQb3MgKyBib3hXaWR0aC8yKVxyXG4gICAgICAuYXR0cihcInkxXCIsIHkoc3RhdHMucTIpKS5hdHRyKFwieTJcIiwgeShzdGF0cy5xMikpXHJcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiYmxhY2tcIikgLy8gPD09IEFsdGVyYWRvIHBhcmEgcHJldG9cclxuICAgICAgLmF0dHIoXCJzdHJva2Utd2lkdGhcIiwgMik7XHJcbiAgICAgIFxyXG4gICAgLy8gUG9udG9zIGluZGl2aWR1YWlzIChqaXR0ZXIpXHJcbiAgICB2YWx1ZXMuZm9yRWFjaChkID0+IHtcclxuICAgICAgc3ZnLmFwcGVuZChcImNpcmNsZVwiKVxyXG4gICAgICAgIC5hdHRyKFwiY3hcIiwgeFBvcyArIChNYXRoLnJhbmRvbSgpIC0gMC41KSAqIGJveFdpZHRoICogMC44KVxyXG4gICAgICAgIC5hdHRyKFwiY3lcIiwgeShkLnZhbG9yKSlcclxuICAgICAgICAuYXR0cihcInJcIiwgMi41KVxyXG4gICAgICAgIC5hdHRyKFwiZmlsbFwiLCBcImdyYXlcIikgLy8gTWFudMOpbSBvIHByZWVuY2hpbWVudG8gY29sb3JpZG9cclxuICAgICAgICAuYXR0cihcImZpbGwtb3BhY2l0eVwiLCAwLjUpXHJcbiAgICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCJibGFja1wiKSAvLyA8PT0gQWx0ZXJhZG8gcGFyYSBwcmV0b1xyXG4gICAgICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDAuNSk7IC8vIEVzcGVzc3VyYSBtZW5vciBwYXJhIG8gY29udG9ybm8gZG9zIHBvbnRvc1xyXG4gICAgfSk7XHJcbiAgfSk7XHJcblxyXG4gIC8vIEVpeG9zXHJcbiAgc3ZnLmFwcGVuZChcImdcIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwke2hlaWdodCAtIG1hcmdpbi5ib3R0b219KWApXHJcbiAgICAuY2FsbChkMy5heGlzQm90dG9tKHgpKTtcclxuXHJcbiAgc3ZnLmFwcGVuZChcImdcIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoJHttYXJnaW4ubGVmdH0sMClgKVxyXG4gICAgLmNhbGwoZDMuYXhpc0xlZnQoeSkpO1xyXG5cclxuICAvLyBUw610dWxvIGRvIGVpeG8gWVxyXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBcInJvdGF0ZSgtOTApXCIpXHJcbiAgICAuYXR0cihcInlcIiwgMCAtIG1hcmdpbi5sZWZ0KVxyXG4gICAgLmF0dHIoXCJ4XCIsIDAgLSAoaGVpZ2h0IC8gMikpXHJcbiAgICAuYXR0cihcImR5XCIsIFwiMWVtXCIpXHJcbiAgICAuc3R5bGUoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxyXG4gICAgLnRleHQobWV0cmljYSk7XHJcblxyXG4gIC8vIFJldG9ybmFyIG8gU1ZHXHJcbiAgcmV0dXJuIHN2Zy5ub2RlKCk7XHJcbiAgXHJcbn1cclxuY3JlYXRlYm94cGxvdChwbG90RGF0YSwgZXJyb19zZWxlY3QpXHJcblxyXG5odG1sYDxwPlBhcmEgYWNlc3NhciBhIG3DqXRvZG9sb2dpYSBkYXMgbcOpdHJpY2FzIGRlIGVycm8gZG8gbW9kZWxvIEFyaW1hK0VUUyA8YSBocmVmPVwibWV0b2RvbG9naWEuaHRtbCNtb2RlbG8taCVDMyVBRGJyaWRvLWFyaW1hLWV0cy1jb20tcG9uZGVyYSVDMyVBNyVDMyVBM28tZGluJUMzJUEybWljYVwiPmNsaXF1ZSBhcXVpPC9hPiwgcGFyYSBvcyBtb2RlbG9zIExlZS1DYXJ0ZXIgZSBMZWUtTWlsbGVyIDxhIGhyZWY9XCJtZXRvZG9sb2dpYS5odG1sI21vZGVsby1sZWUtY2FydGVyXCI+Y2xpcXVlIGFxdWk8L2E+PC9wPmBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8aDM+TcOpdHJpY2FzIGRlIGVycm8gcG9yIEdydXBvIEV0w6FyaW8gZW0gbG9nPC9oMz5gXHJcbnZpZXdvZiBlcnJvX3NlbGVjdDIgPSBJbnB1dHMuc2VsZWN0KFtcIk1BRVwiLCBcIk1BUEVcIiwgXCJSTVNFXCJdLCB7XHJcbiAgbGFiZWw6IFwiTcOpdHJpY2EgZGUgRXJyb1wiLFxyXG4gIHZhbHVlOiBcIk1BRVwiXHJcbn0pXHJcbnBsb3REYXRhMiA9IGRhdGExLm1hcChkID0+ICh7XHJcbiAgbW9kZWxvOiBkLm1vZGVsbyxcclxuICB2YWxvcjogTWF0aC5sb2coZFtlcnJvX3NlbGVjdDJdKSxcclxuICBmYWl4YTogZC5mYWl4YVxyXG59KSkuZmlsdGVyKGQgPT4gIWlzTmFOKGQudmFsb3IpKVxyXG5cclxuZnVuY3Rpb24gZ3JhZmljb19iYXJyYShkYXRhKXtcclxuICBjb25zdCBtYXJnaW4gPSAoe3RvcDogMzAsIHJpZ2h0OiAyMCwgYm90dG9tOiA0MCwgbGVmdDogNTB9KVxyXG4gIGNvbnN0IHdpZHRoID0gNTAwXHJcbiAgY29uc3QgaGVpZ2h0ID0gODAwXHJcblxyXG4gIFxyXG5cclxuICAvLyBMaXN0YSBkb3Mgc3ViZ3J1cG9zIChtb2RlbG9zKVxyXG4gIGNvbnN0IHN1Ymdyb3VwcyA9IFsuLi5uZXcgU2V0KGRhdGEubWFwKGQgPT4gZC5tb2RlbG8pKV0uc29ydCgpXHJcblxyXG4gIC8vIExpc3RhIGRvcyBncnVwb3MgKGZhaXhhcyBldMOhcmlhcykgLSBtYW50ZW5kbyBhIG9yZGVtIG9yaWdpbmFsXHJcbiAgY29uc3QgZ3JvdXBzID0gWy4uLm5ldyBTZXQoZGF0YS5tYXAoZCA9PiBkLmZhaXhhKSldXHJcblxyXG4gIC8vIENyaWFyIG8gU1ZHXHJcbiAgY29uc3Qgc3ZnID0gZDMuY3JlYXRlKFwic3ZnXCIpXHJcbiAgICAuYXR0cihcIndpZHRoXCIsIHdpZHRoICsgbWFyZ2luLmxlZnQgKyBtYXJnaW4ucmlnaHQpXHJcbiAgICAuYXR0cihcImhlaWdodFwiLCBoZWlnaHQgKyBtYXJnaW4udG9wICsgbWFyZ2luLmJvdHRvbSlcclxuXHJcbiAgY29uc3QgZyA9IHN2Zy5hcHBlbmQoXCJnXCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKCR7bWFyZ2luLmxlZnR9LCR7bWFyZ2luLnRvcH0pYClcclxuXHJcbiAgLy8gRXNjYWxhc1xyXG4gIC8vIEVzY2FsYSBZIHBhcmEgYXMgZmFpeGFzIGV0w6FyaWFzIChncnVwb3MpXHJcbiAgY29uc3QgeSA9IGQzLnNjYWxlQmFuZCgpXHJcbiAgICAuZG9tYWluKGdyb3VwcylcclxuICAgIC5yYW5nZShbMCwgaGVpZ2h0XSlcclxuICAgIC5wYWRkaW5nKDAuMilcclxuXHJcbiAgLy8gRXNjYWxhIFggcGFyYSBvcyB2YWxvcmVzXHJcbiAgY29uc3QgeCA9IGQzLnNjYWxlTGluZWFyKClcclxuICAgIC5kb21haW4oW2QzLm1pbihkYXRhLCBkID0+IGQudmFsb3IpLTAuNSwgZDMubWF4KGRhdGEsIGQgPT4gZC52YWxvcildKVxyXG4gICAgLnJhbmdlKFswLCB3aWR0aF0pXHJcblxyXG4gIC8vIEVzY2FsYSBZIHBhcmEgc3ViZ3J1cG9zIChwb3Npw6fDo28gZGFzIGJhcnJhcyBkZW50cm8gZGUgY2FkYSBmYWl4YSBldMOhcmlhKVxyXG4gIGNvbnN0IHlTdWJncm91cCA9IGQzLnNjYWxlQmFuZCgpXHJcbiAgICAuZG9tYWluKHN1Ymdyb3VwcylcclxuICAgIC5yYW5nZShbMCwgeS5iYW5kd2lkdGgoKV0pXHJcbiAgICAucGFkZGluZygwLjA1KVxyXG5cclxuICAvLyBFc2NhbGEgZGUgY29yZXNcclxuICBjb25zdCBjb2xvciA9IGQzLnNjYWxlT3JkaW5hbCgpXHJcbiAgICAuZG9tYWluKHN1Ymdyb3VwcylcclxuICAgIC5yYW5nZShbJyNlNDFhMWMnLCAnIzM3N2ViOCcsICcjNGRhZjRhJ10pXHJcblxyXG4gIC8vIEFkaWNpb25hciBlaXhvIFhcclxuICBnLmFwcGVuZChcImdcIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwke2hlaWdodH0pYClcclxuICAgIC5jYWxsKGQzLmF4aXNCb3R0b20oeCkpXHJcblxyXG4gIC8vIEFkaWNpb25hciBlaXhvIFlcclxuICBnLmFwcGVuZChcImdcIilcclxuICAgIC5jYWxsKGQzLmF4aXNMZWZ0KHkpKVxyXG5cclxuICAvLyBDcmlhciBhcyBiYXJyYXNcclxuICBnLmFwcGVuZChcImdcIilcclxuICAgIC5zZWxlY3RBbGwoXCJnXCIpXHJcbiAgICAuZGF0YShncm91cHMpXHJcbiAgICAuZW50ZXIoKVxyXG4gICAgLmFwcGVuZChcImdcIilcclxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGQgPT4gYHRyYW5zbGF0ZSgwLCR7eShkKX0pYClcclxuICAgIC5zZWxlY3RBbGwoXCJyZWN0XCIpXHJcbiAgICAuZGF0YShmYWl4YSA9PiB7XHJcbiAgICAgIHJldHVybiBzdWJncm91cHMubWFwKG1vZGVsbyA9PiB7XHJcbiAgICAgICAgY29uc3QgZGF0YVBvaW50ID0gZGF0YS5maW5kKGQgPT4gZC5mYWl4YSA9PT0gZmFpeGEgJiYgZC5tb2RlbG8gPT09IG1vZGVsbyk7XHJcbiAgICAgICAgcmV0dXJuIHtcclxuICAgICAgICAgIG1vZGVsbzogbW9kZWxvLFxyXG4gICAgICAgICAgdmFsb3I6IGRhdGFQb2ludCA/IGRhdGFQb2ludC52YWxvciA6IDAsXHJcbiAgICAgICAgICBmYWl4YTogZmFpeGFcclxuICAgICAgICB9O1xyXG4gICAgICB9KTtcclxuICAgIH0pXHJcbiAgICAuZW50ZXIoKVxyXG4gICAgLmFwcGVuZChcInJlY3RcIilcclxuICAgIC5hdHRyKFwieFwiLCAwKVxyXG4gICAgLmF0dHIoXCJ5XCIsIGQgPT4geVN1Ymdyb3VwKGQubW9kZWxvKSlcclxuICAgIC5hdHRyKFwid2lkdGhcIiwgZCA9PiB4KGQudmFsb3IpKVxyXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgeVN1Ymdyb3VwLmJhbmR3aWR0aCgpKVxyXG4gICAgLmF0dHIoXCJmaWxsXCIsIGQgPT4gY29sb3IoZC5tb2RlbG8pKVxyXG5cclxuICAvLyBBZGljaW9uYXIgcsOzdHVsb3MgZG9zIGVpeG9zXHJcbiAgZy5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBcInJvdGF0ZSgtOTApXCIpXHJcbiAgICAuYXR0cihcInlcIiwgMCAtIG1hcmdpbi5sZWZ0KVxyXG4gICAgLmF0dHIoXCJ4XCIsIDAgLSAoaGVpZ2h0IC8gMikpXHJcbiAgICAuYXR0cihcImR5XCIsIFwiMWVtXCIpXHJcbiAgICAuc3R5bGUoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxyXG4gICAgLnRleHQoXCJGYWl4YSBFdMOhcmlhXCIpXHJcblxyXG4gIGcuYXBwZW5kKFwidGV4dFwiKVxyXG4gICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgke3dpZHRoIC8gMn0sICR7aGVpZ2h0ICsgbWFyZ2luLmJvdHRvbSAtMTB9KWApXHJcbiAgICAuc3R5bGUoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxyXG4gICAgLnRleHQoXCJWYWxvciBlbSBsb2dcIilcclxuXHJcbiAgY29uc3QgbGVnZW5kSXRlbVNwYWNpbmcgPSAxMTA7IC8vIEVzcGHDp28gcXVlIGNhZGEgaXRlbSBkYSBsZWdlbmRhIG9jdXBhXHJcbiAgY29uc3QgdG90YWxMZWdlbmRXaWR0aCA9IHN1Ymdyb3Vwcy5sZW5ndGggKiBsZWdlbmRJdGVtU3BhY2luZztcclxuICBjb25zdCBsZWdlbmRTdGFydFggPSAod2lkdGggLyAyKSAtICh0b3RhbExlZ2VuZFdpZHRoIC8gMik7XHJcblxyXG4gIGNvbnN0IGxlZ2VuZCA9IGcuYXBwZW5kKFwiZ1wiKVxyXG4gICAgICAvLyAtLS0gMi4gQXBsaWNhciBvIG5vdm8gcG9zaWNpb25hbWVudG8gLS0tXHJcbiAgICAgIC8vIFBvc2nDp8OjbyBYIGNhbGN1bGFkYSBwYXJhIGNlbnRyYWxpemFyIGUgWSBtb3ZpZG8gbWFpcyBwYXJhIGNpbWEgKC0yNSlcclxuICAgICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgke2xlZ2VuZFN0YXJ0WH0sIC0yNSlgKSBcclxuICAgICAgLmF0dHIoXCJmb250LWZhbWlseVwiLCBcInNhbnMtc2VyaWZcIilcclxuICAgICAgLmF0dHIoXCJmb250LXNpemVcIiwgMTApXHJcbiAgICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgXCJzdGFydFwiKVxyXG4gICAgICAuc2VsZWN0QWxsKFwiZ1wiKVxyXG4gICAgICAuZGF0YShzdWJncm91cHMpIFxyXG4gICAgICAuam9pbihcImdcIilcclxuICAgICAgICAuYXR0cihcInRyYW5zZm9ybVwiLCAoZCwgaSkgPT4gYHRyYW5zbGF0ZSgke2kgKiBsZWdlbmRJdGVtU3BhY2luZ30sIDApYCk7IFxyXG5cclxuICBsZWdlbmQuYXBwZW5kKFwicmVjdFwiKVxyXG4gICAgICAuYXR0cihcInhcIiwgMClcclxuICAgICAgLmF0dHIoXCJ3aWR0aFwiLCAxNSlcclxuICAgICAgLmF0dHIoXCJoZWlnaHRcIiwgMTUpXHJcbiAgICAgIC5hdHRyKFwiZmlsbFwiLCBkID0+IGNvbG9yKGQpKTsgXHJcblxyXG4gIGxlZ2VuZC5hcHBlbmQoXCJ0ZXh0XCIpXHJcbiAgICAgIC5hdHRyKFwieFwiLCAyMCkgXHJcbiAgICAgIC5hdHRyKFwieVwiLCA5LjUpXHJcbiAgICAgIC5hdHRyKFwiZHlcIiwgXCIwLjMyZW1cIilcclxuICAgICAgLnRleHQoZCA9PiBkKTtcclxuXHJcblxyXG4gIC8vIFJldG9ybmFyIG8gU1ZHXHJcbiAgcmV0dXJuIHN2Zy5ub2RlKCk7XHJcbn1cclxuZ3JhZmljb19iYXJyYShwbG90RGF0YTIpXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPGgzPlRhYmVsYSBkZSBNw6l0cmljYXMgZGUgRXJybzwvaDM+YFxyXG5lcnJvcyA9IGF3YWl0IEZpbGVBdHRhY2htZW50KFwiZGFkb3MvZGFkb3MyL2Vycm9zLmNzdlwiKS5jc3Yoe3R5cGVkOiB0cnVlfSlcclxuZXJyb3MyID0gYXdhaXQgRmlsZUF0dGFjaG1lbnQoXCJkYWRvcy9kYWRvczEvZXJyb3NfY29uY2F0ZW5hZG9zLmNzdlwiKS5jc3Yoe3R5cGVkOiB0cnVlfSlcclxucmVnaW9lczIgPSBbLi4ubmV3IFNldChlcnJvcy5tYXAoZCA9PiBkLnJlZ2lhbykpXS5zb3J0KClcclxuYW5vczIgPSBbLi4ubmV3IFNldChlcnJvcy5tYXAoZCA9PiBkLmFubykpXS5zb3J0KClcclxuXHJcbntcclxuLy8gVmFyacOhdmVsIHBhcmEgZ3VhcmRhciBvIHJlc3VsdGFkbyBmaW5hbFxyXG4gIGxldCBkYWRvc1RhYmVsYTtcclxuICBpZiAoc2VsZXRvcmVzMi5tb2RlbG8gPT09IFwiTGVlLUNhcnRlclwiKSB7XHJcbiAgICBkYWRvc1RhYmVsYSA9IGVycm9zLmZpbHRlcihkID0+IGQucmVnaWFvID09PSByZWdpYW8yICYmIGQudGF4YSA9PT0gc2V4bylcclxuICAgICAgLm1hcChkID0+ICh7XHJcbiAgICAgIGZhaXhhOiBkLmZhaXhhX2V0YXJpYSxcclxuICAgICAgUk1TRTogTnVtYmVyKGQuUk1TRV9MQykudG9GaXhlZCg1KSxcclxuICAgICAgTUFQRTogTnVtYmVyKGQuTUFQRV9MQykudG9GaXhlZCg1KSxcclxuICAgICAgTUFFOiBOdW1iZXIoZC5NQUVfTEMpLnRvRml4ZWQoNSlcclxuICAgIH0pKTtcclxuICAgIH1lbHNlIGlmIChzZWxldG9yZXMyLm1vZGVsbyA9PT0gXCJMZWUtTWlsbGVyXCIpIHtcclxuICAgICAgZGFkb3NUYWJlbGEgPSBlcnJvcy5maWx0ZXIoZCA9PiBkLnJlZ2lhbyA9PT0gcmVnaWFvMiAmJiBkLnRheGEgPT09IHNleG8pXHJcbiAgICAgIC5tYXAoZCA9PiAoe1xyXG4gICAgICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgICAgIFJNU0U6IE51bWJlcihkLlJNU0VfTE0pLnRvRml4ZWQoNSksXHJcbiAgICAgIE1BUEU6IE51bWJlcihkLk1BUEVfTE0pLnRvRml4ZWQoNSksXHJcbiAgICAgIE1BRTogTnVtYmVyKGQuTUFFX0xNKS50b0ZpeGVkKDUpXHJcbiAgICB9KSk7XHJcbiAgICB9ZWxzZSBpZiAoc2VsZXRvcmVzMi5tb2RlbG8gPT09IFwiQVJJTUErRVRTXCIpIHtcclxuICAgICAgZGFkb3NUYWJlbGEgPSBlcnJvczIuZmlsdGVyKGQgPT4gZC5Mb2NhbCA9PT0gcmVnaWFvMiAmJiBkLlNleG8gPT09IHNleG8pXHJcbiAgICAgIC5tYXAoZCA9PiAoe1xyXG4gICAgICBmYWl4YTogZC5mYWl4YV9ldGFyaWEsXHJcbiAgICAgIFJNU0U6IE51bWJlcihkLlJNU0UpLnRvRml4ZWQoNSksXHJcbiAgICAgIE1BUEU6IE51bWJlcihkLk1BUEUpLnRvRml4ZWQoNSksXHJcbiAgICAgIE1BRTogTnVtYmVyKGQuTUFFKS50b0ZpeGVkKDUpXHJcbiAgICB9KSk7XHJcbiAgICB9XHJcblxyXG4gIHJldHVybiBJbnB1dHMudGFibGUoZGFkb3NUYWJlbGEpO1xyXG59XHJcblxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzZWxldG9yZXMyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Vycm9fc2VsZWN0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Vycm9fc2VsZWN0MicpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -839,236 +1277,242 @@ window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiada");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiada");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1076,185 +1520,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 
 
