@@ -92,7 +92,7 @@ viewof seletores2 = {
   
   // Definir valor inicial
   form.value = {
-    regiao: regioes[5],
+    regiao: regioes[0],
     modelo: 'ARIMA+ETS',
     sexo: 'Ambos'
   };
@@ -135,21 +135,19 @@ regiao2 = seletores2.regiao
 modelo2 = seletores2.modelo
 sexo = seletores2.sexo
 
-
-
-data_filter1 = prev_comb.filter(d => d.Local === regiao2 && d.Sexo === sexo).map(d => ({
+data_filter1 = prev_comb.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
   ano: +d.Ano,
   faixa: d.faixa_etaria,
   prev: Math.log(d.previsao)
 }))
 
-data_filter2 = prev_lm.filter(d => d.regiao === regiao2 && d.taxa === sexo).map(d => ({
+data_filter2 = prev_lm.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
   ano: +d.ano,
   faixa: d.Faixa_Etaria,
   prev: Math.log(d.previsto)
 }))
 
-data_filter3 = prev_lc.filter(d => d.regiao === regiao2 && d.taxa === sexo).map(d => ({
+data_filter3 = prev_lc.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
   ano: +d.ano,
   faixa: d.Faixa_Etaria,
   prev: Math.log(d.previsto)
@@ -392,7 +390,7 @@ html`
 
 ## BoxPlot
 ```{ojs}
-html`<h3>BoxPlot dos erros na escala Logarítmaca</h3>`
+html`<h3>BoxPlot dos erros na escala Logarítmica</h3>`
 viewof erro_select = Inputs.select(["MAE", "MAPE", "RMSE"], {
   label: "Métrica de Erro",
   value: "MAE"
@@ -577,7 +575,7 @@ html`<p>Para acessar a métodologia das métricas de erro do modelo Arima+ETS <a
 
 ## Barras
 ```{ojs}
-html`<h3>Métricas de erro por Grupo Etário em log</h3>`
+html`<h3>Métricas de erro por Grupo Etário em escala Logarítmica</h3>`
 viewof erro_select2 = Inputs.select(["MAE", "MAPE", "RMSE"], {
   label: "Métrica de Erro",
   value: "MAE"
