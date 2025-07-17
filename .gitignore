@@ -1,5 +1,2 @@
-._site/
-.quarto/
-.vscode/
-.nojekyll
+/.vscode/
 /.quarto/
