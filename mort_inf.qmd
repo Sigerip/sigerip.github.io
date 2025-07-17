@@ -14,7 +14,7 @@ execute:
 // Verifique se o nome do arquivo está exatamente correto.
 // Se o arquivo estiver em outra pasta, use o caminho relativo, ex: "dados/meus_dados.csv"
 
-dadosOriginais = FileAttachment("dados/mort_infantil.csv").csv({typed: true})
+dadosOriginais = FileAttachment("dados/mortalidade_infantil/mort_infantil.csv").csv({typed: true})
 
 listaDeEstados = [
   { nome: "Acre", codigo: "12" },

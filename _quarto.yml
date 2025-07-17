@@ -5,7 +5,7 @@ project:
 website:
   title: "SIGERIP"
   navbar:
-    logo: img.jpg
+    logo: img/logo1.jpg
     left:
       - href: index.qmd
         text: Início

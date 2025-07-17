@@ -1,3 +1,5 @@
+._site/
+.quarto/
+.vscode/
+.nojekyll
 /.quarto/
-.html
-.css

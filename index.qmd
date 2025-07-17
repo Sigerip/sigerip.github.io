@@ -4,7 +4,7 @@ execute:
   echo: false
 about:
   template: jolla
-  image: img.jpg
+  image: img/logo1.jpg
   links:
     - icon: instagram
       text: Instagram

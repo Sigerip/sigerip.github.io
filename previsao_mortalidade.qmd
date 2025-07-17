@@ -11,9 +11,9 @@ execute:
 ## Gráfico
 ```{ojs}
 // Dados e filtros
-prev_comb = await FileAttachment('dados/dados1/previsao_concatenados.csv').csv()
-prev_lm = await FileAttachment('dados/dados2/previoes_lm.csv').csv()
-prev_lc = await FileAttachment('dados/dados2/previoes_lc.csv').csv()
+prev_comb = await FileAttachment('dados/arima-ets/previsao_concatenados.csv').csv()
+prev_lm = await FileAttachment('dados/lc-lm/previoes_lm.csv').csv()
+prev_lc = await FileAttachment('dados/lc-lm/previoes_lc.csv').csv()
 
 modelos = ["ARIMA+ETS", "Lee-Carter", "Lee-Miller"]
 regioes = ["Brasil", "Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
@@ -364,19 +364,19 @@ html`
 <body>
     <br>
     <p>Baixar previsões do modelo combinado 
-    <a href="dados/dados1/previsao_concatenados.csv" download>
+    <a href="dados/arima-ets/previsao_concatenados.csv" download>
         ARIMA+ETS.
     </a>
     </p>
 
     <p>Baixar previsões do modelo 
-    <a href="dados/dados2/previoes_lc.csv" download>
+    <a href="dados/lc-lm/previoes_lc.csv" download>
         Lee-Carter.
     </a>
     </p>
 
     <p>Baixar previsões do modelo
-    <a href="dados/dados2/previoes_lm.csv" download>
+    <a href="dados/lc-lm/previoes_lm.csv" download>
         Lee-Miller.
     </a>
     </p>
@@ -719,8 +719,8 @@ grafico_barra(plotData2)
 ## Tabela
 ```{ojs}
 html`<h3>Tabela de Métricas de Erro</h3>`
-erros = await FileAttachment("dados/dados2/erros.csv").csv({typed: true})
-erros2 = await FileAttachment("dados/dados1/erros_concatenados.csv").csv({typed: true})
+erros = await FileAttachment("dados/lc-lm/erros.csv").csv({typed: true})
+erros2 = await FileAttachment("dados/arima-ets/erros_concatenados.csv").csv({typed: true})
 regioes2 = [...new Set(erros.map(d => d.regiao))].sort()
 anos2 = [...new Set(erros.map(d => d.ano))].sort()
 
