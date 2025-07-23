@@ -11,11 +11,12 @@ execute:
 ## Gráfico
 ```{ojs}
 // Dados e filtros
+prev_ibge = await FileAttachment('dados/base_dados/projecoes_ibge.csv').csv()
 prev_comb = await FileAttachment('dados/arima-ets/previsao_concatenados.csv').csv()
 prev_lm = await FileAttachment('dados/lc-lm/previoes_lm.csv').csv()
 prev_lc = await FileAttachment('dados/lc-lm/previoes_lc.csv').csv()
 
-modelos = ["ARIMA+ETS", "Lee-Carter", "Lee-Miller"]
+modelos = ["ARIMA+ETS", "Lee-Carter", "Lee-Miller", "IBGE"]
 regioes = ["Brasil", "Centro-Oeste", "Nordeste", "Norte", "Sudeste", "Sul", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
 
 // Definição do componente reativo
@@ -134,6 +135,12 @@ viewof seletores2 = {
 regiao2 = seletores2.regiao
 modelo2 = seletores2.modelo
 sexo = seletores2.sexo
+
+data_filter0 = prev_ibge.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
+  ano: +d.Ano,
+  faixa: d.faixa_etaria,
+  prev: Math.log(d.nqx)
+}))
 
 data_filter1 = prev_comb.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
   ano: +d.Ano,
@@ -332,6 +339,9 @@ function createChart(data, title) {
   if (modelo2.includes("Lee-Carter")) {
     container.appendChild(createChart(data_filter3, "Lee-Carter"));
   }
+  if (modelo2.includes("IBGE")) {
+    container.appendChild(createChart(data_filter0, "IBGE"));
+  }
 
   return modelo2.length === 0 
     ? html`<p>Nenhum dado selecionado.</p>`
@@ -346,6 +356,9 @@ function createChart(data, title) {
   }
   else if (modelo2.includes("Lee-Carter")) {
     return html`<p>Para acessar a metodologia utilizada no modelo Lee-Carter, <a href="metodologia.html#modelo-lee-carter">clique aqui</a>.</p>`;
+  }
+  else if (modelo2.includes("IBGE")) {
+    return html`<p>Para acessar a metodologia utilizada no modelo Lee-Carter, <a href="metodologia.html#projeções-de-mortalidade-do-ibge">clique aqui</a>.</p>`;
   }
 }
 ```
