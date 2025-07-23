@@ -1,4 +1,5 @@
 ---
+title: Mortalidade infantil
 execute: 
   echo: false
   panel: sidebar

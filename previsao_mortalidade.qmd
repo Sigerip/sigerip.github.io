@@ -1,4 +1,5 @@
 ---
+title: Previsão de mortalidade
 execute: 
   echo: false
   panel: sidebar
