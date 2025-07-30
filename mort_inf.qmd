@@ -437,3 +437,7 @@ html`
 
 ```
 :::
+
+```{ojs}
+html`<p><a href="metodologia.html#banco-de-dados-de-mortalidade-infantil">Metodologia da mortalidade infantil</a>.</p>`
+```

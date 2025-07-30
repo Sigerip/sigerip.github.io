@@ -162,10 +162,10 @@ faixa = seletores.faixa
   // Declare the chart dimensions and margins.
   const width = 760;
   const height = 500;
-  const marginTop = 20;
-  const marginRight = 30;
-  const marginBottom = 30;
-  const marginLeft = 40;
+  const marginTop = 30;
+  const marginRight = 20;
+  const marginBottom = 40;
+  const marginLeft = 50;
 
   // Declare the x (horizontal position) scale.
   const x = d3.scaleLinear(d3.extent(expectativa, d => d.ano), [marginLeft, width - marginRight]);
@@ -210,15 +210,16 @@ faixa = seletores.faixa
       .call(g => g.select(".domain").remove())
       .style("font-size", "12px")
       .call(g => g.selectAll(".tick line").clone()
-          .attr("x2", width - marginLeft - marginRight)
-          .attr("stroke-opacity", 0.1))
+        .attr("x2", width - marginLeft - marginRight)
+        .attr("stroke-opacity", 0.1))
       .call(g => g.append("text")
-          .attr("x", -marginLeft)
-          .attr("y", 10)
-          .attr("fill", "currentColor")
-          .attr("text-anchor", "start")
-          .style("font-size", "18px")
-          .text("ex"));
+        .attr("transform", "rotate(-90)")
+        .attr("x", -(height / 2))
+        .attr("y", -marginLeft + 15)
+        .attr("fill", "currentColor")
+        .attr("text-anchor", "middle")
+        .style("font-size", "18px")
+        .text("ex"));
 
   // Append a path for the line.
   svg.append("path")

@@ -261,7 +261,6 @@ faixa1 = seletores1.faixa
 
   return svg.node();
 }
-html`<p>Para acessar a metodologia utilizada, <a href="metodologia.html#proje%C3%A7%C3%B5es-de-mortalidade-do-ibge">clique aqui</a>.</p>`
 ```
 
 ## Tabela
@@ -588,8 +587,6 @@ ano3 = seletores3.ano
 
   return svg.node();
 }
-html`<p>Para acessar a metodologia utilizada, <a href="metodologia.html#proje%C3%A7%C3%B5es-de-mortalidade-do-ibge">clique aqui</a>.</p>`
-
 ```
 
 ## Tabela
@@ -609,3 +606,7 @@ html`
 
 ```
 :::
+
+```{ojs}
+html`<p><a href="metodologia.html#banco-de-dados-de-mortalidade-geral-e-t%C3%A1buas-de-vida">Metodologia do banco de dados e tábuas de vida.</a></p>`
+```
