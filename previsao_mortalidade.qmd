@@ -198,7 +198,7 @@ function createChart(data, title) {
     .padding(0.5);
 
   const y = d3.scaleLinear()
-    .domain(d3.extent(data, d => d.prev)).nice()
+    .domain([-11, 0])
     .range([height - margin.bottom, margin.top]);
 
   // Eixos
@@ -283,7 +283,7 @@ function createChart(data, title) {
   const legendWidth = 200;
   const legendHeight = 20;
   const legendX = width - margin.right - legendWidth;
-  const legendY = margin.top;
+  const legendY = 400;
 
   const legendGradient = defs.append("linearGradient")
     .attr("id", `legend-${title}`)
