@@ -35,3 +35,14 @@ format:
     css: styles.css
     toc: true
     lang: pt-BR
+    include-in-header:
+            - text: |
+                <!-- Google tag (gtag.js) -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZDFKV6YYC"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8ZDFKV6YYC');
+                </script>	
