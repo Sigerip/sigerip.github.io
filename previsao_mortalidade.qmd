@@ -150,13 +150,13 @@ data_filter1 = prev_arima_ets.filter(d => d.LOCAL === regiao2 && d.SEXO === sexo
   prev: Math.log(d.Previsao)
 }))
 
-data_filter2 = prev_lm.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
+data_filter2 = prev_lm.filter(d => d.regiao === regiao2 && d.taxa === sexo).map(d => ({
   ano: +d.ano,
   faixa: d.Faixa_Etaria,
   prev: Math.log(d.previsto)
 }))
 
-data_filter3 = prev_lc.filter(d => d.regiao === regiao2 && d.Sexo === sexo).map(d => ({
+data_filter3 = prev_lc.filter(d => d.regiao === regiao2 && d.taxa === sexo).map(d => ({
   ano: +d.ano,
   faixa: d.Faixa_Etaria,
   prev: Math.log(d.previsto)
@@ -435,7 +435,7 @@ erros_lc = erros.filter(d => d.regiao === regiao2 && d.taxa === sexo)
       .map(d => ({
       faixa: d.faixa_etaria,
       RMSE: Number(d.RMSE_LC),
-      MAPE: Number(d.MAPE_LC),
+      MAPE: Number(d.SMAPE_LC),
       MAE: Number(d.MAE_LC),
       modelo: "Lee-Carter"
     }));
@@ -444,7 +444,7 @@ erros_lm = erros.filter(d => d.regiao === regiao2 && d.taxa === sexo)
       .map(d => ({
       faixa: d.faixa_etaria,
       RMSE: Number(d.RMSE_LM),
-      MAPE: Number(d.MAPE_LM),
+      MAPE: Number(d.SMAPE_LM),
       MAE: Number(d.MAE_LM),
       modelo: "Lee-Miller"
     }));
@@ -801,6 +801,8 @@ erros2 = await FileAttachment("dados/arima-ets/metricas_teste_2016_2019.csv").cs
 erros3 = await FileAttachment("dados/combinado/metricas_teste_2016_2019_comb.csv").csv({typed: true})
 regioes2 = [...new Set(erros.map(d => d.regiao))].sort()
 anos2 = [...new Set(erros.map(d => d.ano))].sort()
+
+Inputs.table(erros)
 
 {
 // Variável para guardar o resultado final
