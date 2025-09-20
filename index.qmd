@@ -82,6 +82,28 @@ viewof contatos = {
           </div>
       </li>
 
+      <!-- Prof YURI -->
+      <li class="membro-equipe">
+          <span style="font-size:24px"></span>
+          <div>
+              <h3 style="margin: 0; color: #2c3e50;">Prof. Me. YURI M. S. SANTOS</h3>
+              <p style="margin: 5px 0; color: #666;">Colaborador - Desenvolvimento e validação dos modelos</p>
+              <p style="margin: 0;">
+                  <!-- Link para o LinkedIn -->
+                  <a href="" 
+                    target="_blank" 
+                    style="color: #0077b5; text-decoration: none;">
+                      <i class="fab fa-linkedin"></i> LinkedIn
+                  </a>
+                  <br>
+
+                  <!-- Link para abrir o Gmail -->
+                  <i class="fas fa-envelope"></i> 
+                  
+              </p>
+          </div>
+      </li>
+
       <!-- Prof Herick -->
       <li class="membro-equipe">
           <span style="font-size:24px"></span>
@@ -126,27 +148,6 @@ viewof contatos = {
           </div>
       </li>
 
-      <!-- TODO: falta linkedin Beatriz-->
-      <li class="membro-equipe">
-          <span style="font-size:24px"></span>
-          <div>
-              <h3 style="margin: 0; color: #2c3e50;">Beatriz G. Olinpio</h3>
-              <p style="margin: 5px 0; color: #666;">Aluna Voluntária - Mortalidade infantil</p>
-              <p style="margin: 0;">
-                  <!-- Link para o LinkedIn -->
-                  <a href="" 
-                    target="_blank" 
-                    style="color: #0077b5; text-decoration: none;">
-                      <i class="fab fa-linkedin"></i> LinkedIn
-                  </a>
-                  <br>
-
-                  <!-- Link para abrir o Gmail -->
-                  <i class="fas fa-envelope"></i> bgo@academico.ufpb.br
-                  
-              </p>
-          </div>
-      </li>
 
       <!-- Cleo -->
       <li class="membro-equipe">

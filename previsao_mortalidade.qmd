@@ -419,6 +419,210 @@ html`
 ```
 :::
 
+## Previsão da função sobrevivência para os anos 2024-2070
+
+```{ojs}
+px_lm = await FileAttachment('dados/lc-lm/tabua_lm.csv').csv()
+px_lc = await FileAttachment('dados/lc-lm/tabua_lc.csv').csv()
+
+
+function createChart2(data, title) {
+
+  const ptBRLocaleDefinition = {
+    decimal: ",",
+    thousands: "",
+    grouping: [3],
+    currency: ["R$", ""]
+  };
+  const dados = data.filter(d => d.local === regiao2 && d.sexo === sexo).map(d => ({
+    ano: +d.ano,
+    faixa: d.faixa_etaria,
+    prev: d.px
+  }))
+  d3.formatDefaultLocale(ptBRLocaleDefinition);
+
+  const width = 760;
+  const height = 500;
+  const margin = {top: 30, right: 20, bottom: 40, left: 50};
+  
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+      .attr("width", width)
+      .attr("height", height)
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic; font: 10px sans-serif;")
+      .style("-webkit-tap-highlight-color", "transparent")
+      .style("overflow", "visible");
+
+  // Escalas
+  const x = d3.scalePoint()
+    .domain([...new Set(dados.map(d => d.faixa))])
+    .range([margin.left, width - margin.right])
+    .padding(0.5);
+
+  const y = d3.scaleLinear()
+    .domain([0, 1])
+    .range([height - margin.bottom, margin.top]);
+
+  // Eixos
+  svg.append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("dx", "-.8em")
+    .attr("dy", ".15em")
+    .attr("transform", "rotate(-45)");
+
+  svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("x", width / 2)
+    .attr("y", height) // Posição abaixo do eixo
+    .style("font-size", "14px")
+    .style("fill", "currentColor")
+    .text("Faixa Etária");
+    
+
+  svg.append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(y).ticks(height / 40))
+    .call(g => g.select(".domain").remove())
+    .style("font-size", "12px")
+    .call(g => g.selectAll(".tick line").clone()
+      .attr("x2", width - margin.left - margin.right)
+      .attr("stroke-opacity", 0.1))
+    .call(g => g.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -(height / 2))
+      .attr("y", -margin.left + 15)
+      .attr("fill", "currentColor")
+      .attr("text-anchor", "middle")
+      .style("font-size", "18px")
+      .text("pₓ"));
+  
+
+  // Gradiente e cores
+  const colorScale = d3.scaleSequential(d3.interpolateViridis)
+    .domain([2024, 2070]);
+
+  const defs = svg.append("defs");
+  const nestedData = d3.groups(dados, d => d.ano);
+
+  nestedData.forEach(([year, values]) => {
+    const gradientId = `gradient-${title}-${year}`;
+    
+    const gradient = defs.append("linearGradient")
+      .attr("id", gradientId)
+      .attr("gradientUnits", "userSpaceOnUse")
+      .attr("x1", margin.left)
+      .attr("y1", 0)
+      .attr("x2", width - margin.right)
+      .attr("y2", 0);
+
+    gradient.append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", colorScale(year));
+
+    gradient.append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", colorScale(Math.min(year + 10, 2070)));
+  });
+
+  // Linhas
+  const line = d3.line()
+    .x(d => x(d.faixa))
+    .y(d => y(d.prev));
+
+  nestedData.forEach(([year, values]) => {
+    svg.append("path")
+      .datum(values)
+      .attr("fill", "none")
+      .attr("stroke", `url(#gradient-${title}-${year})`)
+      .attr("stroke-width", 2.5)
+      .attr("d", line);
+  });
+
+  // Legenda
+  const legendWidth = 200;
+  const legendHeight = 20;
+  const legendX = width - margin.right - legendWidth;
+  const legendY = 400;
+
+  const legendGradient = defs.append("linearGradient")
+    .attr("id", `legend-${title}`)
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%");
+
+  const years = [2024, 2035, 2045, 2055, 2070];
+  years.forEach((year, i) => {
+    legendGradient.append("stop")
+      .attr("offset", `${i * 100 / (years.length - 1)}%`)
+      .attr("stop-color", colorScale(year));
+  });
+
+  svg.append("rect")
+    .attr("x", legendX)
+    .attr("y", legendY)
+    .attr("width", legendWidth)
+    .attr("height", legendHeight)
+    .style("fill", `url(#legend-${title})`);
+
+  svg.append("text")
+    .attr("x", legendX)
+    .attr("y", legendY - 5)
+    .attr("font-size", "12px")
+    .text("Anos (2024-2070)");
+
+  years.forEach((year, i) => {
+    svg.append("text")
+      .attr("x", legendX + (i * legendWidth / (years.length - 1)))
+      .attr("y", legendY + legendHeight + 15)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "10px")
+      .text(year);
+  });
+
+  // Título
+  svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .style("font-size", "1.2em")
+    .text(title);
+
+  return svg.node();
+}
+
+// Renderização dos gráficos
+{
+  const container = document.createElement('div');
+  container.style.display = "grid";
+  container.style.gap = "2rem";
+  container.style.justifyContent = "center";
+
+  if (modelo2.includes("ARIMA+ETS")) {
+    container.appendChild(/*createChart(data_filter1, "ARIMA+ETS")*/);
+  }
+  if (modelo2.includes("Lee-Miller")) {
+    container.appendChild(createChart2(px_lm, "Lee-Miller"));
+  }
+  if (modelo2.includes("Lee-Carter")) {
+    container.appendChild(createChart2(px_lm, "Lee-Carter"));
+  }
+  if (modelo2.includes("IBGE")) {
+    container.appendChild(/*createChart(data_filter0, "IBGE")*/);
+  }
+  if (modelo2.includes("MLP-Shallow")) {
+    container.appendChild(/*createChart(data_filter4, "MLP-Shallow")*/);
+  }
+
+  return modelo2.length === 0 
+    ? html`<p>Nenhum dado selecionado.</p>`
+    : container;
+}
+```
+
 ## Métricas de Erro
 
 ::: {.panel-tabset}
